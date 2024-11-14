@@ -1,17 +1,5 @@
 %---------- Inleiding ---------------------------------------------------------
 
-% TODO: Is dit voorstel gebaseerd op een paper van Research Methods die je
-% vorig jaar hebt ingediend? Heb je daarbij eventueel samengewerkt met een
-% andere student?
-% Zo ja, haal dan de tekst hieronder uit commentaar en pas aan.
-
-%\paragraph{Opmerking}
-
-% Dit voorstel is gebaseerd op het onderzoeksvoorstel dat werd geschreven in het
-% kader van het vak Research Methods dat ik (vorig/dit) academiejaar heb
-% uitgewerkt (met medesturent VOORNAAM NAAM als mede-auteur).
-% 
-
 \section{Inleiding}%
 \label{sec:inleiding}
 
@@ -26,15 +14,17 @@ Het doel van dit onderzoek is om de mogelijkheden voor de ontwikkeling van een v
 \section{Stand van zaken}%
 \label{sec:stand van zaken}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+De opkomst van ChatGPT en andere Large Language Models (LLM) heeft de mogelijkheden voor generatieve informatieverzameling sterk vergroot. Dit roept de vraag op of dergelijke systemen ook op organisatieniveau effectief kunnen worden ingezet en welke factoren daarbij moeten worden overwogen.
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+Naast het bekende GPT-4 zijn er ook diverse open-source modellen, zoals Llama 2, StableBeluga2 en Mixtral 8x7B. Hoewel deze modellen over het algemeen iets minder krachtig zijn dan GPT-4, bieden ze belangrijke voordelen op het gebied van dataveiligheid en privacy. Bovendien kunnen open-source modellen eenvoudiger worden aangepast en gepersonaliseerd om beter aan te sluiten op de specifieke behoeften van de gebruiker \autocite{KernanFreire2024}.
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocites{KernanFreire2024}! Denk zeker goed na welke werken je refereert en waarom. 
+Hoewel het ontwikkelen van een eigen gepersonaliseerde LLM wellicht als een luxeprobleem kan lijken, kan dit in sommige organisaties cruciaal zijn. Het is dan ook belangrijk om niet alleen te kijken naar de prestaties van een model, maar ook naar de mate waarin het kan worden aangepast aan de specifieke vereisten van de organisatie.
 
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
+Uit het onderzoek van \textcite{Topsakal2023} blijkt dat er veel mogelijkheden zijn om zelf LLM-gebaseerde modellen op te zetten. In dit onderzoek wordt gebruikgemaakt van LangChain, een open-source framework dat specifiek is ontwikkeld om het bouwen van LLM-toepassingen te vergemakkelijken.
 
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
+\textcite{Topsakal2023} onderzocht de diverse functionaliteiten van LangChain, waaronder de optie om vragen te beantwoorden op basis van documenten. In dit proces wordt de LLM getraind met de verstrekte documenten, zodat een gebruiker vragen kan stellen over deze documenten en zo snel extra kennis kan opdoen. LangChain ondersteunt een breed scala aan documenttypen, zoals CSV, PDF, HTML, JSON, Excel, GitHub, Google Drive, OneDrive en XML.
+
+Hoewel LangChain als open-source framework veel potentie biedt, zal een verdere literatuurstudie moeten uitwijzen of er alternatieve frameworks beschikbaar zijn en wat de voor- en nadelen zijn van deze opties. Zo kan beter worden afgewogen welk framework het meest geschikt is voor specifieke use cases.
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -43,18 +33,15 @@ Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle no
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
 %   ...'')
 
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
-
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
 
-
 Voor het opstarten van deze bachelorproef is een literatuurstudie essentieel om bestaande mogelijkheden op het gebied van virtuele assistenten te verkennen. De literatuurstudie richt zich op een vergelijkende analyse die inzicht moet bieden in de verschillende beschikbare opties voor het opzetten van een eigen virtuele assistent. Hierbij is het belangrijk om de voor- en nadelen van elke optie in kaart te brengen, zodat op basis van deze informatie een weloverwogen keuze kan worden gemaakt voor de uitwerking van een proof of concept. Deze studie zal tevens duidelijkheid moeten verschaffen over de benodigde hardware- en softwarevereisten voor het ontwikkelen van de proof of concept.
 
-Voor de realisatie van de proof of concept is een frontend nodig, waarvoor een IDE zoals Visual Studio Code essentieel is om de frontend-ontwikkeling te ondersteunen. Daarnaast is een GitHub-repository nodig voor versiebeheer en samenwerking.
+Een voorlopige literatuurstudie moet uitwijzen welke open-source software beschikbaar is voor het ontwikkelen van een eigen LLM-gebaseerde applicatie; LangChain is hierbij een mogelijke optie. Voor de realisatie van de proof of concept is daarnaast een frontend nodig, waarvoor een IDE zoals Visual Studio Code essentieel is om de frontend-ontwikkeling te faciliteren. Verder is een GitHub-repository noodzakelijk voor versiebeheer en samenwerking.
 
-Voor mijn bachelorproef zijn zowel de vergelijkende studie als de proof of concept essentieel. Daarom zullen beide onderdelen elk de helft van de beschikbare tijd in beslag nemen, wat betekent dat de vergelijkende studie een periode van twee maanden krijgt, en ook voor de ontwikkeling van de proof of concept twee maanden zijn voorzien. Hoewel het mogelijk is dat tijdens de eerste twee maanden al ideeën worden verkend voor de proof of concept, of dat er tijdens de ontwikkeling van de proof of concept nog aanpassingen aan de vergelijkende studie plaatsvinden, is het wel de bedoeling om eerst een gedegen vergelijkende studie op te stellen. Deze vergelijkende studie dient als basis voor de verdere uitwerking van de proof of concept.
+Voor mijn bachelorproef zijn zowel de vergelijkende studie als de proof of concept essentieel. Daarom zullen beide onderdelen elk de helft van de beschikbare tijd in beslag nemen, wat betekent dat de vergelijkende studie een periode van twee maanden krijgt, en ook voor de ontwikkeling van de proof of concept twee maanden zijn voorzien. Hoewel het mogelijk is dat tijdens de eerste twee maanden al ideeën worden verkend voor de proof of concept, of dat tijdens de ontwikkeling van de proof of concept nog aanpassingen aan de vergelijkende studie plaatsvinden, is het wel de bedoeling om eerst een gedegen vergelijkende studie op te stellen. Deze vergelijkende studie dient immers als basis voor de verdere uitwerking van de proof of concept.
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
