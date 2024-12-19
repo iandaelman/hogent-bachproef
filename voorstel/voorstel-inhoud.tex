@@ -18,7 +18,9 @@ Als onderdeel van dit onderzoek wordt een Proof of Concept (PoC) ontwikkeld. Dez
 \section{Stand van zaken}%
 \label{sec:stand van zaken}
 
-De opkomst van ChatGPT en andere Large Language Models (LLM) heeft de mogelijkheden voor generatieve informatieverzameling sterk vergroot. Dit roept de vraag op of dergelijke systemen ook op organisatieniveau effectief kunnen worden ingezet en welke factoren daarbij moeten worden overwogen.
+In een sterk veranderende omgeving wordt het steeds uitdagender om snel en adequaat incidenten te beheren en klantvragen te beantwoorden. Dit wordt veroorzaakt door factoren zoals de snel evoluerende IT-omgeving en de toenemende complexiteit van IT-infrastructuren. Deze ontwikkelingen leiden tot een groei van diverse en complexe incidenten, die vaak moeilijk binnen het incidentmanagementproces kunnen worden opgelost. Hierdoor worden vragen van de eerstelijnsmedewerkers regelmatig doorgestuurd naar meer gespecialiseerde IT-teams. Hoewel dit begrijpelijk is, resulteert het in hogere kosten en een toename van klantontevredenheid \autocite{Schmidt2024}.
+
+Om hier een antwoord op te bieden kan gekeken worden naar de opkomst van ChatGPT en andere Large Language Models (LLM). Deze hebben de mogelijkheid om generatieve informatieverzameling te vergroten. Dit roept de vraag op of dergelijke systemen binnen een organisatie effectief kunnen worden ingezet en welke factoren daarbij moeten worden overwogen.
 
 Naast het bekende GPT-4 zijn er ook diverse open-source modellen, zoals Llama 2, StableBeluga2 en Mixtral 8x7B. Hoewel deze modellen over het algemeen iets minder krachtig zijn dan GPT-4, bieden ze belangrijke voordelen op het gebied van dataveiligheid en privacy. Bovendien kunnen open-source modellen eenvoudiger worden aangepast en gepersonaliseerd om beter aan te sluiten op de specifieke behoeften van de gebruiker \autocite{KernanFreire2024}.
 
@@ -28,7 +30,7 @@ Uit het onderzoek van \textcite{Topsakal2023} blijkt dat er veel mogelijkheden z
 
 \textcite{Topsakal2023} onderzochten de diverse functionaliteiten van LangChain, waaronder de optie om vragen te beantwoorden op basis van documenten. In dit proces wordt de LLM getraind met de verstrekte documenten, zodat een gebruiker vragen kan stellen over deze documenten en zo snel extra kennis kan opdoen. LangChain ondersteunt een breed scala aan documenttypen, zoals CSV, PDF, HTML, JSON, Excel, GitHub, Google Drive, OneDrive en XML.
 
-Hoewel LangChain als open-source framework veel potentie biedt, zal een verdere literatuurstudie moeten uitwijzen of er alternatieve frameworks beschikbaar zijn en wat de voor- en nadelen zijn van deze opties. Zo kan beter worden afgewogen welk framework het meest geschikt is voor specifieke use cases.
+Hoewel LangChain als open-source framework veel mogelijkheden biedt, is het verstandig om verder onderzoek te doen naar alternatieve frameworks en hun specifieke voor- en nadelen. Dit maakt het mogelijk om een weloverwogen keuze te maken voor het meest geschikte framework, afgestemd op de specifieke use case. Frameworks zoals Hugging Face en Haystack kunnen hierbij als waardevolle alternatieven worden overwogen.
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -41,11 +43,16 @@ Hoewel LangChain als open-source framework veel potentie biedt, zal een verdere 
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Voor het opstarten van deze bachelorproef is een literatuurstudie essentieel om bestaande mogelijkheden op het gebied van virtuele assistenten te verkennen. De literatuurstudie richt zich op een vergelijkende analyse die inzicht moet bieden in de verschillende beschikbare opties voor het opzetten van een virtuele support assistent. Hierbij is het belangrijk om de voor- en nadelen van elke optie in kaart te brengen, zodat op basis van deze informatie een weloverwogen keuze kan worden gemaakt voor de uitwerking van een proof of concept. Deze studie zal tevens duidelijkheid moeten verschaffen over de benodigde hardware- en softwarevereisten voor het ontwikkelen van de proof of concept.
+Voor de opstart van deze bachelorproef is een uitgebreide literatuurstudie essentieel om de bestaande mogelijkheden op het gebied van virtuele assistenten te verkennen. Deze studie richt zich op een vergelijkende analyse die inzicht biedt in de verschillende beschikbare opties voor het ontwikkelen van een virtuele supportassistent. Hierbij worden de voor- en nadelen van elke optie in kaart gebracht, zodat op basis van deze informatie een onderbouwde keuze kan worden gemaakt voor de uitwerking van een proof of concept. De literatuurstudie moet ook duidelijkheid verschaffen over de benodigde hardware- en softwarevereisten voor de ontwikkeling.
 
-Een voorlopige literatuurstudie moet uitwijzen welke open-source software beschikbaar is voor het ontwikkelen van een eigen LLM-gebaseerde applicatie; LangChain is hierbij een mogelijke optie. Voor de realisatie van de proof of concept is daarnaast een frontend nodig, waarvoor een IDE zoals Visual Studio Code essentieel is om de frontend-ontwikkeling te faciliteren. Verder is een GitHub-repository noodzakelijk voor versiebeheer en samenwerking.
+Een eerste verkenning binnen de literatuurstudie richt zich op open-source softwareoplossingen voor de ontwikkeling van een LLM-gebaseerde applicatie. LangChain is hierbij een interessante optie, maar het is van cruciaal belang om ook andere alternatieven te onderzoeken. Voor versiebeheer en samenwerking tijdens de ontwikkeling is het gebruik van een GitHub-repository noodzakelijk.
 
-Voor mijn bachelorproef zijn zowel de vergelijkende studie als de proof of concept essentieel. Daarom zullen beide onderdelen elk de helft van de beschikbare tijd in beslag nemen, wat betekent dat de vergelijkende studie een periode van twee maanden krijgt, en ook voor de ontwikkeling van de proof of concept twee maanden zijn voorzien. Hoewel het mogelijk is dat tijdens de eerste twee maanden al ideeën worden verkend voor de proof of concept, of dat tijdens de ontwikkeling van de proof of concept nog aanpassingen aan de vergelijkende studie plaatsvinden, is het wel de bedoeling om eerst een gedegen vergelijkende studie op te stellen. Deze vergelijkende studie dient immers als basis voor de verdere uitwerking van de proof of concept.
+Het uiteindelijke framework dat gekozen wordt, zal afhankelijk zijn van de specifieke noden en eisen. Deze worden in kaart gebracht door middel van een interview met de betrokken partijen. Tijdens dit proces kunnen de partijen duidelijk aangeven welke functionaliteiten essentieel zijn en welke minder prioriteit hebben. De keuze voor een framework en de selectie van de benodigde tools zullen gebaseerd zijn op de inzichten die door de promotor worden verschaft. Deze inzichten worden eveneens verzameld via een interview.
+
+Binnen de bachelorproef zijn zowel de vergelijkende studie als de proof of concept van cruciaal belang. Om beide onderdelen voldoende aandacht te geven, wordt de beschikbare tijd gelijkmatig verdeeld. De vergelijkende studie krijgt twee maanden om tot een gedegen resultaat te komen, terwijl ook twee maanden worden gereserveerd voor de ontwikkeling van de proof of concept. Het is mogelijk dat ideeën voor de proof of concept al tijdens de vergelijkende studie ontstaan, of dat de vergelijkende studie nog wordt aangepast tijdens de ontwikkeling. Desondanks is het doel om eerst een solide basis te leggen met de vergelijkende studie, die dient als fundament voor de verdere uitwerking van de proof of concept.
+
+Het uiteindelijke resultaat is een virtuele assistent die medewerkers ondersteunt bij het afhandelen van supporttickets. In eerste instantie zal deze tool als proefproject worden getest door een IT-team. De resultaten van deze test zullen worden geanalyseerd en opgenomen in de bachelorproef. Bij een succesvolle test kan een bredere implementatie worden overwogen, al valt dit waarschijnlijk buiten de scope van deze bachelorproef.
+
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
@@ -58,6 +65,5 @@ Anderzijds zal een proof of concept worden ontwikkeld als illustratie van één 
 Bedrijven die te maken hebben met uitdagingen op het gebied van support kunnen deze vergelijkende studie benutten om te bepalen welke oplossing het beste bij hun behoeften past. Bovendien biedt de proof of concept, indien relevant en toepasbaar, de mogelijkheid om als basis te dienen voor een eigen implementatie, waarbij aanpassingen kunnen worden gemaakt om deze optimaal af te stemmen op de specifieke bedrijfscontext. Indien de proof of concept voldoende functioneel blijkt, kan deze een meerwaarde vormen door een snellere afhandeling van vragen die klanten hebben. Dit leidt op zijn beurt naar een hogeren klantentevredenheid. 
 
 Het uiteindelijke onderzoeksresultaat zal een op ChatGPT lijkende interface opleveren, waarmee gebruikers gerichte antwoorden kunnen krijgen op vragen die specifiek betrekking hebben op support vragen die hun organisatie krijgt van klanten. Deze oplossing richt zich dus op een bedrijfsspecifieke virtuele support assistent, die getraind is op basis van de interne documentatie van een organisatie en binnen die context wordt ingezet.
-
 
 
