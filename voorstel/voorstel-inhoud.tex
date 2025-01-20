@@ -5,13 +5,30 @@
 
 Een ontwikkelingsteam heeft uiteenlopende verantwoordelijkheden. Naast hun kernactiviteit, het ontwikkelen van software, is het ook belangrijk dat zij ondersteuning bieden bij vragen en problemen van klanten. Deze vragen hebben vaak betrekking op fouten of problemen binnen de toepassing. In grote organisaties is het echter vaak niet meteen duidelijk welk team verantwoordelijk is voor een specifieke fout. Het zoeken naar het juiste team kan daardoor tijdrovend en inefficiënt zijn, wat leidt tot onnodig hoge kosten en verspilling van middelen.
 
-Dit onderzoek richt zich op grote organisaties waar efficiënte support essentieel is om klantvragen snel en accuraat af te handelen. Een virtuele assistent kan hierbij een ondersteunende rol spelen door medewerkers, die verantwoordelijk zijn voor het afhandelen van support, te voorzien van een chatbot. Deze chatbot kan antwoorden geven op veelvoorkomende vragen, of de medewerkers doorverwijzen naar relevante documentatie en contactpersonen. Zo fungeert de virtuele assistent als hulpmiddel voor supportmedewerkers, waardoor zij sneller en efficiënter kunnen werken. Dit leidt tot een hogere klanttevredenheid, een snellere afhandeling van supporttickets en mogelijke kostenbesparingen binnen de organisatie.
+Deze bachelorproef onderzoekt hoe grote organisaties hun support op een efficiëntere manier kunnen bewerkstelligen door middel van een virtuele assistent. Deze virtuele assistent kan hierbij een ondersteunende rol spelen voor medewerkers, die verantwoordelijk zijn voor het afhandelen van support. Deze chatbot kan antwoorden geven op veelvoorkomende vragen, of de medewerkers doorverwijzen naar relevante documentatie en contactpersonen. Zo fungeert de virtuele assistent als hulpmiddel voor supportmedewerkers, waardoor zij sneller en efficiënter kunnen werken. Dit leidt tot een hogere klanttevredenheid, een snellere afhandeling van supporttickets en mogelijke kostenbesparingen binnen de organisatie.
 
-In dit onderzoek richten we ons specifiek op de supporttickets die IT-teams binnen FOD Financiën moeten afhandelen. Om het proces te verbeteren, is het van belang om een helder beeld te krijgen van de huidige manier waarop supporttickets worden afgehandeld. Dit begint met een grondige analyse van het bestaande proces, waarbij we in kaart brengen waar de knelpunten zich bevinden en waarom deze problemen optreden.
+In dit onderzoek richten wordt gekeken hoe IT-teams binnen FOD Financiën de supporttickets moeten afhandelen. Om het proces te verbeteren, is het van belang om een helder beeld te krijgen van de huidige manier waarop supporttickets worden afgehandeld. Dit begint met een grondige analyse van het bestaande proces, waarbij we in kaart brengen waar de knelpunten zich bevinden en waarom deze problemen optreden.
 
 Op basis van deze analyse wordt een duidelijk overzicht gevormd van de zwakke punten in het proces, waarna mogelijke oplossingen kunnen worden onderzocht. Concreet wordt gekeken hoe een Large Language Model (LLM) het proces kan versnellen of efficiënter kan maken. Hiervoor worden verschillende opties voor LLM’s geëvalueerd, waarbij we rekening houden met de functionaliteiten die het model moet bieden en met de financiële en praktische beperkingen.
 
-Als onderdeel van dit onderzoek wordt een Proof of Concept (PoC) ontwikkeld. Deze PoC kan vervolgens worden getest door de betrokken medewerkers, zodat we kunnen beoordelen of het voorgestelde model daadwerkelijk bijdraagt aan een efficiëntere afhandeling van supporttickets.
+Als onderdeel van dit onderzoek wordt een PoC ontwikkeld. Deze PoC kan vervolgens worden getest door de betrokken medewerkers, zodat we kunnen beoordelen of het voorgestelde model daadwerkelijk bijdraagt aan een efficiëntere afhandeling van supporttickets. Samengevat zullen tijdens de literatuurstudie de volgende zaken worden onderzocht. Dit zijn, met andere woorden, de deelvragen van het probleemdomein:
+
+\begin{itemize} 
+    \item Welke bestaande LLM-modellen kunnen worden gebruikt voor het ontwikkelen van een Retrieval-Augmented Generation (RAG)? 
+    \item Wat zijn de belangrijkste voor- en nadelen van deze modellen? 
+    \item Welke bestaande tools en frameworks kunnen bijdragen aan het opzetten van een RAG? 
+    \item Wat houdt de AI Act in, en wat zijn de belangrijkste richtlijnen die hierin moeten worden gevolgd? 
+    \item Wat zijn de bestaande best practices voor de organisatie van IT-supportprocessen? 
+\end{itemize}
+
+De antwoorden op deze vragen zullen worden vastgelegd in de literatuurstudie, die als basis zal dienen voor de ontwikkeling van de PoC. Binnen de PoC moeten de vragen van het oplossingsdomein worden beantwoord. Concreet is het de bedoeling om de volgende vragen te adresseren:
+
+\begin{itemize} 
+    \item Welke LLM-modellen sluiten het beste aan bij de gestelde requirements voor het ontwikkelen van een virtuele supportassistent? 
+    \item Welke LLM-modellen presteren het best voor deze specifieke usecase? 
+    \item Welke stappen moeten worden genomen om bij de ontwikkeling van een RAG te voldoen aan het wettelijke kader van de AI Act? 
+    \item Op welke plaats binnen het supportproces kan een RAG-model het meest effectief worden ingezet?
+\end{itemize}
 
 %---------- Stand van zaken ---------------------------------------------------
 
@@ -26,11 +43,11 @@ Naast het bekende GPT-4 zijn er ook diverse open-source modellen, zoals Llama 2,
 
 Hoewel het ontwikkelen van een eigen gepersonaliseerde LLM wellicht als een luxeprobleem kan lijken, kan dit in sommige organisaties cruciaal zijn. Het is dan ook belangrijk om niet alleen te kijken naar de prestaties van een model, maar ook naar de mate waarin het kan worden aangepast aan de specifieke vereisten van de organisatie.
 
-Uit het onderzoek van \textcite{Topsakal2023} blijkt dat er veel mogelijkheden zijn om zelf LLM-gebaseerde modellen op te zetten. In dit onderzoek wordt gebruikgemaakt van LangChain, een open-source framework dat specifiek is ontwikkeld om het bouwen van LLM-toepassingen te vergemakkelijken.
+Uit het onderzoek van \textcite{Topsakal2023} blijkt dat er veel mogelijkheden zijn om zelf LLM-gebaseerde modellen op te zetten. In dit onderzoek werd gebruikgemaakt van LangChain, een open-source framework dat specifiek is ontwikkeld om het bouwen van LLM-toepassingen te vergemakkelijken.
 
 \textcite{Topsakal2023} onderzochten de diverse functionaliteiten van LangChain, waaronder de optie om vragen te beantwoorden op basis van documenten. In dit proces wordt de LLM getraind met de verstrekte documenten, zodat een gebruiker vragen kan stellen over deze documenten en zo snel extra kennis kan opdoen. LangChain ondersteunt een breed scala aan documenttypen, zoals CSV, PDF, HTML, JSON, Excel, GitHub, Google Drive, OneDrive en XML.
 
-Hoewel LangChain als open-source framework veel mogelijkheden biedt, is het verstandig om verder onderzoek te doen naar alternatieve frameworks en hun specifieke voor- en nadelen. Dit maakt het mogelijk om een weloverwogen keuze te maken voor het meest geschikte framework, afgestemd op de specifieke use case. Frameworks zoals Hugging Face en Haystack kunnen hierbij als waardevolle alternatieven worden overwogen.
+Dit onderzoek toont ook aan dat er mogelijheden zijn om LLM toepassingen te ontwikkelen voor specifieke doeleinden. Hoewel LangChain als open-source framework veel mogelijkheden biedt, is het verstandig om verder onderzoek te doen naar alternatieve frameworks en hun specifieke voor- en nadelen. Dit maakt het mogelijk om een weloverwogen keuze te maken voor het meest geschikte framework, afgestemd op de specifieke use case. Frameworks zoals Hugging Face en Haystack kunnen hierbij als waardevolle alternatieven worden overwogen.
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -45,25 +62,29 @@ Hoewel LangChain als open-source framework veel mogelijkheden biedt, is het vers
 
 Voor de opstart van deze bachelorproef is een uitgebreide literatuurstudie essentieel om de bestaande mogelijkheden op het gebied van virtuele assistenten te verkennen. Deze studie richt zich op een vergelijkende analyse die inzicht biedt in de verschillende beschikbare opties voor het ontwikkelen van een virtuele supportassistent. Hierbij worden de voor- en nadelen van elke optie in kaart gebracht, zodat op basis van deze informatie een onderbouwde keuze kan worden gemaakt voor de uitwerking van een proof of concept. De literatuurstudie moet ook duidelijkheid verschaffen over de benodigde hardware- en softwarevereisten voor de ontwikkeling.
 
-Een eerste verkenning binnen de literatuurstudie richt zich op open-source softwareoplossingen voor de ontwikkeling van een LLM-gebaseerde applicatie. LangChain is hierbij een interessante optie, maar het is van cruciaal belang om ook andere alternatieven te onderzoeken. Voor versiebeheer en samenwerking tijdens de ontwikkeling is het gebruik van een GitHub-repository noodzakelijk.
+Gekoppeld aan de literatuurstudie zullen interviews worden afgenomen. Het doel van deze interviews is om een helder overzicht te verkrijgen van de verschillende vereisten voor de virtuele assistent. Op basis van het overzicht uit de literatuurstudie kan vervolgens een meer gerichte selectie worden gemaakt van de verschillende opties. Het uiteindelijke doel is om voor twee à drie modellen een PoC uit te werken die verder getest kunnen worden. Het is met andere woorden van belang om de verschillende modellen zo uitgebreid mogelijk te onderzoeken, zodat zoveel mogelijk modellen getoetst kunnen worden aan de gevraagde vereisten. Indien geen enkel model voldoet aan de verschillende vereisten, kan er, in aansluiting op de interviews, een MoSCoW-analyse worden uitgevoerd. Op die manier kunnen de modellen die het nauwst aansluiten bij de vereisten geselecteerd worden voor verdere uitwerking.
 
-Het uiteindelijke framework dat gekozen wordt, zal afhankelijk zijn van de specifieke noden en eisen. Deze worden in kaart gebracht door middel van een interview met de betrokken partijen. Tijdens dit proces kunnen de partijen duidelijk aangeven welke functionaliteiten essentieel zijn en welke minder prioriteit hebben. De keuze voor een framework en de selectie van de benodigde tools zullen gebaseerd zijn op de inzichten die door de promotor worden verschaft. Deze inzichten worden eveneens verzameld via een interview.
+Elk van de verschillende modellen zal worden uitgewerkt aan de hand van een PoC. Zodra een PoC beschikbaar is, zal een vergelijking worden gemaakt tussen de verschillende modellen. Specifiek zal er getest worden op de volgende zaken:
 
-Binnen de bachelorproef zijn zowel de vergelijkende studie als de proof of concept van cruciaal belang. Om beide onderdelen voldoende aandacht te geven, wordt de beschikbare tijd gelijkmatig verdeeld. De vergelijkende studie krijgt twee maanden om tot een gedegen resultaat te komen, terwijl ook twee maanden worden gereserveerd voor de ontwikkeling van de proof of concept. Het is mogelijk dat ideeën voor de proof of concept al tijdens de vergelijkende studie ontstaan, of dat de vergelijkende studie nog wordt aangepast tijdens de ontwikkeling. Desondanks is het doel om eerst een solide basis te leggen met de vergelijkende studie, die dient als fundament voor de verdere uitwerking van de proof of concept.
+\begin{itemize} 
+    \item Wat is de kwaliteit van de antwoorden? 
+    \item Wat is de tijd en de kost van een query?
+    \item Hoe eenvoudig is het om het model op te zetten? 
+\end{itemize}
 
-Het uiteindelijke resultaat is een virtuele assistent die medewerkers ondersteunt bij het afhandelen van supporttickets. In eerste instantie zal deze tool als proefproject worden getest door een IT-team. De resultaten van deze test zullen worden geanalyseerd en opgenomen in de bachelorproef. Bij een succesvolle test kan een bredere implementatie worden overwogen, al valt dit waarschijnlijk buiten de scope van deze bachelorproef.
+De kwaliteit van de antwoorden zal worden gemeten aan de hand van de ROUGE-score, terwijl de tijd per query gemeten en vergeleken zal worden per model. Gezien het derde criterium eerder subjectief is, zal dit minder doorwegen in de uiteindelijke vergelijking. Aan de hand van deze drie criteria zal uiteindelijk een vergelijking worden gemaakt, waaruit zal blijken welk model het beste voldoet aan de gevraagde functionaliteit. Zo kan aan het einde van het onderzoek worden bepaald welke van de verschillende PoC's de meeste troeven heeft om in de praktijk te worden gebruikt.
 
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-Het verwachte resultaat van deze bachelorproef is tweeledig. Enerzijds wordt er een vergelijkende studie opgesteld, die voor bedrijven kan dienen als leidraad bij de implementatie van virtuele support assistenten en hen inzicht biedt in de verschillende mogelijkheden. Het is daarbij essentieel dat de vergelijkende studie niet alleen de technische aspecten behandelt, maar ook de financiële en juridische factoren in kaart brengt.
+Het verwachte resultaat van deze bachelorproef is zoals reeds vermeld tweeledig. Enerzijds wordt er een vergelijkende studie opgesteld, die voor bedrijven kan dienen als leidraad bij de implementatie van virtuele support assistenten en hen inzicht biedt in de verschillende mogelijkheden. Het is daarbij essentieel dat de vergelijkende studie niet alleen de technische aspecten behandelt, maar ook de juridische factoren in kaart brengt.
 
-Anderzijds zal een proof of concept worden ontwikkeld als illustratie van één van de mogelijke opties binnen dit domein. Hiermee wordt de vergelijkende studie praktisch toegepast en vormt het een voorbeeld voor personen of organisaties die een soortgelijk project willen realiseren.
+Anderzijds zal een proof of concept worden ontwikkeld als illustratie van één van de mogelijke opties binnen dit domein. Hiermee wordt de vergelijkende studie praktisch toegepast en vormt het een voorbeeld voor organisaties die een soortgelijk project willen realiseren.
 
 Bedrijven die te maken hebben met uitdagingen op het gebied van support kunnen deze vergelijkende studie benutten om te bepalen welke oplossing het beste bij hun behoeften past. Bovendien biedt de proof of concept, indien relevant en toepasbaar, de mogelijkheid om als basis te dienen voor een eigen implementatie, waarbij aanpassingen kunnen worden gemaakt om deze optimaal af te stemmen op de specifieke bedrijfscontext. Indien de proof of concept voldoende functioneel blijkt, kan deze een meerwaarde vormen door een snellere afhandeling van vragen die klanten hebben. Dit leidt op zijn beurt naar een hogeren klantentevredenheid. 
 
-Het uiteindelijke onderzoeksresultaat zal een op ChatGPT lijkende interface opleveren, waarmee gebruikers gerichte antwoorden kunnen krijgen op vragen die specifiek betrekking hebben op support vragen die hun organisatie krijgt van klanten. Deze oplossing richt zich dus op een bedrijfsspecifieke virtuele support assistent, die getraind is op basis van de interne documentatie van een organisatie en binnen die context wordt ingezet.
+Het uiteindelijke onderzoeksresultaat zal een op ChatGPT lijkende interface opleveren, waarmee gebruikers gerichte antwoorden kunnen krijgen op vragen die specifiek betrekking hebben op supportvragen die de organisatie krijgt van klanten. Deze oplossing richt zich dus op een bedrijfsspecifieke virtuele support assistent, die getraind is op basis van de interne documentatie van een organisatie en binnen die context wordt ingezet.
 
 
