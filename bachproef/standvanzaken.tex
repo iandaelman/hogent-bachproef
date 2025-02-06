@@ -15,37 +15,33 @@ Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ na
 
 Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{grail.jpg}
-  \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
-\end{figure}
+Vragen te beantwoorden:
 
-\begin{listing}
-  \begin{minted}{python}
-    import pandas as pd
-    import seaborn as sns
+\section{Inleiding}
+In dit hoofdstuk wordt de werking van een Retrieval-Augmented Generation (RAG) model besproken. We behandelen de belangrijkste concepten en recente ontwikkelingen binnen zowel RAG als Large Language Models (LLM). Dit overzicht biedt inzicht in de huidige stand van zaken en vormt de basis voor een weloverwogen keuze bij de ontwikkeling van een Proof of Concept (PoC).
 
-    penguins = sns.load_dataset('penguins')
-    sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
-  \end{minted}
-  \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
-\end{listing}
+Concreet komen de volgende onderwerpen aan bod:
+\begin{itemize}
+    \item \textbf{LLM-modellen voor Retrieval-Augmented Generation (RAG)} – een diepgaande analyse van beschikbare modellen en hun geschiktheid voor RAG.
+    \item \textbf{De AI Act en de belangrijkste richtlijnen} – een overzicht van de relevante wet- en regelgeving en de impact hiervan op RAG-toepassingen.
+    \item \textbf{Best practices voor IT-supportprocessen} – inzichten in hoe RAG kan worden toegepast binnen IT-support en welke methodologieën daarbij best worden gevolgd.
+\end{itemize}
 
-\lipsum[7-20]
+De nadruk zal voornamelijk liggen op het eerste luik, \textit{LLM-modellen voor Retrieval-Augmented Generation (RAG)}, aangezien dit een cruciale factor is voor het maken van een doordachte keuze bij de verdere uitwerking van de PoC. Indien nodig zullen de overige onderwerpen verder worden uitgediept.
 
-\begin{table}
-  \centering
-  \begin{tabular}{lcr}
-    \toprule
-    \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
-    $\alpha$         & $\beta$          & $\gamma$         \\
-    \midrule
-    A                & 10.230           & a                \\
-    B                & 45.678           & b                \\
-    C                & 99.987           & c                \\
-    \bottomrule
-  \end{tabular}
-  \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
-\end{table}
+\section{LLM-modellen voor Retrieval-Augmented Generation (RAG)}
+Welke bestaande LLM-modellen kunnen worden gebruikt voor het ontwikkelen van een Retrieval-Augmented Generation (RAG)?
 
+        \subsubsection{Introductie}
+    
+    \subsection{Voor- en nadelen van bestaande LLM-modellen}
+    Wat zijn de belangrijkste voor- en nadelen van deze modellen?
+    
+    \subsection{Tools en frameworks voor RAG}
+    Welke bestaande tools en frameworks kunnen bijdragen aan het opzetten van een RAG?
+
+\section{De AI Act en de belangrijkste richtlijnen}
+Wat houdt de AI Act in, en wat zijn de belangrijkste richtlijnen die hierin moeten worden gevolgd?
+
+\section{Best practices voor IT-supportprocessen}
+Wat zijn de bestaande best practices voor de organisatie van IT-supportprocessen?
