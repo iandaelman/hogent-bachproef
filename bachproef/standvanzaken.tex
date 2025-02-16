@@ -7,6 +7,8 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
+%TODO verwijder deze tekst hieronder wanneer je het niet langer nodig hebt.
+
 Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
 
 Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
@@ -33,6 +35,38 @@ De nadruk zal voornamelijk liggen op het eerste luik, \textit{LLM-modellen voor 
 Welke bestaande LLM-modellen kunnen worden gebruikt voor het ontwikkelen van een Retrieval-Augmented Generation (RAG)?
 
         \subsubsection{Introductie}
+        Om te bepalen welke modellen het meest geschikt zijn voor de ontwikkeling van een RAG-model, is een objectieve meetmethode noodzakelijk. Gelukkig bestaan er verschillende platforms die LLM's vergelijken en rangschikken op basis van prestaties. In deze sectie bespreken we enkele van deze platforms en maken we een selectie van modellen die het meest geschikt lijken voor het bouwen van een RAG-model.
+        
+        \subsubsection{LiveBench} 
+        Een belangrijk platform dat LLM-modellen evalueert, is LiveBench. Dit platform stelt een rangschikking op voor verschillende modellen en biedt een actuele leaderboard die elke zes maanden wordt bijgewerkt. Voor deze bachelorproef zal gebruik worden gemaakt van de meest recente ranking, afkomstig uit november 2024.
+        
+        LiveBench beoordeelt LLM-modellen op basis van zes categorieën. Binnen elke categorie worden meerdere taken uitgevoerd om een nauwkeurige beoordeling te verkrijgen. De zes categorieën zijn:
+        \begin{itemize}
+            \item Wiskundige vaardigheden (Math)
+            \item Programmeervaardigheden (Coding)
+            \item Redeneren en probleemoplossing (Reasoning)
+            \item Data-analyse (Data Analysis)
+            \item Volgen van instructies (Instruction Following)
+            \item Begrip van natuurlijke taal (Language Comprehension)
+        \end{itemize}
+        
+        Elke categorie wordt geëvalueerd op basis van specifieke taken. Dit resulteert uiteindelijk in een algemene rangschikking, waarin zowel de beste modellen per categorie als het beste presterende model overall worden geïdentificeerd.
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=\textwidth]{LiveBenchRanking.png}
+            \caption{LiveBench ranking van verschillende LLMs.}
+            \label{fig:livebench}
+        \end{figure}
+        
+        \noindent\textbf{Bron:} \textit{LiveBench AI} \url{https://livebench.ai/#/details} (Geraadpleegd op 16 februari 2025).
+        
+        Uit de ranking van LiveBench kan geconcludeerd worden dat 3 verschillende organisaties elk een model aanbieden die vanuit globaal oogpunt tot de top 3 behoort. Deze top 3 zijn: 
+        \begin{enumerate}
+           \item claude-3-5-sonnet-20240620 van Anthropic
+           \item Meta-llama-3.1-405b-instruct-turbo van Meta
+           \item gpt-4o-2024-05-13 van OpenAI
+        \end{enumerate}
     
     \subsection{Voor- en nadelen van bestaande LLM-modellen}
     Wat zijn de belangrijkste voor- en nadelen van deze modellen?
