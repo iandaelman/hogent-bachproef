@@ -37,6 +37,8 @@ Welke bestaande LLM-modellen kunnen worden gebruikt voor het ontwikkelen van een
         \subsubsection{Introductie}
         Om te bepalen welke modellen het meest geschikt zijn voor de ontwikkeling van een RAG-model, is een objectieve meetmethode noodzakelijk. Gelukkig bestaan er verschillende platforms die LLM's vergelijken en rangschikken op basis van prestaties. In deze sectie bespreken we enkele van deze platforms en maken we een selectie van modellen die het meest geschikt lijken voor het bouwen van een RAG-model.
         
+        %TODO overall dieper ingaan hoe ze te werk gaan als het gaat om vergelijken van een LLM dus de paper lezen en samenvatten wat je ermee kan gaan doen
+        
         \subsubsection{LiveBench} 
         Een belangrijk platform dat LLM-modellen evalueert, is LiveBench. Dit platform stelt een rangschikking op voor verschillende modellen en biedt een actuele leaderboard die elke zes maanden wordt bijgewerkt. Voor deze bachelorproef zal gebruik worden gemaakt van de meest recente ranking, afkomstig uit november 2024.
         
@@ -74,12 +76,18 @@ Welke bestaande LLM-modellen kunnen worden gebruikt voor het ontwikkelen van een
         Een andere benchmark tool Chatbot arena, net zoals livebench is Chatbot arena een site die een actuele weergave biedt van de beste LLM's op basis van vooraf gedefinieerde catgeoriën. Op het moment van het schrijven van deze literatuurstudie is de top 3 LLM's volgens deze site de volgende:
         
         \begin{enumerate}
-            \item claude-3-5-sonnet-20240620 van Anthropic
-            \item Meta-llama-3.1-405b-instruct-turbo van Meta
-            \item gpt-4o-2024-05-13 van OpenAI
+            \item GPT-4-Turbo van OpenAI
+            \item GPT-4-0613 van OpenAI
+            \item Mistral-Medium Mistral AI
         \end{enumerate}
         
-        Hier dit verder uitschrijven, ik denk niet dat je de volgende vraag kan beantwoorden dus ik zou meteen nagaan welke tools, frameworks er zijn die je kan gebruiken.
+        Hoewel het doel van beide benchmarks hetzelfde is is de manier van werken wel anders. ChatbotArena gaat via gebruikers twee anonieme LLM modellen tegenover elkaar plaatsen en de gebruiker laten nagaan welke van de 2 het beste resultaat heeft opgeleverd.
+        
+        Het voordeel van deze methode is dat de LLM-modellen realistische cases moeten behandelen die door gebruikers zelf worden gesteld. Op basis van resultaten die de LLM modellen tonen kan een gebruiker zijn voorkeur meegeven. Op basis van deze stemmen worden verscheidene modellen tegenover elkaar geplaatst. In januari 2024 werden ruim 240.000 stemmen uitgebracht door ongeveer 90.000 gebruikers \autocite{chiang2024chatbot}. 
+        
+       %TODO Hier dit verder uitschrijven, ik denk niet dat je de volgende vraag kan beantwoorden dus ik zou meteen nagaan welke tools, frameworks er zijn die je kan gebruiken.
+        
+        %TODO zet hier ook de actuele ranking van beide benchmarks. Al was het maar om te duiden dat het een sterk veranderende wereld is waar en dat naar alle waarschijnlijkheid de modellen die nu worden gebruikt waarschijnlijk al achterhaald zullen zijn.
         
     
     \subsection{Voor- en nadelen van bestaande LLM-modellen}
