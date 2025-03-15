@@ -24,15 +24,27 @@ In dit hoofdstuk wordt de werking van een Retrieval-Augmented Generation (RAG) m
 
 Concreet komen de volgende onderwerpen aan bod:
 \begin{itemize}
-    \item \textbf{LLM-modellen voor Retrieval-Augmented Generation (RAG)} – een analyse van beschikbare modellen en hun geschiktheid voor RAG.
+    \item \textbf{Wat is RAG} – Wat is Retrieval-Augmented Generation en waarvoor is het geschikt?
     \item \textbf{De AI Act en de belangrijkste richtlijnen} – een overzicht van de relevante wet- en regelgeving en de impact hiervan op RAG-toepassingen.
     \item \textbf{Best practices voor IT-supportprocessen} – inzichten in hoe RAG kan worden toegepast binnen IT-support en welke methodologieën daarbij best worden gevolgd.
 \end{itemize}
 
 De nadruk zal voornamelijk liggen op het eerste luik, \textit{LLM-modellen voor Retrieval-Augmented Generation (RAG)}, aangezien dit een cruciale factor is voor het maken van een doordachte keuze bij de verdere uitwerking van de PoC. Indien nodig zullen de overige onderwerpen verder worden uitgediept.
 
-\section{LLM-modellen voor Retrieval-Augmented Generation (RAG)}
-Welke bestaande LLM-modellen kunnen worden gebruikt voor het ontwikkelen van een Retrieval-Augmented Generation (RAG)?
+\section{Wat is Retrieval-Augmented Generation en waarvoor is het geschikt?}
+ 
+    \subsection{Introductie}
+    
+    \subsection{Hoe werkt een RAG}
+    Welke bestaande tools en frameworks kunnen bijdragen aan het opzetten van een RAG?
+     
+    \subsection{Tools en frameworks voor RAG}
+    Welke bestaande tools en frameworks kunnen bijdragen aan het opzetten van een RAG?
+
+    \subsection{LLM-modellen voor Retrieval-Augmented Generation (RAG)}
+    Welke bestaande LLM-modellen kunnen worden gebruikt voor het ontwikkelen van een Retrieval-Augmented Generation (RAG)?
+
+%TODO opzoeken wat LLM benchmarks zijn en hoe je ze in deze context kan gebruiken
 
         \subsubsection{Introductie}
         Om te bepalen welke modellen het meest geschikt zijn voor de ontwikkeling van een RAG-model, is een objectieve meetmethode noodzakelijk. Gelukkig bestaan er verschillende platforms die LLM's vergelijken en rangschikken op basis van prestaties. In deze sectie bespreken we enkele van deze platforms en maken we een selectie van modellen die het meest geschikt lijken voor het bouwen van een RAG-model.
@@ -43,32 +55,32 @@ Welke bestaande LLM-modellen kunnen worden gebruikt voor het ontwikkelen van een
         Een belangrijk platform dat LLM-modellen evalueert, is LiveBench. Dit platform stelt een rangschikking op voor verschillende modellen en biedt een actuele leaderboard die elke zes maanden wordt bijgewerkt. Voor deze bachelorproef zal gebruik worden gemaakt van de meest recente ranking, afkomstig uit november 2024.
         
         LiveBench beoordeelt LLM-modellen op basis van zes categorieën. Binnen elke categorie worden meerdere taken uitgevoerd om een nauwkeurige beoordeling te verkrijgen. De zes categorieën zijn:
-        \begin{itemize}
+            \begin{itemize}
             \item Wiskundige vaardigheden (Math)
             \item Programmeervaardigheden (Coding)
             \item Redeneren en probleemoplossing (Reasoning)
             \item Data-analyse (Data Analysis)
             \item Volgen van instructies (Instruction Following)
             \item Begrip van natuurlijke taal (Language Comprehension)
-        \end{itemize}
+            \end{itemize}
         
         Elke categorie wordt geëvalueerd op basis van specifieke taken. Dit resulteert uiteindelijk in een algemene rangschikking, waarin zowel de beste modellen per categorie als het beste presterende model overall worden geïdentificeerd.
         
-        \begin{figure}[h]
+            \begin{figure}[h]
             \centering
             \includegraphics[width=\textwidth]{LiveBenchRanking.png}
             \caption{LiveBench ranking van verschillende LLMs.}
             \label{fig:livebench}
-        \end{figure}
+            \end{figure}
         
         \noindent\textbf{Bron:} \textit{LiveBench AI} \url{https://livebench.ai/#/details} (Geraadpleegd op 16 februari 2025).
         
         Uit de ranking van LiveBench kan geconcludeerd worden dat 3 verschillende organisaties elk een model aanbieden die vanuit globaal oogpunt tot de top 3 behoort. Deze top 3 zijn: 
-        \begin{enumerate}
-           \item claude-3-5-sonnet-20240620 van Anthropic
-           \item Meta-llama-3.1-405b-instruct-turbo van Meta
-           \item gpt-4o-2024-05-13 van OpenAI
-        \end{enumerate}
+            \begin{enumerate}
+            \item claude-3-5-sonnet-20240620 van Anthropic
+            \item Meta-llama-3.1-405b-instruct-turbo van Meta
+            \item gpt-4o-2024-05-13 van OpenAI
+            \end{enumerate}
         
         \subsubsection{Chatbot arena} 
         
@@ -76,25 +88,22 @@ Welke bestaande LLM-modellen kunnen worden gebruikt voor het ontwikkelen van een
         Een andere benchmark tool Chatbot arena, net zoals livebench is Chatbot arena een site die een actuele weergave biedt van de beste LLM's op basis van vooraf gedefinieerde catgeoriën. Op het moment van het schrijven van deze literatuurstudie is de top 3 LLM's volgens deze site de volgende:
         
         \begin{enumerate}
-            \item GPT-4-Turbo van OpenAI
-            \item GPT-4-0613 van OpenAI
-            \item Mistral-Medium Mistral AI
+        \item GPT-4-Turbo van OpenAI
+        \item GPT-4-0613 van OpenAI
+        \item Mistral-Medium Mistral AI
         \end{enumerate}
         
-        Hoewel het doel van beide benchmarks hetzelfde is is de manier van werken wel anders. ChatbotArena gaat via gebruikers twee anonieme LLM modellen tegenover elkaar plaatsen en de gebruiker laten nagaan welke van de 2 het beste resultaat heeft opgeleverd.
+        Hoewel het doel van beide benchmarks hetzelfde is is de manier van werken wel anders. ChatbotArena gaat gebruikers twee anonieme LLM modellen tegenover elkaar plaatsen, de gebruiker kan vervolgens een eigen vraag stellen en de gebruiker bepaalt zelf welke van de 2 het beste resultaat heeft opgeleverd.
         
-        Het voordeel van deze methode is dat de LLM-modellen realistische cases moeten behandelen die door gebruikers zelf worden gesteld. Op basis van resultaten die de LLM modellen tonen kan een gebruiker zijn voorkeur meegeven. Op basis van deze stemmen worden verscheidene modellen tegenover elkaar geplaatst. In januari 2024 werden ruim 240.000 stemmen uitgebracht door ongeveer 90.000 gebruikers \autocite{chiang2024chatbot}. 
+        Het voordeel van deze methode is dat de LLM-modellen realistische cases moeten behandelen die door gebruikers zelf worden gesteld. Op basis van resultaten die de LLM modellen tonen kan een gebruiker zijn voorkeur meegeven. Het nadeel van deze manier van werken is dat de gebruikers die deze testen uitvoeren niet respresentatief zijn voor alle gebruikers van LLM-modellen. De gebruikers die deze testen uitvoeren zijn vaak mensen met een interesse in LLM-modellen of mensen die onderzoek doen in dit vakgebied. Desoondanks kan op basis van deze stemmen verscheidene modellen tegenover elkaar worden geplaatst. In januari 2024 werden ruim 240.000 stemmen uitgebracht door ongeveer 90.000 gebruikers \autocite{chiang2024chatbot}. 
         
-       %TODO Hier dit verder uitschrijven, ik denk niet dat je de volgende vraag kan beantwoorden dus ik zou meteen nagaan welke tools, frameworks er zijn die je kan gebruiken.
+        %TODO Hier dit verder uitschrijven, ik denk niet dat je de volgende vraag kan beantwoorden dus ik zou meteen nagaan welke tools, frameworks er zijn die je kan gebruiken.
         
         %TODO zet hier ook de actuele ranking van beide benchmarks. Al was het maar om te duiden dat het een sterk veranderende wereld is waar en dat naar alle waarschijnlijkheid de modellen die nu worden gebruikt waarschijnlijk al achterhaald zullen zijn.
         
-    
-    \subsection{Voor- en nadelen van bestaande LLM-modellen}
-    Wat zijn de belangrijkste voor- en nadelen van deze modellen?
-    
-    \subsection{Tools en frameworks voor RAG}
-    Welke bestaande tools en frameworks kunnen bijdragen aan het opzetten van een RAG?
+        \subsubsection{Conclusie}
+        
+        Op basis van de 2 benchmarks die hier werden besproken kan niet meteen éénduidig besloten worden welke modellen het best zouden gebruikt worden voor het maken van het RAG model. Aangezien dit een zeer volatiele omgeving is met veel en snelle ontwikkelingen zijn de modellen die vandaag het beste scoren over een maand potentieel voorbij gestoken door nieuwe modellen. Desalniettemin bevatten deze benchmarks heel wat nuttige informatie en inzichten over de sterktes van bepaalde modellen tegenover andere modellen. 
 
 \section{De AI Act en de belangrijkste richtlijnen}
 Wat houdt de AI Act in, en wat zijn de belangrijkste richtlijnen die hierin moeten worden gevolgd?
