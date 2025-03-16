@@ -42,7 +42,9 @@ De nadruk zal voornamelijk liggen op het eerste luik, \textit{Wat is Retrieval-A
     
     \subsection{Hoe werkt RAG}
     
-    RAG kan worden samengevat in drie grote delen, het eerste deel is het ophalen van de info die van belang is (Retrieval). De tweede stap is het verrijken van het antwoord aan de hand van de documentatie die werd voorzien. Ten laatste blijft nog de generatie over. In deze stap wordt op basis van een LLM een antwoord gegeven aan de vraagstellen. Hieronder is een figuur te zien die dit illustreert.
+   RAG kan worden samengevat in drie hoofdonderdelen. Het eerste onderdeel is het ophalen van relevante informatie (Retrieval). De tweede stap is het verrijken van het antwoord op basis van de beschikbare documentatie. Ten slotte volgt de generatie, waarbij een LLM wordt gebruikt om een antwoord te formuleren op de gestelde vraag.
+   
+   Hieronder is een figuur te zien die dit proces illustreert.
     
      \begin{figure}[H]
         \centering
@@ -52,6 +54,13 @@ De nadruk zal voornamelijk liggen op het eerste luik, \textit{Wat is Retrieval-A
     \end{figure}
     
         \subsubsection{Ophalen}
+        
+        %TODO verder uitschrijven en hier nog andere details over maken misschien opzoeken waar indexeren hier in komt in andere papaers zoals Goa2023 of Zhoa2024
+        
+        Aangezien het RAG proces bestaat uit het toevoegen van documentatie om een bestaande LLM accurater of bepaalde kennis te geven is het niet zo dat voor iedere vraag die wordt gesteld aan de LLM we nood hebben om gebruik te maken van deze documentatie. Enkel wanneer een vraag gesteld wordt die een LLM niet kan behandelen moet gebruik gemaakt worden van RAG. Bijgevolg is het noodzakelijk om een classificatie te maken tussen query's waarbij het ophaling via RAG noodzakelijk is en waar niet \autocite{Wang2024}.
+        
+        Naast de classificatie is ook moet de informatie die aan het LLM model wordt gegeven worden opgedeeld in “chuncks” dit komt neer op het opdelen van documenten in kleinere delen op basis van bepaalde zaken. 
+        
             \paragraph{Indexeren}
         \subsubsection{Verrijken}
         \subsubsection{Generatie}
