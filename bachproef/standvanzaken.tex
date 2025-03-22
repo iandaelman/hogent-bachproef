@@ -12,27 +12,27 @@ Dit overzicht biedt inzicht in de huidige stand van zaken en vormt de basis voor
 
 Concreet komen de volgende onderwerpen aan bod:
 \begin{itemize}
-    \item \textbf{Een LLM-supportbot} – Wat zijn de mogelijkheden van om een LLM-supportbot te maken en welke factoren moeten in overweging worden genomen?
+    \item \textbf{IT-support chatbot} – Wat zijn de mogelijkheden van om een IT-support chatbot te maken aan de hand van een LLM en welke factoren moeten in overweging worden genomen?
     \item \textbf{De AI Act en de belangrijkste richtlijnen} – Een overzicht van de relevante wet- en regelgeving en de impact hiervan op RAG-toepassingen.
     \item \textbf{Best practices voor IT-supportprocessen} – Inzichten in hoe RAG kan worden toegepast binnen IT-support en welke methodologieën het best kunnen worden gevolgd.
 \end{itemize}
 
-De nadruk zal voornamelijk liggen op het eerste onderwerp, \textit{Een LLM-supportbot: wat zijn de mogelijkheden en welke factoren moeten in overweging worden genomen?}, aangezien dit een cruciale factor is voor het maken van een doordachte keuze bij de verdere uitwerking van de PoC. Indien nodig zullen de overige onderwerpen verder worden uitgediept.
+De nadruk zal voornamelijk liggen op het eerste onderwerp, \textit{IT-support chatbot: wat zijn de mogelijkheden en welke factoren moeten in overweging worden genomen?}, aangezien dit een cruciale factor is voor het maken van een doordachte keuze bij de verdere uitwerking van de PoC. Indien nodig zullen de overige onderwerpen verder worden uitgediept.
 
-\section{Een LLM-supportbot}
+\section{IT-support chatbot}
 
     \subsection{Introductie}
     
-    Om een IT supportbot te maken zijn verschillende zaken die in overweging moeten worden genomen. Aan de hand van een LLM model zijn er twee grote opties die zich aandienen om dit te maken. Aan de ene kant kan gekozen worden voor RAG (retrieval augmented generation) aan de andere kant is er CAG (cache augmented generation). Zowel RAG als CAG maken gebruik van een LLM om aan de hand van eigen documenten de kennis die de LLM heeft te verhogen en te verbeteren. Echter hebben beide bepaalde voor- en nadelen en is het noodzakelijk om deze in rekening te brengen om een weloverwogen keuze te maken voor een PoC. 
+    Om een IT-support chatbot te maken zijn verschillende zaken die in overweging moeten worden genomen. Aan de hand van een LLM model zijn er twee grote opties die zich aandienen om dit te maken. Aan de ene kant kan gekozen worden voor Retrieval-Augmented Generation (RAG) aan de andere kant is er Cache-Augmented Generation (CAG). Zowel RAG als CAG maken gebruik van een LLM om aan de hand van eigen documenten de kennis die de LLM heeft te verhogen en te verbeteren. Echter hebben beide bepaalde voor- en nadelen en is het noodzakelijk om deze in rekening te brengen om een weloverwogen keuze te maken voor een PoC. 
     
     \subsection{RAG}
     \subsubsection{Introductie}   
     \textit{Large Language Models} (LLM) hebben de afgelopen jaren een enorme opmars gemaakt en vandaag de dag hebben deze modellen een brede impact op verschillende domeinen in de samenleving. Ondanks hun indrukwekkende mogelijkheden brengen LLM’s ook enkele nadelen met zich mee. Zo kunnen ze hallucineren, beschikken ze niet altijd over de meest actuele informatie, en missen ze vaak diepgaande domeinspecifieke kennis.  
     
-    Een mogelijke oplossing voor deze beperkingen is \textit{Retrieval-Augmented Generation} (RAG). Deze techniek combineert de kracht van LLM’s met externe databronnen om nauwkeurigere en beter onderbouwde antwoorden te genereren. In deze sectie wordt toegelicht wat RAG is, hoe het werkt en op welke manier het kan bijdragen aan de ontwikkeling van een effectieve supportbot.
+    Een mogelijke oplossing voor deze beperkingen is \textit{Retrieval-Augmented Generation} (RAG). Deze techniek combineert de kracht van LLM’s met externe databronnen om nauwkeurigere en beter onderbouwde antwoorden te genereren. In deze sectie wordt toegelicht wat RAG is, hoe het werkt en op welke manier het kan bijdragen aan de ontwikkeling van een effectieve support chatbot.
     
     \paragraph{Wat is RAG}
-    RAG staat voor retrieval augmented generation en is, zoals eerder vermeld, een techniek die een antwoord biedt op de tekortkomingen van klassieke LLM’s. Door gebruik te maken van externe databronnen kunnen betere resultaten worden behaald dan met een traditionele LLM. Deze techniek maakt het mogelijk om domeinspecifieke data te integreren en de modellen bij te werken met actuele informatie. Hierdoor kunnen klassieke LLM’s verrijkt worden met nieuwe, up-to-date data die voldoet aan specifieke behoeften \autocite{Wu2024}.
+    RAG staat voor Retrieval-Augmented Generation en is, zoals eerder vermeld, een techniek die een antwoord biedt op de tekortkomingen van klassieke LLM’s. Door gebruik te maken van externe databronnen kunnen betere resultaten worden behaald dan met een traditionele LLM. Deze techniek maakt het mogelijk om domeinspecifieke data te integreren en de modellen bij te werken met actuele informatie. Hierdoor kunnen klassieke LLM’s verrijkt worden met nieuwe, up-to-date data die voldoet aan specifieke behoeften \autocite{Wu2024}.
     
     Om RAG in de praktijk toe te passen, moeten een aantal stappen worden doorlopen. Deze worden in het volgende deel nader toegelicht, maar samengevat bestaat het proces uit de volgende fasen:
     
@@ -66,7 +66,7 @@ De nadruk zal voornamelijk liggen op het eerste onderwerp, \textit{Een LLM-suppo
     % gebruik figuur 2 van Wu2024 om te illustreren
     Vooraleer de LLM kan ondervraagt worden met informatie die we in de LLM steken door deze met de documenten te verrijken is eerst heel wat voorbereidend werk nodig. Het proces bestaat eruit om aan de hand van een vector database relevante documenten samen met de gestelde te gaan injecteren samen met de LLM om tot een goed antwoord te komen. Hiervoor moeten een aantal stappen ondernomen worden.
     
-    Ten eerste moet een selectie gemaakt worden van de relevante documenten en worden opgedeeld in kleinere delen of zoals in de vakliteratuur wordt genoemd het verdelen van documenten in “chunks”. Dit wordt hoofdzakelijk gedaan omdat sommige documenten qua lengte te groot zijn om verder te kunnen op een effuiciëte manier te kunnen verwerkt worden. Daarnaast helpen chunks om preciese informatie in op te halen uit de vector database.  Om documenten in chunks te verdelen kunnen verschillende technieken worden toegapast te doen kunnen verschillende technieken worden toegepast. Er kan gewerkt worden op basis van een vast lengte of tokens. Dit zorgt ervoor dat elke chunk een gelijke lengte heeft. Een andere mogelijkheid is om, wanneer de documenten tekstdocumenten zijn, te werken met chunks op basis van een bepaalt aantal zinnen. Dit heeft als voordeel dat een chunk zijn semantiek beter kan behouden dan wanneer we werken met vaste lengte van chunks \autocite{Wang2024}.
+    Ten eerste moet een selectie gemaakt worden van de relevante documenten en worden opgedeeld in kleinere delen of zoals in de vakliteratuur wordt genoemd het verdelen van documenten in “chunks”. Dit wordt hoofdzakelijk gedaan omdat sommige documenten qua lengte te groot zijn om verder te kunnen op een effuiciëte manier te kunnen verwerkt worden. Daarnaast helpen chunks om precieze informatie in op te halen uit de vector database.  Om documenten in chunks te verdelen kunnen verschillende technieken worden toegapast te doen kunnen verschillende technieken worden toegepast. Er kan gewerkt worden op basis van een vast lengte of tokens. Dit zorgt ervoor dat elke chunk een gelijke lengte heeft. Een andere mogelijkheid is om, wanneer de documenten tekstdocumenten zijn, te werken met chunks op basis van een bepaalt aantal zinnen. Dit heeft als voordeel dat een chunk zijn semantiek beter kan behouden dan wanneer we werken met vaste lengte van chunks \autocite{Wang2024}.
     
     Dit met het uiteindelijke doel om deze chunks te vertalen naar embeddings die je in een vector database kan steken. Een embedding is de vector representatie van een tekstuele chunk. 
     
