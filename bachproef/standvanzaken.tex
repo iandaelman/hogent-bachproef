@@ -6,8 +6,6 @@
 % bijzonder aan wat de link is met het vorige en volgende hoofdstuk.
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
-
-\section{Inleiding}
 Dit overzicht biedt inzicht in de huidige stand van zaken en vormt de basis voor een weloverwogen keuze bij de ontwikkeling van een Proof of Concept (PoC). Dit betreft zowel de technische als de juridische aspecten. Daarnaast wordt in dit deel ook stilgestaan bij het belang van een vlot supportproces binnen IT.
 
 Concreet komen de volgende onderwerpen aan bod:
@@ -17,11 +15,7 @@ Concreet komen de volgende onderwerpen aan bod:
     \item \textbf{Best practices voor IT-supportprocessen} - Inzichten in hoe RAG kan worden toegepast binnen IT-support en welke methodologieën het best kunnen worden gevolgd.
 \end{itemize}
 
-De nadruk zal voornamelijk liggen op het eerste onderwerp, \textit{IT-support chatbot: wat zijn de mogelijkheden en welke factoren moeten in overweging worden genomen?}, aangezien dit een cruciale factor is voor het maken van een doordachte keuze bij de verdere uitwerking van de PoC. Indien nodig zullen de overige onderwerpen verder worden uitgediept.
-
 \section{IT-support chatbot}
-
-    \subsection{Introductie}
     
     Om een IT-support chatbot te ontwikkelen, moeten verschillende aspecten in overweging worden genomen. Bij het gebruik van een LLM-model zijn er twee belangrijke opties: Retrieval-Augmented Generation (RAG) en Cache-Augmented Generation (CAG). Beide methoden maken gebruik van een LLM en verrijken de kennis van dit model met behulp van eigen documenten. Echter, beide benaderingen hebben specifieke voor- en nadelen. Het is daarom essentieel om deze zorgvuldig af te wegen om een weloverwogen keuze te maken voor een Proof of Concept (PoC).
     
@@ -37,16 +31,16 @@ De nadruk zal voornamelijk liggen op het eerste onderwerp, \textit{IT-support ch
     Om RAG in de praktijk toe te passen, moeten een aantal stappen worden doorlopen. Deze worden in het volgende deel nader toegelicht, maar samengevat bestaat het proces uit de volgende fasen:
     
     \begin{enumerate}
-        \item \textbf{Ophalen}
-        \item \textbf{Verrijking}
-        \item \textbf{Generatie}
+        \item {Ophalen}
+        \item {Verrijking}
+        \item {Generatie}
     \end{enumerate}
     
     \subsubsection{Hoe werkt RAG}
     
     Het doel van RAG is om een LLM te verrijken met specifieke kennis, zodat de gebruiker beter ondersteund wordt bij het beantwoorden van gerichte vragen. Dit proces bestaat uit drie hoofdfasen. Eerst wordt relevante informatie opgehaald (Retrieval). Vervolgens wordt het antwoord verrijkt op basis van de beschikbare documentatie. Tot slot genereert de LLM een antwoord op de gestelde vraag.
     
-    Hieronder is een figuur te zien die dit proces illustreert.
+    Op Figuur \ref{fig:Rag process} is te zien die dit proces illustreert.
     
     \begin{figure}[H]
         \centering
@@ -101,12 +95,12 @@ De nadruk zal voornamelijk liggen op het eerste onderwerp, \textit{IT-support ch
     %TODO opzoeken wat LLM benchmarks zijn en hoe je ze in deze context kan gebruiken
     
     \paragraph{Introductie}
-    Om te bepalen welke modellen het meest geschikt zijn voor de ontwikkeling van IT-support chatbot, is een objectieve meetmethode noodzakelijk. Gelukkig bestaan er verschillende platforms die LLM's vergelijken en rangschikken op basis van prestaties. In deze sectie bespreken we enkele van deze platforms en maken we een selectie van modellen die het meest geschikt lijken voor het bouwen van een RAG-model.
+    Om te bepalen welke modellen het meest geschikt zijn voor de ontwikkeling van IT-support chatbot, is een objectieve meetmethode noodzakelijk. Gelukkig bestaan er verschillende platforms die LLM's vergelijken en rangschikken op basis van prestaties. In deze sectie bespreken we enkele van deze platformen en maken we een selectie van modellen die het meest geschikt lijken voor het bouwen van een RAG-model.
     
     %TODO overall dieper ingaan hoe ze te werk gaan als het gaat om vergelijken van een LLM dus de paper lezen en samenvatten wat je ermee kan gaan doen
     
     \paragraph{LiveBench} 
-    Een platform dat LLM-modellen evalueert, is LiveBench. Dit platform stelt een rangschikking op voor verschillende modellen en biedt een actuele leaderboard die elke zes maanden wordt bijgewerkt. Voor deze bachelorproef zal gebruik worden gemaakt van de ranking afkomstig uit november 2024.
+    Een platform dat LLM-modellen evalueert, is LiveBench. Dit platform stelt een rangschikking op voor verschillende modellen en biedt een actuele score bord die elke zes maanden wordt bijgewerkt. Voor deze bachelorproef zal gebruik worden gemaakt van de ranking afkomstig uit november 2024.
     
     LiveBench beoordeelt LLM-modellen op basis van zes categorieën. Binnen elke categorie worden meerdere taken uitgevoerd om een nauwkeurige beoordeling te verkrijgen. De zes categorieën zijn:
     \begin{itemize}
@@ -127,8 +121,6 @@ De nadruk zal voornamelijk liggen op het eerste onderwerp, \textit{IT-support ch
         \label{fig:livebench}
     \end{figure}
     
-    \noindent\textbf{Bron:} \textit{LiveBench AI} \url{https://livebench.ai/#/details} (Geraadpleegd op 16 februari 2025).
-    
     Uit de ranking van LiveBench kan geconcludeerd worden dat 3 verschillende organisaties elk een model aanbieden die vanuit globaal oogpunt tot de top 3 behoort. Deze top 3 zijn: 
     \begin{enumerate}
         \item claude-3-5-sonnet-20240620 van Anthropic
@@ -139,7 +131,9 @@ De nadruk zal voornamelijk liggen op het eerste onderwerp, \textit{IT-support ch
     \subsubsection{Chatbot arena} 
     
     %TODO uitleggen hoe de scoring werkt van chatbot en eventueel uitleggen wat de verschillen zijn met LiveBench, ik denk vooral dat Chatbot arena getest wordt door mensen en zij hun mening op een grote schaal uitdrukken
-    Een andere benchmark tool Chatbot arena, net zoals LiveBench is Chatbot arena een site die een actuele weergave biedt van de beste LLM's op basis van vooraf gedefinieerde categorieën. Op het moment van het schrijven van deze literatuurstudie is de top 3 LLM's volgens deze site de volgende:
+    Een andere benchmark tool Chatbot arena, net zoals LiveBench is Chatbot arena een site die een actuele weergave biedt van de beste LLM's op basis van vooraf gedefinieerde categorieën. 
+    %Gebruik bronvermelding in plaats van deze manier van schrijven
+    Op het moment van het schrijven van deze literatuurstudie is de top 3 LLM's volgens deze site de volgende:
     
     \begin{enumerate}
         \item GPT-4-Turbo van OpenAI
@@ -154,6 +148,8 @@ De nadruk zal voornamelijk liggen op het eerste onderwerp, \textit{IT-support ch
     %TODO zet hier ook de actuele ranking van beide benchmarks. Al was het maar om te duiden dat het een sterk veranderende wereld is waar en dat naar alle waarschijnlijkheid de modellen die nu worden gebruikt waarschijnlijk al achterhaald zullen zijn.
     
     \paragraph{Conclusie}
+    
+    %TODO Navragen of ze een lijst van criteria hebben welke LLM wel en niet te gebruiken
     Op basis van de 2 benchmarks die hier werden besproken kan niet meteen éénduidig besloten worden welke modellen het best zouden gebruikt worden voor het maken van het RAG model. Aangezien dit een zeer volatiele omgeving is met veel en snelle ontwikkelingen zijn de modellen die vandaag het beste scoren over een maand potentieel voorbij gestoken door nieuwe modellen. Desalniettemin bevatten deze benchmarks heel wat nuttige informatie en inzichten over de sterktes van bepaalde modellen tegenover andere modellen. 
     
 
