@@ -21,6 +21,10 @@ Concreet komen de volgende onderwerpen aan bod:
     
     \subsection{Large Language Model}
     
+    %TODO hier moet je veel uitgebreider over praten behandel ook onderwerpen zoals NLP en LM om dan naar dit punt te komen. Zal vollediger zijn en je kan op die manier ook veel meer tekst hebben
+    
+    WORK IN PROGRESS
+    
      Een LLM is een geavanceerd neuraal netwerk dat getraind is op grote hoeveelheden tekstdata om menselijke taal te kunnen begrijpen, genereren en manipuleren. LLM's gebruiken de transformer architectuur, zoals geïntroduceerd door \textcite{Vaswani2017}, die uitblinkt in het modelleren van sequentiële tekst en contextuele afhankelijkheden.
       
      Deze modellen worden "large" genoemd vanwege hun schaal: ze bevatten vaak miljarden parameters. Getraind door op gigantische bronnen aan data, kunnen LLM's tekst genereren die coherente, contextuele en soms zelfs creatieve eigenschappen vertoont \cite{Gupta2025}.
@@ -60,17 +64,14 @@ Concreet komen de volgende onderwerpen aan bod:
     \end{figure}
     
     \paragraph{Ophalen}
-   
+     
+    Voordat een LLM effectief ondervraagd kan worden met informatie die via documentverrijking is toegevoegd, moet eerst een grondige voorbereidende verwerking plaatsvinden. Dit proces omvat het selecteren van relevante documenten en het vervolgens combineren van deze informatie met de gestelde vraag. Deze vraag en de geselecteerde documentfragmenten, die worden opgehaald vanuit de vector database, worden toegevoegd aan de context van de de LLM die vervolgens in staat is om een contextueel passend antwoord te genereren.
     
-    %TODO laten corrigeren gramaticaal en de delen die hierin worden besproken verder uitbreiden met meer tekst zdat het langer is dan 2 zinnen.
-    % gebruik figuur 2 van Wu2024 om te illustreren
-    Voordat de LLM kan worden ondervraagd met de informatie die we via documentverrijking in het model stoppen, is er eerst veel voorbereidend werk nodig. Het proces houdt in dat relevante documenten, samen met de gestelde vraag, via een vector database worden geïnjecteerd in de LLM om tot een passend antwoord te komen. Hiervoor moeten verschillende stappen worden doorlopen.
+    Een eerste essentiële stap in dit proces is het identificeren en selecteren van de documenten die inhoudelijk relevant zijn voor de vraagstelling. Deze documenten worden niet in hun geheel, maar in kleinere segmenten verwerkt, zogenaamde "chunks". Het opdelen in chunks is noodzakelijk omdat volledige documenten doorgaans te omvangrijk zijn om efficiënt te verwerken binnen de contextlimieten van een LLM. Bovendien maakt deze fragmentatie het mogelijk om op een meer gerichte manier informatie te extraheren uit de vector database \autocite{Wu2024}.
     
-    Allereerst moet er een selectie worden gemaakt van de relevante documenten, die vervolgens worden opgedeeld in kleinere delen, ook wel “chunks” genoemd, zoals vaak in de vakliteratuur wordt aangeduid. Dit wordt voornamelijk gedaan omdat sommige documenten te lang zijn om op een efficiënte manier verwerkt te worden. Daarnaast helpen chunks bij het ophalen van gerichte informatie uit de vector database. 
+    Voor het opdelen van documenten bestaan verschillende methodologische benaderingen. Een veelgebruikte techniek is het verdelen van tekst op basis van een vooraf bepaald aantal tokens of karakters, zodat elke chunk ongeveer dezelfde lengte heeft. Een alternatieve strategie, die vooral geschikt is voor natuurlijke taalteksten, is het opdelen op basis van zinnen of alinea’s. Deze aanpak draagt doorgaans bij aan het behoud van de semantische samenhang binnen een chunk, wat de kwaliteit van de informatieophaling ten goede komt \autocite{Wang2024}.
     
-    Er kunnen verschillende technieken worden toegepast om documenten in chunks te verdelen. Een mogelijkheid is om te werken met een vaste lengte of een vast aantal tokens, zodat elke chunk een gelijke lengte heeft. Een andere optie is om, wanneer het om tekstdocumenten gaat, te werken met chunks op basis van een bepaald aantal zinnen. Dit heeft als voordeel dat de semantiek van een chunk beter behouden blijft dan wanneer er wordt gewerkt met chunks van vaste lengte \autocite{Wang2024}.
-
-    Het uiteindelijke doel is om de chunks te vertalen naar embeddings, die vervolgens in een vector database worden opgeslagen. Een embedding is de vectorrepresentatie van een chunk. Deze embeddings worden opgeslagen in een vector database \autocite{Wu2024}, die speciaal is ontworpen voor het opslaan en efficiënt ophalen van embeddings. Het proces wordt weergegeven in de onderstaande figuur.
+    Na het opdelen worden deze tekstsegmenten omgezet in zogeheten embeddings. Dit zijn vector representaties die de semantische inhoud van de chunks op een wiskundige manier vastleggen. Deze embeddings worden vervolgens opgeslagen in een vector database, een specifiek type gegevensopslag dat geoptimaliseerd is voor het bewaren en efficiënt ophalen van vectorrepresentaties op basis van semantische gelijkenis \autocite{Wu2024}. Dit gehele proces vormt de basis waarop de LLM tijdens het beantwoorden van vragen relevante context uit de vector database kan ophalen en verwerken.
    
      \begin{figure}[H]
         \centering
@@ -135,7 +136,6 @@ Concreet komen de volgende onderwerpen aan bod:
     \subsubsection{Chatbot arena} 
     
     Een andere benchmark tool Chatbot arena, net zoals LiveBench is Chatbot arena een site die een actuele weergave biedt van de beste LLM's op basis van vooraf gedefinieerde categorieën. 
-    %Gebruik bronvermelding in plaats van deze manier van schrijven
     Volgens de ranking van \textcite{LiveBench2025} zijn dit de top 3 LLM's:
     
     \begin{enumerate}
@@ -155,13 +155,17 @@ Concreet komen de volgende onderwerpen aan bod:
     
     \subsection{LLM modellen evalueren}
     
-    Het is uiteraard niet enkel noodzakelijk om een performante LLM te gaan gebruiken. Het is eveneens van groot belang om na te gaan indien de antwoorden die worden gegenereerd ook accuraat zijn. Hiertoe zijn verschillende mogelijkheden. Zo heb je de ROUGE, BLUE en BERT score, deze gaan allemaal op een bepaalde manier een score geven aan een antwoord die een LLM genereert.
-    
-    \paragraph{ROUGE}
+    Het is uiteraard niet enkel noodzakelijk om een performante LLM te gaan gebruiken. Het is eveneens van groot belang om na te gaan indien de antwoorden die worden gegenereerd ook accuraat zijn. Hiertoe zijn verschillende mogelijkheden. Zo heb je de Recall-Oriented Understudy for Gisting Evaluation (ROUGE), Bilingual Evaluation Understudy (BLUE) en BERTScore, deze gaan allemaal op een bepaalde manier een score geven aan een antwoord die een LLM genereert.
     
     \paragraph{BLUE}
     
-    \paragraph{BERT}
+    Bron te gebruiken voor dit deel \textcite{papineni-etal-2002-bleu}
+    
+    \paragraph{ROUGE}
+    
+    bron te gebruiken voor dit deel \textcite{Ganesan2018}
+    
+    \paragraph{BERTScore}
 
 \section{De AI Act en de belangrijkste richtlijnen}
 Wat houdt de AI Act in, en wat zijn de belangrijkste richtlijnen die hierin moeten worden gevolgd?
