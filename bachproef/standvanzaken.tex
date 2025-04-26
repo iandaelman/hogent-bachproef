@@ -159,15 +159,15 @@ Concreet komen de volgende onderwerpen aan bod:
     
     Deze methoden kennen elk hun eigen berekeningswijze, maar delen een belangrijk gemeenschappelijk kenmerk. Ze zijn allen afhankelijk van de aanwezigheid van een referentie-antwoord. Dit referentie-antwoord wordt gebruikt als maatstaf om de gegenereerde output van de LLM mee te vergelijken en zo een score toe te kennen die de kwaliteit van de output reflecteert \cite{microsoft2024evaluation}.
     
-    \paragraph{BLUE Score}
+    \paragraph{BLEU Score}
     
-    De BLEU score is een evaluatie metriek die oorspronkelijk werd ontwikkeld om de kwaliteit van door machines gegenereerde vertalingen te beoordelen. Hierbij wordt de output van het model vergeleken met een of meerdere menselijke referentievertalingen, aan de hand van overlappingen in zogeheten n-grammen, reeksen van één of meerdere opeenvolgende woorden. De score ligt tussen 0 en 1, waarbij een hogere score duidt op een grotere overeenkomst met de referentietekst \cite{papineni-etal-2002-bleu}.
+    De BLEU score is een evaluatie metriek die oorspronkelijk werd ontwikkeld om de kwaliteit van door machines gegenereerde vertalingen te beoordelen. Hierbij wordt de output van het model vergeleken met een of meerdere menselijke referentievertalingen. Aan de hand van overlappingen of zogenaamde n-gram overeenkomsten, reeksen van één of meerdere opeenvolgende woorden, wordt een score toegekend. De score ligt tussen 0 en 1, waarbij een hogere score duidt op een grotere overeenkomst met de referentietekst \cite{papineni-etal-2002-bleu}.
     
-    Een score van 1 betekent een perfecte overeenkomst, maar zelfs menselijke vertalingen behalen zelden deze score, omdat er vaak meerdere correcte vertaalmogelijkheden bestaan die lexicaal kunnen afwijken. Hoewel BLEU een snelle en reproduceerbare maat biedt voor evaluatie, heeft het beperkingen doordat het geen rekening houdt met betekenis en contextuele variatie \cite{papineni-etal-2002-bleu}.
+    Een score van 1 betekent een perfecte overeenkomst, maar zelfs menselijke vertalingen behalen zelden deze score, omdat er vaak meerdere correcte vertaalmogelijkheden bestaan die kunnen afwijken. Hoewel BLEU een snelle en reproduceerbare maat biedt voor evaluatie, heeft het beperkingen doordat het geen rekening houdt met betekenis en contextuele variatie \cite{papineni-etal-2002-bleu}.
     
     \paragraph{ROUGE Score}
     
-    bron te gebruiken voor dit deel \textcite{Ganesan2018}
+    Net zoals de BLEU-score evalueert de ROUGE-score de mate van overlap tussen een door machine gegenereerde tekst en een menselijke referentie. Waar BLEU echter voornamelijk gericht is op de precisie van exacte n-gram overeenkomsten, focust ROUGE sterker op de inhoudelijke dekking van de referentie. Hierdoor biedt de ROUGE-score een diepgaander inzicht in de kwaliteit van het gegenereerde antwoord \cite{Ganesan2018}.
     
     \paragraph{BERTScore}
 
