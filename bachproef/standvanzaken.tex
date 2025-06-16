@@ -28,13 +28,13 @@ Concreet komen de volgende onderwerpen aan bod:
     
     WORK IN PROGRESS
     
-     Een LLM is een geavanceerd neuraal netwerk dat getraind is op grote hoeveelheden tekstdata om menselijke taal te kunnen begrijpen, genereren en manipuleren. LLM's gebruiken de transformer architectuur, zoals geïntroduceerd door \textcite{Vaswani2017}, die uitblinkt in het modelleren van sequentiële tekst en contextuele afhankelijkheden.
+     Een LLM is een geavanceerd neuraal netwerk dat getraind is op grote hoeveelheden tekstdata om menselijke taal te kunnen begrijpen, genereren en manipuleren. LLM's gebruiken de transformer architectuur, zoals geïntroduceerd door \textcite{vaswani2023attentionneed}, die uitblinkt in het modelleren van sequentiële tekst en contextuele afhankelijkheden.
       
-     Deze modellen worden "large" genoemd vanwege hun schaal: ze bevatten vaak miljarden parameters. Getraind door op gigantische bronnen aan data, kunnen LLM's tekst genereren die coherente, contextuele en soms zelfs creatieve eigenschappen vertoont \cite{Gupta2025}.
+     Deze modellen worden "large" genoemd vanwege hun schaal: ze bevatten vaak miljarden parameters. Getraind door op gigantische bronnen aan data, kunnen LLM's tekst genereren die coherente, contextuele en soms zelfs creatieve eigenschappen vertoont \autocite{Gupta2025}.
       
-     Toepassingen van LLM's omvatten onder andere chatbots, automatische vertaling, samenvatten van documenten, codegeneratie, en vragen-beantwoording. Hoewel hun prestaties indrukwekkend zijn, bestaan er ook zorgen over bias, hallucinatie van onjuiste informatie, en het gebruik van niet-gecontroleerde trainingsdata \cite{Gupta2025}.
-      
-     De ontwikkeling van LLM’s markeert een belangrijke stap richting algemene taalintelligentie, maar roept tegelijkertijd vragen op over ethiek, transparantie, en betrouwbaarheid in gebruik \cite{Gupta2025}.
+     Toepassingen van LLM's omvatten onder andere chatbots, automatische vertaling, samenvatten van documenten, codegeneratie, en vragen-beantwoording. Hoewel hun prestaties indrukwekkend zijn, bestaan er ook zorgen over bias, hallucinatie van onjuiste informatie, en het gebruik van niet-gecontroleerde trainingsdata \autocite{Gupta2025}.
+      g
+     De ontwikkeling van LLM’s markeert een belangrijke stap richting algemene taalintelligentie, maar roept tegelijkertijd vragen op over ethiek, transparantie, en betrouwbaarheid in gebruik \autocite{Gupta2025}.
      
      %TODO hier uitleggen wat parameters zijn en wat de invloed daarvan is aangezien je ook LLM's gaat kiezen en ze op basis van iets moet kiezen.
      
@@ -50,12 +50,12 @@ Concreet komen de volgende onderwerpen aan bod:
      
     \subsection{Retrieval Augmented Generation}
     
-    LLM's hebben de afgelopen jaren een enorme opmars gemaakt en vandaag de dag hebben deze modellen een brede impact op verschillende domeinen in de samenleving. Ondanks hun indrukwekkende mogelijkheden brengen LLM’s ook enkele nadelen met zich mee. Zo kunnen ze hallucineren, beschikken ze niet altijd over de meest actuele informatie, en missen ze vaak domein- en bedrijfsspecifieke kennis.  
+    LLM's hebben de afgelopen jaren een enorme opmars gemaakt en vandaag de dag hebben deze modellen een brede impact op verschillende domeinen in de samenleving. Ondanks hun indrukwekkende mogelijkheden brengen LLM’s ook enkele nadelen met zich mee. Zo kunnen ze hallucineren, beschikken ze niet altijd over de meest actuele informatie, en missen ze vaak domein- en bedrijfsspecifieke kennis. %TODO Referentie toevoegen 
     
     Een mogelijke oplossing voor deze beperkingen is \textit{Retrieval-Augmented Generation} (RAG). Deze techniek combineert de kracht van LLM’s met externe databronnen om nauwkeurigere en beter onderbouwde antwoorden te genereren. In deze sectie wordt toegelicht wat RAG is, hoe het werkt en op welke manier het kan bijdragen aan de ontwikkeling van een effectieve support chatbot.
     
-    \subsubsection{Wat is RAG}
-    RAG, oftewel Retrieval-Augmented Generation, is een techniek die, zoals eerder vermeld, een oplossing biedt voor de tekortkomingen van klassieke LLM’s. Door externe databronnen te gebruiken, kan een traditioneel LLM-model betere resultaten behalen. Deze methode maakt het mogelijk om domeinspecifieke data te integreren en modellen bij te werken met actuele informatie. Zo kunnen klassieke LLM’s worden verrijkt met nieuwe, up-to-date gegevens die voldoen aan specifieke behoeften \autocite{Wu2024}.
+    \subsubsection{Wat is Retrieval Augmented Generation}
+    Retrieval Augmented Generation, ofwel RAG, is een techniek die, zoals eerder vermeld, een oplossing biedt voor de tekortkomingen van klassieke LLM’s. Door externe databronnen te gebruiken, kan een traditioneel LLM-model betere resultaten behalen. Deze methode maakt het mogelijk om domeinspecifieke data te integreren en modellen bij te werken met actuele informatie. Zo kunnen klassieke LLM’s worden verrijkt met nieuwe, up-to-date gegevens die voldoen aan specifieke behoeften \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}.
     
     Om RAG in de praktijk toe te passen, moeten een aantal stappen worden doorlopen. Deze worden in het volgende deel nader toegelicht, maar samengevat bestaat het proces uit de volgende fasen:
     
@@ -65,7 +65,7 @@ Concreet komen de volgende onderwerpen aan bod:
         \item {Generatie}
     \end{enumerate}
     
-    \subsubsection{Hoe werkt RAG}
+    \subsubsection{Werking}
     
     Het doel van RAG is om een LLM te verrijken met specifieke kennis, zodat de gebruiker beter ondersteund wordt bij het beantwoorden van gerichte vragen. Dit proces bestaat uit drie hoofdfasen. Eerst wordt relevante informatie opgehaald (Retrieval). Vervolgens wordt het antwoord verrijkt op basis van de beschikbare documentatie. Tot slot genereert de LLM een antwoord op de gestelde vraag.
     
@@ -74,7 +74,7 @@ Concreet komen de volgende onderwerpen aan bod:
     \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{RagGao2023.png}
-        \caption{Een generieke RAG architectuur \cite{Gao2023}}
+        \caption{Een generieke RAG architectuur \autocite{gao2024retrievalaugmentedgenerationlargelanguage}}
         \label{fig:Rag process}
     \end{figure}
     
@@ -82,32 +82,32 @@ Concreet komen de volgende onderwerpen aan bod:
      
     Voordat een LLM effectief ondervraagd kan worden met informatie die via documentverrijking is toegevoegd, moet eerst een grondige voorbereidende verwerking plaatsvinden. Dit proces omvat het selecteren van relevante documenten en het vervolgens combineren van deze informatie met de gestelde vraag. Deze vraag en de geselecteerde documentfragmenten, die worden opgehaald vanuit de vector database, worden toegevoegd aan de context van de de LLM die vervolgens in staat is om een contextueel passend antwoord te genereren.
     
-    Een eerste essentiële stap in dit proces is het identificeren en selecteren van de documenten die inhoudelijk relevant zijn voor de vraagstelling. Deze documenten worden niet in hun geheel, maar in kleinere segmenten verwerkt, zogenaamde "chunks". Het opdelen in chunks is noodzakelijk omdat volledige documenten doorgaans te omvangrijk zijn om efficiënt te verwerken binnen de contextlimieten van een LLM. Bovendien maakt deze fragmentatie het mogelijk om op een meer gerichte manier informatie te extraheren uit de vector database \autocite{Wu2024}.
+    Een eerste essentiële stap in dit proces is het identificeren en selecteren van de documenten die inhoudelijk relevant zijn voor de vraagstelling. Deze documenten worden niet in hun geheel, maar in kleinere segmenten verwerkt, zogenaamde "chunks". Het opdelen in chunks is noodzakelijk omdat volledige documenten doorgaans te omvangrijk zijn om efficiënt te verwerken binnen de contextlimieten van een LLM. Bovendien maakt deze fragmentatie het mogelijk om op een meer gerichte manier informatie te extraheren uit de vector database \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}.
     
-    Voor het opdelen van documenten bestaan verschillende methodologische benaderingen. Een veelgebruikte techniek is het verdelen van tekst op basis van een vooraf bepaald aantal tokens of karakters, zodat elke chunk ongeveer dezelfde lengte heeft. Een alternatieve strategie, die vooral geschikt is voor natuurlijke taalteksten, is het opdelen op basis van zinnen of alinea’s. Deze aanpak draagt doorgaans bij aan het behoud van de semantische samenhang binnen een chunk, wat de kwaliteit van de informatieophaling ten goede komt \autocite{Wang2024}.
+    Voor het opdelen van documenten bestaan verschillende methodologische benaderingen. Een veelgebruikte techniek is het verdelen van tekst op basis van een vooraf bepaald aantal tokens of karakters, zodat elke chunk ongeveer dezelfde lengte heeft. Een alternatieve strategie, die vooral geschikt is voor natuurlijke taalteksten, is het opdelen op basis van zinnen of alinea's. Deze aanpak draagt doorgaans bij aan het behoud van de semantische samenhang binnen een chunk, wat de kwaliteit van de informatieophaling ten goede komt \autocite{wang2024searchingbestpracticesretrievalaugmented}.
     
-    Na het opdelen worden deze tekstsegmenten omgezet in zogeheten embeddings. Dit zijn vector representaties die de semantische inhoud van de chunks op een wiskundige manier vastleggen. Deze embeddings worden vervolgens opgeslagen in een vector database, een specifiek type databank dat geoptimaliseerd is voor het bewaren en efficiënt ophalen van vectorrepresentaties op basis van semantische gelijkenis \autocite{Wu2024}. Dit gehele proces vormt de basis waarop de LLM tijdens het beantwoorden van vragen relevante context uit de vector database kan ophalen en verwerken samen met de prompt van de gebruiker.
+    Na het opdelen worden deze tekstsegmenten omgezet in zogeheten embeddings. Dit zijn vector representaties die de semantische inhoud van de chunks op een wiskundige manier vastleggen. Deze embeddings worden vervolgens opgeslagen in een vector database, een specifiek type databank dat geoptimaliseerd is voor het bewaren en efficiënt ophalen van vectorrepresentaties op basis van semantische gelijkenis \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}. Dit gehele proces vormt de basis waarop de LLM tijdens het beantwoorden van vragen relevante context uit de vector database kan ophalen en verwerken samen met de prompt van de gebruiker. %TODO referentie
    
      \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{retrieverWu2024.png}
-        \caption{Documentverwerking en opslag in een vector database via embeddings \cite{Wu2024}}
+        \caption{Documentverwerking en opslag in een vector database via embeddings \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}}
         \label{fig:RAG opmaken vector database}
     \end{figure}
     
-    Zodra de documenten via embeddings zijn toegevoegd aan de vector database, zal een gebruiker in de context van RAG (Retrieval-Augmented Generation) ook vragen stellen. Een vraag of query wordt, net als de documenten, vertaald naar embeddings. Op basis van deze embeddings worden de top-k dichtstbijzijnde buren uit de vector database opgehaald. Dit betekent dat de meest relevante delen van de opgeslagen documenten worden opgehaald. Deze relevante “chunks” worden vervolgens gebruikt om context te bieden aan het LLM-model dat wordt ondervraagd \autocite{Wu2024}.
+    Zodra de documenten via embeddings zijn toegevoegd aan de vector database, zal een gebruiker in de context van RAG ook vragen stellen. Een vraag of query wordt, net als de documenten, vertaald naar embeddings. Op basis van deze embeddings worden de top-k dichtstbijzijnde buren uit de vector database opgehaald. Dit betekent dat de meest relevante delen van de opgeslagen documenten worden opgehaald. Deze relevante chunks worden vervolgens gebruikt om context te bieden aan het LLM-model dat wordt ondervraagd \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}.
     
             
     \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{QueryRetrieverWu2024.png}
-        \caption{Vraagafhandeling en ophalen van relevante chunks \cite{Wu2024}}
+        \caption{Vraagafhandeling en ophalen van relevante chunks \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}}
         \label{fig:RAG bevragen vector database}
     \end{figure}
     
     \paragraph{Generatie}
     
-    Zodra de meest relevante informatie is opgehaald, wordt deze gebruikt in het proces. Uiteindelijk blijft het de bedoeling om het LLM-model te bevragen. De opgehaalde documenten worden, samen met de vraag van de gebruiker, toegevoegd aan de context van het model. Hierdoor beschikt het LLM-model over extra informatie en kan het deze verwerken. Dit leidt tot een antwoord voor de gebruiker, gebaseerd op de geïnjecteerde kennis \autocite{Zhao2024}.
+    Zodra de meest relevante informatie is opgehaald, wordt deze gebruikt in het proces. Uiteindelijk blijft het de bedoeling om het LLM-model te bevragen. De opgehaalde documenten worden, samen met de vraag van de gebruiker, toegevoegd aan de context van het model. Hierdoor beschikt het LLM-model over extra informatie en kan het deze verwerken. Dit leidt tot een antwoord voor de gebruiker, gebaseerd op de geïnjecteerde kennis \autocite{zhao2024retrievalaugmentedgenerationaigeneratedcontent}.
     
     \subsection{Cache-Augmented Generation}
     
@@ -161,7 +161,7 @@ Concreet komen de volgende onderwerpen aan bod:
     
     Hoewel het doel van beide benchmarks hetzelfde is is de manier van werken wel anders. ChatbotArena gaat gebruikers twee anonieme LLM modellen tegenover elkaar plaatsen, de gebruiker kan vervolgens een eigen vraag stellen en de gebruiker bepaalt zelf welke van de 2 het beste resultaat heeft opgeleverd.
     
-    Het voordeel van deze methode is dat de LLM-modellen realistische cases moeten behandelen die door gebruikers zelf worden gesteld. Op basis van resultaten die de LLM modellen tonen kan een gebruiker zijn voorkeur meegeven. Het nadeel van deze manier van werken is dat de gebruikers die deze testen uitvoeren niet representatief zijn voor alle gebruikers van LLM-modellen. De gebruikers die deze testen uitvoeren zijn vaak mensen met een interesse in LLM-modellen of mensen die onderzoek doen in dit vakgebied. Desondanks kan op basis van deze stemmen verscheidene modellen tegenover elkaar worden geplaatst. In januari 2024 werden ruim 240.000 stemmen uitgebracht door ongeveer 90.000 gebruikers \autocite{Chiang2024}. 
+    Het voordeel van deze methode is dat de LLM-modellen realistische cases moeten behandelen die door gebruikers zelf worden gesteld. Op basis van resultaten die de LLM modellen tonen kan een gebruiker zijn voorkeur meegeven. Het nadeel van deze manier van werken is dat de gebruikers die deze testen uitvoeren niet representatief zijn voor alle gebruikers van LLM-modellen. De gebruikers die deze testen uitvoeren zijn vaak mensen met een interesse in LLM-modellen of mensen die onderzoek doen in dit vakgebied. Desondanks kan op basis van deze stemmen verscheidene modellen tegenover elkaar worden geplaatst. In januari 2024 werden ruim 240.000 stemmen uitgebracht door ongeveer 90.000 gebruikers \autocite{chiang2024chatbotarenaopenplatform}. 
     
     \paragraph{Conclusie}
     
@@ -172,17 +172,17 @@ Concreet komen de volgende onderwerpen aan bod:
    
     Het gebruik van een performante LLM volstaat op zich niet. Minstens even belangrijk is het evalueren van de kwaliteit en accuraatheid van de gegenereerde antwoorden. Hiervoor bestaan verschillende evaluatiemethoden, waaronder de Bilingual Evaluation Understudy (BLEU), de Recall-Oriented Understudy for Gisting Evaluation (ROUGE), en BERTScore.  
     
-    Deze methoden kennen elk hun eigen berekeningswijze, maar delen een belangrijk gemeenschappelijk kenmerk. Ze zijn allen afhankelijk van de aanwezigheid van een referentie-antwoord. Dit referentie-antwoord wordt gebruikt als maatstaf om de gegenereerde output van de LLM mee te vergelijken en zo een score toe te kennen die de kwaliteit van de output reflecteert \cite{microsoft2024evaluation}.
+    Deze methoden kennen elk hun eigen berekeningswijze, maar delen een belangrijk gemeenschappelijk kenmerk. Ze zijn allen afhankelijk van de aanwezigheid van een referentie-antwoord. Dit referentie-antwoord wordt gebruikt als maatstaf om de gegenereerde output van de LLM mee te vergelijken en zo een score toe te kennen die de kwaliteit van de output reflecteert \autocite{microsoft2024evaluation}.
     
     \paragraph{BLEU Score}
     
-    De BLEU score is een evaluatie metriek die oorspronkelijk werd ontwikkeld om de kwaliteit van door machines gegenereerde vertalingen te beoordelen. Hierbij wordt de output van het model vergeleken met een of meerdere menselijke referentievertalingen. Aan de hand van overlappingen of zogenaamde n-gram overeenkomsten, reeksen van één of meerdere opeenvolgende woorden, wordt een score toegekend. De score ligt tussen 0 en 1, waarbij een hogere score duidt op een grotere overeenkomst met de referentietekst \cite{papineni-etal-2002-bleu}.
+    De BLEU score is een evaluatie metriek die oorspronkelijk werd ontwikkeld om de kwaliteit van door machines gegenereerde vertalingen te beoordelen. Hierbij wordt de output van het model vergeleken met een of meerdere menselijke referentievertalingen. Aan de hand van overlappingen of zogenaamde n-gram overeenkomsten, reeksen van één of meerdere opeenvolgende woorden, wordt een score toegekend. De score ligt tussen 0 en 1, waarbij een hogere score duidt op een grotere overeenkomst met de referentietekst \autocite{papineni-etal-2002-bleu}.
     
-    Een score van 1 betekent een perfecte overeenkomst, maar zelfs menselijke vertalingen behalen zelden deze score, omdat er vaak meerdere correcte vertaalmogelijkheden bestaan die kunnen afwijken. Hoewel BLEU een snelle en reproduceerbare maat biedt voor evaluatie, heeft het beperkingen doordat het geen rekening houdt met betekenis en contextuele variatie \cite{papineni-etal-2002-bleu}.
+    Een score van 1 betekent een perfecte overeenkomst, maar zelfs menselijke vertalingen behalen zelden deze score, omdat er vaak meerdere correcte vertaalmogelijkheden bestaan die kunnen afwijken. Hoewel BLEU een snelle en reproduceerbare maat biedt voor evaluatie, heeft het beperkingen doordat het geen rekening houdt met betekenis en contextuele variatie \autocite{papineni-etal-2002-bleu}.
     
     \paragraph{ROUGE Score}
     
-    Net zoals de BLEU-score evalueert de ROUGE-score de mate van overlap tussen een door machine gegenereerde tekst en een menselijke referentie. Waar BLEU echter voornamelijk gericht is op de precisie van exacte n-gram overeenkomsten, focust ROUGE sterker op de inhoudelijke dekking van de referentie. Hierdoor biedt de ROUGE-score een diepgaander inzicht in de kwaliteit van het gegenereerde antwoord \cite{Ganesan2018}.
+    Net zoals de BLEU-score evalueert de ROUGE-score de mate van overlap tussen een door machine gegenereerde tekst en een menselijke referentie. Waar BLEU echter voornamelijk gericht is op de precisie van exacte n-gram overeenkomsten, focust ROUGE sterker op de inhoudelijke dekking van de referentie. Hierdoor biedt de ROUGE-score een diepgaander inzicht in de kwaliteit van het gegenereerde antwoord \autocite{ganesan2018rouge20updatedimproved}.
     
     \paragraph{BERTScore}
 

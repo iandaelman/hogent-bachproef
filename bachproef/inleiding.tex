@@ -10,13 +10,13 @@ Met de opkomst van artificiële intelligentie (AI) en Large Language Models (LLM
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
 
-Deze bachelorproef richt zich specifiek op de IT-support binnen de FOD Financiën. Deze organisatie biedt een uitgebreide en complexe vorm van support aan zowel interne medewerkers als externe klanten over een breed scala aan onderwerpen. Een deel hiervan is technische ondersteuning voor digitale diensten die de organisatie aanbiedt. Door de omvang en diversiteit van de vragen waarmee de FOD Financiën wordt geconfronteerd, is er een duidelijke behoefte aan een efficiëntere ondersteuning. Bijvoorbeeld is iedere service verantwoordelijk om technische support te bieden, het is daarbij echter soms moeilijk om te achterhalen wie wanneer en voor wat exact verantwoordelijk is. 
+Deze bachelorproef richt zich specifiek op de IT-support binnen de FOD Financiën. Deze organisatie biedt een uitgebreide en complexe vorm van support aan zowel interne medewerkers als externe klanten over een breed scala aan onderwerpen. Een deel hiervan is technische ondersteuning voor digitale diensten die de organisatie aanbiedt. Door de omvang en diversiteit van de vragen waarmee de FOD Financiën wordt geconfronteerd, is er een duidelijke behoefte aan een efficiëntere ondersteuning. Iedere service is bijvoorbeeld verantwoordelijk om technische support te bieden. Het is daarbij echter soms moeilijk om te achterhalen wie wanneer en voor wat exact verantwoordelijk is. 
 
 Momenteel is de IT-support versnipperd, wat deels onvermijdelijk is omdat niet iedereen over de nodige technische kennis beschikt. De gespecialiseerde teams zijn verantwoordelijk voor de ondersteuning binnen hun eigen domeinen, maar dit kan leiden tot onduidelijkheid over wie wanneer en waarvoor exact verantwoordelijk is. Het is niet altijd meteen duidelijk of een probleem onder de verantwoordelijkheid van het eigen team valt of dat het door een ander technisch team moet worden opgepakt. Zelfs wanneer vaststaat dat een ander team het probleem moet oplossen, is het vaak onduidelijk hoe zij gecontacteerd kunnen worden of welk e-mailadres hiervoor gebruikt moet worden.
 
-Bovendien bestaat er wel documentatie over deze processen, maar deze is verspreid over verschillende Confluence pagina’s, waardoor medewerkers moeite hebben om snel de juiste informatie te vinden. Dit gebrek aan centralisatie zorgt ervoor dat IT-medewerkers soms werken met zeer beperkte informatie, wat het oplossen van problemen bemoeilijkt. In de praktijk leidt dit vaak tot een inefficiënte heen-en-weerstroom van e-mails tussen teams, zonder dat dit altijd bijdraagt aan een daadwerkelijke oplossing van het probleem.
+Bovendien bestaat er wel documentatie over deze processen, maar deze is verspreid over verschillende Confluence pagina’s, waardoor medewerkers moeite hebben om snel de juiste informatie te vinden. Dit gebrek aan centralisatie zorgt ervoor dat IT-medewerkers soms werken met zeer beperkte informatie, wat het oplossen van problemen bemoeilijkt. In de praktijk leidt dit vaak tot een inefficiënte heen en weerstroom van e-mails tussen teams, zonder dat dit altijd bijdraagt aan een daadwerkelijke oplossing van het probleem.
 
-Om deze problemen te verhelpen wordt onderzocht hoe een LLM-gebaseerde chatbot dit proces kan ondersteunen. Hiervoor worden twee belangrijke benaderingen vergeleken: Retrieval Augmented Generation (RAG) en Cache-Augmented Generation (CAG). De keuze tussen deze methoden heeft een aanzienlijke impact op de kwaliteit en relevantie van de gegenereerde antwoorden. Daarom zal in deze bachelorproef een Proof of Concept (PoC) worden ontwikkeld en getest binnen de context van de FOD Financiën, met als doel de meest geschikte aanpak te identificeren. Hoewel deze studie zich richt op deze specifieke usecase, kunnen de bevindingen en methodieken ook relevant zijn voor andere organisaties die hun IT-support op een efficiëntere manier willen organiseren.
+Om deze problemen te verhelpen wordt onderzocht hoe een LLM-gebaseerde chatbot dit proces kan ondersteunen. Hiervoor worden twee belangrijke benaderingen vergeleken: Retrieval Augmented Generation (RAG) en Cache-Augmented Generation (CAG). De keuze tussen deze methoden heeft een aanzienlijke impact op de kwaliteit en relevantie van de gegenereerde antwoorden. Daarom zal in deze bachelorproef een Proof~of~Concept (PoC) worden ontwikkeld en getest binnen de context van de FOD Financiën, met als doel de meest geschikte aanpak te identificeren. Hoewel deze studie zich richt op deze specifieke use case, kunnen de bevindingen en methodieken ook relevant zijn voor andere organisaties die hun IT-support op een efficiëntere manier willen organiseren.
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
@@ -29,14 +29,12 @@ Om deze onderzoeksvraag te beantwoorden, worden de volgende deelvragen geformule
 %TODO Denk wat meer na over de verschillende deelvragen nu zijn ze nog te breed maak ze concreter
 
 \begin{itemize}
-    \item Wat zijn RAG en CAG?
-    \item Wat zijn de belangrijkste verschillen tussen RAG en CAG?
-    \item Welke methode is het meest geschikt voor een IT-support chatbot binnen de FOD Financiën op basis van relevante criteria (bv. nauwkeurigheid, snelheid, gebruiksvriendelijkheid, kosten)?
-    \item Welke LLM-modellen zijn het meest geschikt om te gebruiken voor een implementatie?
-    \item Wat zijn bestaande meetstaven om de nauwkeurigheid van een LLM-model te meten?
-    \item Hoe presteren verschillende implementaties van de gekozen methode in een Proof of Concept (PoC) aan de hand van wetenschappelijke meetstaven?
-    \item Welke implementatie heeft de voorkeur van de gebruiker?
-    \item Waarom heeft een implementatie de voorkeur boven een andere implementatie?
+    \item Hoe kan een chatbot getraind worden op bestaande documentatie?
+    \item Wat zijn RAG, CAG en fine-tuning?
+    \item Wat zijn de belangrijkste verschillen tussen RAG, CAG en fine-tuning?
+    \item Welke methode en LLM-modellen zijn het meest geschikt om te gebruiken voor een implementatie?
+    \item Wat zijn bestaande meetstaven om de nauwkeurigheid van een LLM-model te meten en hoe presteren de verschillende implementaties?
+    \item Welke implementatie heeft de voorkeur van de gebruiker en waarom?
 \end{itemize}
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
