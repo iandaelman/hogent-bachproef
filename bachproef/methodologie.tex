@@ -41,19 +41,36 @@ Gekoppeld aan de literatuurstudie zullen interviews worden afgenomen. Het doel v
 
 \section{Long list}
 
+In deze sectie wordt een overzicht gegeven van de verschillende mogelijkheden die beschikbaar zijn voor het opstellen van de POC. Dit gaat zowel over de verschillende technieken en technologieën die kunnen toegepast worden om tot het eindresultaat te komen van de chatbot. Deze sectie geeft enkel een overzicht van de verschillende mogelijkheden voor een meer gedetailleerde inhoud kan de stand van zaken geraadpleegd worden.
+
+\subsubsection{LLM model}
+
+Gelet op het feit dat er extreem veel modellen bestaan is het niet nuttig om alle beschikbare modellen in rekening te brengen. De onderstaande lijst is gebaseerd op alle modellen die in de top ranking staan van ChatbotArena en LiveBench. Op deze manier hebben we alle best mogelijke modellen waaruit dan verder een selectie kan gemaakt worden. 
+
+\subsubsection{Toegepaste techniek}
+
 \section{Short list}
 
-\section{Opstellen PoC}
+\subsubsection{LLM model}
 
-\section{Uitvoeren testen en analyse resultaten}
+Voor het opstellen van de POC wordt gekozen om te werken met zogenaamde open modellen. Naast het feit dat het mogelijk is om deze modellen gratis te gebruiken is het eveneens mogelijk om deze modellen lokaal te installeren en te gaan gebruiken. Aangezien de modellen lokaal worden gebruikt is er binnen het opstellen van deze POC geen problemen met privacy schending. De gebruikte data en query's worden enkel gebruikt op de eigen lokale hardware.
+
+\subsubsection{Toegepaste techniek}
+
+%TODO hier verantwoorden waarom RAG
+
+\section{Uit te voeren testen en analyse resultaten}
 
 Elk van de geselecteerde modellen wordt vervolgens uitgewerkt in een PoC. Zodra de verschillende PoC’s beschikbaar zijn, wordt een vergelijking gemaakt tussen de modellen. Hierbij worden de volgende aspecten getest:
 
-\begin{itemize} 
-    \item Wat is de kwaliteit van de antwoorden volgens wetenschappelijke meetstaven? 
-    \item Welk model verkiest de gebruiker. 
+\begin{itemize}
+    \item Wat is de kwaliteit van de antwoorden volgens wetenschappelijke meetcriteria?
+    \item Hoeveel tijd kost het om een vraag te beantwoorden?
+    \item Welk model geniet de voorkeur van de gebruiker?
 \end{itemize}
 
-De kwaliteit van de gegenereerde antwoorden zal worden geëvalueerd aan de hand van ROUGE, BLEU en BERTScore. Aangezien deze metrics elk een ander aspect van tekstkwaliteit belichten, zoals tekstuele overeenkomst en semantische gelijkenis, is het waardevol om ze alle drie in beschouwing te nemen en geen enkele vooraf uit te sluiten. Daarnaast zullen de antwoorden worden voorgelegd aan enkele gebruikers, zodat zij op basis van realistische cases hun voorkeur kunnen uitspreken. Dit laat toe om, naast de automatische evaluatie, ook subjectieve aspecten zoals natuurlijkheid en relevantie mee te nemen.
+De kwaliteit van de gegenereerde antwoorden wordt geëvalueerd met behulp van de meetinstrumenten ROUGE, BLEU en BERTScore. Elk van deze methoden richt zich op verschillende kenmerken van tekstkwaliteit, zoals overeenkomsten in formulering en inhoudelijke gelijkenis. Door deze drie evaluatiemethoden samen te gebruiken, ontstaat een gebalanceerd beeld van de prestaties van de modellen.
+
+Daarnaast wordt de snelheid waarmee de modellen antwoorden genereren met elkaar vergeleken. Tot slot worden de antwoorden voorgelegd aan een groep gebruikers, die op basis van realistische situaties hun voorkeur kunnen aangeven. Op die manier worden naast objectieve ook subjectieve aspecten, meegenomen in de beoordeling.
 
 

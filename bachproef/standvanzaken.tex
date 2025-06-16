@@ -16,6 +16,9 @@ Concreet komen de volgende onderwerpen aan bod:
 \end{itemize}
 
 \section{IT-support chatbot}
+
+%Misschien ook nagaan welke andere opties je zou kan hebben Finetuning zou je zeker ook moeten toevoegen maar het trainen van een model is niet ideaal kost heel veel computational cost en het ook up to date houden kost ook heel veel maar ik zou het zeker toevoegen voor de long list
+%Prompt engenieering kan je zeker helpen om een goeie uitkomst te hebben. Dus dit kan je zeker ook bespreken in de literatuurstudie.
     
     Om een IT-support chatbot te ontwikkelen, moeten verschillende aspecten in overweging worden genomen. Bij het gebruik van een LLM-model zijn er twee belangrijke opties: Retrieval-Augmented Generation (RAG) en Cache-Augmented Generation (CAG). Beide methoden maken gebruik van een LLM en verrijken de kennis van dit model met behulp van eigen documenten. Echter, beide benaderingen hebben specifieke voor- en nadelen. Het is daarom essentieel om deze zorgvuldig af te wegen om een weloverwogen keuze te maken voor een Proof of Concept (PoC).
     
@@ -32,6 +35,18 @@ Concreet komen de volgende onderwerpen aan bod:
      Toepassingen van LLM's omvatten onder andere chatbots, automatische vertaling, samenvatten van documenten, codegeneratie, en vragen-beantwoording. Hoewel hun prestaties indrukwekkend zijn, bestaan er ook zorgen over bias, hallucinatie van onjuiste informatie, en het gebruik van niet-gecontroleerde trainingsdata \cite{Gupta2025}.
       
      De ontwikkeling van LLM’s markeert een belangrijke stap richting algemene taalintelligentie, maar roept tegelijkertijd vragen op over ethiek, transparantie, en betrouwbaarheid in gebruik \cite{Gupta2025}.
+     
+     %TODO hier uitleggen wat parameters zijn en wat de invloed daarvan is aangezien je ook LLM's gaat kiezen en ze op basis van iets moet kiezen.
+     
+     %TODO hier nog wat extra schrijven over prompts en wat die zijn het verschil tussen system prompt en user prompt samenvatting zie hieronder
+     % A system prompt that tells them what task they are performing and what tone they should use
+     % A user prompt -- the conversation starter that they should reply to
+     
+     %TODO toevoegen wat een one shot prompt is en multishot prompt, dit zal belang hebben bij het opstellen van de POC, one shot prompt ga je in de prompt zeggen wat je verwacht van de LLM zero shot prompt ga je ervan uit dat de LLM het wel zal achterhalen. mulit is dan dat je in de prompt meerdere voorbeelden gaat geven. (uitleg chatGPT https://chatgpt.com/c/6830257b-d930-8003-a0b6-758b9d4e6137)
+     
+    \subsubsection{Finetuning}
+     
+    %TODO hier nog uitleggen wat finetuning is en waar het  
      
     \subsection{Retrieval Augmented Generation}
     
@@ -71,7 +86,7 @@ Concreet komen de volgende onderwerpen aan bod:
     
     Voor het opdelen van documenten bestaan verschillende methodologische benaderingen. Een veelgebruikte techniek is het verdelen van tekst op basis van een vooraf bepaald aantal tokens of karakters, zodat elke chunk ongeveer dezelfde lengte heeft. Een alternatieve strategie, die vooral geschikt is voor natuurlijke taalteksten, is het opdelen op basis van zinnen of alinea’s. Deze aanpak draagt doorgaans bij aan het behoud van de semantische samenhang binnen een chunk, wat de kwaliteit van de informatieophaling ten goede komt \autocite{Wang2024}.
     
-    Na het opdelen worden deze tekstsegmenten omgezet in zogeheten embeddings. Dit zijn vector representaties die de semantische inhoud van de chunks op een wiskundige manier vastleggen. Deze embeddings worden vervolgens opgeslagen in een vector database, een specifiek type gegevensopslag dat geoptimaliseerd is voor het bewaren en efficiënt ophalen van vectorrepresentaties op basis van semantische gelijkenis \autocite{Wu2024}. Dit gehele proces vormt de basis waarop de LLM tijdens het beantwoorden van vragen relevante context uit de vector database kan ophalen en verwerken.
+    Na het opdelen worden deze tekstsegmenten omgezet in zogeheten embeddings. Dit zijn vector representaties die de semantische inhoud van de chunks op een wiskundige manier vastleggen. Deze embeddings worden vervolgens opgeslagen in een vector database, een specifiek type databank dat geoptimaliseerd is voor het bewaren en efficiënt ophalen van vectorrepresentaties op basis van semantische gelijkenis \autocite{Wu2024}. Dit gehele proces vormt de basis waarop de LLM tijdens het beantwoorden van vragen relevante context uit de vector database kan ophalen en verwerken samen met de prompt van de gebruiker.
    
      \begin{figure}[H]
         \centering
