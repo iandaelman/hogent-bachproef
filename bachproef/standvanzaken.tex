@@ -25,18 +25,18 @@ Concreet komen de volgende onderwerpen aan bod:
     \subsection{Large Language Model}
     
     %TODO hier moet je veel uitgebreider over praten behandel ook onderwerpen zoals NLP en LM om dan naar dit punt te komen. Zal vollediger zijn en je kan op die manier ook veel meer tekst hebben
-    
-    WORK IN PROGRESS
-    
+        
      Een LLM is een geavanceerd neuraal netwerk dat getraind is op grote hoeveelheden tekstdata om menselijke taal te kunnen begrijpen, genereren en manipuleren. LLM's gebruiken de transformer architectuur, zoals geïntroduceerd door \textcite{vaswani2023attentionneed}, die uitblinkt in het modelleren van sequentiële tekst en contextuele afhankelijkheden.
       
      Deze modellen worden "large" genoemd vanwege hun schaal: ze bevatten vaak miljarden parameters. Getraind door op gigantische bronnen aan data, kunnen LLM's tekst genereren die coherente, contextuele en soms zelfs creatieve eigenschappen vertoont \autocite{Gupta2025}.
       
      Toepassingen van LLM's omvatten onder andere chatbots, automatische vertaling, samenvatten van documenten, codegeneratie, en vragen-beantwoording. Hoewel hun prestaties indrukwekkend zijn, bestaan er ook zorgen over bias, hallucinatie van onjuiste informatie, en het gebruik van niet-gecontroleerde trainingsdata \autocite{Gupta2025}.
-      g
+     
      De ontwikkeling van LLM’s markeert een belangrijke stap richting algemene taalintelligentie, maar roept tegelijkertijd vragen op over ethiek, transparantie, en betrouwbaarheid in gebruik \autocite{Gupta2025}.
      
      %TODO hier uitleggen wat parameters zijn en wat de invloed daarvan is aangezien je ook LLM's gaat kiezen en ze op basis van iets moet kiezen.
+     
+     \subsubsection{Propmting} 
      
      %TODO hier nog wat extra schrijven over prompts en wat die zijn het verschil tussen system prompt en user prompt samenvatting zie hieronder
      % A system prompt that tells them what task they are performing and what tone they should use
@@ -44,15 +44,23 @@ Concreet komen de volgende onderwerpen aan bod:
      
      %TODO toevoegen wat een one shot prompt is en multishot prompt, dit zal belang hebben bij het opstellen van de POC, one shot prompt ga je in de prompt zeggen wat je verwacht van de LLM zero shot prompt ga je ervan uit dat de LLM het wel zal achterhalen. mulit is dan dat je in de prompt meerdere voorbeelden gaat geven. (uitleg chatGPT https://chatgpt.com/c/6830257b-d930-8003-a0b6-758b9d4e6137)
      
+     \paragraph{Zeroshot vs multishot prompting}
+     
+     \subsubsection{Tekortkomingen van een LLM}
+     
+     %TODO hier ook verder ingaan wat de huidige beperkingen zijn van LLM-modellen. Zoals knowledge-date cutoff, hallucinaties, ...
+     
+     
     \subsubsection{Finetuning}
      
     %TODO hier nog uitleggen wat finetuning is en waar het  
      
     \subsection{Retrieval Augmented Generation}
     
-    LLM's hebben de afgelopen jaren een enorme opmars gemaakt en vandaag de dag hebben deze modellen een brede impact op verschillende domeinen in de samenleving. Ondanks hun indrukwekkende mogelijkheden brengen LLM’s ook enkele nadelen met zich mee. Zo kunnen ze hallucineren, beschikken ze niet altijd over de meest actuele informatie, en missen ze vaak domein- en bedrijfsspecifieke kennis. %TODO Referentie toevoegen 
+    LLM's hebben de afgelopen jaren een enorme opmars gemaakt en vandaag de dag hebben deze modellen een brede impact op verschillende domeinen in de samenleving. Ondanks hun indrukwekkende mogelijkheden brengen LLM’s ook enkele nadelen met zich mee. Zo kunnen ze hallucineren, beschikken ze niet altijd over de meest actuele informatie, en missen ze vaak domein- en bedrijfsspecifieke kennis \autocite{akkiraju2024factsbuildingretrievalaugmented}.
     
-    Een mogelijke oplossing voor deze beperkingen is \textit{Retrieval-Augmented Generation} (RAG). Deze techniek combineert de kracht van LLM’s met externe databronnen om nauwkeurigere en beter onderbouwde antwoorden te genereren. In deze sectie wordt toegelicht wat RAG is, hoe het werkt en op welke manier het kan bijdragen aan de ontwikkeling van een effectieve support chatbot.
+    Een mogelijke oplossing voor deze beperkingen is \textit{Retrieval-Augmented Generation} (RAG). Deze techniek combineert de kracht van LLM’s met externe databronnen om nauwkeurigere en beter onderbouwde antwoorden te genereren \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}. 
+    In deze sectie wordt toegelicht wat RAG is, hoe het werkt en op welke manier het kan bijdragen aan de ontwikkeling van een effectieve support chatbot
     
     \subsubsection{Wat is Retrieval Augmented Generation}
     Retrieval Augmented Generation, ofwel RAG, is een techniek die, zoals eerder vermeld, een oplossing biedt voor de tekortkomingen van klassieke LLM’s. Door externe databronnen te gebruiken, kan een traditioneel LLM-model betere resultaten behalen. Deze methode maakt het mogelijk om domeinspecifieke data te integreren en modellen bij te werken met actuele informatie. Zo kunnen klassieke LLM’s worden verrijkt met nieuwe, up-to-date gegevens die voldoen aan specifieke behoeften \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}.
@@ -82,9 +90,11 @@ Concreet komen de volgende onderwerpen aan bod:
      
     Voordat een LLM effectief ondervraagd kan worden met informatie die via documentverrijking is toegevoegd, moet eerst een grondige voorbereidende verwerking plaatsvinden. Dit proces omvat het selecteren van relevante documenten en het vervolgens combineren van deze informatie met de gestelde vraag. Deze vraag en de geselecteerde documentfragmenten, die worden opgehaald vanuit de vector database, worden toegevoegd aan de context van de de LLM die vervolgens in staat is om een contextueel passend antwoord te genereren.
     
-    Een eerste essentiële stap in dit proces is het identificeren en selecteren van de documenten die inhoudelijk relevant zijn voor de vraagstelling. Deze documenten worden niet in hun geheel, maar in kleinere segmenten verwerkt, zogenaamde "chunks". Het opdelen in chunks is noodzakelijk omdat volledige documenten doorgaans te omvangrijk zijn om efficiënt te verwerken binnen de contextlimieten van een LLM. Bovendien maakt deze fragmentatie het mogelijk om op een meer gerichte manier informatie te extraheren uit de vector database \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}.
+    Een eerste essentiële stap in dit proces is het identificeren en selecteren van de documenten die inhoudelijk relevant zijn voor de vraagstelling. Deze documenten worden niet in hun geheel, maar in kleinere segmenten verwerkt, zogenaamde "chunks". 
+    Het opdelen in chunks is noodzakelijk omdat volledige documenten doorgaans te omvangrijk zijn om efficiënt te verwerken binnen de contextlimieten van een LLM. Bovendien maakt deze fragmentatie het mogelijk om op een meer gerichte manier informatie te extraheren uit de vector database \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}.
     
-    Voor het opdelen van documenten bestaan verschillende methodologische benaderingen. Een veelgebruikte techniek is het verdelen van tekst op basis van een vooraf bepaald aantal tokens of karakters, zodat elke chunk ongeveer dezelfde lengte heeft. Een alternatieve strategie, die vooral geschikt is voor natuurlijke taalteksten, is het opdelen op basis van zinnen of alinea's. Deze aanpak draagt doorgaans bij aan het behoud van de semantische samenhang binnen een chunk, wat de kwaliteit van de informatieophaling ten goede komt \autocite{wang2024searchingbestpracticesretrievalaugmented}.
+    Voor het opdelen van documenten bestaan verschillende methodologische benaderingen. Een veelgebruikte techniek is het verdelen van tekst op basis van een vooraf bepaald aantal tokens of karakters, zodat elke chunk ongeveer dezelfde lengte heeft. 
+    Een alternatieve strategie, die vooral geschikt is voor natuurlijke taalteksten, is het opdelen op basis van zinnen of alinea's. Deze aanpak draagt doorgaans bij aan het behoud van de semantische samenhang binnen een chunk, wat de kwaliteit van de informatieophaling ten goede komt \autocite{wang2024searchingbestpracticesretrievalaugmented}.
     
     Na het opdelen worden deze tekstsegmenten omgezet in zogeheten embeddings. Dit zijn vector representaties die de semantische inhoud van de chunks op een wiskundige manier vastleggen. Deze embeddings worden vervolgens opgeslagen in een vector database, een specifiek type databank dat geoptimaliseerd is voor het bewaren en efficiënt ophalen van vectorrepresentaties op basis van semantische gelijkenis \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}. Dit gehele proces vormt de basis waarop de LLM tijdens het beantwoorden van vragen relevante context uit de vector database kan ophalen en verwerken samen met de prompt van de gebruiker. %TODO referentie
    
@@ -111,9 +121,12 @@ Concreet komen de volgende onderwerpen aan bod:
     
     \subsection{Cache-Augmented Generation}
     
-    Met de opkomst van nieuwe LLM modellen die een grotere context bevatten is het niet altijd nodig om te werken met een RAG architectuur. Wanneer het aantal documenten en de lengte ervan niet dermate groot is kan je ook meteen alle documenten injecteren in de context van een LLM model. Dit zorgt voor een heel simpele en efficiënte benadering om een LLM model bedrijf- of contextspecifieke kennis te geven.
+    Met de opkomst van nieuwe LLM modellen die een grotere context bevatten is het niet altijd nodig om te werken met een RAG architectuur. Wanneer het aantal documenten en de lengte ervan niet dermate groot is kan je ook meteen alle documenten injecteren in de context van een LLM model. Dit zorgt voor een heel simpele en efficiënte benadering om een LLM model bedrijf- of contextspecifieke kennis te geven \autocite{Chan_2025}.
     
-    \subsection{RAG vs CAG}
+    Het voordeel van deze aanpak is dat de een deel van het RAG proces wordt geëlimineerd, met name de documentatie moet niet meer worden opgeslagen in een vectordatabase. 
+    Er is ook niet langer nood aan het ophalen van de geselecteerde gegevens wat mogelijks fouten binnen dit proces ook elimineert. Dit is zeker een valabele optie wanneer het gaat over een beperkte pool van documentatie \autocite{Chan_2025}. 
+    
+    \subsection{RAG vs CAG vs Finetuning}
     
     
     \subsection{LLM benchmarks}
@@ -165,7 +178,7 @@ Concreet komen de volgende onderwerpen aan bod:
     
     \paragraph{Conclusie}
     
-    %TODO Navragen of ze een lijst van criteria hebben welke LLM wel en niet te gebruiken => geen echte beperkingen inzake LLM maar zou best moeten kunnen draaien op Azure opgeving dus chatGPT zou hierbij zeker de voorkeur hebben.
+    %TODO Navragen of ze een lijst van criteria hebben welke LLM wel en niet te gebruiken => geen echte beperkingen inzake LLM maar zou best moeten kunnen draaien op Azure opgeving dus chatGPT zou hierbij zeker de voorkeur hebben. Maar kan ook elk ander model zijn zoals Ollama
     Op basis van de 2 benchmarks die hier werden besproken kan niet meteen éénduidig besloten worden welke modellen het best zouden gebruikt worden voor het maken van het RAG model. Aangezien dit een zeer volatiele omgeving is met veel en snelle ontwikkelingen zijn de modellen die vandaag het beste scoren over een maand potentieel voorbij gestoken door nieuwe modellen. Desalniettemin bevatten deze benchmarks heel wat nuttige informatie en inzichten over de sterktes van bepaalde modellen tegenover andere modellen. 
     
     \subsection{Evaluatiemethoden voor LLM-output}
@@ -185,6 +198,26 @@ Concreet komen de volgende onderwerpen aan bod:
     Net zoals de BLEU-score evalueert de ROUGE-score de mate van overlap tussen een door machine gegenereerde tekst en een menselijke referentie. Waar BLEU echter voornamelijk gericht is op de precisie van exacte n-gram overeenkomsten, focust ROUGE sterker op de inhoudelijke dekking van de referentie. Hierdoor biedt de ROUGE-score een diepgaander inzicht in de kwaliteit van het gegenereerde antwoord \autocite{ganesan2018rouge20updatedimproved}.
     
     \paragraph{BERTScore}
+    
+    \paragraph{Ragas}
+    
+    Retrieval Augmented Generation Assesment of Ragas is een specifiek testframework gemaakt om de prestaties van een LLM te evalueren. Tegenover de andere manieren metrics die hier werden gepresenteerd is ragas wel een systeem om RAG te evalueren. Ragas geeft verschillende mogelijkheden om verschillende zaken te testen die relevant zijn binnen een RAG proces.
+    
+    Deze drie zaken zijn:
+        \begin{enumerate}
+        \item Faithfullness
+        \item Answer Relevance
+        \item Context Relevance
+    \end{enumerate}
+    
+    Faithfullness (Feitelijke correctheid)? focust op het feit dat het antwoord die de LLM genereerd moet voortvloeien uit de context. Met andere woorden de LLM moet zijn antwoord baseren op de relevante documenten die werden opgehaald tijdens het retrieval proces. Dit is van groot belang aangezien op die manier kan worden nagegaan of de LLM aan het hallucineren is of niet. Iets wat zeker dient te vermeden worden in een RAG proces.
+    
+    Answer Relevance (Antwoord relevantie) is een tweede evaluatie metric, hier wordt nagegaan of het gegenereerde antwoord relevant is voor de vraag die werd gesteld. Hiernaast zal ook worden nagegaan of het antwoord geen overbodige informatie bevat.
+    De modellen krijgen met andere woorden minder punten indien te veel onnodige informatie wordt toegevoegd aan het antwoord.
+    
+    Het derde en laatste meetinstrument is Context Relevance (context relevantie). Hierbij wordt nagegaan hoe relevant de context is tegenover de gestelde vraag. Net zoals bij antwoord relevantie zal de score minder hoog zijn wanneer er een onnodige context aanwezig is die niet relevant zijn voor de vraag.
+    
+    Alle scores krijgen een score tussen 0 en 1 waarbij 1 een perfecte score voorstelt binnen een bepaalde categorie en 0 het tegenovergestelde.
 
 \section{De AI Act en de belangrijkste richtlijnen}
 Wat houdt de AI Act in, en wat zijn de belangrijkste richtlijnen die hierin moeten worden gevolgd?
