@@ -162,7 +162,42 @@ Concreet komen de volgende onderwerpen aan bod:
     \end{enumerate}
     
     \subsubsection{Chatbot arena} 
+    oor bestaan verschillende evaluatiemethoden, waaronder de Bilingual Evaluation Understudy (BLEU), de Recall-Oriented Understudy for Gisting Evaluation (ROUGE), en BERTScore.  
     
+    Deze methoden kennen elk hun eigen berekeningswijze, maar delen een belangrijk gemeenschappelijk kenmerk. Ze zijn allen afhankelijk van de aanwezigheid van een referentie-antwoord. Dit referentie-antwoord wordt gebruikt als maatstaf om de gegenereerde output van de LLM mee te vergelijken en zo een score toe te kennen die de kwaliteit van de output reflecteert \autocite{microsoft2024evaluation}.
+    
+    \paragraph{BLEU Score}
+    
+    De BLEU score is een evaluatie metriek die oorspronkelijk werd ontwikkeld om de kwaliteit van door machines gegenereerde vertalingen te beoordelen. Hierbij wordt de output van het model vergeleken met een of meerdere menselijke referentievertalingen. Aan de hand van overlappingen of zogenaamde n-gram overeenkomsten, reeksen van één of meerdere opeenvolgende woorden, wordt een score toegekend. De score ligt tussen 0 en 1, waarbij een hogere score duidt op een grotere overeenkomst met de referentietekst \autocite{papineni-etal-2002-bleu}.
+    
+    Een score van 1 betekent een perfecte overeenkomst, maar zelfs menselijke vertalingen behalen zelden deze score, omdat er vaak meerdere correcte vertaalmogelijkheden bestaan die kunnen afwijken. Hoewel BLEU een snelle en reproduceerbare maat biedt voor evaluatie, heeft het beperkingen doordat het geen rekening houdt met betekenis en contextuele variatie \autocite{papineni-etal-2002-bleu}.
+    
+    \paragraph{ROUGE Score}
+    
+    Net zoals de BLEU-score evalueert de ROUGE-score de mate van overlap tussen een door machine gegenereerde tekst en een menselijke referentie. Waar BLEU echter voornamelijk gericht is op de precisie van exacte n-gram overeenkomsten, focust ROUGE sterker op de inhoudelijke dekking van de referentie. Hierdoor biedt de ROUGE-score een diepgaander inzicht in de kwaliteit van het gegenereerde antwoord \autocite{ganesan2018rouge20updatedimproved}.
+    
+    \paragraph{BERTScore}
+    %TODO
+    
+    \paragraph{Ragas}
+    
+    Retrieval Augmented Generation Assesment of Ragas is een specifiek testframework gemaakt om de prestaties van een LLM te evalueren. Tegenover de andere manieren metrics die hier werden gepresenteerd is ragas wel een systeem om RAG te evalueren. Ragas geeft verschillende mogelijkheden om verschillende zaken te testen die relevant zijn binnen een RAG proces.
+    
+    Deze drie zaken zijn:
+    \begin{enumerate}
+        \item Faithfullness
+        \item Answer Relevance
+        \item Context Relevance
+    \end{enumerate}
+    
+    Faithfullness (Feitelijke correctheid)? focust op het feit dat het antwoord die de LLM genereerd moet voortvloeien uit de context. Met andere woorden de LLM moet zijn antwoord baseren op de relevante documenten die werden opgehaald tijdens het retrieval proces. Dit is van groot belang aangezien op die manier kan worden nagegaan of de LLM aan het hallucineren is of niet. Iets wat zeker dient te vermeden worden in een RAG proces.
+    
+    Answer Relevance (Antwoord relevantie) is een tweede evaluatie metric, hier wordt nagegaan of het gegenereerde antwoord relevant is voor de vraag die werd gesteld. Hiernaast zal ook worden nagegaan of het antwoord geen overbodige informatie bevat.
+    De modellen krijgen met andere woorden minder punten indien te veel onnodige informatie wordt toegevoegd aan het antwoord.
+    
+    Het derde en laatste meetinstrument is Context Relevance (context relevantie). Hierbij wordt nagegaan hoe relevant de context is tegenover de gestelde vraag. Net zoals bij antwoord relevantie zal de score minder hoog zijn wanneer er een onnodige context aanwezig is die niet relevant zijn voor de vraag.
+    
+    Alle scores krijgen een score tussen 0 en 1 waarbij 1 een perfecte score voorstelt binnen een bepaalde categorie en 0 het tegenovergestelde
     Een andere benchmark tool Chatbot arena, net zoals LiveBench is Chatbot arena een site die een actuele weergave biedt van de beste LLM's op basis van vooraf gedefinieerde categorieën. 
     Volgens de ranking van \textcite{LiveBench2025} zijn dit de top 3 LLM's:
     
@@ -183,41 +218,7 @@ Concreet komen de volgende onderwerpen aan bod:
     
     \subsection{Evaluatiemethoden voor LLM-output}
    
-    Het gebruik van een performante LLM volstaat op zich niet. Minstens even belangrijk is het evalueren van de kwaliteit en accuraatheid van de gegenereerde antwoorden. Hiervoor bestaan verschillende evaluatiemethoden, waaronder de Bilingual Evaluation Understudy (BLEU), de Recall-Oriented Understudy for Gisting Evaluation (ROUGE), en BERTScore.  
-    
-    Deze methoden kennen elk hun eigen berekeningswijze, maar delen een belangrijk gemeenschappelijk kenmerk. Ze zijn allen afhankelijk van de aanwezigheid van een referentie-antwoord. Dit referentie-antwoord wordt gebruikt als maatstaf om de gegenereerde output van de LLM mee te vergelijken en zo een score toe te kennen die de kwaliteit van de output reflecteert \autocite{microsoft2024evaluation}.
-    
-    \paragraph{BLEU Score}
-    
-    De BLEU score is een evaluatie metriek die oorspronkelijk werd ontwikkeld om de kwaliteit van door machines gegenereerde vertalingen te beoordelen. Hierbij wordt de output van het model vergeleken met een of meerdere menselijke referentievertalingen. Aan de hand van overlappingen of zogenaamde n-gram overeenkomsten, reeksen van één of meerdere opeenvolgende woorden, wordt een score toegekend. De score ligt tussen 0 en 1, waarbij een hogere score duidt op een grotere overeenkomst met de referentietekst \autocite{papineni-etal-2002-bleu}.
-    
-    Een score van 1 betekent een perfecte overeenkomst, maar zelfs menselijke vertalingen behalen zelden deze score, omdat er vaak meerdere correcte vertaalmogelijkheden bestaan die kunnen afwijken. Hoewel BLEU een snelle en reproduceerbare maat biedt voor evaluatie, heeft het beperkingen doordat het geen rekening houdt met betekenis en contextuele variatie \autocite{papineni-etal-2002-bleu}.
-    
-    \paragraph{ROUGE Score}
-    
-    Net zoals de BLEU-score evalueert de ROUGE-score de mate van overlap tussen een door machine gegenereerde tekst en een menselijke referentie. Waar BLEU echter voornamelijk gericht is op de precisie van exacte n-gram overeenkomsten, focust ROUGE sterker op de inhoudelijke dekking van de referentie. Hierdoor biedt de ROUGE-score een diepgaander inzicht in de kwaliteit van het gegenereerde antwoord \autocite{ganesan2018rouge20updatedimproved}.
-    
-    \paragraph{BERTScore}
-    
-    \paragraph{Ragas}
-    
-    Retrieval Augmented Generation Assesment of Ragas is een specifiek testframework gemaakt om de prestaties van een LLM te evalueren. Tegenover de andere manieren metrics die hier werden gepresenteerd is ragas wel een systeem om RAG te evalueren. Ragas geeft verschillende mogelijkheden om verschillende zaken te testen die relevant zijn binnen een RAG proces.
-    
-    Deze drie zaken zijn:
-        \begin{enumerate}
-        \item Faithfullness
-        \item Answer Relevance
-        \item Context Relevance
-    \end{enumerate}
-    
-    Faithfullness (Feitelijke correctheid)? focust op het feit dat het antwoord die de LLM genereerd moet voortvloeien uit de context. Met andere woorden de LLM moet zijn antwoord baseren op de relevante documenten die werden opgehaald tijdens het retrieval proces. Dit is van groot belang aangezien op die manier kan worden nagegaan of de LLM aan het hallucineren is of niet. Iets wat zeker dient te vermeden worden in een RAG proces.
-    
-    Answer Relevance (Antwoord relevantie) is een tweede evaluatie metric, hier wordt nagegaan of het gegenereerde antwoord relevant is voor de vraag die werd gesteld. Hiernaast zal ook worden nagegaan of het antwoord geen overbodige informatie bevat.
-    De modellen krijgen met andere woorden minder punten indien te veel onnodige informatie wordt toegevoegd aan het antwoord.
-    
-    Het derde en laatste meetinstrument is Context Relevance (context relevantie). Hierbij wordt nagegaan hoe relevant de context is tegenover de gestelde vraag. Net zoals bij antwoord relevantie zal de score minder hoog zijn wanneer er een onnodige context aanwezig is die niet relevant zijn voor de vraag.
-    
-    Alle scores krijgen een score tussen 0 en 1 waarbij 1 een perfecte score voorstelt binnen een bepaalde categorie en 0 het tegenovergestelde.
+    Het gebruik van een performante LLM volstaat op zich niet. Minstens even belangrijk is het evalueren van de kwaliteit en accuraatheid van de gegenereerde antwoorden. Hierv.
 
 \section{De AI Act en de belangrijkste richtlijnen}
 Wat houdt de AI Act in, en wat zijn de belangrijkste richtlijnen die hierin moeten worden gevolgd?
