@@ -1,0 +1,118 @@
+\section{Vragenlijst}
+\label{vragenlijst}
+
+\begin{enumerate}
+    \item \textbf{Wie is de product owner van AGDP en kan je de contactgegevens geven?} \\
+    De product owner van AGDP is Kelly Fugarino en je kan haar contacteren via \texttt{myminfin.agdp\_aapd@temp.minfin.be}.
+    
+    \item \textbf{Wie is de product owner van AGPR en kan je de contactgegevens geven?} \\
+    De product owner van AGPR is Adil Soussi Nachit en je kan hem contacteren via \texttt{aaii-agpr.myminfin@minfin.fed.be}.
+    
+    \item \textbf{Kan je me alle contactgegevens geven voor het fragment UBO-register, ook de SNOW groep?} \\
+    Fragment: UBO-register – Contactgegevens
+    \begin{itemize}
+        \item ICT:
+        \item Group SNOW: TRES\_GRP\_CIFI
+        \item Service manager: Christophe MARTIN (back-up: Vivian VACHAUDEZ)
+        \item Business:
+        \item Business analyst: Sébastien GUILLAUME
+    \end{itemize}
+    
+    \item \textbf{Hoe of waar moet ik mijn tijd loggen voor de support?} \\
+    Where to log support time (from most preferred to least preferred):
+    \begin{enumerate}
+        \item Related ticket
+        \begin{itemize}
+            \item Project: MYMINFIN
+            \item Log time to an existing issue whenever possible.
+        \end{itemize}
+        \item New bug
+        \begin{itemize}
+            \item Project: MYMINFIN
+            \item If the reported problem requires creating a bug issue, log your time in an “analysis” subtask.
+        \end{itemize}
+        \item Business Support
+        \begin{itemize}
+            \item Fisc: [MYMINFIN-9958] [support] MYMINFIN 3rd line AGFISC/AAFISC - JIRA Cloud – ACTIVE
+            \item Rec: MYMINFIN-12102: Recouvrement Support – ACTIVE
+            \item Patdoc: MYMINFIN-12104: PatDoc Support – ACTIVE
+            \item Douane: MYMINFIN-12106: Douane Support – ACTIVE
+            \item Trésorerie: MYMINFIN-12108: Trésorerie Support – ACTIVE
+            \item (Until end of August, except FISC)
+        \end{itemize}
+        \item Transversal Support (last resort if none of the above applies)
+        \begin{itemize}
+            \item Transversal: MYMINFIN-12182: Transversal Support – ACTIVE
+            \item ICT: MYMINFIN-12110: Support Day – ACTIVE
+            \item (Until end of August)
+        \end{itemize}
+    \end{enumerate}
+    
+    \item \textbf{Een gebruiker heeft geen toegang tot een functionaliteit wat moet ik hiermee doen?} \\
+    Vragen met betrekking tot toegangsrechten moeten voortaan worden doorgestuurd naar de algemene mailboxen van de IAM-cellen.\\
+    \textbf{Let op:} deze adressen MOGEN NIET aan klanten worden meegedeeld.\\
+    Fiscaliteit: support-egov.agfisc@minfin.fed.be\\
+    Invordering \& Innen: support-egov.agpr@minfin.fed.be\\
+    Patrimoniumdocumentatie: support-egov.agdp@minfin.fed.be\\
+    Douane \& Accijnzen: support-egov.da@minfin.fed.be\\
+    Thesaurie: support-egov.thesaurie@minfin.fed.be\\
+    Algemeen: support-egov@minfin.fed.be
+    
+    \item \textbf{Er is een probleem met attest service, wie kan ik hiervoor contacteren?} \\
+    Je kan contact opnemen met het development team via \texttt{grp-minfin-finattest-devteam@minfin.fed.be}.
+    
+    \item \textbf{Hoe doe ik een repush voor RV?} \\
+    Hier zijn de stappen die gevolgd moeten worden wanneer het RV-team vraagt om een “repush” uit te voeren:
+    \begin{enumerate}
+        \item Open MyMinfin Civil Servant in een incognitovenster.
+        \item Open een tweede tabblad en zet er alvast: \texttt{http://www.finbel.intra/}
+        \item Zorg ervoor dat u over de volgende informatie beschikt:
+        \begin{itemize}
+            \item Application Type
+            \item Status
+            \item ID
+        \end{itemize}
+        \item In het tweede tabblad, plak een link met de volgende structuur achter:\\
+          \begin{verbatim}
+              {http://www.finbel.intra/myminfin-rest/myminfin-files-stirint
+                  /put-in-queue/\{applicationType\}/\{status\}/\{id\}}
+          \end{verbatim}
+        Voorbeeld:\begin{verbatim}{myminfin-rest/myminfin-files-stirint/put-in-queue-by-id
+                /WITHHOLDING\_TAX/VALIDATED/204832}\end{verbatim}
+        \textbf{Opmerking:} Als u het volledige adres van de aanvrager krijgt, let er dan op dat er niet te veel spaties in staan.
+        \item Druk op ENTER.
+        \item Als alles goed verlopen is, geeft het systeem een succesbericht terug dat gecombineerd moet zijn met de melding 'queued files: 1'.\\
+        Voorbeeld: 
+        \begin{verbatim}
+            {"restMessages":[{"type":"SUCCESS",
+                    "bundleKey":"queued files : 1",...}]}
+        \end{verbatim}
+      \end{enumerate}
+        
+        \item \textbf{Iemand wil een document verwijderen dat hij heeft opgeladen via MyMinfin, wat kan ik hierop antwoorden?} \\
+        Je kan het volgende antwoorden: MYMINFIN slaat geen gegevens op. Als het proces niet toelaat om te annuleren, moet de gebruiker contact opnemen met de afdeling die het document heeft ontvangen.\\
+        Ik vermoed dat dit document is verstuurd via Antwoord op een brief - in dit geval moet de klant de gebruikte driecijferige code meedelen en moet je het ticket doorsturen naar het SOH-team. Die kunnen je vertellen met welke bevoegde service contact moet worden opgenomen.\\
+        Wij kunnen u niet helpen.
+        
+        \item \textbf{Een burger kan werkt bij een onderneming, maar kan niet inloggen in de naam van de onderneming, wat moet ik hierop antwoorden?} \\
+        Indien u niet de wettelijke vertegenwoordiger van de onderneming bent, hebt u een rol nodig om in te loggen in MYMINFIN in naam van uw eigen onderneming (inclusief filialen).\\
+        U wilt in MYMINFIN toegang tot:
+        \begin{itemize}
+            \item de berichten van de onderneming, dan hebt u de rol FODFIN Berichten van de onderneming nodig;
+            \item de documenten en formaliteiten van de onderneming, dan hebt u meestal genoeg aan de rol FOD Fin Aanstelling Eigen Onderneming met één of meerdere parameters in functie van uw verantwoordelijkheden (bv. Om de BTW formaliteiten te beheren, hebt u de parameter ‘Aanstelling BTW' nodig).
+            \end{itemize}
+Indien uw onderneming meerdere filialen telt, hebt u enkel de rol nodig die volstaat voor elk van die ondernemingen. Vergeet het begrip ‘mandaten'. Die zijn niet nodig als het om uw eigen onderneming (inclusief filialen) gaat.\\
+Voor meer informatie kan u de volgende websites raadplegen:
+\begin{itemize}
+\item Welke rol ik moet toekennen : Rollen
+\item Hoe toekennen of aanvragen van een rol : Beheer van de toegangsaanvragen in de rollenadministratie- RMA - Loginhulp.be
+\end{itemize}
+Eens dit in orde is, logt u aan op MyMinfin en identificeert zich “in naam van een onderneming”.\\
+Selecteer uw eigen onderneming (of een filiaal).
+
+\item \textbf{Wat zijn de contactgegevens voor de hypoimage service?} \\
+service : AGDP - HYPOIMAGE \\
+contacts : \texttt{rzsj.operationeleondersteuning@minfin.fed.be} ou PATDOC-RZSJ-Hypo (1e lijn) \\
+- andy.vanrompuy@minfin.fed.be (ICT - servicemanager ad interim) \\
+- dirk.vanherrewegen@minfin.fed.be (ICT - développeur)
+\end{enumerate}

@@ -1,4 +1,4 @@
-\chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}
+\chapter{Stand van zaken}
 \label{ch:stand-van-zaken}
 
 % Tip: Begin elk hoofdstuk met een paragraaf inleiding die beschrijft hoe
@@ -58,9 +58,9 @@ Wanneer een LLM wordt gebruikt, is het belangrijk om te beseffen dat de kennis v
 \subsection{Finetuning}
  
 Finetuning probeert hetzelfde probleem op te lossen als RAG, namelijk dat een LLM-model geen of onvoldoende domeinkennis heeft om in bepaalde situaties te antwoorden. De manier waarop dit wordt opgelost met finetuning is echter anders. Bij finetuning wordt een bestaande LLM verder getraind met een eigen dataset. Met andere woorden: het doel is om de parameters van het model aan te passen, zodat het model accurater kan antwoorden op domeinspecifieke vragen \autocite{Raj2024}.
-
+\\[1em]
 Wanneer een model is gefinetuned, kan het dus domeinspecifieke vragen beantwoorden zonder dat het daarbij een vectordatabase nodig heeft. De toegevoegde kennis wordt op deze manier intrinsiek aan het model, waardoor het niet meer afhankelijk is van externe kennisbronnen \autocite{Raj2024}.
-
+\\[1em]
 Hoewel finetuning zeker een techniek is die heeft aangetoond te werken, moet er wel rekening worden gehouden met de hoge initiële kosten, vooral in vergelijking met een oplossing zoals RAG. Daarnaast speelt ook het feit dat er een minimale hoeveelheid data nodig is om een model te finetunen. Finetuning is mogelijk met kleinere datasets, maar het is efficiënter bij grotere datasets \autocite{Balaguer2024}.
 
  
@@ -132,7 +132,10 @@ Zodra de meest relevante informatie is opgehaald, wordt deze gebruikt in het pro
 Met de opkomst van nieuwe LLM-modellen die een grotere context bevatten is het niet altijd nodig om te werken met een RAG-architectuur. Wanneer het aantal documenten en de lengte ervan niet dermate groot is kan je ook meteen alle documenten injecteren in de context van een LLM-model. Dit zorgt voor een heel simpele en efficiënte benadering om een LLM-model bedrijf- of contextspecifieke kennis te geven \autocite{Chan2025}.
 \\[1em]
 Het voordeel van deze aanpak is dat de een deel van het RAG-proces wordt geëlimineerd, met name de documentatie moet niet meer worden opgeslagen in een vectordatabase. 
+\\[1em]
 Er is ook niet langer nood aan het ophalen van de geselecteerde gegevens wat mogelijks fouten binnen dit proces ook elimineert. Dit is zeker een valabele optie wanneer het gaat over een beperkte pool van documentatie \autocite{Chan2025}. 
+\\[1em]
+Een potentieel gevaar bij het gebruik van CAG is zogenaamde context rot. Volgens \textcite{hong2025context} neemt de performantie van een LLM af wanneer meer informatie aan de context wordt toegevoegd. Hoewel de nieuwste modellen een context window hebben van soms wel een miljoen tokens, is het daarom niet aan te raden dit volledig te benutten, aangezien dit een negatieve impact kan hebben op de prestaties van het model zelfs voor simpele vragen.
 
 \subsection{LLM benchmarks}
 Om te bepalen welke modellen het meest geschikt zijn voor de ontwikkeling van IT-support chatbot, is een objectieve meetmethode noodzakelijk. Gelukkig bestaan er verschillende platformen die LLM's vergelijken en rangschikken op basis van prestaties. In deze sectie bespreken we enkele van deze platformen en maken we een selectie van modellen die het meest geschikt lijken voor het bouwen van een RAG-model.
@@ -201,7 +204,8 @@ Een score van 1 betekent een perfecte overeenkomst, maar zelfs menselijke vertal
 Net zoals de BLEU-score evalueert de ROUGE-score de mate van overlap tussen een door machine gegenereerde tekst en een menselijke referentie. Waar BLEU echter voornamelijk gericht is op de precisie van exacte n-gram overeenkomsten, focust ROUGE sterker op de inhoudelijke dekking van de referentie. Hierdoor biedt de ROUGE-score een diepgaander inzicht in de kwaliteit van het gegenereerde antwoord \autocite{ganesan2018rouge20updatedimproved}.
 
 \subsubsection{BERTScore}
-%TODO
+
+BERTScore is een automatische evaluatiemethode voor tekstgeneratie. In tegenstelling tot traditionele methoden zoals BLEU, die vertrouwen op exacte overeenkomsten, maakt BERTScore gebruik van contextuele embeddings van het taalmodel BERT. Daarmee worden semantische gelijkenissen tussen tokens vergeleken. Hierdoor is deze metriek beter in staat om betekenisovereenkomsten te herkennen, zelfs wanneer een andere woordkeuze of zinsstructuur wordt gebruikt. Met andere woorden: BERTScore benadert menselijke beoordelingen beter dan bestaande metrieken zoals BLEU \autocite{Zhang2019}.
 
 \subsubsection{Ragas}
 

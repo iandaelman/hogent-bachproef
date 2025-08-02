@@ -2,7 +2,7 @@
 %% Methodologie
 %%=============================================================================
 
-\chapter{\IfLanguageName{dutch}{Methodologie}{Methodology}}
+\chapter{Methodologie}
 \label{ch:methodologie}
 
 %% TODO: In dit hoofstuk geef je een korte toelichting over hoe je te werk bent
@@ -30,51 +30,69 @@
 \section{Literatuurstudie}
 
 Voor de opstart van deze bachelorproef is een grondige literatuurstudie essentieel om de bestaande mogelijkheden op het gebied van virtuele assistenten te verkennen, met een focus op LLM, RAG en CAG. Eerst wordt er een inleiding gegeven in de onderliggende materie, zodat het onderwerp voldoende gekaderd kan worden. Daarnaast richt deze studie zich op een vergelijkende analyse die inzicht biedt in de verschillende beschikbare opties voor het ontwikkelen van een virtuele supportassistent. Hierbij worden de voor- en nadelen van elke optie in kaart gebracht, zodat op basis van deze informatie een onderbouwde keuze kan worden gemaakt voor de uitwerking van een PoC. De literatuurstudie moet ook duidelijkheid verschaffen over de benodigde hardware- en softwarevereisten voor de ontwikkeling.
-
-Op basis van de literatuurstudie moet een analyse worden opgesteld om na te gaan welke optie die werden besproken binnen de literatuurstudie het best in overweging worden genomen. De belangrijkste keuze die zal moeten gemaakt worden binnen deze use case is de keuze welke techniek zal worden toegepast. Iedere methode heeft zijn voor- en nadelen hebben moet dit weloverwogen worden voor het opstellen van de PoC en het LLM modellen die kunnen worden gebruikt voor de PoC.
-
-
-\section{Requirement analyse}
+\\[1em]
+Op basis van de literatuurstudie moet een analyse worden opgesteld om na te gaan welke optie die werden besproken binnen de literatuurstudie het best in overweging worden genomen. De belangrijkste keuze die zal moeten gemaakt worden binnen deze use case is de keuze welke techniek zal worden toegepast. Iedere methode heeft zijn voor- en nadelen hebben moet dit weloverwogen worden voor het opstellen van de PoC en de LLM-modellen die kunnen worden gebruikt.
 
 
-Gekoppeld aan de literatuurstudie zullen interviews worden afgenomen. Het doel van deze interviews is om een helder overzicht te verkrijgen van de verschillende vereisten voor de virtuele assistent. Op basis van het overzicht uit de literatuurstudie kan vervolgens een meer gerichte selectie worden gemaakt van de verschillende opties. Het uiteindelijke doel is om voor twee à drie modellen een PoC uit te werken die verder getest kunnen worden. Het is met andere woorden van belang om de verschillende modellen zo uitgebreid mogelijk te onderzoeken, zodat zoveel mogelijk modellen getoetst kunnen worden aan de gevraagde vereisten.Eens de literatuurstudie is afgerond en de interviews zijn afgenomen, kan met behulp van een MoSCoW-analyse een rangschikking worden opgesteld van de verschillende beschikbare modellen. Deze rangschikking bepaalt welke modellen worden geselecteerd voor het uitwerken van een PoC.
+\section{Requirements analyse}
+
+
+Gekoppeld aan de literatuurstudie zullen interviews worden afgenomen met de uiteindelijke gebruikers van de PoC. Het doel van deze interviews is om een helder overzicht te verkrijgen van de verschillende vereisten voor de virtuele assistent. Op basis van het overzicht uit de literatuurstudie kan vervolgens een meer gerichte selectie worden gemaakt van de verschillende opties. Het uiteindelijke doel is om voor twee à drie modellen een PoC uit te werken die verder getest kunnen worden. Het is met andere woorden van belang om de verschillende modellen zo uitgebreid mogelijk te onderzoeken, zodat zoveel mogelijk modellen getoetst kunnen worden aan de gevraagde vereisten. 
+\\[1em]
+Eens de literatuurstudie is afgerond en de interviews zijn afgenomen, kan met behulp van een MoSCoW-analyse een overzicht gemaakt worden van de nodige functionaliteiten die nodig zijn om de PoC op te stellen. Aan de hand van deze functionaliteiten kan een rangschikking worden opgesteld van de verschillende beschikbare modellen waarmee de PoC kan verwezenlijkt worden. Deze lijst bepaalt welke modellen worden geselecteerd voor het uitwerken van een PoC.
 
 \section{Long list}
 
 In deze sectie wordt een overzicht gegeven van de verschillende mogelijkheden die beschikbaar zijn voor het opstellen van de PoC. Dit gaat zowel over de verschillende technieken en technologieën die kunnen toegepast worden om tot het eindresultaat te komen van de chatbot. Deze sectie geeft enkel een overzicht van de verschillende mogelijkheden voor een meer gedetailleerde inhoud kan de stand van zaken geraadpleegd worden.
 
-\subsubsection{LLM model}
+\subsubsection{LLM-model}
 
-Gelet op het feit dat er extreem veel modellen bestaan is het niet nuttig om alle beschikbare modellen in rekening te brengen. 
-De onderstaande lijst is gebaseerd op alle modellen die in de top ranking staan van ChatbotArena en LiveBench. 
-Op deze manier hebben we alle best mogelijke modellen waaruit dan verder een selectie kan gemaakt worden. 
-Gelet op de scope van de PoC wordt echter wel een voorkeur gegeven aan zogenaamde open modellen.
+Aangezien er een zeer groot aantal LLM-modellen beschikbaar is, is het niet zinvol om elk model in overweging te nemen. Daarom wordt er vertrokken vanuit een selectie van toonaangevende modellen, waaruit vervolgens een verdere keuze kan worden gemaakt. Gezien de scope van de PoC gaat de voorkeur uit naar zogenoemde open modellen.
 
 \subsubsection{Toegepaste techniek}
+
+Voor het opzetten van een chatbot assistent bestaan er meerdere technieken. Deze worden elk besproken in de literatuurstudie en zijn de volgende:
+\begin{itemize}
+    \item Finetuning
+    \item Retrieval-Augmented Generation (RAG)
+    \item Cache-Augmented Generation (CAG)
+\end{itemize}
+
+\subsubsection{Meetinstrumenten}
+% TODO: Ragas-metrics hier toevoegen
+TODO hier een overzicht geven van de verschillende mogelijkheden om te testen. 
 
 \section{Short list}
 
-\subsubsection{LLM model}
+\subsubsection{LLM-model}
 
-Voor het opstellen van de PoC wordt gekozen om te werken met zogenaamde open modellen. Naast het feit dat het mogelijk is om deze modellen gratis te gebruiken is het eveneens mogelijk om deze modellen lokaal te installeren en te gaan gebruiken. Aangezien de modellen lokaal worden gebruikt is er binnen het opstellen van deze PoC geen problemen met privacy schending. De gebruikte data en query's worden enkel gebruikt op de eigen lokale hardware.
+Op basis van de beschikbare modellen uit de longlist wordt een selectie gemaakt, waarbij de keuze wordt beperkt tot open modellen. Deze modellen zijn niet alleen gratis te gebruiken, maar kunnen ook lokaal worden geïnstalleerd en ingezet. Doordat de modellen lokaal draaien, ontstaan er binnen deze PoC geen privacyproblemen. Alle gebruikte data en query’s blijven volledig op de eigen lokale hardware, zonder externe verwerking.
 
 \subsubsection{Toegepaste techniek}
 
-%TODO hier verantwoorden waarom RAG
+Rekening houdend met de scope en de bijbehorende kostenbeperkingen is ervoor gekozen om voor de PoC RAG toe te passen. Finetuning brengt namelijk hoge kosten met zich mee, waardoor dit geen realistische optie is. Daarnaast hebben lokale modellen vaak een kleinere contextwindow dan commerciële modellen, waardoor CAG minder geschikt is. Bovendien is CAG minder schaalbaar, omdat bij elke vraag alle documenten in de context moeten worden toegevoegd.
 
-\section{Uit te voeren testen en analyse resultaten}
+Dit maakt RAG de meest geschikte techniek voor deze PoC. Naast dat RAG schaalbaar is, kan het ook relatief eenvoudig lokaal worden ontwikkeld zonder grote technische of financiële obstakels.
 
-Elk van de geselecteerde modellen wordt vervolgens uitgewerkt in een PoC. Zodra de verschillende PoC’s beschikbaar zijn, wordt een vergelijking gemaakt tussen de modellen. Hierbij worden de volgende aspecten getest:
+\subsubsection{Meetinstrumenten}
+
+TODO hier de geselecteerde metrics oplijsten.
+
+\section{Opbouw van de PoC en Evaluatie}
+
+Tijdens de opbouw van de PoC worden periodiek tests uitgevoerd om te controleren of de werking naar behoren verloopt. Hierdoor is het mogelijk om tijdig bij te sturen en eventuele onvoorziene problemen aan te pakken. De focus van deze evaluaties ligt op het correct functioneren van de PoC en het voorkomen van regressie bij verdere ontwikkeling.
+
+\section{Algemene Evaluatie}
+
+Aan het einde van de PoC wordt elk geselecteerd model getest met een identieke set vragen. Op deze manier kunnen de modellen onderling vergeleken worden. Tijdens deze algemene evaluatie worden de volgende aspecten onderzocht:
 
 \begin{itemize}
-    \item Wat is de kwaliteit van de antwoorden volgens wetenschappelijke meetcriteria?
-    \item Hoeveel tijd kost het om een vraag te beantwoorden?
-    \item Welk model geniet de voorkeur van de gebruiker?
+    \item De kwaliteit van de gegenereerde antwoorden, beoordeeld volgens wetenschappelijk onderbouwde evaluatiecriteria.
+    \item De prestaties van het model bij het beantwoorden van triviale vragen, waarvoor geen domeinspecifieke kennis vereist is.
+    \item Het al dan niet vertonen van hallucinaties: geeft het model foutieve of verzonnen informatie?
 \end{itemize}
 
-%TODO Ragas hier toevoegen
-De kwaliteit van de gegenereerde antwoorden wordt geëvalueerd met behulp van de meetinstrumenten ROUGE, BLEU en BERTScore. Elk van deze methoden richt zich op verschillende kenmerken van tekstkwaliteit, zoals overeenkomsten in formulering en inhoudelijke gelijkenis. Door deze drie evaluatiemethoden samen te gebruiken, ontstaat een gebalanceerd beeld van de prestaties van de modellen.
+% TODO: Ragas-metrics hier toevoegen
 
-Daarnaast wordt de snelheid waarmee de modellen antwoorden genereren met elkaar vergeleken. Tot slot worden de antwoorden voorgelegd aan een groep gebruikers, die op basis van realistische situaties hun voorkeur kunnen aangeven. Op die manier worden naast objectieve ook subjectieve aspecten, meegenomen in de beoordeling.
-
+De kwaliteit van de gegenereerde antwoorden wordt geëvalueerd met behulp van vooraf geselecteerde meetinstrumenten. Daarnaast wordt getest hoe het model omgaat met eenvoudige, algemene vragen die geen toegang tot de specifieke documentatie vereisen. Tot slot wordt nagegaan of het model hallucinaties vertoont door vragen te stellen waarop geen antwoord te vinden is in de beschikbare documentatie, maar waarvoor wel een bron ophaling verwacht wordt. Het doel is te achterhalen of het model in staat is om correct aan de eindgebruiker te communiceren dat de gevraagde informatie niet beschikbaar is.
 

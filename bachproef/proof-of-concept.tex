@@ -25,7 +25,7 @@ De standaard RAG-architectuur gaat een query gaan embedden en haalt vervolgens d
 Om dit te vermijden, werd gebruikgemaakt van een graafstructuur die de LLM de mogelijkheid geeft om zelf te beoordelen wanneer het relevant is om documenten op te halen. Daarnaast wordt de LLM ook verantwoordelijk geacht om te oordelen over de opgehaalde documenten. De volledige flow van het proces kan worden bekeken in figuur~\ref{fig:Architectuur}
 \\[1em]
 De PoC werd uitgewerkt met behulp van Ollama, een tool waarmee open modellen lokaal kunnen worden gedraaid. Tijdens overleg met de betrokken partijen werd geen voorkeur uitgesproken voor specifieke LLM-modellen, enkel het gebruik van DeepSeek werd afgeraden.
-%TODO genereer opnieuw deze want nu nog niet volledig
+
 \begin{figure}[H]
     \includegraphics[width=1\textwidth]{flowchart.png}
     \caption{Architectuur van de PoC op basis van een graafgebaseerde workflow}
@@ -211,10 +211,11 @@ GENERATE_ANSWER_PROMPT = (
     "You are a helpful assistant supporting users with their MyMinfin IT-related questions.\n"
     "Based on the following context, please provide a clear and complete answer.\n"
     "If the answer is not available in the context, kindly let the user know that you don't have enough information.\n"
+    "If the context contains a source, always mention it in your answer as the reference.\n"
     "Always respond in the same language this question {question} is asked, even if the context is in a different language.\n\n"
     "Question: {question}\n"
     "Context: {context}"
-    )
+)
 \end{lstlisting}
 %Belangrijke componenten of modules kort toelichten.
 
@@ -291,7 +292,7 @@ Aangezien het grootste deel van de beschikbare documentatie in het Frans of Enge
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=Python, caption=Beoordeling documenten prompt]
 REWRITE_QUESTION_PROMPT = (
-"You are assisting with improving a user's question related to Myminfin IT-support.\n"
+"You are assisting with improving a user's question related to Myminfin IT support.\n"
 "Conversation history so far (most recent last):"
 "\n ------- \n"
 "{questions}"
@@ -300,12 +301,14 @@ REWRITE_QUESTION_PROMPT = (
 "\n ------- \n"
 "{original_question}"
 "\n ------- \n"
-"Rewrite the last question to make it clearer and more specific, without changing its original meaning or intent.\n"
+"Rewrite the last question to make it short, clear, and easy to match with relevant documents in a vector database.\n"
+"- Keep the meaning and intent exactly the same.\n"
+"- Use simple, direct wording without adding unnecessary details.\n"
 "- If the question is in Dutch, rewrite and translate it to French.\n"
 "- If the question is in French, rewrite and translate it to English.\n"
-"- Do not repeat or restate earlier questions exactly.\n"
-"- If the last question is very similar to a previous one, improve it by adding useful clarifications or context relevant to Myminfin IT-support.\n"
-"- Return only the rewritten question, nothing else."
+"- Avoid repeating previous questions word-for-word.\n"
+"- If it’s similar to a previous question, add only minimal context needed for distinction.\n"
+"- Return only the rewritten question."
 )
 \end{lstlisting}
 \section{Samenvatting}
