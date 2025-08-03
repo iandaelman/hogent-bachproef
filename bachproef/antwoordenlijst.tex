@@ -1,0 +1,355 @@
+\section{Antwoordenlijst}
+\label{antwoordenlijst}
+
+\subsection{Qwen3}
+\begin{enumerate}
+    \item \textbf{Wie is de product owner van AGDP en kan je de contactgegevens geven?} \\
+    De context bevat geen informatie over de product owner van AGDP of contactgegevens van deze persoon. De beschikbare informatie vermeldt contactgegevens voor services zoals AGDP - MYRENT en AGDP - HYPOIMAGE, maar deze zijn gericht op ICT-managers en andere functies, niet op de product owner. Zonder specifieke vermelding van de product owner in de context kan deze vraag niet volledig beantwoord worden.
+    
+    \item \textbf{Wie is de product owner van AGPR en kan je de contactgegevens geven?} \\
+    De product owner van AGPR wordt niet expliciet genoemd in de beschikbare context. In de context wordt slechts vermelding gedaan van product owners voor andere projecten onder MYMINFIN (zoals AGFISC, AGDA, AGDP en AGTRES), maar er is geen informatie over AGPR. Daarnaast zijn er geen contactgegevens verstrekt voor AGPR in de opgegeven bronnen. U moet contact opnemen met de relevante afdeling of product owner voor verdere informatie.
+    
+    \item \textbf{Kan je me alle contactgegevens geven voor het fragment UBO-register, ook de SNOW groep?} \\
+    De context bevat geen informatie over contactgegevens voor het fragment UBO-register of specifieke contactgegevens voor de SNOW groep gerelateerd aan het UBO-register. Er zijn echter enkele algemene SNOW groepen vermeld in de context, zoals **SERVICEDESK** en **TRANS-IAM**, maar deze zijn niet direct gekoppeld aan het UBO-register. Voor verdere hulp wordt aangeraden contact op te nemen met de relevante diensten via de beschikbare kanalen zoals SNOW of e-mailadressen die in de context worden vermeld.
+    
+    \item \textbf{Hoe of waar moet ik mijn tijd loggen voor de support?} \\
+    Het loggen van tijd voor ondersteuning wordt in de gegeven context niet expliciet vermeld. De beschikbare informatie bevat vooral instructies over technische implementaties, contactgegevens voor ondersteuning, en procedures voor het openen van tickets (zoals via ServiceNow). Voor specifieke richtlijnen over tijdregistratie voor ondersteuning zou je contact moeten opnemen met je interne service desk of technische teams, zoals vermeld in de context. Geen directe referentie naar tijdlogboekingsprocedures.
+    
+    \item \textbf{Een gebruiker heeft geen toegang tot een functionaliteit wat moet ik hiermee doen?} \\
+\begin{verbatim}
+    Als een gebruiker geen toegang heeft tot een functionaliteit, volg dan de volgende stappen:  
+    1. Controleer bij de gebruiker welke **egov-rollen** hij heeft voor zijn bedrijf. Als hij mandataris is, check dan welke mandaten hij heeft ondertekend met zijn klant.  
+    2. Controleer of deze rol of mandaat toegang geeft tot de functionaliteit (gebruik de tool voor toegangsrechten).  
+    3. Als de gebruiker de juiste rol en machtiging heeft, maar geen toegang, stuur het ticket door naar de **IAM dienst** (zie ook de contactgegevens in de context).  
+    
+    Voor specifieke functionaliteiten zoals bankgegevens, zie de contactinformatie in de **bank-account**-sectie. Als het probleem niet duidelijk is, meld het aan uw communicatieteam of servicedesk.  
+    
+    Bron: Treatment incidents (toegangsrechten) en Contacts (IAM ICT).
+\end{verbatim}
+    \item \textbf{Er is een probleem met attest service, wie kan ik hiervoor contacteren?} \\
+    Als er een probleem is met de attest-service, kunt u contact opnemen met de volgende personen:  
+    - **XXXXXXX** (ICT - dev-team, prioriteit voor technische problemen)  
+    - **XXXXXXX** (ICT - Service Manager)  
+    - **XXXXXXX** (ICT - dev)  
+    - **XXXXXXX** / **XXXXXXX** (business - chefs de projet)  
+    
+    Deze contactgegevens zijn te vinden in de context van **Treatment incidents**. Voor technische problemen wordt aanbevolen om eerst contact op te nemen met het dev-team.
+    
+    
+    \item \textbf{Hoe doe ik een repush voor RV?} \\
+\begin{verbatim}
+    1. Open **MyMinfin Civil Servant** in een incognito- of privé-venster.  
+    2. Open een tweede tab en bezoek de URL: [http://www.finbel.intra/](http://www.finbel.intra/).  
+    3. Verzamel de benodigde informatie:  
+    - **Application Type** (bijv. "WITHHOLDING TAX")  
+    - **Status** (bijv. "VALIDATED")  
+    - **ID** (bijv. "204832")  
+    4. Plak in het tweede tab het volgende linkformaat achter de URL:  
+    `myminfin-rest/myminfin-files-stirint/put-in-queue/{applicationType}/{status}/{id}`  
+    Voorbeeld: `myminfin-rest/myminfin-files-stirint/put-in-queue-by-id/WITHHOLDING TAX/VALIDATED/***204832***`  
+    Let op: Zorg dat er geen extra spaties zijn in de URL.  
+    5. Druk op **ENTER**.  
+    6. Controleer of het systeem een succesbericht retourneert met de tekst *"queued files: 1"*.  
+    Voorbeeld van een succesreactie:  
+
+    {
+        "restMessages": [
+        {
+            "type": "SUCCESS",
+            "bundleKey": "queued files: 1",
+            "sticky": false,
+            "date": "2023-07-03T13:41:29.848+0000"
+        }
+        ],
+        "mustRedirectToHome": false,
+        "sessionExpired": false,
+        "error": false
+    }
+\end{verbatim}
+
+        
+    Bron: RV
+    \item \textbf{Iemand wil een document verwijderen dat hij heeft opgeladen via MyMinfin, wat kan ik hierop antwoorden?} \\
+    Als iemand probeert om een document te verwijderen dat jij hebt opgeladen via MyMinfin, kun je antwoorden dat jezelf geen toegang hebt tot de functie voor verwijderen en dat de service die het document heeft ontvangen moet worden benaderd. Dit is gebaseerd op de informatie uit de context, waarin staat dat MYMINFIN geen gegevens opslaat en dat gebruikers contact moeten opnemen met de afdeling die het document heeft ontvangen als het niet mogelijk is om een aanvraag te annuleren (bron: Rôles Rollen). Bovendien wordt aangeraden om contact op te nemen met je IAM-responsabiel als je toegang hebt tot intern beheer en verificatie nodig hebt.
+    
+    \item \textbf{Een burger kan werkt bij een onderneming, maar kan niet inloggen in de naam van de onderneming, wat moet ik hierop antwoorden?} \\
+    De situatie waarin een burger werkt bij een onderneming maar niet kan inloggen in de naam van de onderneming is gerelateerd aan een beperking in het systeem. Volgens de context (bron: *Naam onderneming niet automatisch ingevuld*) wordt de naam van een onderneming niet automatisch ingevuld in MyMinfin, omdat het systeem enkel namen in het Frans, Nederlands en Duits ontvangt. Wanneer een onderneming haar naam in het Engels registreert bij de Kruispuntbank, wordt deze niet overgenomen in Sitran, en dus niet beschikbaar in MyMinfin. Dit leidt tot problemen bij het invullen van bepaalde formulieren, zoals het E705-formulier, waar de ondernemingsnaam automatisch moet worden ingevuld.
+    
+    **Oplossing**: Er is momenteel geen directe oplossing voor dit probleem, aangezien het gaat om automatisch geleverde data. Indien het probleem zich herhaalt, kan er later een businessregel worden toegepast. Tot dan toe wordt aangeraden om contact op te nemen met de **servicedesk** van het SPF Economie (telefoonnummer: 02 576 36 36) voor verdere ondersteuning bij authenticatieproblemen (zie bron: *Treatment incidents*). 
+    
+    Let op: De context bevat geen specifieke instructies voor het inloggen onder de ondernemingsnaam, maar benadrukt dat de naam niet automatisch beschikbaar is.
+    
+    
+    \item \textbf{Wat zijn de contactgegevens voor de hypoimage service?} \\
+    \begin{verbatim}
+De contactgegevens voor de hypoimage service zijn als volgt:  
+- **Eerste lijn ondersteuning**: [XXXXXXX@XXXXXXX.be]
+(mailto:XXXXXXX@XXXXXXX.be) 
+(te gebruiken voor contact en tickettoewijzing aan het groep PATDOC-RZSJ-Hypo).  
+- **ICT-service manager ad interim**: [XXXXXXX]
+(mailto:XXXXXXX@XXXXXXX.be).  
+- **ICT-ontwikkelaar**: [XXXXXXX]
+(mailto:XXXXXXX@XXXXXXX.be).  
+
+Bron: Treatment incidents.
+    \end{verbatim}
+\end{enumerate}
+
+\subsection{Qwen2.5:7b-instruct}
+\begin{enumerate}
+    \item \textbf{Wie is de product owner van AGDP en kan je de contactgegevens geven?} \\
+    De product owner van AGDP is XXXXXXX.
+    Helaas heb ik geen contactgegevens voor XXXXXXX in de gegeven context. Voor verdere informatie over contactgegevens kunt u proberen via een van de genoemde e-mailadressen of telefoonnummer 02 576 36 36 om verder te vragen.
+    
+    \item \textbf{Wie is de product owner van AGPR en kan je de contactgegevens geven?} \\
+    \begin{verbatim}
+    De product owner van AGPR is XXXXXXX. Hier zijn de contactgegevens:
+    
+    - Naam:XXXXXXX
+    - Email: Geen specifieke email vermeld in het gegeven context,
+     maar je kunt proberen via het service ABA te communiceren.
+    - Telefoonnummer: Geen specifiek nummer vermeld,
+     maar je kunt contact opnemen met de ABA-dienst.
+    Als je verdere hulp nodig hebt of meer informatie wilt, 
+    raadpleeg dan aub het service ABA.
+    \end{verbatim}
+    
+    \item \textbf{Kan je me alle contactgegevens geven voor het fragment UBO-register, ook de SNOW groep?} \\
+    \begin{verbatim}
+        Based on the provided context, I can provide some contact information 
+        for the UBO-register fragment and SNOW group, but not all details are available.
+        
+        For the UBO-register fragment:
+        - No specific contact information is listed in the given context.
+        
+        For the SNOW group related to the UBO-register:
+        - The relevant SNOW group mentioned is **SERVICEDESK**. 
+        - Contact: 02 576 36 36
+        
+        Please note that the context does not provide additional 
+        contacts or detailed information for the UBO-register fragment specifically.
+        
+        For other fragments and groups, some contact details are available:
+        - For obligation de retenue (Obligation to Withhold):
+        - Service manager:XXXXXXX (backup:XXXXXXX)
+        - Business group SNOW: IR-DAD-Bus
+        - Business analyst:XXXXXXX
+        
+        For ICT-related groups:
+        - Group SNOW: IR-ICT-Team3, TRANS-Doc&eForm, PATDOC-MEOW-Maps-IT
+        - Service managers and experts are listed for each group.
+        
+        If you need more detailed or specific information, 
+        please provide additional context or clarify your request.
+    \end{verbatim}
+    
+    \item \textbf{Hoe of waar moet ik mijn tijd loggen voor de support?} \\
+    \textit{Voor dit antwoord werden geen documenten opgehaald.}
+    
+    \item \textbf{Een gebruiker heeft geen toegang tot een functionaliteit wat moet ik hiermee doen?} \\
+    \textit{Voor dit antwoord werden geen documenten opgehaald.}
+   
+    \item \textbf{Er is een probleem met attest service, wie kan ik hiervoor contacteren?} \\
+    \begin{verbatim}
+        Voor problemen met de attest service kunt u contact opnemen met:
+        
+        - De ontwikkelteam van ICT via [XXXXXXX@XXXXXXX.be]
+        (mailto:XXXXXXX@XXXXXXX.be)
+        - XXXXXXX (ICT - Service Manager) via [XXXXXXX@XXXXXXX.be]
+        (mailto:XXXXXXX@XXXXXXX.be)
+        - XXXXXXX (ICT - ontwikkelaar) via [XXXXXXX]
+        (mailto:XXXXXXX)
+        -XXXXXXX of XXXXXXX (business - projectleiders) via 
+        [XXXXXXX@XXXXXXX.be](mailto:XXXXXXX@XXXXXXX.be) / [XXXXXXX]
+        (mailto:XXXXXXX@XXXXXXX.be)
+        
+        Referentie: Treatment_incidents
+    \end{verbatim}
+    
+    \item \textbf{Hoe doe ik een repush voor RV?} \\
+    \textit{Voor dit antwoord werden geen documenten opgehaald.}
+    
+    \item \textbf{Iemand wil een document verwijderen dat hij heeft opgeladen via MyMinfin, wat kan ik hierop antwoorden?} \\
+    \textit{Voor dit antwoord werden geen documenten opgehaald.}
+    
+    \item \textbf{Een burger werkt bij een onderneming, maar kan niet inloggen in de naam van de onderneming, wat moet ik hierop antwoorden?} \\
+    \textit{Voor dit antwoord werden geen documenten opgehaald.}
+    
+    \item \textbf{Wat zijn de contactgegevens voor de hypoimage service?} \\
+    Helaas hebben we geen specifieke contactgegevens voor de hypoimage service gevonden in het gegeven context. Het lijkt erop dat de informatie over contactpersonen en diensten gerelateerd is aan andere services zoals reply-letter, service desk, VTOM, en myID.be. Voor verdere hulp of vragen over de hypoimage service zou u mogelijk direct moeten contacteren met het bedrijf zelf of een relevante afdeling binnen MyMinfin.
+    
+\end{enumerate}
+
+\subsection{Llama3.1:8b-instruct-q4 K M}
+\begin{enumerate}
+    \item \textbf{Wie is de product owner van AGDP en kan je de contactgegevens geven?} \\
+    De product owner van AGDP is niet direct vermeld in de gegeven bronnen. Echter, in het gedeelte "Rôles\_Rollen" wordt er verwezen naar de contactgegevens voor verschillende diensten en afdelingen. Voor de service AGDP - MYRENT zijn de contactgegevens [XXXXXXX@XXXXXXX.be](mailto:XXXXXXX@XXXXXXX.be) of PATDOC-MyRent (1e lijn), [XXXXXXX@XXXXXXX.be](mailto:XXXXXXX@XXXXXXX.be) (ICT - service manager) en [XXXXXXX@XXXXXXX.be](mailto:XXXXXXX@XXXXXXX.be) (business-responsable service).
+    
+    \item \textbf{Wie is de product owner van AGPR en kan je de contactgegevens geven?} \\
+    De product owner van AGPR is niet te vinden in de gegeven bronnen. Wel vind je contactinformatie voor andere diensten en teams, maar die van AGPR zelf is niet beschikbaar.
+ 
+    \item \textbf{Kan je me alle contactgegevens geven voor het fragment UBO-register, ook de SNOW groep?} \\
+    Ik kan je de contactgegevens geven voor het fragment UBO-register, inclusief de SNOW groep. Volgens de informatie in de bron "Contacts" (bron 1) zijn de contacten voor het UBO-register:
+    
+    * XXXXXXX
+    * XXXXXXX
+    * L'utilisateur moet d'office worden gericht naar XXXXXXX@XXXXXXX.be
+    
+    De SNOW groep voor dit fragment is niet expliciet vermeld in deze bron, maar we kunnen de informatie uit andere bronnen gebruiken om een antwoord te geven. In de bron "Treatment\_incidents" (bron 3) staat dat voor databreach-incidenten de IAM PRIVACY Business moet worden bereikt, en dat de SNOW groep hiervoor **IAM-VP** is.
+    
+    Dus, de contactgegevens voor het fragment UBO-register zijn:
+    
+    * Adil Soussi Nachit
+    * Martine Smet
+    * L'utilisateur moet d'office worden gericht naar XXXXXXX@XXXXXXX.be
+    * SNOW groep: **UBO-REGISTER** (niet expliciet vermeld, maar we kunnen de informatie uit andere bronnen gebruiken om een antwoord te geven. In dit geval is de SNOW groep voor databreach-incidenten **IAM-VP**, dus het is waarschijnlijk dat deze ook geldt voor het UBO-register)
+    
+    Ik hoop dat dit helpt! Laat me weten als je nog meer informatie nodig hebt.
+    
+    
+    
+    \item \textbf{Hoe of waar moet ik mijn tijd loggen voor de support?} \\
+    \textit{Voor dit antwoord werden geen documenten opgehaald.}
+    
+    \item \textbf{Een gebruiker heeft geen toegang tot een functionaliteit wat moet ik hiermee doen?} \\
+    Als een gebruiker geen toegang heeft tot een functionaliteit, moet je eerst controleren of hij de juiste rol en machtiging heeft voor zijn bedrijf of klant. Dit kan gedaan worden door te kijken naar zijn eGov-rollen en mandaten die hij heeft ondertekend met zijn klant. Als deze informatie niet beschikbaar is op de site van de FOD Financiën, moet je dit melden aan het communicatieteam.
+    
+    Als de gebruiker de juiste rol en machtiging heeft, maar nog steeds geen toegang heeft, moet je een ticket openen bij de IAM dienst. Als de gebruiker echter mandataris is, moet je controleren welke mandaten hij heeft ondertekend met zijn klant en of deze hem toegang geeft tot het document of functionaliteit.
+    
+    Als er sprake is van een datalek ("databreach"), moet de gebruiker een klacht indienen via de website van de FOD Financiën, die automatisch doorgestuurd worden naar de bevoegde afdeling IAM Security.
+    
+    Bron: Treatment\_incidents 
+    
+    \item \textbf{Er is een probleem met attest service, wie kan ik hiervoor contacteren?} \\
+    Als je een probleem hebt met de attest service, kun je contact opnemen met het ICT-dev team via [ XXXXXXX@XXXXXXX.be](mailto: XXXXXXX@XXXXXXX.be). Als je prioriteit hebt voor technische problemen, is dit de beste optie.
+    
+    \item \textbf{Hoe doe ik een repush voor RV?} \\
+    Ik kan je niet helpen met het antwoord op deze vraag omdat de context over RV gaat en niet over MyMinfin. De context geeft aan hoe je een repush voor RV moet doen, maar niet hoe je dit doet in MyMinfin.
+    
+    
+    \item \textbf{Iemand wil een document verwijderen dat hij heeft opgeladen via MyMinfin, wat kan ik hierop antwoorden?} \\
+    U kunt antwoorden: "Als u wilt dat ik het document verwijder, moet u contact opnemen met de afdeling die het document heeft ontvangen. U kunt dit doen door naar [www.myminfin.be](http://www.myminfin.be) te gaan en inloggen als mandataris voor uw onderneming. Vervolgens selecteert u uw klant en zoekt u het dossier op. Van daaruit kunt u contact opnemen met de afdeling die het document heeft ontvangen om hen te vragen het document te verwijderen."
+    
+    
+    \item \textbf{Een burger kan werkt bij een onderneming, maar kan niet inloggen in de naam van de onderneming, wat moet ik hierop antwoorden?} \\
+    Als een burger werkt bij een onderneming, maar niet kan inloggen in de naam van die onderneming, moet je hem adviseren om contact op te nemen met de servicedesk op 02 576 36 36. Als zij geen oplossing kunnen vinden, kan hij een ticket openen bij de dienst IAM ICT.
+    
+    \item \textbf{Wat zijn de contactgegevens voor de hypoimage service?} \\
+    Ik kan de contactgegevens voor de hypoimage service niet vinden in het gegeven context. Het enige wat ik vind is dat er een tabel staat met contactgegevens voor verschillende diensten, maar die van hypoimage zijn niet vermeld.
+\end{enumerate}
+
+\subsection{Llama3.2}
+\begin{enumerate}
+    \item \textbf{Wie is de product owner van AGDP en kan je de contactgegevens geven?} \\
+    De product owner van AGDP is XXXXXXX. U kunt haar contactgegevens vinden in de bron 'Rôles\_Rollen' onder het punt (7) BUCA, nouveau projet.
+    
+    Reference: Rôles\_Rollen
+    
+    
+    \item \textbf{Wie is de product owner van AGPR en kan je de contactgegevens geven?} \\
+    Het product owner van AGPR is XXXXXXX. De contactgegevens voor XXXXXXX zijn niet direct beschikbaar in de geleverde context, maar volgens het document "Treatment\_incidents" kan je haar contact opnemen via het service ABA.
+    
+    
+    \item \textbf{Kan je me alle contactgegevens geven voor het fragment UBO-register, ook de SNOW groep?} \\
+    Ik heb genoeg informatie om je te helpen bij je vraag. Het UBO-register is een register van onroerende boekhouding en het SNOW-groep is een groep in de IT-afdeling van de FOD Financiën.
+    
+    De contactgegevens voor het fragment UBO-register zijn niet direct beschikbaar in de geleverde bronnen. Echter, ik kan je vertellen dat de contactgegevens voor het UBO-register via de volgende manier kunnen worden verkregen:
+    
+    * Je kunt contact opnemen met de FOD Financiën via de service desk (02 576 36 36) of via e-mail (XXXXXXX@XXXXXXX.be).
+    * Je kunt ook contact opnemen met de IT-afdeling van de FOD Financiën via het SNOW-groep "Contact-Privacy-PATDOC" (ICT - Group SNOW: PATDOC-OutputServices).
+    
+    Ik heb geen informatie over de exacte contactgegevens voor de SNOW-groep "SNOW groep UBO-register".
+    
+    
+    
+    \item \textbf{Hoe of waar moet ik mijn tijd loggen voor de support?} \\
+    Ik heb genoeg informatie om je een antwoord te geven. Volgens de context moet je tijd loggen bij het SOH-team (Service Opérationnel Hyères) als je problemen hebt met je account of je niet kunt inloggen in naam van je eigen onderneming.
+    
+    Je kunt contact opnemen met het SOH-team via [XXXXXXX@XXXXXXX.be]
+    (mailto:XXXXXXX@XXXXXXX.be), maar het is belangrijk om te weten dat tweedelijnsteams niet direct reageren op klanten. Je moet je verzoek doorsturen naar IAM (Identity and Access Management) en vragen welke rol je hebt om de juiste hulp te krijgen.
+    
+    Referentie: Rôles\_Rollen, Treatment\_incidents
+    
+    
+    \item \textbf{Een gebruiker heeft geen toegang tot een functionaliteit wat moet ik hiermee doen?} \\
+    Ik heb geen voldoende informatie om een duidelijke aanpak te geven voor het geval dat een gebruiker geen toegang heeft tot een functionaliteit. De context bevat verschillende onderwerpen en functionaliteiten, maar er is geen expliciete aanwijzing hoe je in zo'n situatie moet handelen.
+    
+    De bronnen die zijn genoemd, zoals Treatment\_incidents, Rôles\_Rollen en Contacts, bieden geen duidelijke richtlijn voor het geval dat een gebruiker geen toegang heeft tot een functionaliteit. Het is mogelijk dat de aanpak afhankelijk is van de specifieke functionaliteit of onderwerp waarop de gebruiker geen toegang heeft.
+    
+    Ik kan je aanraden om contact op te nemen met de servicedesk of de dienst IAM ICT, zoals aangegeven in het document Treatment\_incidents. Zij kunnen je helpen om een ticket open te maken en een oplossing te vinden voor het probleem.   
+    
+    \item \textbf{Er is een probleem met attest service, wie kan ik hiervoor contacteren?} \\
+    Je suis désolé, mais je n'ai pas suffisamment d'informations pour vous aider directement avec votre problème concernant l'attest service. L'contexte fourni mentionne plusieurs contacts et services, tels que le groupe de développement du service attest, le service manager ICT, les chefs de projet et la cellule IAM compétente.
+    
+    Cependant, je peux vous suggérer quelques étapes à suivre pour essayer de résoudre votre problème :
+    
+    1. Vérifiez si vous avez un ticket SNOW ou une demande d'attestations en cours qui peut être transférée à la cellule IAM compétente.
+    2. Contactez le service desk au 02 576 36 36 pour obtenir de l'aide avec votre problème d'authentification.
+    3. Si le service desk ne trouve pas de solution, il ouvrira un ticket auprès du service IAM ICT.
+    
+    Je vous recommande de consulter les sources fournies pour plus d'informations sur les contacts et les services disponibles.
+    
+    Référence : Treatment\_incidents
+    
+    
+    \item \textbf{Hoe doe ik een repush voor RV?} \\
+    
+    Ik heb genoeg informatie om je te helpen bij het repush voor RV. Volg deze stappen:
+    \begin{verbatim}
+    1. Opend MyMinfin Civil Servant in een incognitewijzer.
+    2. Open een tweede venster en voeg [http://www.finbel.intra/](http://www.finbel.intra/) toe.
+    3. Zorg ervoor dat je de volgende informatie hebt:
+    * Application Type
+    * Status
+    * ID
+    4. In het tweede venster kopieer de volgende link en plak hem achter [http://www.finbel.intra/](http://www.finbel.intra/):
+    **Repush par ID**:
+    `myminfin-rest/myminfin-files-stirint/put-in-queue/{applicationType}/{status}/{id}`
+    Bijvoorbeeld: `myminfin-rest/myminfin-files-stirint/put-in-queue-by-id
+    /WITHHOLDING_TAX/VALIDATED/***204832***`
+    Zorg ervoor dat er niet te veel spaties zijn.
+    5. Klik op ENTER.
+    6. Als alles goed is gegaan, krijg je een succesbericht met een message zoals:
+    
+          ```json
+      {
+          "restMessages": [
+          {
+              "type": "SUCCESS",
+              "bundleKey": "queued files: 1",
+              "sticky": false,
+              "date": "2023-07-03T13:41:29.848+0000"
+          }
+          ],
+          "mustRedirectToHome": false,
+          "sessionExpired": false,
+          "error": false
+      }
+      ```
+    \end{verbatim}
+    
+    \item \textbf{Iemand wil een document verwijderen dat hij heeft opgeladen via MyMinfin, wat kan ik hierop antwoorden?} \\
+    Ik heb genoeg informatie om je te helpen. Volgens het document "Comment retirer un document que je viens d'enregistrer via MMF" kun je een document verwijderen dat je hebt opgeladen via MyMinfin door de volgende stappen te volgen:
+    
+    1. Log in op [www.myminfin.be](http://www.myminfin.be) en identificeer jezelf "in naam van een onderneming".
+    2. Kies je onderneming (deze moet het mandaat met de klant hebben getekend).
+    3. Klik op de link "Accéder au dossier d'un client en tant que mandataire" en selecteer vervolgens je klant.
+    
+    Na deze stappen kun je het document verwijderen dat je hebt opgeladen via MyMinfin.
+    
+    \item \textbf{Een burger kan werkt bij een onderneming, maar kan niet inloggen in de naam van de onderneming, wat moet ik hierop antwoorden?} \\
+    
+    Ik heb genoeg informatie om je te helpen. Volgens het document "Rôles\_Rollen" van Aide à Accès, als een burger werkt bij een onderneming maar kan niet inloggen in de naam van de onderneming, moet je de volgende stappen volgen:
+    
+    1. Zorg ervoor dat je je hebt geregistreerd en je hebt een gebruikersaccount op www.myminfin.be.
+    2. Verbind je met je eigen onderneming (of haar filiaal) door te selecteren in het veld "Bedrijf" op de homepage van MyMinfin.
+    3. Als je nog steeds problemen hebt, probeer dan om je browser te herladen of de cache te wissen.
+    
+    Als je nog steeds problemen hebt, kun je contact opnemen met de support van MyMinfin via het e-mailadres [XXXXXXX@XXXXXXX.be](mailto:XXXXXXX@XXXXXXX.be).
+    
+    Referentie: Rôles\_Rollen, [https://www.aideacces.be/44-Gestion\_des\_roles\_eGov\_\_RMA.html]
+    (https://www.aideacces.be/44-Gestion\_des\_roles\_eGov\_\_RMA.html)
+    
+    \item \textbf{Wat zijn de contactgegevens voor de hypoimage service?} \\
+    Ik heb geen informatie over de contactgegevens voor de hypoimage service. De context bevat verschillende services en afdelingen, maar er is geen specifieke informatie over een hypoimage service te vinden.
+\end{enumerate}
