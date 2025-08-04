@@ -12,11 +12,46 @@ De hoofddoelstelling van deze PoC is om na te gaan op welke manier een LLM onder
 %Welke hypothese test je eigenlijk?
 De hypothese die binnen deze PoC getest wordt, kan als volgt worden samengevat:
 \textit{“Een LLM, gecombineerd met Retrieval-Augmented Generation (RAG), kan effectief en efficiënt ondersteuning bieden binnen een IT-supportsysteem door relevante informatie uit documentatie te halen en daarmee het supportproces te optimaliseren en te vereenvoudigen.”}
+
+\section{Behoeften analyse}
+Voor de PoC werd een MoSCoW-analyse uitgevoerd om de functionele vereisten te prioritiseren.
+De analyse werd onderverdeeld in \textit{Must haves}, \textit{Should haves} en \textit{Could haves}
+
+\subsection{Must haves}
+\begin{itemize}
+    \item \textbf{Vragen kunnen stellen in de eigen taal (bijvoorbeeld Nederlands, Frans en Engels)}:\\ 
+    Het systeem moet correct functioneren ongeacht of de gebruiker vragen stelt in het Nederlands, Frans of Engels.
+    \item \textbf{Een duidelijk en bruikbaar antwoord ontvangen op basis van betrouwbare bronnen}:\\ 
+    De gegenereerde antwoorden moeten informatief, relevant en praktisch toepasbaar zijn.
+    \item \textbf{Eenvoudige en intuïtieve interface}:\\  
+    De gebruiker mag geen technische kennis nodig hebben; de interactie moet vanzelfsprekend en gebruiksvriendelijk aanvoelen.
+    \item \textbf{Consistente ervaring (snel, zonder fouten of willekeurige antwoorden)}:\\  
+    De gebruiker verwacht dat de applicatie betrouwbaar functioneert en consistente resultaten levert.
+\end{itemize}
+
+\subsection{Should haves}
+\begin{itemize}
+    \item \textbf{Het systeem begrijpt vervolgvragen binnen een sessie}:\\  
+    De gebruiker moet een gesprek kunnen voeren waarbij eerdere vragen worden meegenomen in de context, zodat interacties natuurlijker verlopen.
+    \item \textbf{Mogelijkheid om feedback te geven op het antwoord}:\\  
+    De gebruiker kan aangeven of een antwoord onjuist is of dat er meer detail gewenst is, bijvoorbeeld met opties zoals “Dit antwoord klopt niet” of “Ik wil meer detail”.
+    \item \textbf{Transparantie over de gebruikte bronnen van het antwoord}:\\  
+    De gebruiker moet kunnen zien uit welk document of welke bron het antwoord afkomstig is, zodat de informatie steeds gecontroleerd en gevalideerd kan worden.
+\end{itemize}
+
+\subsection{Could haves}
+\begin{itemize}
+    \item \textbf{Langetermijngeheugen over meerdere sessies heen}:\\  
+    Het opzetten van een geheugen dat sessie-overstijgend werkt, brengt extra complexiteit met zich mee en is daarom minder geschikt voor een eerste versie.
+    \item \textbf{Zelf documenten kunnen uploaden of bewerken}:\\  
+    In deze PoC ligt de focus op het zoeken en beantwoorden van vragen, niet op het beheren van documenten.
+    \item \textbf{Automatisch mails behandelen}:\\  
+    Het automatisch verwerken en beantwoorden van e-mails valt qua complexiteit buiten de scope van een eerste versie.
+\end{itemize}
+
 \section{Architectuur en Ontwerp}
 
-%Welke algemene structuur heeft je PoC?
-
-\subsubsection{Algemene structuur}
+\subsection{Algemene structuur}
 
 Deze structuur bestaat uit een graaf die is opgebouwd uit verschillende knooppunten (nodes). De graaf stelt het LLM bovendien in staat om zelfstandig te bepalen welke keuzes gemaakt moeten worden tijdens het verwerken van een vraag.
 \\[1em]
@@ -64,7 +99,7 @@ Hieronder een overzicht van de verschillende frameworks, tools en programmeertal
 
 %Schema’s (bv. systeemdiagram, flowchart) zijn hier heel sterk.
 
-\section{Implementatie}
+\subsection{Implementatie}
 
 %Hoe heb je de POC concreet opgebouwd?
 \subsubsection{vectorstore}
@@ -104,7 +139,7 @@ return (Chroma.from_documents(
 
 Deze initiële set-up maakt het mogelijk om relevante documenten snel op te halen op basis van semantische gelijkenis met de vraag van de gebruiker. Met andere woorden: dit vormt een kerncomponent van de RAG-oplossing.
 
-\subsection{Graaf structuur en nodes}
+\subsubsection{Graaf structuur en nodes}
 
 Eens de vector met de nodige documenten beschikbaar is kunnen er vragen gesteld worden aan de LLM die aan de hand van een graaf keuzes zal maken naargelang de vraag van de gestelde gebruiker. De volledige workflow werd gemodelleerd als een LangGraph-graaf. Deze structuur is weergegeven in figuur~\ref{fig:langgraph}.
 
