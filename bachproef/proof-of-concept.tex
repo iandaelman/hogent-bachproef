@@ -127,6 +127,7 @@ RETRIEVE_DOCUMENTS_OR_RESPOND_PROMPT = """
     
     If the user's question is trivial, respond directly. Just respond directly. Do not show your reasoning or thinking process.
     If the question is non-trivial, use the retriever tool to generate a response.
+    If in doubt, use the retriever tool to make sure.
     
     Given the user's question:  
     "{message}"
@@ -140,7 +141,7 @@ Het voordeel van deze aanpak is dat er geen onnodige resources worden verbruikt 
 De LLM krijgt een retriever tool ter beschikking en kan vervolgens autonoom beslissen of deze tool wordt gebruikt of dat er meteen een antwoord gegenereerd wordt. Dit gedrag wordt geïmplementeerd in de volgende node:
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=Python, caption=Node die keuze maakt tussen om al dan niet te retrieven]
-def retrieve_query_or_respond(state: MessagesState) -> MessagesState:
+def retrieve_documents_or_respond(state: MessagesState) -> MessagesState:
     """
     This methods will call the retriever tool when given a non trivial question is asked.
     In the case of a trivial question it will simply provide a response
@@ -152,7 +153,8 @@ def retrieve_query_or_respond(state: MessagesState) -> MessagesState:
     prompt = RETRIEVE_DOCUMENTS_OR_RESPOND_PROMPT.format(message=message)
     
     response_model_with_tools = response_model.bind_tools([myminfin_retriever_tool])
-    response = response_model_with_tools.invoke([SystemMessage(content=prompt), HumanMessage(content=message)])
+    response = response_model_with_tools.invoke([SystemMessage(content=prompt),
+    HumanMessage(content=message)])
     return MessagesState(messages=[response])
 \end{lstlisting}
 
@@ -169,7 +171,7 @@ def grade_documents(
 state: MessagesState,
 ) -> Literal["generate_answer", "rewrite_question"]:
     """Determine whether the retrieved documents are relevant to the question."""
-
+    
     # Shortcut: If too many messages (multiple rewrites), stop rewriting
     if len(state["messages"]) >= 5:
     return "generate_answer"
@@ -180,7 +182,9 @@ state: MessagesState,
     prompt = GRADE_DOCUMENTS_PROMPT.format(question=question, context=context)
     response = (
     grader_model
-    .with_structured_output(GradeDocuments).invoke([HumanMessage(content=prompt)]))
+        .with_structured_output(GradeDocuments)
+        .invoke([HumanMessage(content=prompt)])
+    )
     score = response.binary_score
     
     if score == "yes":
@@ -212,7 +216,8 @@ GENERATE_ANSWER_PROMPT = (
     "Based on the following context, please provide a clear and complete answer.\n"
     "If the answer is not available in the context, kindly let the user know that you don't have enough information.\n"
     "If the context contains a source, always mention it in your answer as the reference.\n"
-    "Always respond in the same language this question {question} is asked, even if the context is in a different language.\n\n"
+    "Always respond in the same language this question {question} is asked, even if the context is in a different language.\n"
+    "Do not use Markdown or any special formatting in your answer, respond in plain text only.\n\n"
     "Question: {question}\n"
     "Context: {context}"
 )
@@ -292,23 +297,23 @@ Aangezien het grootste deel van de beschikbare documentatie in het Frans of Enge
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=Python, caption=Beoordeling documenten prompt]
 REWRITE_QUESTION_PROMPT = (
-"You are assisting with improving a user's question related to Myminfin IT support.\n"
-"Conversation history so far (most recent last):"
-"\n ------- \n"
-"{questions}"
-"\n ------- \n"
-"Original question:"
-"\n ------- \n"
-"{original_question}"
-"\n ------- \n"
-"Rewrite the last question to make it short, clear, and easy to match with relevant documents in a vector database.\n"
-"- Keep the meaning and intent exactly the same.\n"
-"- Use simple, direct wording without adding unnecessary details.\n"
-"- If the question is in Dutch, rewrite and translate it to French.\n"
-"- If the question is in French, rewrite and translate it to English.\n"
-"- Avoid repeating previous questions word-for-word.\n"
-"- If it’s similar to a previous question, add only minimal context needed for distinction.\n"
-"- Return only the rewritten question."
+    "You are assisting with improving a user's question related to Myminfin IT support.\n"
+    "Conversation history so far (most recent last):"
+    "\n ------- \n"
+    "{questions}"
+    "\n ------- \n"
+    "Original question:"
+    "\n ------- \n"
+    "{original_question}"
+    "\n ------- \n"
+    "Rewrite the last question to make it short, clear, and easy to match with relevant documents in a vector database.\n"
+    "- Keep the meaning and intent exactly the same.\n"
+    "- Use simple, direct wording without adding unnecessary details.\n"
+    "- If the question is in Dutch, rewrite and translate it to French.\n"
+    "- If the question is in French, rewrite and translate it to English.\n"
+    "- Avoid repeating previous questions word-for-word.\n"
+    "- If it’s similar to a previous question, add only minimal context needed for distinction.\n"
+    "- Return only the rewritten question."
 )
 \end{lstlisting}
 \section{Samenvatting}

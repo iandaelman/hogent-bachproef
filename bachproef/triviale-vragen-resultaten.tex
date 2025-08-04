@@ -1,11 +1,9 @@
-\section{Stacktrace triviale vragen}
-\label{stacktrace-triviale-vragen}
+\section{Triviale vragen resultaten}
+\label{triviale-vragen-resultaten}
 
 
 \subsection{Qwen3}
-Server listening on 127.0.0.1:60102
-Client connected from ( 127.0.0.1 , 60108)
-Embedding model being used: Ollama
+\subsubsection{Vraag 1}
 Response model being used: qwen3:8b
 Vector store already exists. No need to initialize.
 Processing question: Hallo hoe gaat het?
@@ -18,7 +16,7 @@ Okay, let s see. The user asked "Hallo hoe gaat het?" which is Dutch for "Hello,
 </think>
 
 Hallo! Hoe gaat het met je? Ik ben hier om te helpen als je vragen hebt.
-
+\subsubsection{Vraag 2}
 Processing question: Hoeveel dagen zitten er in een week?
 Update from node retrieve documents or respond
 \\[1em]
@@ -29,7 +27,7 @@ Okay, the user is asking how many days are in a week. Let me think. I know that 
 </think>
 
 Er zitten 7 dagen in een week.
-
+\subsubsection{Vraag 3}
 Processing question: Wat is 2 + 2?
 Update from node retrieve documents or respond
 \\[1em]
@@ -40,7 +38,7 @@ Okay, the user is asking "Wat is 2 + 2?" which means "What is 2 + 2?" in Dutch. 
 </think>
 
 The answer to "2 + 2" is **4**.
-
+\subsubsection{Vraag 4}
 Processing question: In welk land ligt Parijs?
 Update from node retrieve documents or respond
 \\[1em]
@@ -55,7 +53,7 @@ However, I should double-check if there s any possibility of confusion. For exam
 </think>
 
 Paris is de hoofdstad van Frankrijk.
-
+\subsubsection{Vraag 5}
 Processing question: Hoeveel minuten zitten er in een uur?
 Update from node retrieve documents or respond
 \\[1em]
@@ -74,9 +72,7 @@ Process finished with exit code 0
 
 \subsection{Qwen2.5:7b-instruct}
 
-Server listening on 127.0.0.1:62715
-Client connected from ( 127.0.0.1 , 62719)
-Embedding model being used: Ollama
+\subsubsection{Vraag 1}
 Response model being used: qwen2.5:7b-instruct
 Vector store already exists. No need to initialize.
 Processing question: Hallo hoe gaat het?
@@ -87,28 +83,28 @@ Update from node retrieve  documents  or  respond
 Hoe gaat het met je? (Translation: Hallo hoe gaat het?) Is a casual greeting in Dutch. I will respond directly.
 
 Go well! How can I assist you today?
-
+\subsubsection{Vraag 2}
 Processing question: Hoeveel dagen zitten er in een week?
 Update from node retrieve  documents  or  respond
 \\[1em]
 ================================== Ai Message ==================================
 \\[1em]
 Er zijn 7 dagen in een week.
-
+\subsubsection{Vraag 3}
 Processing question: Wat is 2 + 2?
 Update from node retrieve  documents  or  respond
 \\[1em]
 ================================== Ai Message ==================================
 \\[1em]
 2 + 2 is 4.
-
+\subsubsection{Vraag 4}
 Processing question: In welk land ligt Parijs?
 Update from node retrieve  documents  or  respond
 \\[1em]
 ================================== Ai Message ==================================
 \\[1em]
 Paris is located in France.
-
+\subsubsection{Vraag 5}
 Processing question: Hoeveel minuten zitten er in een uur?
 Update from node retrieve  documents  or  respond
 \\[1em]
@@ -118,10 +114,7 @@ Er zitten 60 minuten in een uur.
 
 
 \subsection{Llama3.1:8b-instruct-q4 K M}
-
-Server listening on 127.0.0.1:61669
-Client connected from ( 127.0.0.1 , 61673)
-Embedding model being used: Ollama
+\subsubsection{Vraag 1}
 Response model being used: llama3.1:8b-instruct-q4 K M
 Vector store already exists. No need to initialize.
 Processing question: Hallo hoe gaat het?
@@ -208,7 +201,7 @@ Update from node generate answer
 ================================== Ai Message ==================================
 \\[1em]
 Hallo! Hoe gaat het? Ik ben hier om je te helpen met je vragen over MyMinfin. Wat kan ik voor je doen
-
+\subsubsection{Vraag 2}
 Processing question: Hoeveel dagen zitten er in een week?
 Update from node retrieve documents or respond
 \\[1em]
@@ -291,7 +284,7 @@ Update from node generate answer
 ================================== Ai Message ==================================
 \\[1em]
 Er zijn 7 dagen in een week.
-
+\subsubsection{Vraag 3}
 Processing question: Wat is 2 + 2?
 Update from node retrieve documents or respond
 \\[1em]
@@ -381,7 +374,7 @@ Update from node generate answer
 ================================== Ai Message ==================================
 \\[1em]
 Ik kan je niet helpen met deze vraag omdat het gaat over een wiskundige berekening en de context is gerelateerd aan IT-problemen en contactinformatie. Ik heb geen informatie over hoe te rekenen met getallen in de context.
-
+\subsubsection{Vraag 4}
 Processing question: In welk land ligt Parijs?
 Update from node retrieve documents or respond
 \\[1em]
@@ -462,7 +455,7 @@ Update from node generate answer
 \\[1em]
 Parijs ligt in Frankrijk.
 
-
+\subsubsection{Vraag 5}
 Processing question: Hoeveel minuten zitten er in een uur?
 Update from node retrieve documents or respond
 \\[1em]
@@ -542,9 +535,7 @@ Er zijn 60 minuten in een uur.
 
 
 \subsection{Llama3.2}
-Server listening on 127.0.0.1:63081
-Client connected from ( 127.0.0.1 , 63086)
-Embedding model being used: Ollama
+\subsubsection{Vraag 1}
 Response model being used: llama3.2:3b
 Vector store already exists. No need to initialize.
 Processing question: Hallo hoe gaat het?
@@ -625,7 +616,7 @@ Update from node retrieve  documents  or  respond
       }
   }
 \end{verbatim}
-
+\subsubsection{Vraag 2}
 Processing question: Hoeveel dagen zitten er in een week?
 Update from node retrieve  documents  or  respond
 \\[1em]
@@ -722,7 +713,7 @@ Ik heb genoeg informatie om jouw vraag te beantwoorden. Volgens de context is er
 Ik kan je niet helpen met de vraag hoeveel dagen er in een week zitten, omdat er geen specifieke informatie over dit onderwerp is beschikbaar.
 
 
-
+\subsubsection{Vraag 3}
 Processing question: Wat is 2 + 2?
 Update from node retrieve  documents  or  respond
 \\[1em]
@@ -819,7 +810,7 @@ Ik kan niet zeggen of 2 + 2 4 is of niet, omdat ik geen informatie heb over de s
 Ik kan je wel aanraden om contact op te nemen met de support van MyMinfin of het platform waarop je account is geregistreerd, om meer informatie over hoe deze operatie in jouw account wordt uitgevoerd.
 
 
-
+\subsubsection{Vraag 4}
 Processing question: In welk land ligt Parijs?
 Update from node retrieve  documents  or  respond
 \\[1em]
@@ -910,7 +901,7 @@ Update from node generate  answer
 Ik heb genoeg informatie om je te helpen. Parijs ligt in Frankrijk.
 
 
-
+\subsubsection{Vraag 5}
 Processing question: Hoeveel minuten zitten er in een uur?
 Update from node retrieve  documents  or  respond
 \\[1em]

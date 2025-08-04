@@ -10,21 +10,23 @@ Ten eerste wordt gebruikgemaakt van een testset met tien vragen waarvan de infor
 \\[1em]
 Het tweede testscenario bestaat uit het stellen van niet-triviale vragen waarvoor de informatie niet beschikbaar is in de documentatie. Dit scenario is vooral bedoeld om te onderzoeken of bepaalde modellen tekenen van hallucinaties vertonen.
 \\[1em]
-Ten slotte worden enkele triviale vragen gesteld. Hierbij wordt getest of het model in staat is een juiste inschatting te maken door direct te antwoorden, zonder onnodige zoekopdrachten in de vector database.
-
-%TODO aanpassen waar nodig
+Als laatste worden enkele triviale vragen gesteld. Hierbij wordt getest of het model in staat is een juiste inschatting te maken door direct te antwoorden, zonder onnodige zoekopdrachten in de vector database.
 
 \section{Evaluatie 1: Documentatiegebaseerde vragen}
 
-De verschillende modellen kregen elk een vragenlijst, waarvan het verwachte antwoord te vinden is in bijlage \ref{vragenlijst}. Daarnaast zijn de antwoorden van elk model terug te vinden in bijlage %TODO.
+Voor elk model werd een afzonderlijke vragenlijst opgesteld, waarbij de verwachte antwoorden zijn opgenomen in bijlage \ref{vragenlijst}.
+De antwoorden die werden gegenereerd door de modellen zijn weergegeven in bijlage \ref{antwoordenlijst}.
+In beide bijlagen zijn, uit overwegingen van gegevensbescherming, alle contactgegevens geanonimiseerd.
 \\[1em]
-Wanneer in de categorie Faithfulness een waarde van 0,000 aanwezig is, betekent dit dat het model ten onrechte heeft besloten de retriever-tool niet te gebruiken.
-Op basis van deze tests werden de volgende resultaten vastgesteld:
+De scores per vraag variëren tussen 0 en 1, waarbij een score van 1 een volledig correct antwoord representeert.
+Binnen de categorie Faithfulness duidt een score van 0,000 erop dat het model ten onrechte heeft nagelaten de retriever-tool te gebruiken, waardoor de opgehaalde context leeg bleef.
+Voor de categorie Context Recall kan dit in bepaalde gevallen het tegenovergestelde effect hebben: wanneer de opgehaalde context leeg is, kan het antwoord van het model alsnog een score van 1 behalen indien het volledig aansluit bij de afwezigheid van context.
+\\[1em]
+Op basis van deze evaluatie zijn de volgende resultaten vastgesteld:
 
 \subsection{Llama3.1}
 
 \begin{table}[H]
-    \centering
     \begin{tabular}{|l|c|c|c|c|}
         \hline
         \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer correctness} & \textbf{Context recall} \\
@@ -72,7 +74,6 @@ Op basis van deze tests werden de volgende resultaten vastgesteld:
 \subsection{Qwen2.5}
 
 \begin{table}[H]
-    \centering
     \begin{tabular}{|l|c|c|c|c|}
         \hline
         \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer correctness} & \textbf{Context recall} \\
@@ -97,7 +98,6 @@ Op basis van deze tests werden de volgende resultaten vastgesteld:
 \subsection{Qwen3}
 
 \begin{table}[H]
-    \centering
     \begin{tabular}{|l|c|c|c|c|}
         \hline
         \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer correctness} & \textbf{Context recall} \\
@@ -269,13 +269,61 @@ Gemiddeld over de vier categorieën scoren de modellen als volgt:
     \label{tab:modelvergelijking}
 \end{table}
 
-\section{Evaluatie 2: Vragen buiten documentatie}
+Uit tabel \ref{tab:modelvergelijking} blijkt dat het model Qwen3 de hoogste scores behaalde voor faithfulness (0.880) en answer correctness (0.402), terwijl Llama3.2 het beste presteerde op response relevancy (0.445) en Llama3.1 op context recall (0.713).
 
-%TODO
+\section{Evaluatie 2: Hallucinaties}
+
+
+Bij deze test krijgt ieder model een set van 5 vragen voorgeschoteld. Geen van deze vragen komt voor in de documentatie (zie bijlage \ref{hallucinatie-resultaten}). Dit heeft als doel om na te gaan welke modellen tekenen vertonen van hallucinaties en welke niet. 
+\\[1em]
+De vragenlijst is als volgt:
+
+\begin{enumerate}
+    \item Voor welke dienst is Jan Cabooter verantwoordelijk?
+    \item Wat is de maximale bestandsgrootte (in MB) die via de repush voor RV kan worden verstuurd?
+    \item Wat is de kost voor een Nationality change?
+    \item Wat is de technical resource voor DQSS?
+    \item Wat is het maximum aantal documenten die kunnen geraadpleegd worden bij myminfin
+\end{enumerate}
+
+\begin{table}[H]
+    \begin{tabular}{|l|c|c|c|c|}
+        \hline
+        \textbf{Vraag} & \textbf{llama3.1} & \textbf{llama3.2} & \textbf{Qwen2.5} & \textbf{Qwen3} \\
+        \hline
+       Vraag 1 & Nee & Ja & Nee & Nee \\
+       Vraag 2 & Nee & Ja & Ja & Ja \\
+       Vraag 3 & Ja & Nee & Nee & Nee \\
+       Vraag 4 & Nee & Ja & Nee & Nee \\
+       Vraag 5 & Nee & Ja & Nee & Nee \\
+        \hline
+    \end{tabular}
+    \caption{Resultaten hallucinatie test per model bij vragen die niet in de documentatie voorkomen (Ja = hallucinatie, Nee = geen hallucinatie)}
+\end{table}
+
+\noindent\textbf{Samenvatting:}  
+\begin{table}[H]
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Model} & \textbf{Hallucinatie (\%)} \\
+        \hline
+        Llama3.1 & 1/5 (20\%) \\
+        Llama3.2 & 4/5 (80\%) \\
+        Qwen2.5  & 1/5 (20\%) \\
+        Qwen3    & 1/5 (20\%) \\
+        \hline
+    \end{tabular}
+    \caption{Samenvatting hallucinatie test}
+\end{table}
+
+Uit de resultaten blijkt dat Llama3.2 in 80\% van de gevallen hallucinaties vertoonde, terwijl de overige modellen dit slechts in 20\% van de gevallen deden.
+
 
 \section{Evaluatie 3: Triviale vraagstelling}
 
-Tijdens deze test kreeg ieder model een reeks van vijf triviale vragen voorgelegd. De resultaten van deze test werden verzameld aan de hand van de stacktrace van ieder model, te vinden in bijlage \ref{stacktrace-triviale-vragen}. Op die manier wordt duidelijk welk model direct antwoordt en welk model dat niet doet. Hieronder volgt een overzicht van de verschillende vragen:
+Tijdens deze test kreeg ieder model een reeks van vijf triviale vragen voorgelegd. De resultaten werden bepaald door de stacktrace van ieder model te analyseren. Op die manier werd vastgesteld of het model de vraag direct beantwoordde of eerst onnodig RAG uitvoerde (zie bijlage \ref{triviale-vragen-resultaten}).
+\\[1em]
+De vragenlijst is als volgt:
 
 \begin{enumerate}
     \item Hallo hoe gaat het?
@@ -285,6 +333,36 @@ Tijdens deze test kreeg ieder model een reeks van vijf triviale vragen voorgeleg
     \item Hoeveel minuten zitten er in een uur?
 \end{enumerate}
 
-Beide Llama-modellen maakten bij elke vraag onterecht gebruik van de tool. Met andere woorden, zowel het Llama 3.1- als het Llama 3.2-model voerden de flow meerdere keren uit voordat er een antwoord werd gegeven. De Qwen-modellen deden het tegenovergestelde, zij genereerden direct bij elke vraag meteen een antwoord.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|c|}
+        \hline
+        \textbf{Vraag} & \textbf{llama3.1} & \textbf{llama3.2} & \textbf{Qwen2.5} & \textbf{Qwen3} \\
+        \hline
+        Hallo hoe gaat het? & Nee & Nee & Ja & Ja \\
+        Hoeveel dagen zitten er in een week? & Nee & Nee & Ja & Ja \\
+        Wat is 2 + 2? & Nee & Nee & Ja & Ja \\
+        In welk land ligt Parijs? & Nee & Nee & Ja & Ja \\
+        Hoeveel minuten zitten er in een uur? & Nee & Nee & Ja & Ja \\
+        \hline
+    \end{tabular}
+    \caption{Resultaten correct gebruik van de graaf per model bij triviale vragen (verwacht gedrag: direct antwoord, geen RAG)}
+\end{table}
 
+\noindent\textbf{Samenvatting:}  
+\begin{table}[H]
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Model} & \textbf{Correct (\%)} \\
+        \hline
+        Llama3.1 & 0/5 (0\%) \\
+        Llama3.2 & 0/5 (0\%) \\
+        Qwen2.5  & 5/5 (100\%) \\
+        Qwen3    & 5/5 (100\%) \\
+        \hline
+    \end{tabular}
+    \caption{Samenvatting van correct gebruik van de graaf per model}
+\end{table}
+
+Uit de resultaten blijkt dat Qwen2.5 en Qwen3 alle triviale vragen direct beantwoordden, terwijl Llama3.1 en Llama3.2 in alle gevallen onnodige RAG uitvoerden.
 
