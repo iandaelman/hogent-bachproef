@@ -5,10 +5,77 @@
 \chapter{Discussie}
 \label{ch:discussie}
 
+
+%ResponseRelevancy  Scores the relevancy of the answer according to the given question. Answers with incomplete, redundant or unnecessary information is penalized. Score can range from 0 to 1 with 1 being the best.
+
+%Faithfulness The Faithfulness metric measures how factually consistent a response is with the retrieved context. It ranges from 0 to 1, with higher scores indicating better consistency.
+
+% AnswerCorrectness  Measures answer correctness compared to ground truth as a combination of factuality and semantic similarity.
+
+%LLMContextRecall checkt in hoeverre de juiste info voor het antwoord ook effectief aanwezig was in de opgehaalde context. Hoe meer overlap tussen juiste antwoord en context, hoe hoger de score.  aka hoe goed het model zijn retrievalproces heeft aangestuurd.
+
 \section{Documentatiegebaseerde vragen}
 
+Binnen deze sectie worden de testresultaten besproken van de eerste evaluatie, namelijk de prestaties op vragen waarvan de antwoorden terug te vinden zijn in de documentatie.
+
+\subsection{Interpretatie van de resultaten}
+
+Opvallend is dat niet één model op alle gemeten criteria het beste scoorde. Zo behaalde het Qwen3 model de hoogste score op zowel \textit{Faithfulness} als \textit{Answer Correctness}. Dit suggereert dat dit model zich het meest consistent hield aan de geleverde context, en over de hele set van tien vragen ook de meest accurate antwoorden genereerde.
+\\[1em]
+Voor \textit{Response Relevancy} was het Llama3.2 model de best presterende. De laagste score op deze metric werd echter behaald door het Qwen2.5 model, met een opvallend lage waarde van 0.087. Dit wijst erop dat de antwoorden van dit model vaak irrelevante of overbodige informatie bevatten, of dat cruciale elementen uit het antwoord ontbraken.
+\\[1em]
+Op het vlak van \textit{Context Recall} scoorde het Llama3.1 model het hoogst, op korte afstand gevolgd door Llama3.2. Dit betekent dat Llama3.1 er het best in slaagde om relevante documentatie op te halen. Toch bleek dit niet automatisch te leiden tot een hoge \textit{Answer Correctness}. Ondanks de hoge context recall, presteerde Llama3.1 relatief zwak op het vlak van antwoordjuistheid. In tegenstelling daarmee behaalde het Qwen3 model wel een hoge answer correctness met een iets lagere context recall, wat impliceert dat het model de opgehaalde informatie beter wist te verwerken en toepassen.
+\\[1em]
+Over het algemeen scoorde het Qwen3 model het best, met het Llama3.2 model opvallend op de tweede plaats. Dat is opmerkelijk, aangezien Llama3.2 slechts beschikt over drie miljard parameters, terwijl de andere modellen zeven tot acht miljard parameters tellen. Op basis daarvan zou men verwachten dat Llama3.2 het zwakst zou presteren op de verschillende evaluatiemetrics, maar dat blijkt niet het geval.
+
 \section{Vragen buiten documentatie}
+Deze testen werden uitgevoerd om na te gaan of de modellen zouden gaan hallucineren. Door vragen te stellen die 
+
+\subsection{Interpretatie van de resultaten}
+
+Het Qwen3, Qwen2.5 en Llama3.1 model vertoonde geen tekenen van hallucinaties. Zij hielden zich goed aan de instructies om geen extra informatie aan te verzinnen en zich enkel te basseren op zaken die in de opgehaalde documenten stonden. Elk van deze modellen had wel voor elk een probleem bij het beantwoorden van de vraag. Na nader te bekijken wat hiervan aan de oorzaak lag kon worden vastgesteld dat wanneer het model de vraag ging herschrijven in het Frans de tool call niet altijd werkte zoals voorzien. Het is niet meteen duidelijk waarom dit gebeurde maar er was bij deze modellen voor de andere vragen geen andere gevallen van hallucinaties.
+
+Het Llama3.2 model daarentegen ging verschillende keren assumpties maken en zaken gaan verzinnen die niet in de documentatie stonden. Dit is uiteraard niet de bedoeling en kan verstrekkende gevolgen hebben voor mensen die de support doen als ze deze zaken als waar beschouwen. 
+
+\subsection{Relevantie voor echte toepassingen}
+%Hoe cruciaal is dit type vraag in de praktijk?
+
+%Wat zijn de risico’s als de tool een fout antwoord geeft?
+
+\subsection{Beperkingen en bedenkingen}
+%Kan het zijn dat de tool zich baseerde op training data?
+
+%Hoe kan je dit in de toekomst verbeteren?
 
 \section{Triviale vragen}
+%Doel: Onderzoeken hoe het systeem omging met zeer eenvoudige of voor de hand liggende vragen.
+
+\subsection{Verwachting versus resultaat}
+%Verwachtte je een foutloos resultaat?
+
+%Werden er toch fouten gemaakt?
+
+\subsection{Implicaties van fouten (indien van toepassing)}
+%Wat zegt dit over de betrouwbaarheid van het systeem?
+
+%Kunnen deze fouten vermeden worden met betere prompting?
 
 \section{Vergelijking en implicaties}
+%Doel: Alles samenbrengen en overkoepelend reflecteren.
+
+\subsection{Vergelijking tussen de drie categorieën}
+%In welke categorie scoorde het systeem het best?
+
+Welke categorie leverde de meeste problemen op?
+
+\subsection{Algemene sterktes en zwaktes van het systeem}
+%Wanneer werkt het goed? Wanneer niet?
+
+%Is het geschikt voor professioneel gebruik?
+
+\subsection{Implicaties voor praktijk/toekomstig onderzoek}
+%Wat betekenen deze resultaten voor bedrijven of ontwikkelaars?
+
+%Wat zou een logisch vervolgonderzoek zijn?
+
+\section{Beperkingen van de studie}

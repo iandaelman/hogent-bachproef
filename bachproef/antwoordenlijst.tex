@@ -15,16 +15,26 @@
     \item \textbf{Hoe of waar moet ik mijn tijd loggen voor de support?} \\
     Het loggen van tijd voor ondersteuning wordt in de gegeven context niet expliciet vermeld. De beschikbare informatie bevat vooral instructies over technische implementaties, contactgegevens voor ondersteuning, en procedures voor het openen van tickets (zoals via ServiceNow). Voor specifieke richtlijnen over tijdregistratie voor ondersteuning zou je contact moeten opnemen met je interne service desk of technische teams, zoals vermeld in de context. Geen directe referentie naar tijdlogboekingsprocedures.
     
-    \item \textbf{Een gebruiker heeft geen toegang tot een functionaliteit wat moet ik hiermee doen?} \\
+    \item \textbf{Een gebruiker heeft geen toegang tot een functionaliteit wat moet ik hiermee doen?}
 \begin{verbatim}
-    Als een gebruiker geen toegang heeft tot een functionaliteit, volg dan de volgende stappen:  
-    1. Controleer bij de gebruiker welke **egov-rollen** hij heeft voor zijn bedrijf. Als hij mandataris is, check dan welke mandaten hij heeft ondertekend met zijn klant.  
-    2. Controleer of deze rol of mandaat toegang geeft tot de functionaliteit (gebruik de tool voor toegangsrechten).  
-    3. Als de gebruiker de juiste rol en machtiging heeft, maar geen toegang, stuur het ticket door naar de **IAM dienst** (zie ook de contactgegevens in de context).  
-    
-    Voor specifieke functionaliteiten zoals bankgegevens, zie de contactinformatie in de **bank-account**-sectie. Als het probleem niet duidelijk is, meld het aan uw communicatieteam of servicedesk.  
-    
-    Bron: Treatment incidents (toegangsrechten) en Contacts (IAM ICT).
+Als een gebruiker geen toegang heeft tot een functionaliteit, 
+volg dan de volgende stappen:  
+1. Controleer bij de gebruiker welke **egov-rollen** 
+hij heeft voor zijn bedrijf. 
+Als hij mandataris is, check dan welke mandaten
+hij heeft ondertekend met zijn klant.  
+2. Controleer of deze rol of mandaat toegang geeft tot de functionaliteit 
+(gebruik de tool voor toegangsrechten).  
+3. Als de gebruiker de juiste rol en machtiging heeft,
+ maar geen toegang, stuur het ticket door naar de **IAM dienst** 
+ (zie ook de contactgegevens in de context).  
+
+Voor specifieke functionaliteiten zoals bankgegevens, 
+zie de contactinformatie in de **bank-account**-sectie. 
+Als het probleem niet duidelijk is, 
+meld het aan uw communicatieteam of servicedesk.  
+
+Bron: Treatment incidents (toegangsrechten) en Contacts (IAM ICT).
 \end{verbatim}
     \item \textbf{Er is een probleem met attest service, wie kan ik hiervoor contacteren?} \\
     Als er een probleem is met de attest-service, kunt u contact opnemen met de volgende personen:  
@@ -38,33 +48,36 @@
     
     \item \textbf{Hoe doe ik een repush voor RV?} \\
 \begin{verbatim}
-    1. Open **MyMinfin Civil Servant** in een incognito- of privé-venster.  
-    2. Open een tweede tab en bezoek de URL: [http://www.finbel.intra/](http://www.finbel.intra/).  
-    3. Verzamel de benodigde informatie:  
-    - **Application Type** (bijv. "WITHHOLDING TAX")  
-    - **Status** (bijv. "VALIDATED")  
-    - **ID** (bijv. "204832")  
-    4. Plak in het tweede tab het volgende linkformaat achter de URL:  
-    `myminfin-rest/myminfin-files-stirint/put-in-queue/{applicationType}/{status}/{id}`  
-    Voorbeeld: `myminfin-rest/myminfin-files-stirint/put-in-queue-by-id/WITHHOLDING TAX/VALIDATED/***204832***`  
-    Let op: Zorg dat er geen extra spaties zijn in de URL.  
-    5. Druk op **ENTER**.  
-    6. Controleer of het systeem een succesbericht retourneert met de tekst *"queued files: 1"*.  
-    Voorbeeld van een succesreactie:  
-
+1. Open **MyMinfin Civil Servant** in een incognito- of privé-venster.  
+2. Open een tweede tab en bezoek de URL: [http://www.finbel/]
+(http://www.finbel/).  
+3. Verzamel de benodigde informatie:  
+- **Application Type** (bijv. "WITHHOLDING TAX")  
+- **Status** (bijv. "VALIDATED")  
+- **ID** (bijv. "204832")  
+4. Plak in het tweede tab het volgende linkformaat achter de URL:  
+`myminfin-rest/myminfin-files-stirint/put-in-queue
+/{applicationType}/{status}/{id}`  
+Voorbeeld: `myminfin-rest/myminfin-files-stirint
+/put-in-queue-by-id/WITHHOLDING TAX/VALIDATED/***204832***`  
+Let op: Zorg dat er geen extra spaties zijn in de URL.  
+5. Druk op **ENTER**.  
+6. Controleer of het systeem een succesbericht 
+retourneert met de tekst *"queued files: 1"*.  
+Voorbeeld van een succesreactie:  
+{
+    "restMessages": [
     {
-        "restMessages": [
-        {
-            "type": "SUCCESS",
-            "bundleKey": "queued files: 1",
-            "sticky": false,
-            "date": "2023-07-03T13:41:29.848+0000"
-        }
-        ],
-        "mustRedirectToHome": false,
-        "sessionExpired": false,
-        "error": false
+        "type": "SUCCESS",
+        "bundleKey": "queued files: 1",
+        "sticky": false,
+        "date": "2023-07-03T13:41:29.848+0000"
     }
+    ],
+    "mustRedirectToHome": false,
+    "sessionExpired": false,
+    "error": false
+}
 \end{verbatim}
 
         
@@ -103,44 +116,44 @@ Bron: Treatment incidents.
     
     \item \textbf{Wie is de product owner van AGPR en kan je de contactgegevens geven?} \\
     \begin{verbatim}
-    De product owner van AGPR is XXXXXXX. Hier zijn de contactgegevens:
-    
-    - Naam:XXXXXXX
-    - Email: Geen specifieke email vermeld in het gegeven context,
-     maar je kunt proberen via het service ABA te communiceren.
-    - Telefoonnummer: Geen specifiek nummer vermeld,
-     maar je kunt contact opnemen met de ABA-dienst.
-    Als je verdere hulp nodig hebt of meer informatie wilt, 
-    raadpleeg dan aub het service ABA.
+De product owner van AGPR is XXXXXXX. Hier zijn de contactgegevens:
+
+- Naam:XXXXXXX
+- Email: Geen specifieke email vermeld in het gegeven context,
+ maar je kunt proberen via het service ABA te communiceren.
+- Telefoonnummer: Geen specifiek nummer vermeld,
+ maar je kunt contact opnemen met de ABA-dienst.
+Als je verdere hulp nodig hebt of meer informatie wilt, 
+raadpleeg dan aub het service ABA.
     \end{verbatim}
     
     \item \textbf{Kan je me alle contactgegevens geven voor het fragment UBO-register, ook de SNOW groep?} \\
     \begin{verbatim}
-        Based on the provided context, I can provide some contact information 
-        for the UBO-register fragment and SNOW group, but not all details are available.
-        
-        For the UBO-register fragment:
-        - No specific contact information is listed in the given context.
-        
-        For the SNOW group related to the UBO-register:
-        - The relevant SNOW group mentioned is **SERVICEDESK**. 
-        - Contact: 02 576 36 36
-        
-        Please note that the context does not provide additional 
-        contacts or detailed information for the UBO-register fragment specifically.
-        
-        For other fragments and groups, some contact details are available:
-        - For obligation de retenue (Obligation to Withhold):
-        - Service manager:XXXXXXX (backup:XXXXXXX)
-        - Business group SNOW: IR-DAD-Bus
-        - Business analyst:XXXXXXX
-        
-        For ICT-related groups:
-        - Group SNOW: IR-ICT-Team3, TRANS-Doc&eForm, PATDOC-MEOW-Maps-IT
-        - Service managers and experts are listed for each group.
-        
-        If you need more detailed or specific information, 
-        please provide additional context or clarify your request.
+Based on the provided context, I can provide some contact information 
+for the UBO-register fragment and SNOW group, but not all details are available.
+
+For the UBO-register fragment:
+- No specific contact information is listed in the given context.
+
+For the SNOW group related to the UBO-register:
+- The relevant SNOW group mentioned is **SERVICEDESK**. 
+- Contact: 02 576 36 36
+
+Please note that the context does not provide additional 
+contacts or detailed information for the UBO-register fragment specifically.
+
+For other fragments and groups, some contact details are available:
+- For obligation de retenue (Obligation to Withhold):
+- Service manager:XXXXXXX (backup:XXXXXXX)
+- Business group SNOW: IR-DAD-Bus
+- Business analyst:XXXXXXX
+
+For ICT-related groups:
+- Group SNOW: IR-ICT-Team3, TRANS-Doc&eForm, PATDOC-MEOW-Maps-IT
+- Service managers and experts are listed for each group.
+
+If you need more detailed or specific information, 
+please provide additional context or clarify your request.
     \end{verbatim}
     
     \item \textbf{Hoe of waar moet ik mijn tijd loggen voor de support?} \\
@@ -151,19 +164,19 @@ Bron: Treatment incidents.
    
     \item \textbf{Er is een probleem met attest service, wie kan ik hiervoor contacteren?} \\
     \begin{verbatim}
-        Voor problemen met de attest service kunt u contact opnemen met:
-        
-        - De ontwikkelteam van ICT via [XXXXXXX@XXXXXXX.be]
-        (mailto:XXXXXXX@XXXXXXX.be)
-        - XXXXXXX (ICT - Service Manager) via [XXXXXXX@XXXXXXX.be]
-        (mailto:XXXXXXX@XXXXXXX.be)
-        - XXXXXXX (ICT - ontwikkelaar) via [XXXXXXX]
-        (mailto:XXXXXXX)
-        -XXXXXXX of XXXXXXX (business - projectleiders) via 
-        [XXXXXXX@XXXXXXX.be](mailto:XXXXXXX@XXXXXXX.be) / [XXXXXXX]
-        (mailto:XXXXXXX@XXXXXXX.be)
-        
-        Referentie: Treatment_incidents
+Voor problemen met de attest service kunt u contact opnemen met:
+
+- De ontwikkelteam van ICT via [XXXXXXX@XXXXXXX.be]
+(mailto:XXXXXXX@XXXXXXX.be)
+- XXXXXXX (ICT - Service Manager) via [XXXXXXX@XXXXXXX.be]
+(mailto:XXXXXXX@XXXXXXX.be)
+- XXXXXXX (ICT - ontwikkelaar) via [XXXXXXX]
+(mailto:XXXXXXX)
+-XXXXXXX of XXXXXXX (business - projectleiders) via 
+[XXXXXXX@XXXXXXX.be](mailto:XXXXXXX@XXXXXXX.be) / [XXXXXXX]
+(mailto:XXXXXXX@XXXXXXX.be)
+
+Referentie: Treatment_incidents
     \end{verbatim}
     
     \item \textbf{Hoe doe ik een repush voor RV?} \\
@@ -193,15 +206,17 @@ Bron: Treatment incidents.
     
     * XXXXXXX
     * XXXXXXX
-    * L'utilisateur moet d'office worden gericht naar XXXXXXX@XXXXXXX.be
+    * L'utilisateur moet d'office worden gericht naar\\
+     XXXXXXX@XXXXXXX.be
     
     De SNOW groep voor dit fragment is niet expliciet vermeld in deze bron, maar we kunnen de informatie uit andere bronnen gebruiken om een antwoord te geven. In de bron "Treatment\_incidents" (bron 3) staat dat voor databreach-incidenten de IAM PRIVACY Business moet worden bereikt, en dat de SNOW groep hiervoor **IAM-VP** is.
     
     Dus, de contactgegevens voor het fragment UBO-register zijn:
     
-    * Adil Soussi Nachit
-    * Martine Smet
-    * L'utilisateur moet d'office worden gericht naar XXXXXXX@XXXXXXX.be
+    * XXXXXXX
+    * XXXXXXX
+    * L'utilisateur moet d'office worden gericht naar\\
+     XXXXXXX@XXXXXXX.be
     * SNOW groep: **UBO-REGISTER** (niet expliciet vermeld, maar we kunnen de informatie uit andere bronnen gebruiken om een antwoord te geven. In dit geval is de SNOW groep voor databreach-incidenten **IAM-VP**, dus het is waarschijnlijk dat deze ook geldt voor het UBO-register)
     
     Ik hoop dat dit helpt! Laat me weten als je nog meer informatie nodig hebt.
@@ -296,38 +311,39 @@ Bron: Treatment incidents.
     
     Ik heb genoeg informatie om je te helpen bij het repush voor RV. Volg deze stappen:
     \begin{verbatim}
-    1. Opend MyMinfin Civil Servant in een incognitewijzer.
-    2. Open een tweede venster en voeg [http://www.finbel.intra/]
-    (http://www.finbel.intra/) toe.
-    3. Zorg ervoor dat je de volgende informatie hebt:
-    * Application Type
-    * Status
-    * ID
-    4. In het tweede venster kopieer de volgende link en plak hem achter 
-    [http://www.finbel.intra/](http://www.finbel.intra/):
-    **Repush par ID**:
-    `myminfin-rest/myminfin-files-stirint/put-in-queue/{applicationType}/{status}/{id}`
-    Bijvoorbeeld: `myminfin-rest/myminfin-files-stirint/put-in-queue-by-id
-    /WITHHOLDING_TAX/VALIDATED/***204832***`
-    Zorg ervoor dat er niet te veel spaties zijn.
-    5. Klik op ENTER.
-    6. Als alles goed is gegaan, krijg je een succesbericht met een message zoals:
-    
-          ```json
+1. Opend MyMinfin Civil Servant in een incognitewijzer.
+2. Open een tweede venster en voeg [http://www.finbel.intra/]
+(http://www.finbel.intra/) toe.
+3. Zorg ervoor dat je de volgende informatie hebt:
+* Application Type
+* Status
+* ID
+4. In het tweede venster kopieer de volgende link en plak hem achter 
+[http://www.finbel.intra/](http://www.finbel/):
+**Repush par ID**:
+`myminfin-rest/myminfin-files-stirint/put-in-queue/{applicationType}
+/{status}/{id}`
+Bijvoorbeeld: `myminfin-rest/myminfin-files-stirint/put-in-queue-by-id
+/WITHHOLDING_TAX/VALIDATED/***204832***`
+Zorg ervoor dat er niet te veel spaties zijn.
+5. Klik op ENTER.
+6. Als alles goed is gegaan, krijg je een succesbericht met een message zoals:
+
+      ```json
+  {
+      "restMessages": [
       {
-          "restMessages": [
-          {
-              "type": "SUCCESS",
-              "bundleKey": "queued files: 1",
-              "sticky": false,
-              "date": "2023-07-03T13:41:29.848+0000"
-          }
-          ],
-          "mustRedirectToHome": false,
-          "sessionExpired": false,
-          "error": false
+          "type": "SUCCESS",
+          "bundleKey": "queued files: 1",
+          "sticky": false,
+          "date": "2023-07-03T13:41:29.848+0000"
       }
-      ```
+      ],
+      "mustRedirectToHome": false,
+      "sessionExpired": false,
+      "error": false
+  }
+  ```
     \end{verbatim}
     
     \item \textbf{Iemand wil een document verwijderen dat hij heeft opgeladen via MyMinfin, wat kan ik hierop antwoorden?} \\
@@ -347,10 +363,10 @@ Bron: Treatment incidents.
     2. Verbind je met je eigen onderneming (of haar filiaal) door te selecteren in het veld "Bedrijf" op de homepage van MyMinfin.
     3. Als je nog steeds problemen hebt, probeer dan om je browser te herladen of de cache te wissen.
     
-    Als je nog steeds problemen hebt, kun je contact opnemen met de support van MyMinfin via het e-mailadres [XXXXXXX@XXXXXXX.be](mailto:XXXXXXX@XXXXXXX.be).
+    Als je nog steeds problemen hebt, kun je contact opnemen met de support van MyMinfin via het e-mailadres [XXXXXXX@XXXXXXX.be]\\
+    (mailto:XXXXXXX@XXXXXXX.be).
     
-    Referentie: Rôles\_Rollen, [https://www.aideacces.be/44-Gestion\_des\_roles\_eGov\_\_RMA.html]
-    (https://www.aideacces.be/44-Gestion\_des\_roles\_eGov\_\_RMA.html)
+    Referentie: Rôles\_Rollen,
     
     \item \textbf{Wat zijn de contactgegevens voor de hypoimage service?} \\
     Ik heb geen informatie over de contactgegevens voor de hypoimage service. De context bevat verschillende services en afdelingen, maar er is geen specifieke informatie over een hypoimage service te vinden.

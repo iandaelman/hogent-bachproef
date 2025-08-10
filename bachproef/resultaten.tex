@@ -15,15 +15,18 @@ Als laatste worden enkele triviale vragen gesteld. Hierbij wordt getest of het m
 \section{Evaluatie 1: Documentatiegebaseerde vragen}
 
 Voor elk model werd een afzonderlijke vragenlijst opgesteld, waarbij de verwachte antwoorden zijn opgenomen in bijlage \ref{vragenlijst}.
-De antwoorden die werden gegenereerd door de modellen zijn weergegeven in bijlage \ref{antwoordenlijst}.
+De antwoorden die door de modellen zijn gegenereerd, zijn weergegeven in bijlage \ref{antwoordenlijst}.
 In beide bijlagen zijn, uit overwegingen van gegevensbescherming, alle contactgegevens geanonimiseerd.
 \\[1em]
+Voor deze evaluatie wordt gebruikgemaakt van een testframework \textit{Ragas}. Tijdens de testen wordt voor iedere vraag de volgende informatie verzameld: de gebruikersinput, de opgehaalde context, het antwoord van de LLM en het verwachte antwoord. Op basis van deze gegevens gebruikt Ragas zelf een LLM om de dataset te beoordelen volgens de gekozen evaluatie criteria. In dit geval werd hiervoor het testmodel \texttt{gemma3:4b} gebruikt, omdat dit model een goede balans biedt tussen rekensnelheid, geheugengebruik en beoordelingskwaliteit. Hierdoor kon de evaluatie efficiënt worden uitgevoerd. Dit resulteert in een rapport waarin iedere vraag wordt beoordeeld op de verschillende criteria.
+\\[1em]
 De scores per vraag variëren tussen 0 en 1, waarbij een score van 1 een volledig correct antwoord representeert.
-Binnen de categorie Faithfulness duidt een score van 0,000 erop dat het model ten onrechte heeft nagelaten de retriever-tool te gebruiken, waardoor de opgehaalde context leeg bleef.
-Voor de categorie Context Recall kan dit in bepaalde gevallen het tegenovergestelde effect hebben: wanneer de opgehaalde context leeg is, kan het antwoord van het model alsnog een score van 1 behalen indien het volledig aansluit bij de afwezigheid van context.
+Binnen de categorie \textit{Faithfulness} geeft een score van 0{,}000 aan dat het model ten onrechte heeft nagelaten de retriever-tool te gebruiken, waardoor de opgehaalde context leeg bleef.
+Voor de categorie \textit{Context Recall} kan dit in sommige gevallen juist het tegenovergestelde effect hebben: wanneer de opgehaalde context leeg is, kan het antwoord van het model toch een score van 1 behalen, mits het volledig aansluit bij de afwezigheid van context.
+\\[1em]
+De meetcriteria \textit{Faithfulness} beoordeelt hoe consistent het antwoord is met de opgehaalde context. \textit{Response relevancy} kijkt naar hoe relevant het antwoord is ten opzichte van de vraag. Onvolledige of overbodige informatie leidt hierbij tot een lagere score. \textit{Answer correctness} beoordeelt hoe correct het antwoord is in vergelijking met het verwachte antwoord, waarbij zowel feitelijke als semantische overeenkomsten worden meegenomen. \textit{Context recall} controleert in welke mate de benodigde informatie voor het antwoord aanwezig is in de opgehaalde context. Hoe groter de overlap tussen het juiste antwoord en de context, hoe hoger de score. Deze meetcriteria kijkt dus vooral naar hoe goed het model het ophaalproces aanstuurt.
 \\[1em]
 Op basis van deze evaluatie zijn de volgende resultaten vastgesteld:
-
 \subsection{Llama3.1}
 
 \begin{table}[H]
@@ -241,13 +244,13 @@ Gemiddeld over de vier categorieën scoren de modellen als volgt:
             height=0.5\textwidth,
             enlarge x limits=0.25,
             ylabel={Gemiddelde score},
-            symbolic x coords={llama3.1,llama3.2,qwen2.5,qwen3},
+            symbolic x coords={Llama3.1,Llama3.2,Qwen2.5,Qwen3},
             xtick=data,
             nodes near coords,
             nodes near coords align={vertical},
             every node near coord/.append style={font=\small},
             ]
-            \addplot coordinates {(llama3.1,0.466) (llama3.2,0.514) (qwen2.5,0.391) (qwen3,0.548)};
+L            \addplot coordinates {(Llama3.1,0.466) (Llama3.2,0.514) (Qwen2.5,0.391) (Qwen3,0.548)};
         \end{axis}
     \end{tikzpicture}
     \caption{Gemiddelde score per model.}
@@ -274,7 +277,7 @@ Uit tabel \ref{tab:modelvergelijking} blijkt dat het model Qwen3 de hoogste scor
 \section{Evaluatie 2: Hallucinaties}
 
 
-Bij deze test krijgt ieder model een set van 5 vragen voorgeschoteld. Geen van deze vragen komt voor in de documentatie (zie bijlage \ref{hallucinatie-resultaten}). Dit heeft als doel om na te gaan welke modellen tekenen vertonen van hallucinaties en welke niet. 
+Bij deze test krijgt ieder model een set van 5 vragen voorgeschoteld. Geen van deze vragen komt voor in de documentatie (zie bijlage \ref{hallucinatie-resultaten} Dit heeft als doel om na te gaan welke modellen tekenen vertonen van hallucinaties en welke niet. 
 \\[1em]
 De vragenlijst is als volgt:
 
@@ -289,7 +292,7 @@ De vragenlijst is als volgt:
 \begin{table}[H]
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Vraag} & \textbf{llama3.1} & \textbf{llama3.2} & \textbf{Qwen2.5} & \textbf{Qwen3} \\
+        \textbf{Vraag} & \textbf{Llama3.1} & \textbf{Llama3.2} & \textbf{Qwen2.5} & \textbf{Qwen3} \\
         \hline
        Vraag 1 & Nee & Ja & Nee & Nee \\
        Vraag 2 & Nee & Ja & Ja & Ja \\

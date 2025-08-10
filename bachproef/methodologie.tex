@@ -80,6 +80,8 @@ TODO hier de geselecteerde metrics oplijsten.
 
 \section{Opbouw van de PoC en Evaluatie}
 
+De PoC bestaat uit het ontwikkelen van een chatbot die het MyMinfin-IT-team in staat stelt om supportvragen op een efficiënte manier op te lossen. Aan de basis van deze toepassing ligt een LLM-model. De PoC wordt zodanig ontwikkeld dat verschillende modellen afwisselend kunnen worden ingezet. Dit zal in een latere fase de kern vormen van de vergelijkende studie.
+\\[1em]
 Tijdens de opbouw van de PoC worden periodiek tests uitgevoerd om te controleren of de werking naar behoren verloopt. Hierdoor is het mogelijk om tijdig bij te sturen en eventuele onvoorziene problemen aan te pakken. De focus van deze evaluaties ligt op het correct functioneren van de PoC en het voorkomen van regressie bij verdere ontwikkeling.
 
 \section{Algemene Evaluatie}
@@ -87,7 +89,7 @@ Tijdens de opbouw van de PoC worden periodiek tests uitgevoerd om te controleren
 Aan het einde van de PoC wordt elk geselecteerd model getest met een identieke set vragen. Op deze manier kunnen de modellen onderling vergeleken worden. Tijdens deze algemene evaluatie worden de volgende aspecten onderzocht:
 
 \begin{itemize}
-    \item De kwaliteit van de gegenereerde antwoorden, beoordeeld volgens wetenschappelijk onderbouwde evaluatiecriteria.
+    \item De kwaliteit van de gegenereerde antwoorden, beoordeeld volgens wetenschappelijk onderbouwde evaluatiecriteria. Hierbij wordt gebruik gemaakt van het Ragas test framework.
     \item De prestaties van het model bij het beantwoorden van triviale vragen, waarvoor geen domeinspecifieke kennis vereist is.
     \item Het al dan niet vertonen van hallucinaties: geeft het model foutieve of verzonnen informatie?
 \end{itemize}

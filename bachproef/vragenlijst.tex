@@ -3,11 +3,12 @@
 
 \begin{enumerate}
     \item \textbf{Wie is de product owner van AGDP en kan je de contactgegevens geven?} \\
-    De product owner van AGDP is XXXXXXX en je kan haar contacteren via \texttt{XXXXXXX@XXXXXXX.be}.
+    De product owner van AGDP is XXXXXXX en je kan haar contacteren via\\
+    \texttt{XXXXXXX@XXXXXXX.be}.
     
     \item \textbf{Wie is de product owner van AGPR en kan je de contactgegevens geven?} \\
-    De product owner van AGPR is XXXXXXX
-    en je kan hem contacteren via \texttt{XXXXXXX@XXXXXXX.be}.
+    De product owner van AGPR is XXXXXXX en je kan hem contacteren via\\
+    \texttt{XXXXXXX@XXXXXXX.be}.
     
     \item \textbf{Kan je me alle contactgegevens geven voor het fragment UBO-register, ook de SNOW groep?} \\
     Fragment: UBO-register – Contactgegevens
@@ -66,7 +67,7 @@
     Hier zijn de stappen die gevolgd moeten worden wanneer het RV-team vraagt om een “repush” uit te voeren:
     \begin{enumerate}
         \item Open MyMinfin Civil Servant in een incognitovenster.
-        \item Open een tweede tabblad en zet er alvast: \texttt{http://www.finbel.intra/}
+        \item Open een tweede tabblad en zet er alvast: \texttt{http://www.finbel/}
         \item Zorg ervoor dat u over de volgende informatie beschikt:
         \begin{itemize}
             \item Application Type
@@ -74,19 +75,22 @@
             \item ID
         \end{itemize}
         \item In het tweede tabblad, plak een link met de volgende structuur achter:\\
-          \begin{verbatim}
-              {http://www.finbel.intra/myminfin-rest/myminfin-files-stirint
-                  /put-in-queue/\{applicationType\}/\{status\}/\{id\}}
-          \end{verbatim}
-        Voorbeeld:\begin{verbatim}{myminfin-rest/myminfin-files-stirint/put-in-queue-by-id
-                /WITHHOLDING\_TAX/VALIDATED/204832}\end{verbatim}
+      \begin{verbatim}
+{http://www.finbel/myminfin-rest/myminfin-files-stirint
+  /put-in-queue/\{applicationType\}/\{status\}/\{id\}}
+      \end{verbatim}
+        Voorbeeld:
+        \begin{verbatim}
+{myminfin-rest/myminfin-files-stirint/put-in-queue-by-id
+    /WITHHOLDING\_TAX/VALIDATED/204832}
+        \end{verbatim}
         \textbf{Opmerking:} Als u het volledige adres van de aanvrager krijgt, let er dan op dat er niet te veel spaties in staan.
         \item Druk op ENTER.
         \item Als alles goed verlopen is, geeft het systeem een succesbericht terug dat gecombineerd moet zijn met de melding 'queued files: 1'.\\
         Voorbeeld: 
         \begin{verbatim}
-            {"restMessages":[{"type":"SUCCESS",
-                    "bundleKey":"queued files : 1",...}]}
+{"restMessages":[{"type":"SUCCESS",
+        "bundleKey":"queued files : 1",...}]}
         \end{verbatim}
       \end{enumerate}
         

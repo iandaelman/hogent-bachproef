@@ -13,6 +13,15 @@
 \pgfplotsset{compat=1.18}
 
 \usepackage{xcolor}
+\usepackage{alltt}
+\usepackage{pifont}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\good}{\textcolor{green!70!black}{\ding{51}}} % groen vinkje
+\newcommand{\bad}{\textcolor{red}{\ding{55}}} % rood kruis
+\newcommand{\na}{\textcolor{gray}{--}} % grijs streepje
+\renewcommand{\lstlistingname}{Codefragment}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -191,6 +200,7 @@ Het verwachte resultaat van dit onderzoek omvat enerzijds een overzicht van de m
 % TODO: Voeg hier eventuele andere bijlagen toe. Bv. als je deze BP voor de
 % tweede keer indient, een overzicht van de verbeteringen t.o.v. het origineel.
 \chapter{Bijlagen}
+\input{chunks-verschillende-formaten}
 \input{vragenlijst}
 \input{antwoordenlijst}
 \input{hallucinatie-resultaten}
