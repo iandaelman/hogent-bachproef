@@ -28,54 +28,43 @@ Op het vlak van \textit{Context Recall} scoorde het Llama3.1 model het hoogst, o
 \\[1em]
 Over het algemeen scoorde het Qwen3 model het best, met het Llama3.2 model opvallend op de tweede plaats. Dat is opmerkelijk, aangezien Llama3.2 slechts beschikt over drie miljard parameters, terwijl de andere modellen zeven tot acht miljard parameters tellen. Op basis daarvan zou men verwachten dat Llama3.2 het zwakst zou presteren op de verschillende evaluatiemetrics, maar dat blijkt niet het geval.
 
-\section{Vragen buiten documentatie}
-Deze testen werden uitgevoerd om na te gaan of de modellen zouden gaan hallucineren. Door vragen te stellen die 
+\section{Hallucinatie test}
+Deze testen werden uitgevoerd om na te gaan of de modellen zouden gaan hallucineren. Dit door middel van vragen te stellen die niet aanwezig waren in de documentatie.
 
 \subsection{Interpretatie van de resultaten}
 
-Het Qwen3, Qwen2.5 en Llama3.1 model vertoonde geen tekenen van hallucinaties. Zij hielden zich goed aan de instructies om geen extra informatie aan te verzinnen en zich enkel te basseren op zaken die in de opgehaalde documenten stonden. Elk van deze modellen had wel voor elk een probleem bij het beantwoorden van de vraag. Na nader te bekijken wat hiervan aan de oorzaak lag kon worden vastgesteld dat wanneer het model de vraag ging herschrijven in het Frans de tool call niet altijd werkte zoals voorzien. Het is niet meteen duidelijk waarom dit gebeurde maar er was bij deze modellen voor de andere vragen geen andere gevallen van hallucinaties.
+De modellen Qwen3, Qwen2.5 en Llama3.1 vertoonden geen tekenen van hallucinaties. Ze hielden zich goed aan de instructie om geen extra informatie te verzinnen en zich uitsluitend te baseren op de gegevens die in de opgehaalde documenten stonden. Wel ondervond elk van deze modellen problemen bij het beantwoorden van één specifieke vraag. Na nader onderzoek bleek dat, wanneer het model de vraag in het Frans herschreef, de tool call niet altijd correct functioneerde. Het is niet meteen duidelijk waarom dit gebeurde, maar bij de andere vragen traden er bij deze modellen geen hallucinaties op.
 
-Het Llama3.2 model daarentegen ging verschillende keren assumpties maken en zaken gaan verzinnen die niet in de documentatie stonden. Dit is uiteraard niet de bedoeling en kan verstrekkende gevolgen hebben voor mensen die de support doen als ze deze zaken als waar beschouwen. 
+Het Llama3.2-model daarentegen maakte meerdere keren aannames en verzon informatie die niet in de documentatie stond. Dit is uiteraard onwenselijk en kan verstrekkende gevolgen hebben voor de medewerkers die de support verzorgen, wanneer zij deze informatie als juist beschouwen.
 
 \subsection{Relevantie voor echte toepassingen}
 %Hoe cruciaal is dit type vraag in de praktijk?
 
+Aangezien de opgeleverde informatie wordt gebruikt voor het behandelen van specifieke IT-vragen van burgers over MyMinfin, is het van groot belang dat de modellen geen hallucinaties vertonen. Zelfs wanneer het model uitsluitend informatie levert aan de supportmedewerker, is het essentieel dat deze informatie waarheidsgetrouw is, of dat het model bij twijfel expliciet aangeeft dat het de nodige informatie niet
+
 %Wat zijn de risico’s als de tool een fout antwoord geeft?
 
-\subsection{Beperkingen en bedenkingen}
-%Kan het zijn dat de tool zich baseerde op training data?
-
-%Hoe kan je dit in de toekomst verbeteren?
-
-\section{Triviale vragen}
+\section{Triviale vraagstelling}
 %Doel: Onderzoeken hoe het systeem omging met zeer eenvoudige of voor de hand liggende vragen.
 
-\subsection{Verwachting versus resultaat}
+Omdat de graaf zo is opgezet dat het ophaalproces alleen wordt uitgevoerd wanneer dat echt nodig is, is het belangrijk te onderzoeken hoe elk model hiermee omging.
+
+\subsection{Interpretatie van de resultaten}
 %Verwachtte je een foutloos resultaat?
+De resultaten waren in deze vrij duidelijk de 2 Llama modellen slaagde er niet in om een onderscheid te maken tussen triviale en niet-triviale vragen. Dit leidde ertoe dat ze bij iedere vraag het hele ophaal proces gingen gaan uitvoeren. De twee Qwen modellen daarentegen gingen wel meteen antwoorden op de triviale vragen. Met andere woorden is het contrast tussen de Qwen en Llama modellen tijdens deze test vrij groot.
+
+De resultaten waren in dit geval vrij duidelijk. De twee Llama-modellen slaagden er niet in onderscheid te maken tussen triviale en niet-triviale vragen. Dit leidde ertoe dat zij bij elke vraag het volledige ophaalproces uitvoerden. De twee Qwen-modellen daarentegen gaven direct antwoord op de triviale vragen. Met andere woorden: het contrast tussen de Qwen- en Llama-modellen was tijdens deze test aanzienlijk.
 
 %Werden er toch fouten gemaakt?
 
-\subsection{Implicaties van fouten (indien van toepassing)}
+\subsection{Implicaties resultaten}
 %Wat zegt dit over de betrouwbaarheid van het systeem?
-
+Hoewel dit niet direct invloed heeft op de inhoudelijke juistheid van de antwoorden, heeft het wel gevolgen voor de performantie van de toepassing. Bij niet-triviale vragen duurt het beantwoorden aanzienlijk langer bij de Llama-modellen dan bij de Qwen-modellen, omdat bij de Llama-modellen telkens het ophaalproces wordt opgestart.
 %Kunnen deze fouten vermeden worden met betere prompting?
 
-\section{Vergelijking en implicaties}
+\section{Samenvatting}
 %Doel: Alles samenbrengen en overkoepelend reflecteren.
+In deze vergelijkende studie werden vier LLM-modellen getest op drie manieren. Namelijk het beantwoorden van vragen op basis van opgehaalde documentatie, het behandelen van vragen die niet in de documentatie voorkwamen en het omgaan met triviale vragen. Elk model werd bij iedere deeltest beoordeeld op zijn prestaties.
+\\[1em]
+Op basis van deze testen kan worden geconcludeerd dat Qwen3 het beste model is in deze vergelijkende studie. In de eerste test behaalde het model twee keer de hoogste score en één keer de op één na hoogste score. Daarnaast vertoonde het geen hallucinaties en ging het op een correcte manier om met triviale vragen. Met andere woorden is dit het enige model dat in alle drie de testen aan de verwachtingen voldeed.  
 
-\subsection{Vergelijking tussen de drie categorieën}
-%In welke categorie scoorde het systeem het best?
-
-Welke categorie leverde de meeste problemen op?
-
-\subsection{Algemene sterktes en zwaktes van het systeem}
-%Wanneer werkt het goed? Wanneer niet?
-
-%Is het geschikt voor professioneel gebruik?
-
-\subsection{Implicaties voor praktijk/toekomstig onderzoek}
-%Wat betekenen deze resultaten voor bedrijven of ontwikkelaars?
-
-%Wat zou een logisch vervolgonderzoek zijn?
-
-\section{Beperkingen van de studie}
