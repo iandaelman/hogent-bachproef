@@ -43,40 +43,17 @@ Eens de literatuurstudie is afgerond en de interviews zijn afgenomen, kan met be
 
 \section{Long list}
 
-In deze sectie wordt een overzicht gegeven van de verschillende mogelijkheden die beschikbaar zijn voor het opstellen van de PoC. Dit gaat zowel over de verschillende technieken en technologieën die kunnen toegepast worden om tot het eindresultaat te komen van de chatbot. Deze sectie geeft enkel een overzicht van de verschillende mogelijkheden voor een meer gedetailleerde inhoud kan de stand van zaken geraadpleegd worden.
-
-\subsubsection{LLM-model}
-
-Aangezien er een zeer groot aantal LLM-modellen beschikbaar is, is het niet zinvol om elk model in overweging te nemen. Daarom wordt er vertrokken vanuit een selectie van toonaangevende modellen, waaruit vervolgens een verdere keuze kan worden gemaakt. Gezien de scope van de PoC gaat de voorkeur uit naar zogenoemde open modellen.
-
-\subsubsection{Toegepaste techniek}
-
-Voor het opzetten van een chatbot assistent bestaan er meerdere technieken. Deze worden elk besproken in de literatuurstudie en zijn de volgende:
-\begin{itemize}
-    \item Finetuning
-    \item Retrieval-Augmented Generation (RAG)
-    \item Cache-Augmented Generation (CAG)
-\end{itemize}
-
-\subsubsection{Meetinstrumenten}
-% TODO: Ragas-metrics hier toevoegen
-TODO hier een overzicht geven van de verschillende mogelijkheden om te testen. 
+In deze fase wordt een overzicht opgesteld van de verschillende opties voor het opzetten van de PoC. Dit omvat zowel mogelijke technieken als categorieën van LLM’s. Het doel is om een zo breed mogelijk beeld te schetsen, zodat alle relevante benaderingen kunnen worden overwogen. In deze fase worden nog geen keuzes gemaakt. De uiteindelijke selectie volgt in een latere stap op basis van de resultaten van de behoefteanalyse. Daarbij wordt rekening gehouden met de beperkingen die tijdens het onderzoek naar voren komen.
 
 \section{Short list}
 
-\subsubsection{LLM-model}
-
-Op basis van de beschikbare modellen uit de longlist wordt een selectie gemaakt, waarbij de keuze wordt beperkt tot open modellen. Deze modellen zijn niet alleen gratis te gebruiken, maar kunnen ook lokaal worden geïnstalleerd en ingezet. Doordat de modellen lokaal draaien, ontstaan er binnen deze PoC geen privacyproblemen. Alle gebruikte data en query’s blijven volledig op de eigen lokale hardware, zonder externe verwerking.
-
-\subsubsection{Toegepaste techniek}
-
-Finetuning brengt hoge kosten met zich mee, waardoor dit geen realistische optie is. Daarnaast hebben lokale modellen vaak een kleinere contextwindow dan commerciële modellen, waardoor CAG minder geschikt is. Bovendien is CAG minder schaalbaar, omdat bij elke vraag alle documenten in de context moeten worden toegevoegd.
-
-Dit maakt RAG de meest geschikte techniek voor deze PoC. Naast dat RAG schaalbaar is, kan het ook relatief eenvoudig lokaal worden ontwikkeld zonder grote technische of financiële obstakels.
-
-\subsubsection{Meetinstrumenten}
-
-TODO hier de geselecteerde metrics oplijsten.
+Op basis van de beschikbare modellen uit de longlist wordt een selectie gemaakt, waarbij de keuze wordt beperkt tot open modellen. Deze modellen zijn niet alleen gratis te gebruiken, maar kunnen ook lokaal worden geïnstalleerd en ingezet. Doordat de modellen lokaal draaien, ontstaan er binnen deze PoC geen privacyproblemen: alle gebruikte data en query’s blijven volledig op de eigen lokale hardware, zonder externe verwerking.
+\\[1em]
+Om de PoC tot stand te brengen zijn er verschillende mogelijkheden, elk met hun eigen voor- en nadelen. De opties voor deze PoC zijn finetuning, CAG of RAG. Finetuning brengt hoge kosten met zich mee, waardoor dit geen realistische optie is. Daarnaast hebben lokale modellen vaak een kleinere context window dan commerciële modellen, waardoor CAG minder geschikt is. Bovendien is CAG minder schaalbaar, omdat bij elke vraag alle documenten in de context moeten worden toegevoegd.
+\\[1em]
+Bij RAG is er enerzijds de complexere flow om de documenten op te halen uit een vector database, maar anderzijds is RAG meer schaalbaar dan CAG, aangezien alleen relevante documenten door de LLM worden gebruikt.
+\\[1em]
+De concrete keuze die gemaakt zal worden, is afhankelijk van een voorafgaande analyse die in het volgende hoofdstuk wordt besproken. Samen met de scope en beperkingen van het onderzoek bepaalt dit in hoofdzaak welke techniek zal worden gekozen.
 
 \section{Opbouw van de PoC en Evaluatie}
 
@@ -93,8 +70,6 @@ Aan het einde van de PoC wordt elk geselecteerd model getest met een identieke s
     \item De prestaties van het model bij het beantwoorden van triviale vragen, waarvoor geen domeinspecifieke kennis vereist is.
     \item Het al dan niet vertonen van hallucinaties: geeft het model foutieve of verzonnen informatie?
 \end{itemize}
-
-% TODO: Ragas-metrics hier toevoegen
 
 Tijdens de evaluatie wordt voor elk aspect gebruikgemaakt van vooraf gedefinieerde meetinstrumenten en testscenario’s om de modellen onder identieke omstandigheden te vergelijken.
 

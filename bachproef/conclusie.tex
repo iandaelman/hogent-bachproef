@@ -5,7 +5,7 @@
 \chapter{Conclusie}%
 \label{ch:conclusie}
 
-% TODO: Trek een duidelijke conclusie, in de vorm van een antwoord op de
+% Trek een duidelijke conclusie, in de vorm van een antwoord op de
 % onderzoeksvra(a)g(en). Wat was jouw bijdrage aan het onderzoeksdomein en
 % hoe biedt dit meerwaarde aan het vakgebied/doelgroep? 
 % Reflecteer kritisch over het resultaat. In Engelse teksten wordt deze sectie
@@ -18,14 +18,11 @@
 % onderzoeksvra(a)g(en). Wat was jouw bijdrage aan het onderzoeksdomein en
 % hoe biedt dit meerwaarde aan het vakgebied/doelgroep? 
 % Reflecteer kritisch over het resultaat. In Engelse teksten wordt deze sectie
-%TODO taalcheck
-Dit onderzoek biedt een helder overzicht van de verschillende mogelijkheden om een virtuele assistent te ontwikkelen. De uitgevoerde literatuurstudie maakt het mogelijk om, afhankelijk van de specifieke usecase, een weloverwogen keuze te maken tussen de verschillende benaderingen. Daarnaast werd een PoC uitgewerkt die aantoont hoe één van deze benaderingen RAG, kan worden toegepast in de praktijk. Niet alleen de successen, maar ook de obstakels en fouten tijdens de ontwikkeling bieden waardevolle lessen voor iedereen die een vergelijkbare PoC wil realiseren.
-\\[1em]
-De resultaten van het onderzoek tonen aan dat het van belang is om een goede overweging te maken in de keuze van het model. Zeker rekeninghoudend dat bepaalde modellen niet geschikt zijn om bepaalde zaken te doen. Zeker wanneer van verschillende modellen werd verwacht om een toolcall te doen werd dit duidelijk. Dit gezegd zijnde kon binnen dit onderzoek enkel kleinere modellen in rekening worden gebracht, met andere woorden kunnen deze problemen zich niet stellen bij krachtigere modellen van dezelfde organisatie. 
+Dit onderzoek biedt een helder overzicht van de verschillende mogelijkheden om een virtuele assistent te ontwikkelen. De uitgevoerde literatuurstudie maakt het mogelijk om, afhankelijk van de specifieke usecase, een weloverwogen keuze te maken tussen de verschillende benaderingen. Daarnaast werd een PoC uitgewerkt die aantoont hoe één van deze benaderingen,in dit geval RAG, kan worden toegepast in de praktijk. Niet alleen de PoC, maar ook de problemen die zich stelde tijdens de ontwikkeling bieden waardevolle lessen voor iedereen die een vergelijkbare PoC wil realiseren.
 \\[1em]
 De resultaten tonen aan dat de keuze van het LLM-model een cruciale rol speelt. Niet elk model is geschikt voor elke taak, zoals duidelijk werd bij functionaliteiten zoals tool calling. Binnen deze studie konden echter enkel kleinere modellen worden getest, waardoor niet uitgesloten kan worden dat krachtigere varianten van dezelfde modellen deze beperkingen ook hebben.
 \\[1em]
-Heel wat elementen binnen dit onderzoek werden proefondervindelijk getest. De keuzes die binnen deze PoC gemaakt werden, zijn echter niet per definitie de beste voor elke RAG usecase. Elke toepassing vraagt om een specifieke afweging, afhankelijk van context, noden en technische randvoorwaarden.
+Heel wat aspecten binnen dit onderzoek werden proefondervindelijk getest. De keuzes die binnen deze PoC gemaakt werden, zijn echter niet per definitie de beste voor elke RAG usecase. Elke toepassing vraagt om een specifieke afweging, afhankelijk van context, noden en technische randvoorwaarden.
 \\[1em]
 Het zou daarom waardevol zijn om in vervolgonderzoek niet enkel modellen onderling te vergelijken, maar ook andere aspecten van een RAG-architectuur nader te analyseren. Een eerste voorbeeld is het effect van verschillende parsers op ongestructureerde bestanden. Het is interessant om na te gaan welke parser het best omgaat met complexe PDF-bestanden die niet uitsluitend uit tekst bestaan, zoals gescande documenten of formulieren met tabellen en grafieken.
 \\[1em]
@@ -33,6 +30,6 @@ Een tweede mogelijk onderzoekspiste betreft de impact van verschillende retrieva
 \\[1em]
 Een derde mogelijkheid is het analyseren van het effect van modelgrootte. In dit onderzoek werden voornamelijk modellen gebruikt met een vergelijkbaar aantal parameters. Het zou echter interessant zijn om na te gaan hoe verschillende versies van eenzelfde model met meer of minder parameters presteren in een RAG-context. Dit kan duidelijkheid scheppen over de verhouding tussen prestaties en efficiëntie.
 \\[1em]
-Tot slot kan het ook waardevol zijn om alternatieven voor RAG te verkennen. Binnen dit onderzoek werd bewust gekozen voor een RAG aanpak, maar gezien de snelle evolutie van LLM's en de steeds grotere context die deze modellen ter beschikking hebben kan het relevant zijn om te onderzoeken hoe een Cache-Augmented Generation (CAG) systeem functioneert en of dit een valabel alternatief kan vormen.
+Tot slot kan het ook waardevol zijn om alternatieven voor RAG te verkennen. Binnen dit onderzoek werd bewust gekozen voor een RAG aanpak, maar gezien de snelle evolutie van LLM's en de steeds grotere context die deze modellen ter beschikking hebben kan het relevant zijn om te onderzoeken hoe een CAG systeem functioneert en of dit een valabel alternatief kan vormen.
 \\[1em]
 Samenvattend toont deze bachelorproef aan dat RAG een haalbare en veelbelovende aanpak is voor de ontwikkeling van een LLM-gebaseerde IT-supportbot in de context van MyMinfin. De opgedane inzichten vormen een stevige basis voor verdere optimalisatie en uitbreiding van dergelijke toepassing in de toekomst.
