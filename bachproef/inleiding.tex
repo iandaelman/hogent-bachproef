@@ -10,13 +10,13 @@ Met de opkomst van artificiële intelligentie (AI) en Large Language Models (LLM
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
 
-Deze bachelorproef richt zich specifiek op de IT-support binnen de FOD Financiën. Deze organisatie biedt een uitgebreide en complexe vorm van support aan zowel interne medewerkers als externe klanten over een breed scala aan onderwerpen. Een deel hiervan is technische ondersteuning voor digitale diensten die de organisatie aanbiedt. Door de omvang en diversiteit van de vragen waarmee de FOD Financiën wordt geconfronteerd, is er een duidelijke behoefte aan een efficiëntere ondersteuning. Iedere service is bijvoorbeeld verantwoordelijk om technische support te bieden. Het is daarbij echter soms moeilijk om te achterhalen wie wanneer en voor wat exact verantwoordelijk is. 
+Deze bachelorproef richt zich specifiek op de IT-support die wordt aangeboden door het MyMinfin IT-team, dat deel uitmaakt van de FOD Financiën. De FOD Financiën is een organisatie die uitgebreide en complexe ondersteuning biedt aan zowel interne medewerkers als externe klanten, over een breed scala aan onderwerpen. Een belangrijk onderdeel daarvan is de technische ondersteuning voor de digitale diensten die de organisatie aanbiedt. Door de omvang en diversiteit van de vragen waarmee de FOD wordt geconfronteerd, is er een duidelijke behoefte aan efficiëntere ondersteuning. Elke interne dienst is bijvoorbeeld verantwoordelijk voor een deel van de technische support, maar het is vaak moeilijk te achterhalen wie, wanneer en waarvoor precies verantwoordelijk is.
 \\[1em]
 Momenteel is de IT-support versnipperd, wat deels onvermijdelijk is omdat niet iedereen over de nodige technische kennis beschikt. De gespecialiseerde teams zijn verantwoordelijk voor de ondersteuning binnen hun eigen domeinen, maar dit kan leiden tot onduidelijkheid over wie wanneer en waarvoor exact verantwoordelijk is. Het is niet altijd meteen duidelijk of een probleem onder de verantwoordelijkheid van het eigen team valt of dat het door een ander technisch team moet worden opgepakt. Zelfs wanneer vaststaat dat een ander team het probleem moet oplossen, is het vaak onduidelijk hoe zij gecontacteerd kunnen worden of welk e-mailadres hiervoor gebruikt moet worden.
 \\[1em]
-Bovendien bestaat er wel documentatie over deze processen, maar deze is verspreid over verschillende Confluence pagina’s, waardoor medewerkers moeite hebben om snel de juiste informatie te vinden. Dit gebrek aan centralisatie zorgt ervoor dat IT-medewerkers soms werken met zeer beperkte informatie, wat het oplossen van problemen bemoeilijkt. In de praktijk leidt dit vaak tot een inefficiënte heen en weerstroom van e-mails tussen teams, zonder dat dit altijd bijdraagt aan een daadwerkelijke oplossing van het probleem.
+Ondanks er documentatie bestaat over deze processen, is deze verspreid over verschillende Confluence pagina’s of andere bronnen, waardoor medewerkers moeite hebben om snel de juiste informatie te vinden. Dit gebrek aan centralisatie zorgt ervoor dat IT-medewerkers soms werken met zeer beperkte informatie, wat het oplossen van problemen bemoeilijkt. In de praktijk leidt dit vaak tot een inefficiënte heen en weerstroom van e-mails tussen teams, zonder dat dit altijd bijdraagt aan een daadwerkelijke oplossing van het probleem.
 \\[1em]
-Om deze problemen te verhelpen wordt onderzocht hoe een LLM-gebaseerde chatbot dit proces kan ondersteunen. Hiervoor worden twee belangrijke benaderingen vergeleken: Retrieval Augmented Generation (RAG) en Cache-Augmented Generation (CAG). De keuze tussen deze methoden heeft een aanzienlijke impact op de kwaliteit en relevantie van de gegenereerde antwoorden. Daarom zal in deze bachelorproef een Proof~of~Concept (PoC) worden ontwikkeld en getest binnen de context van de FOD Financiën, met als doel de meest geschikte aanpak te identificeren. Hoewel deze studie zich richt op deze specifieke use case, kunnen de bevindingen en methodieken ook relevant zijn voor andere organisaties die hun IT-support op een efficiëntere manier willen organiseren.
+Om deze problemen te verhelpen, wordt onderzocht hoe een LLM-gebaseerde chatbot dit proces kan ondersteunen. Hiervoor worden enkele belangrijke benaderingen vergeleken, namelijk Finetuning, Retrieval Augmented Generation (RAG) en Cache-Augmented Generation (CAG). Afhankelijk van de noden en de aard van de toepassing is de ene benadering geschikter dan de andere. Daarom wordt in deze bachelorproef een Proof of Concept (PoC) ontwikkeld en getest, die kan worden ingezet voor de IT-ondersteuning van het MyMinfin-team. Op die manier kan de meest geschikte aanpak worden geïdentificeerd. Hoewel deze studie zich richt op deze specifieke use case, kunnen de bevindingen en methodieken ook relevant zijn voor andere organisaties die hun IT-support efficiënter willen organiseren.
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
@@ -39,7 +39,7 @@ Om deze onderzoeksvraag te beantwoorden, worden de volgende deelvragen geformule
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
 \label{sec:onderzoeksdoelstelling}
 
-Het doel van deze bachelorproef is tweeledig. Enerzijds wordt een Proof of Concept (PoC) ontwikkeld die actief gebruikt kan worden om de IT-support binnen de FOD Financiën efficiënter te organiseren. Hiervoor worden verschillende versies van de PoC geïmplementeerd en met elkaar vergeleken om de meest geschikte aanpak te bepalen.
+Het doel van deze bachelorproef is tweeledig. Enerzijds wordt een Proof of Concept (PoC) ontwikkeld die actief gebruikt kan worden om de IT-support binnen het MyMinfin-team efficiënter te organiseren. Hiervoor worden verschillende versies van de PoC geïmplementeerd en met elkaar vergeleken om de meest geschikte aanpak en LLM-model te bepalen.
 \\[1em]
 Anderzijds biedt deze studie een theoretisch overzicht van de verschillende methoden die beschikbaar zijn voor het ontwikkelen van een LLM-gebaseerde IT-support chatbot. Dit omvat een vergelijking tussen verschillende technieken die momenteel beschikbaar zijn. Dit gaat onder andere over RAG, CAG en finetuning. Bij elk van deze opties worden hun respectievelijke voor- en nadelen geanalyseerd.
 \\[1em]
@@ -49,13 +49,15 @@ De combinatie van deze praktische en theoretische analyse moet leiden tot een on
 \label{sec:opzet-bachelorproef}
 
 De rest van deze bachelorproef is als volgt opgebouwd:
-
+\\[1em]
 In Hoofdstuk~\ref{ch:stand-van-zaken} wordt een overzicht gegeven van de stand van zaken binnen het onderzoeksdomein, op basis van een literatuurstudie.
-
+\\[1em]
 In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
-
+\\[1em]
+In Hoofdstuk~\ref{ch:proof-of-concept} wordt een PoC uitgewerkt, die fungeert als basis voor de praktische behandeling van de use case en toelaat de gekozen benadering in een realistische context te analyseren en testen.
+\\[1em]
 In Hoofdstuk~\ref{ch:resultaten} worden de bevindingen van het onderzoek gepresenteerd. De verzamelde gegevens worden geanalyseerd en overzichtelijk weergegeven. Daarnaast worden de resultaten geïnterpreteerd en komen de sterktes en beperkingen van het onderzoek aan bod.
-
+\\[1em]
 In Hoofdstuk~\ref{ch:aanbevelingen} worden mogelijke implicaties van de onderzoeksresultaten besproken en worden aanbevelingen geformuleerd om de PoC om te zetten in de praktijk.
-
+\\[1em]
 In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven, aanbevelingen gegeven voor verder onderzoek en een antwoord geformuleerd op de onderzoeksvragen.
