@@ -26,20 +26,19 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-
 \section{Literatuurstudie}
 
-Voor de opstart van deze bachelorproef is een grondige literatuurstudie essentieel om de bestaande mogelijkheden op het gebied van virtuele assistenten te verkennen, met een focus op LLM, RAG en CAG. Eerst wordt er een inleiding gegeven in de onderliggende materie, zodat het onderwerp voldoende gekaderd kan worden. Daarnaast richt deze studie zich op een vergelijkende analyse die inzicht biedt in de verschillende beschikbare opties voor het ontwikkelen van een virtuele supportassistent. Hierbij worden de voor- en nadelen van elke optie in kaart gebracht, zodat op basis van deze informatie een onderbouwde keuze kan worden gemaakt voor de uitwerking van een PoC. De literatuurstudie moet ook duidelijkheid verschaffen over de benodigde hardware- en softwarevereisten voor de ontwikkeling.
+Voor de opstart van deze bachelorproef is een grondige literatuurstudie essentieel om de bestaande mogelijkheden op het gebied van virtuele assistenten te verkennen, met een focus op finetuning, RAG en CAG. Allereerst wordt een inleiding gegeven in de onderliggende materie, zodat het onderwerp voldoende gekaderd wordt. Daarnaast worden de voor- en nadelen van de verschillende opties in kaart gebracht, zodat op basis van deze inzichten een onderbouwde keuze kan worden gemaakt voor de uitwerking van een PoC.
 \\[1em]
-Op basis van de literatuurstudie moet een analyse worden opgesteld om na te gaan welke optie die werden besproken binnen de literatuurstudie het best in overweging worden genomen. De belangrijkste keuze die zal moeten gemaakt worden binnen deze use case is de keuze welke techniek zal worden toegepast. Iedere methode heeft zijn voor- en nadelen hebben moet dit weloverwogen worden voor het opstellen van de PoC en de LLM-modellen die kunnen worden gebruikt.
-
+Op basis van de literatuurstudie wordt een analyse opgesteld om te bepalen welke optie het meest geschikt is voor verdere uitwerking. De belangrijkste beslissing binnen deze usecase betreft de keuze van de techniek die zal worden toegepast. Elke methode heeft zijn eigen voor- en nadelen, die zorgvuldig moeten worden afgewogen bij het opstellen van de PoC en bij de selectie van de LLM-modellen die kunnen worden ingezet.
+\\[1em]
+Daarnaast worden de beschikbare benchmarks besproken en wordt toegelicht hoe deze geïnterpreteerd moeten worden. Dit is van belang om op een onderbouwde manier een model te kiezen voor de PoC. Ook komen verschillende evaluatiemetrieken aan bod die nuttig zijn voor het beoordelen van de PoC.
 
 \section{Requirements analyse}
 
-
-Gekoppeld aan de literatuurstudie zal een interview worden afgenomen met één van de uiteindelijke gebruikers van de PoC. Het doel van dit interview is om een helder overzicht te verkrijgen van de verschillende vereisten voor de virtuele assistent. Op basis van het overzicht uit de literatuurstudie kan vervolgens een meer gerichte selectie worden gemaakt van de verschillende opties. Het uiteindelijke doel is om voor drie à vier modellen een PoC uit te werken die verder getest kunnen worden. Het is met andere woorden van belang om de verschillende modellen zo uitgebreid mogelijk te onderzoeken, zodat zoveel mogelijk modellen getoetst kunnen worden aan de gevraagde vereisten. 
+Gekoppeld aan de literatuurstudie zal een interview worden afgenomen met één van de uiteindelijke gebruikers van de PoC. Het doel van dit interview is om een helder overzicht te verkrijgen van de verschillende vereisten voor de virtuele assistent. Op basis van het overzicht uit de literatuurstudie kan vervolgens een meer gerichte selectie worden gemaakt van de verschillende opties. Het uiteindelijke doel is om voor drie à vier modellen een PoC uit te werken die verder getest kunnen worden. Het is met andere woorden van belang om de verschillende modellen zo uitgebreid mogelijk te onderzoeken, zodat een zo breed mogelijke set modellen getoetst kunnen worden aan de gevraagde vereisten. 
 \\[1em]
-Eens de literatuurstudie is afgerond en de interviews zijn afgenomen, kan met behulp van een MoSCoW-analyse een overzicht gemaakt worden van de nodige functionaliteiten die nodig zijn om de PoC op te stellen. Aan de hand van deze functionaliteiten kan een rangschikking worden opgesteld van de verschillende beschikbare modellen waarmee de PoC kan verwezenlijkt worden. Deze lijst bepaalt welke modellen worden geselecteerd voor het uitwerken van een PoC.
+Eens de literatuurstudie is afgerond en de interviews zijn afgenomen, kan met behulp van een MoSCoW-analyse een overzicht gemaakt worden van de nodige functionaliteiten die nodig zijn om de PoC op te stellen. Aan de hand van deze functionaliteiten kan een rangschikking worden opgesteld van de verschillende beschikbare modellen waarmee de PoC kan verwezenlijkt worden. Deze lijst bepaalt welke modellen worden geselecteerd voor het uitwerken van de PoC.
 
 \section{Long list}
 
@@ -47,17 +46,17 @@ In deze fase wordt een overzicht opgesteld van de verschillende opties voor het 
 
 \section{Short list}
 
-Op basis van de beschikbare modellen uit de longlist wordt een selectie gemaakt, waarbij de keuze wordt beperkt tot open modellen. Deze modellen zijn niet alleen gratis te gebruiken, maar kunnen ook lokaal worden geïnstalleerd en ingezet. Doordat de modellen lokaal draaien, ontstaan er binnen deze PoC geen privacyproblemen: alle gebruikte data en query’s blijven volledig op de eigen lokale hardware, zonder externe verwerking.
+Op basis van de beschikbare modellen uit de longlist wordt een selectie gemaakt, waarbij de keuze wordt beperkt tot open modellen. Deze modellen zijn niet alleen gratis te gebruiken, maar kunnen ook lokaal worden geïnstalleerd en ingezet. Doordat de modellen lokaal draaien, ontstaan er binnen deze PoC geen privacyproblemen, alle gebruikte data en query’s blijven volledig op de eigen lokale hardware, zonder externe verwerking.
 \\[1em]
 Om de PoC tot stand te brengen zijn er verschillende mogelijkheden, elk met hun eigen voor- en nadelen. De opties voor deze PoC zijn finetuning, CAG of RAG. Finetuning brengt hoge kosten met zich mee, waardoor dit geen realistische optie is. Daarnaast hebben lokale modellen vaak een kleinere context window dan commerciële modellen, waardoor CAG minder geschikt is. Bovendien is CAG minder schaalbaar, omdat bij elke vraag alle documenten in de context moeten worden toegevoegd.
 \\[1em]
-Bij RAG is er enerzijds de complexere flow om de documenten op te halen uit een vector database, maar anderzijds is RAG meer schaalbaar dan CAG, aangezien alleen relevante documenten door de LLM worden gebruikt.
+Bij RAG is er enerzijds de complexere flow om de documenten op te halen uit een vector database. Anderzijds is RAG meer schaalbaar dan CAG, aangezien alleen relevante documenten door de LLM worden gebruikt.
 \\[1em]
 De concrete keuze die gemaakt zal worden, is afhankelijk van een voorafgaande analyse die in het volgende hoofdstuk wordt besproken. Samen met de scope en beperkingen van het onderzoek bepaalt dit in hoofdzaak welke techniek zal worden gekozen.
 
 \section{Opbouw van de PoC en Evaluatie}
 
-De PoC bestaat uit het ontwikkelen van een chatbot die het MyMinfin-IT-team in staat stelt om supportvragen op een efficiënte manier op te lossen. Aan de basis van deze toepassing ligt een LLM-model. De PoC wordt zodanig ontwikkeld dat verschillende modellen afwisselend kunnen worden ingezet. Dit zal in een latere fase de kern vormen van de vergelijkende studie.
+De PoC bestaat uit het ontwikkelen van een chatbot die het MyMinfin-IT team in staat stelt om supportvragen op een efficiënte manier op te lossen. Aan de basis van deze toepassing ligt een LLM. De PoC wordt zodanig ontwikkeld dat verschillende modellen afwisselend kunnen worden ingezet. Dit zal in een latere fase de kern vormen van de vergelijkende studie.
 \\[1em]
 Tijdens de opbouw van de PoC worden periodiek tests uitgevoerd om te controleren of de werking naar behoren verloopt. Hierdoor is het mogelijk om tijdig bij te sturen en eventuele onvoorziene problemen aan te pakken. De focus van deze evaluaties ligt op het correct functioneren van de PoC en het voorkomen van regressie bij verdere ontwikkeling.
 
@@ -68,7 +67,7 @@ Aan het einde van de PoC wordt elk geselecteerd model getest met een identieke s
 \begin{itemize}
     \item De kwaliteit van de gegenereerde antwoorden, beoordeeld volgens wetenschappelijk onderbouwde evaluatiecriteria. Hierbij wordt gebruik gemaakt van het Ragas test framework.
     \item De prestaties van het model bij het beantwoorden van triviale vragen, waarvoor geen domeinspecifieke kennis vereist is.
-    \item Het al dan niet vertonen van hallucinaties: geeft het model foutieve of verzonnen informatie?
+    \item Het al dan niet vertonen van hallucinaties, geeft het model foutieve of verzonnen informatie?
 \end{itemize}
 
 Tijdens de evaluatie wordt voor elk aspect gebruikgemaakt van vooraf gedefinieerde meetinstrumenten en testscenario’s om de modellen onder identieke omstandigheden te vergelijken.
