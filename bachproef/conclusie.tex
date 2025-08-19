@@ -20,9 +20,15 @@
 % Reflecteer kritisch over het resultaat. In Engelse teksten wordt deze sectie
 
 %TODO Dit is een goeie basis! Check wel eens of je op alle onderzoeksvragen een antwoord geeft in de conclusie.
-Dit onderzoek biedt een helder overzicht van de verschillende mogelijkheden om een virtuele assistent te ontwikkelen. De uitgevoerde literatuurstudie maakt het mogelijk om, afhankelijk van de specifieke use case, een weloverwogen keuze te maken tussen de verschillende benaderingen. Daarnaast werd een PoC uitgewerkt die aantoont hoe één van deze benaderingen,in dit geval RAG, kan worden toegepast in de praktijk. Niet alleen de PoC, maar ook de problemen die zich stelden tijdens de ontwikkeling bieden waardevolle lessen voor iedereen die een vergelijkbare PoC wil realiseren.
+Dit onderzoek biedt een helder overzicht van de verschillende mogelijkheden om een virtuele assistent te ontwikkelen. De uitgevoerde literatuurstudie maakt het mogelijk om, afhankelijk van de specifieke use case, een weloverwogen keuze te maken tussen de verschillende benaderingen. Zowel fine-tuning, RAG als CAG kunnen bijdragen aan het verminderen van de tekortkomingen van huidige LLM's, bijvoorbeeld door domeinspecifieke kennis toe te voegen of door hallucinaties via gerichte prompting te beperken.
 \\[1em]
-De resultaten tonen aan dat de keuze van het LLM-model een cruciale rol speelt. Niet elk model is geschikt voor elke taak, zoals duidelijk werd bij functionaliteiten zoals tool calling. Binnen deze studie konden echter enkel kleinere modellen worden getest, waardoor niet uitgesloten kan worden dat krachtigere varianten van dezelfde modellen deze beperkingen ook hebben.
+Door de beperkte scope van de PoC was fine-tuning niet mogelijk. Om de schaalbaarheid te behouden en de kosten per query zo laag als mogelijk te houden, kon CAG eveneens niet worden gekozen. Bijgevolg werd de keuze voor RAG gemaakt. Deze methode paste binnen de scope en biedt voordelen op het gebied van schaalbaarheid en kosten die CAG niet biedt.
+\\[1em]
+De uitgewerkte PoC toont aan hoe RAG in de praktijk kan worden toegepast. Niet alleen de PoC, maar ook de problemen die zich tijdens de ontwikkeling voordeden, bieden waardevolle lessen voor anderen die een vergelijkbare PoC wil realiseren.
+\\[1em]
+De resultaten tonen aan dat de keuze van het LLM-model een cruciale rol speelt. Niet elk model is geschikt voor elke taak, zoals duidelijk werd bij functionaliteiten zoals tool calling. Binnen deze studie konden echter enkel kleinere modellen worden getest,waardoor het niet uitgesloten is dat krachtigere varianten van dezelfde modellen beter presteren dan de geselecteerde modellen.
+\\[1em]
+Aan de hand van verschillende testsituaties konden de prestaties van de modellen worden geëvalueerd. Hieruit bleek dat het model Qwen3 de beste prestaties leverde van de geteste modellen.
 \\[1em]
 Heel wat aspecten binnen dit onderzoek werden proefondervindelijk getest. De keuzes die binnen deze PoC gemaakt werden, zijn echter niet per definitie de beste voor elke RAG use case. Elke toepassing vraagt om een specifieke afweging, afhankelijk van context, noden en technische randvoorwaarden.
 \\[1em]

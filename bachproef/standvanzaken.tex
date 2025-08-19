@@ -56,7 +56,7 @@ Naast hallucinaties en biases is het belangrijk om te beseffen dat de kennis van
  
 \subsection{Technieken voor kennisverrijking in LLM’s}
 
-Er bestaan verschillende methodes om een LLM te voorzien van domeinspecifieke kennis. In dit deel worden drie van deze technieken besproken, met name RAG, Finetuning en CAG. 
+Er bestaan verschillende methodes om een LLM te voorzien van domeinspecifieke kennis. In dit deel worden drie van deze technieken besproken, met name RAG, Fine-tuning en CAG. 
  
 \subsubsection{Retrieval Augmented Generation}
 
@@ -118,13 +118,13 @@ Zodra de documenten via embeddings zijn toegevoegd aan de vectordatabase kan een
 Zodra de meest relevante informatie is opgehaald, wordt deze gebruikt in het antwoordproces. De opgehaalde documenten worden, samen met de vraag van de gebruiker, toegevoegd aan de context van het model. Hierdoor beschikt de LLM over aanvullende informatie en kan de vraag nauwkeuriger worden beantwoord. Het resultaat is een antwoord dat gebaseerd is op de geïnjecteerde kennis uit de vectordatabase \autocite{zhao2024retrievalaugmentedgenerationaigeneratedcontent}.
 
 
-\subsubsection{Finetuning}
+\subsubsection{Fine-tuning}
 
-Finetuning probeert hetzelfde probleem op te lossen als RAG, namelijk dat een LLM geen of onvoldoende domeinkennis heeft om bepaalde vragen te antwoorden. De manier waarop dit wordt opgelost is echter anders. Bij finetuning wordt een bestaande LLM verder getraind met een eigen dataset. Met andere woorden, het doel is om de parameters van het model aan te passen, zodat het model accurater kan antwoorden op domeinspecifieke vragen \autocite{Raj2024}.
+Fine-tuning probeert hetzelfde probleem op te lossen als RAG, namelijk dat een LLM geen of onvoldoende domeinkennis heeft om bepaalde vragen te antwoorden. De manier waarop dit wordt opgelost is echter anders. Bij fine-tuning wordt een bestaande LLM verder getraind met een eigen dataset. Met andere woorden, het doel is om de parameters van het model aan te passen, zodat het model accurater kan antwoorden op domeinspecifieke vragen \autocite{Raj2024}.
 \\[1em]
-Wanneer een model is gefinetuned, kan het domeinspecifieke vragen beantwoorden zonder dat het daarbij een vectordatabase nodig heeft. De domeinspecifieke kennis wordt als het ware ingebakken in het model, waardoor het niet meer afhankelijk is van externe kennisbronnen \autocite{Raj2024}.
+Wanneer een model is bijgesteld, kan het domeinspecifieke vragen beantwoorden zonder dat het daarbij een vectordatabase nodig heeft. De domeinspecifieke kennis wordt als het ware ingebakken in het model, waardoor het niet meer afhankelijk is van externe kennisbronnen \autocite{Raj2024}.
 \\[1em]
-Hoewel finetuning zeker een techniek is die heeft aangetoond te werken, moet er wel rekening worden gehouden met de hoge initiële kosten, vooral in vergelijking met een oplossing zoals RAG. Daarnaast speelt ook het feit dat er een minimale hoeveelheid data nodig is om een model te finetunen. Finetuning is mogelijk met kleinere datasets, maar het is efficiënter bij grotere datasets \autocite{Balaguer2024}.
+Hoewel fine-tuning zeker een techniek is die heeft aangetoond te werken, moet er wel rekening worden gehouden met de hoge initiële kosten, vooral in vergelijking met een oplossing zoals RAG. Daarnaast speelt ook het feit dat er een minimale hoeveelheid data nodig is om een model te trainen. Fine-tuning is mogelijk met kleinere datasets, maar het is efficiënter bij grotere datasets \autocite{Balaguer2024}.
 
 \subsubsection{Cache-Augmented Generation}
 

@@ -47,17 +47,17 @@ Voor de PoC werd een interview afgelegd. Op basis van dit interview werd een MoS
 
 \section{Architectuur en Ontwerp}
 
-Vooraleer de structuur van de PoC kan worden opgezet, moet er een keuze gemaakt worden voor de meest geschikte techniek. Finetuning is, gelet op de scope van de PoC, moeilijk uitvoerbaar. Om dit te realiseren zou een model getraind moeten worden op data die kan helpen bij IT-support. Hoewel er data beschikbaar is in de vorm van e-mails, is het onderhoud bij finetuning niet te onderschatten. Wanneer een procedure of gegevens veranderen, moet het model immers opnieuw getraind worden. Deze keuze brengt met andere woorden een hoge initiële kost met zich mee en potentieel ook een hogere onderhoudskost, die niet aanwezig is bij RAG of CAG.
+Vooraleer de structuur van de PoC kan worden opgezet, moet er een keuze gemaakt worden voor de meest geschikte techniek. Fine-tuning is, gelet op de scope van de PoC, moeilijk uitvoerbaar. Om dit te realiseren zou een model getraind moeten worden op data die kan helpen bij IT-support. Hoewel er data beschikbaar is in de vorm van e-mails, is het onderhoud bij fine-tuning niet te onderschatten. Wanneer een procedure of gegevens veranderen, moet het model immers opnieuw getraind worden. Deze keuze brengt met andere woorden een hoge initiële kost met zich mee en potentieel ook een hogere onderhoudskost, die niet aanwezig is bij RAG of CAG.
 \\[1em]
 Met CAG aan de andere kant zouden alle documenten worden toegevoegd aan de context. Hoewel dit technisch mogelijk is, zeker met de modellen van vandaag, heeft deze aanpak enkele nadelen. Ten eerste kan \textit{context rot} een probleem vormen. Zoals aangegeven in de stand van zaken, worden modellen minder performant wanneer te veel informatie in de context wordt geplaatst. Daarnaast wordt bij CAG niet alleen relevante, maar ook irrelevante informatie toegevoegd. Dit verhoogt niet alleen de kans op minder nauwkeurige antwoorden, maar ook de mogelijke API-kosten in vergelijking met RAG.
 \\[1em]
-Met al deze redenen in gedachten is voor deze PoC gekozen om RAG toe te passen. Enerzijds zijn er geen hoge initiële kosten zoals bij finetuning, en anderzijds worden enkel relevante documenten toegevoegd aan de context. Dit helpt om mogelijke problemen van context rot te vermijden en houdt bovendien de kost per query laag. Tabel \ref{tab:techniek_vergelijking} geeft een overzicht van de voor- en nadelen van de verschillende benaderingen.
+Met al deze redenen in gedachten is voor deze PoC gekozen om RAG toe te passen. Enerzijds zijn er geen hoge initiële kosten zoals bij fine-tuning, en anderzijds worden enkel relevante documenten toegevoegd aan de context. Dit helpt om mogelijke problemen van context rot te vermijden en houdt bovendien de kost per query laag. Tabel \ref{tab:techniek_vergelijking} geeft een overzicht van de voor- en nadelen van de verschillende benaderingen.
 
 \begin{table}[H]
     \resizebox{\textwidth}{!}{
             \begin{tabular}{|p{4cm}|c|c|c|}
             \hline
-            \textbf{Kenmerk} & \textbf{Finetuning} & \textbf{CAG} & \textbf{RAG} \\
+            \textbf{Kenmerk} & \textbf{Fine-tuning} & \textbf{CAG} & \textbf{RAG} \\
             \hline
             Initiële kost & Hoog & Laag & Laag \\
             \hline
@@ -71,7 +71,7 @@ Met al deze redenen in gedachten is voor deze PoC gekozen om RAG toe te passen. 
             \hline
         \end{tabular}
     }
-    \caption{Vergelijking van voor- en nadelen van finetuning, CAG en RAG}
+    \caption{Vergelijking van voor- en nadelen van fine-tuning, CAG en RAG}
     \label{tab:techniek_vergelijking}
 \end{table}
 
