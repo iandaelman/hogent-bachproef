@@ -30,7 +30,7 @@
 
 Voor de opstart van deze bachelorproef is een grondige literatuurstudie essentieel om de bestaande mogelijkheden op het gebied van virtuele assistenten te verkennen, met een focus op finetuning, RAG en CAG. Allereerst wordt een inleiding gegeven in de onderliggende materie, zodat het onderwerp voldoende gekaderd wordt. Daarnaast worden de voor- en nadelen van de verschillende opties in kaart gebracht, zodat op basis van deze inzichten een onderbouwde keuze kan worden gemaakt voor de uitwerking van een PoC.
 \\[1em]
-Op basis van de literatuurstudie wordt een analyse opgesteld om te bepalen welke optie het meest geschikt is voor verdere uitwerking. De belangrijkste beslissing binnen deze usecase betreft de keuze van de techniek die zal worden toegepast. Elke methode heeft zijn eigen voor- en nadelen, die zorgvuldig moeten worden afgewogen bij het opstellen van de PoC en bij de selectie van de LLM-modellen die kunnen worden ingezet.
+Op basis van de literatuurstudie wordt een analyse opgesteld om te bepalen welke optie het meest geschikt is voor verdere uitwerking. De belangrijkste beslissing binnen deze use case betreft de keuze van de techniek die zal worden toegepast. Elke methode heeft zijn eigen voor- en nadelen, die zorgvuldig moeten worden afgewogen bij het opstellen van de PoC en bij de selectie van de LLM-modellen die kunnen worden ingezet.
 \\[1em]
 Daarnaast worden de beschikbare benchmarks besproken en wordt toegelicht hoe deze geïnterpreteerd moeten worden. Dit is van belang om op een onderbouwde manier een model te kiezen voor de PoC. Ook komen verschillende evaluatiemetrieken aan bod die nuttig zijn voor het beoordelen van de PoC.
 
@@ -43,16 +43,16 @@ Eens de literatuurstudie is afgerond en de interviews zijn afgenomen, kan met be
 \section{Long list}
 
 In deze fase wordt een overzicht opgesteld van de verschillende opties voor het opzetten van de PoC. Dit omvat zowel mogelijke technieken als categorieën van LLM’s. Het doel is om een zo breed mogelijk beeld te schetsen, zodat alle relevante benaderingen kunnen worden overwogen. In deze fase worden nog geen keuzes gemaakt. De uiteindelijke selectie volgt in een latere stap op basis van de resultaten van de behoefteanalyse. Daarbij wordt rekening gehouden met de beperkingen die tijdens het onderzoek naar voren komen.
+\\[1em]
+Op basis van de beschikbare modellen wordt een selectie gemaakt, waarbij uitsluitend open modellen in aanmerking komen. Deze zijn niet alleen kosteloos te gebruiken, maar kunnen bovendien lokaal worden geïnstalleerd en ingezet. Doordat de verwerking volledig op de eigen hardware gebeurt, blijven alle data en query’s binnen de PoC strikt lokaal en ontstaat er geen risico op privacyproblemen.
 
 \section{Short list}
 
-Op basis van de beschikbare modellen uit de longlist wordt een selectie gemaakt, waarbij de keuze wordt beperkt tot open modellen. Deze modellen zijn niet alleen gratis te gebruiken, maar kunnen ook lokaal worden geïnstalleerd en ingezet. Doordat de modellen lokaal draaien, ontstaan er binnen deze PoC geen privacyproblemen, alle gebruikte data en query’s blijven volledig op de eigen lokale hardware, zonder externe verwerking.
+Op basis van de beschikbare modellen uit de longlist wordt een selectie gemaakt. Deze selectie hangt voornamelijk af van de structuur van de PoC. Als het model aan specifieke vereisten moet voldoen, wordt de lijst verder ingeperkt. Hoe dit precies gebeurt, wordt toegelicht in het volgende hoofdstuk.
 \\[1em]
-Om de PoC tot stand te brengen zijn er verschillende mogelijkheden, elk met hun eigen voor- en nadelen. De opties voor deze PoC zijn finetuning, CAG of RAG. Finetuning brengt hoge kosten met zich mee, waardoor dit geen realistische optie is. Daarnaast hebben lokale modellen vaak een kleinere context window dan commerciële modellen, waardoor CAG minder geschikt is. Bovendien is CAG minder schaalbaar, omdat bij elke vraag alle documenten in de context moeten worden toegevoegd.
+Omdat gekozen werd voor open modellen die lokaal op de eigen hardware draaien, beperkt de keuze zich bovendien tot modellen van een bepaalde omvang. De meest krachtige open modellen vallen daardoor eveneens buiten de selectie.
 \\[1em]
-Bij RAG is er enerzijds de complexere flow om de documenten op te halen uit een vector database. Anderzijds is RAG meer schaalbaar dan CAG, aangezien alleen relevante documenten door de LLM worden gebruikt.
-\\[1em]
-De concrete keuze die gemaakt zal worden, is afhankelijk van een voorafgaande analyse die in het volgende hoofdstuk wordt besproken. Samen met de scope en beperkingen van het onderzoek bepaalt dit in hoofdzaak welke techniek zal worden gekozen.
+De uiteindelijke keuze tussen Finetuning, RAG of CAG hangt af van een voorafgaande analyse, die in het volgende hoofdstuk wordt besproken. Samen met de scope en de beperkingen van het onderzoek bepaalt deze analyse in hoofdzaak welke techniek wordt toegepast.
 
 \section{Opbouw van de PoC en Evaluatie}
 

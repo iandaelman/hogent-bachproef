@@ -5,8 +5,19 @@
 \chapter{Resultaten}
 \label{ch:resultaten}
 
+%TODO In de caption van figuren altijd een conclusie, op te merken afwijking… opgeven
+
+
+%ResponseRelevancy  Scores the relevancy of the answer according to the given question. Answers with incomplete, redundant or unnecessary information is penalized. Score can range from 0 to 1 with 1 being the best.
+
+%Faithfulness The Faithfulness metric measures how factually consistent a response is with the retrieved context. It ranges from 0 to 1, with higher scores indicating better consistency.
+
+% AnswerCorrectness  Measures answer correctness compared to ground truth as a combination of factuality and semantic similarity.
+
+%LLMContextRecall checkt in hoeverre de juiste info voor het antwoord ook effectief aanwezig was in de opgehaalde context. Hoe meer overlap tussen juiste antwoord en context, hoe hoger de score.  aka hoe goed het model zijn retrievalproces heeft aangestuurd.
+
 Om de verschillende modellen te testen, worden meerdere scenario’s gehanteerd.
-Ten eerste wordt gebruikgemaakt van een testset met tien vragen waarvan de informatie beschikbaar is in de documentatie. Van elk model wordt verwacht dat het op iedere vraag een concreet antwoord geeft. Deze antwoorden worden vervolgens geëvalueerd met behulp van het test framework Ragas, waarbij vier verschillende meetcriteria worden toegepast.
+Ten eerste wordt gebruikgemaakt van een testset met tien vragen waarvan de informatie beschikbaar is in de documentatie. Van elk model wordt verwacht dat het op iedere vraag een concreet antwoord geeft. Deze antwoorden worden vervolgens geëvalueerd met behulp van het test framework \textit{Ragas}, waarbij vier verschillende meetcriteria worden toegepast.
 \\[1em]
 Het tweede testscenario bestaat uit het stellen van niet-triviale vragen waarvoor de informatie niet beschikbaar is in de documentatie. Dit scenario is vooral bedoeld om te onderzoeken of bepaalde modellen tekenen van hallucinaties vertonen.
 \\[1em]
@@ -18,26 +29,30 @@ Voor elk model werd een afzonderlijke vragenlijst opgesteld, waarbij de verwacht
 De antwoorden die door de modellen zijn gegenereerd, zijn weergegeven in bijlage \ref{antwoordenlijst}.
 In beide bijlagen zijn, uit overwegingen van gegevensbescherming, alle contactgegevens geanonimiseerd.
 \\[1em]
-Voor deze evaluatie wordt gebruikgemaakt van een testframework \textit{Ragas}. Tijdens de testen wordt voor iedere vraag de volgende informatie verzameld: de gebruikersinput, de opgehaalde context, het antwoord van de LLM en het verwachte antwoord. Op basis van deze gegevens gebruikt Ragas zelf een LLM om de dataset te beoordelen volgens de gekozen evaluatie criteria. In dit geval werd hiervoor het testmodel \texttt{gemma3:4b} gebruikt, omdat dit model een goede balans biedt tussen rekensnelheid, geheugengebruik en beoordelingskwaliteit. Hierdoor kon de evaluatie efficiënt worden uitgevoerd. Dit resulteert in een rapport waarin iedere vraag wordt beoordeeld op de verschillende criteria.
+Voor deze evaluatie wordt gebruikgemaakt van een testframework Ragas. Tijdens de testen wordt voor iedere vraag de volgende informatie verzameld: de gebruikersinput, de opgehaalde context, het antwoord van de LLM en het verwachte antwoord. Op basis van deze gegevens gebruikt Ragas zelf een LLM om de dataset te beoordelen volgens de gekozen evaluatie criteria. In dit geval werd hiervoor het testmodel \textit{gemma3:4b} gebruikt, omdat dit model een goede balans biedt tussen rekensnelheid, geheugengebruik en beoordelingskwaliteit. Hierdoor kon de evaluatie efficiënt worden uitgevoerd. Dit resulteert in een rapport waarin iedere vraag wordt beoordeeld op de verschillende criteria.
 \\[1em]
 De scores per vraag variëren tussen 0 en 1, waarbij een score van 1 een volledig correct antwoord representeert.
 Binnen de categorie \textit{Faithfulness} geeft een score van 0{,}000 aan dat het model ten onrechte heeft nagelaten de retriever-tool te gebruiken, waardoor de opgehaalde context leeg bleef.
 Voor de categorie \textit{Context Recall} kan dit in sommige gevallen juist het tegenovergestelde effect hebben: wanneer de opgehaalde context leeg is, kan het antwoord van het model toch een score van 1 behalen, mits het volledig aansluit bij de afwezigheid van context.
 \\[1em]
-De meetcriteria \textit{Faithfulness} beoordeelt hoe consistent het antwoord is met de opgehaalde context. \textit{Response relevancy} kijkt naar hoe relevant het antwoord is ten opzichte van de vraag. Onvolledige of overbodige informatie leidt hierbij tot een lagere score. \textit{Answer correctness} beoordeelt hoe correct het antwoord is in vergelijking met het verwachte antwoord, waarbij zowel feitelijke als semantische overeenkomsten worden meegenomen. \textit{Context recall} controleert in welke mate de benodigde informatie voor het antwoord aanwezig is in de opgehaalde context. Hoe groter de overlap tussen het juiste antwoord en de context, hoe hoger de score. Deze meetcriteria kijkt dus vooral naar hoe goed het model het ophaalproces aanstuurt.
+Het meetcriterium Faithfulness beoordeelt hoe consistent het antwoord is met de opgehaalde context. \textit{Response Relevancy} kijkt naar hoe relevant het antwoord is ten opzichte van de vraag. Onvolledige of overbodige informatie leidt hierbij tot een lagere score. \textit{Answer Correctness} beoordeelt hoe correct het antwoord is in vergelijking met het verwachte antwoord, waarbij zowel feitelijke als semantische overeenkomsten worden meegenomen. Context Recall controleert in welke mate de benodigde informatie voor het antwoord aanwezig is in de opgehaalde context. Hoe groter de overlap tussen het juiste antwoord en de context, hoe hoger de score. Dit meetcriterium kijkt dus vooral naar hoe goed het model het ophaalproces aanstuurt.
 \\[1em]
-Op basis van deze evaluatie zijn de volgende resultaten vastgesteld:
-\subsection{Llama3.1}
+Bij sommige modellen en vragen traden tijdens het testen errors op. Dit hield in dat de documentatie ofwel niet werd opgehaald, ofwel foutief uit de vectordatabase kwam. Voor deze vragen werd vastgesteld dat de meetcriteria Faithfulness en Response Relevancy een score van 0 kregen, terwijl bij voor Context Recall een 1 werd toegekend. Om een realistischer beeld van de prestaties van de modellen te geven, wordt voor deze vragen de Context Recall aangepast naar 0, aangezien dit beter weerspiegelt hoe het model daadwerkelijk presteerde voor die vraag. Deze correcties werden toegepast voor Llama3.1 vraag 4 en voor Qwen2.5 vragen 4, 7 en 9.
+\\[1em]
+%Vragen waar het model geen antwoord op kon bieden waren 1, 2, 7 en 10 Voor vragen 3, gaf het model wel een antwoord maar dit was niet in het geval van vraag 3 niet waarheidsgetrouw in het geval van vragen 5, lag het probleem eerder aan de documentatie die niet éénduidig was. Bij vraag 4 was er een error tijdens het RAG proces wat resulteerde in de slechte resultaten.
+In tabel \ref{tab:resultaten_vragen_llama3.1} worden de resultaten van Llama3.1 weergegeven. Opvallend is dat de Response Relevancy in veel gevallen nul scoort, wat aangeeft dat de antwoorden van het model vaak niet relevant zijn voor de gestelde gebruikersvragen. Daarnaast blijft de score voor Answer Correctness over het algemeen laag. Dit valt deels te verklaren doordat het model voor een aantal vragen de nodige informatie niet kon vinden in de vectordatabase.
+\\[1em]
+Verder valt op dat het model, ondanks dat de juiste informatie in de context aanwezig is, vaak niet in staat is deze correct te combineren tot een juist antwoord. Een duidelijk voorbeeld hiervan is vraag 10. Hier was de Context Recall een 1, maar de Answer Correctness slechts 0.205. Het model gaf aan de vraag niet te kunnen beantwoorden, ondanks dat de benodigde informatie wel beschikbaar was in de context.
 
 \begin{table}[H]
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer correctness} & \textbf{Context recall} \\
+        \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response Relevancy} & \textbf{Answer Correctness} & \textbf{Context Recall} \\
         \hline
         Vraag 1 & 1.000 & 0.000 & 0.225 & 0.500 \\
         Vraag 2 & 0.333 & 0.000 & 0.221 & 0.000 \\
         Vraag 3 & 0.385 & 0.000 & 0.223 & 0.500 \\
-        Vraag 4 & 0.000 & 0.000 & 0.174 & 1.000 \\
+        Vraag 4 & 0.000 & 0.000 & 0.174 & 0.000 \\
         Vraag 5 & 1.000 & 0.863 & 0.212 & 0.125 \\
         Vraag 6 & 0.667 & 0.920 & 0.477 & 1.000 \\
         Vraag 7 & 0.500 & 0.000 & 0.205 & 1.000 \\
@@ -46,17 +61,18 @@ Op basis van deze evaluatie zijn de volgende resultaten vastgesteld:
         Vraag 10 & 0.333 & 0.000 & 0.205 & 1.000 \\
         \hline
     \end{tabular}
-    \caption{Resultaten per vraag op de vier meetcriteria van het Llama3.1 model.}
+    \caption{Resultaten per vraag op de vier meetcriteria van het Llama3.1 model. De antwoorden blijken vaak niet relevant voor de vraag (Response Relevancy = 0), en de Answer Correctness blijft over het algemeen laag.}
     \label{tab:resultaten_vragen_llama3.1}
 \end{table}
 
-\subsection{Llama3.2}
-
+In tabel \ref{tab:resultaten_vragen_llama3.2} worden de resultaten van Llama3.2 weergegeven. Het meest opvallende resultaat is vraag 7, waar het model zeer hoge scores behaalt op alle criteria en bijna een perfecte score bereikt voor Answer Correctness (0.991). Daarnaast laat het model, ondanks de kleinere modelgrootte, toch degelijke prestaties zien.
+\\[1em]
+Ook de resultaten voor vraag 8 zijn opmerkelijk. Hier behaalt het model op bijna alle criteria een hoge score, met uitzondering van Answer Correctness. Dit verschil wordt veroorzaakt door de ambiguïteit in de opgehaalde documentatie. De bronnen boden geen eenduidig correct antwoord. Het door het model gegeven antwoord komt daardoor niet overeen met de ground truth, maar kan wel worden verantwoord op basis van de beschikbare documentatie.
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer correctness} & \textbf{Context recall} \\
+        \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer Correctness} & \textbf{Context Recall} \\
         \hline
         Vraag 1  & 0.500 & 0.894 & 0.485 & 0.500 \\
         Vraag 2  & 0.333 & 0.000 & 0.220 & 0.000 \\
@@ -70,40 +86,40 @@ Op basis van deze evaluatie zijn de volgende resultaten vastgesteld:
         Vraag 10 & 0.333 & 0.000 & 0.207 & 1.000 \\
         \hline
     \end{tabular}
-    \caption{Resultaten per vraag op de vier meetcriteria van het Llama3.2 model.}
+    \caption{Resultaten per vraag op de vier meetcriteria van het Llama3.2 model. Opvallend is vraag 7, waar het model bijna perfecte scores behaalt op alle criteria. Bij vraag 8 werd vastgesteld dat ambiguïteit in de documentatie kan leiden tot een lage Answer Correctness, ondanks hoge scores op de andere criteria.}
     \label{tab:resultaten_vragen_llama3.2}
 \end{table}
 
-\subsection{Qwen2.5}
+In tabel \ref{tab:resultaten_vragen_qwen2.5} worden de resultaten van Qwen2.5 weergegeven. Opvallend is dat de Response Relevancy vrijwel overal nul scoort en dat de Context Recall zeer laag is. De enige uitzondering is vraag 6, waar het model zowel de context correct ophaalt als een relevante respons genereert. Deze lage scores zijn deels het gevolg van errors tijdens het uitvoeren van het RAG-proces. Een andere reden is dat het model in sommige gevallen direct een antwoord formuleerde zonder eerst de vectordatabase te raadplegen. Ook blijft de score voor Answer Correctness voor de andere vragen relatief laag waardoor de prestaties van dit model niet overtuigend zijn.
 
 \begin{table}[H]
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer correctness} & \textbf{Context recall} \\
+        \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer Correctness} & \textbf{Context Recall} \\
         \hline
         Vraag 1  & 0.750 & 0.000 & 0.485 & 0.500 \\
         Vraag 2  & 0.500 & 0.000 & 0.226 & 0.000 \\
         Vraag 3  & 0.929 & 0.000 & 0.229 & 0.500 \\
-        Vraag 4  & 0.000 & 0.000 & 0.174 & 1.000 \\
+        Vraag 4  & 0.000 & 0.000 & 0.174 & 0.000 \\
         Vraag 5  & 0.000 & 0.000 & 0.180 & 0.000 \\
         Vraag 6  & 1.000 & 0.871 & 0.469 & 1.000 \\
-        Vraag 7  & 0.000 & 0.000 & 0.176 & 1.000 \\
+        Vraag 7  & 0.000 & 0.000 & 0.176 & 0.000 \\
         Vraag 8  & 0.000 & 0.000 & 0.179 & 0.000 \\
-        Vraag 9  & 0.000 & 0.000 & 0.176 & 0.556 \\
+        Vraag 9  & 0.000 & 0.000 & 0.176 & 0.000 \\
         Vraag 10 & 0.667 & 0.000 & 0.216 & 0.000 \\
         \hline
     \end{tabular}
-    \caption{Resultaten per vraag op de vier meetcriteria van het Qwen2.5 model.}
+    \caption{Resultaten per vraag op de vier meetcriteria van het Qwen2.5 model. De Response Relevancy en Context Recall zijn vrijwel overal nul, met uitzondering van vraag 6 waar het model zowel de context correct ophaalt als een relevante respons geeft. Over alle vragen blijft de Answer Correctness laag, wat duidt op matige prestaties van dit model.}
     \label{tab:resultaten_vragen_qwen2.5}
 \end{table}
 
 
-\subsection{Qwen3}
+In tabel \ref{tab:resultaten_vragen_qwen3} worden de resultaten van Qwen3 weergegeven. Voor dit model valt op hoe hoog de Faithfulness is wat betekent dat het model zich goed houdt aan de informatie die het heeft opgehaald en bijgevolg minder geneigd is om hallucinaties te vertonen. Het model scoort voor vraag 7 zeer hoog op alle categorieën. De Answer Correctness blijft bij enkele vragen echter laag. Voor vragen 1 tot en met 4 gaf het model aan geen antwoord te kunnen vinden in de context. Bij vraag 5 werd gedateerde informatie uit de vectordatabase opgehaald waardoor het antwoord niet overeenstemde met de ground truth. Voor vraag 9 werd slechts een deel van het correcte antwoord uit de database gehaald. Op basis van de opgehaalde context besloot het model een andere chunk te gebruikten om een antwoord te genereren. Dit resulteert in een lage Answer Correctness met op hetzelfde moment een hoge Faithfulness en een vrij hoge Context Recall.
 
 \begin{table}[H]
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer correctness} & \textbf{Context recall} \\
+        \textbf{Vraag} & \textbf{Faithfulness} & \textbf{Response Relevancy} & \textbf{Answer Correctness} & \textbf{Context Recall} \\
         \hline
         Vraag 1  & 1.000 & 0.000 & 0.216 & 0.500 \\
         Vraag 2  & 1.000 & 0.000 & 0.224 & 0.000 \\
@@ -117,14 +133,14 @@ Op basis van deze evaluatie zijn de volgende resultaten vastgesteld:
         Vraag 10 & 1.000 & 0.935 & 0.636 & 1.000 \\
         \hline
     \end{tabular}
-    \caption{Resultaten per vraag op de vier meetcriteria van het Qwen3 model.}
+    \caption{Resultaten per vraag voor het Qwen3 model waarbij opvalt dat Faithfulness hoog is en het model bij vraag 7 op alle meetcriteria hoge scores behaalt terwijl de Answer Correctness bij enkele vragen lager blijft door ontbrekende of gedateerde informatie.}
     \label{tab:resultaten_vragen_qwen3}
 \end{table}
 
 
 \subsection{Samenvatting}
 
-Om de prestaties van de modellen per individuele metric te vergelijken, worden in figuur~\ref{fig:vergelijking_metrics} vier staafdiagrammen weergegeven: Faithfulness, Response relevancy, Answer correctness en Context recall.
+Om de prestaties van de modellen per meetcriterium te vergelijken, worden in figuur~\ref{fig:vergelijking_metrics} vier staafdiagrammen weergegeven. Elk diagram toont de gemiddelde score van de verschillende modellen voor één specifiek meetcriterium.
 
 \begin{figure}[H]
     \centering
@@ -147,7 +163,7 @@ Om de prestaties van de modellen per individuele metric te vergelijken, worden i
                 every node near coord/.append style={font=\small},
                 title={Faithfulness}
                 ]
-                \addplot coordinates {(L3.1,0.604) (L3.2,0.620) (Q2.5, 0.769) (Q3,0.880)};
+                \addplot coordinates {(L3.1,0.543) (L3.2,0.620) (Q2.5, 0.385) (Q3,0.880)};
             \end{axis}
         \end{tikzpicture}
     \end{subfigure}
@@ -169,7 +185,7 @@ Om de prestaties van de modellen per individuele metric te vergelijken, worden i
                 nodes near coords,
                 nodes near coords align={vertical},
                 every node near coord/.append style={font=\small},
-                title={Response relevancy}
+                title={Response Relevancy}
                 ]
                 \addplot coordinates {(L3.1,0.272) (L3.2,0.445) (Q2.5,0.087) (Q3,0.358)};
             \end{axis}
@@ -195,7 +211,7 @@ Om de prestaties van de modellen per individuele metric te vergelijken, worden i
                 nodes near coords,
                 nodes near coords align={vertical},
                 every node near coord/.append style={font=\small},
-                title={Answer correctness}
+                title={Answer Correctness}
                 ]
                 \addplot coordinates {(L3.1,0.274) (L3.2,0.356) (Q2.5,0.251) (Q3,0.402)};
             \end{axis}
@@ -219,18 +235,45 @@ Om de prestaties van de modellen per individuele metric te vergelijken, worden i
                 nodes near coords,
                 nodes near coords align={vertical},
                 every node near coord/.append style={font=\small},
-                title={Context recall}
+                title={Context Recall}
                 ]
-                \addplot coordinates {(L3.1,0.713) (L3.2,0.633) (Q2.5,0.456) (Q3, 0.550)};
+                \addplot coordinates {(L3.1,0.613) (L3.2,0.633) (Q2.5,0.2) (Q3, 0.550)};
             \end{axis}
         \end{tikzpicture}
     \end{subfigure}
     
-    \caption{Vergelijking van de prestaties per metric voor alle modellen.}
+    \caption{Vergelijking van de gemiddelde scores per meetcriterium voor de modellen Llama3.1 (L3.1), Llama3.2 (L3.2), Qwen2.5 (Q2.5) en Qwen3 (Q3). De figuur toont dat Qwen3 de hoogste Faithfulness behaalt, terwijl de Response Relevancy en Answer Correctness bij de meeste modellen lager blijven. Context Recall varieert sterk tussen de modellen, waarbij Llama-modellen over het algemeen beter scoren dan Qwen2.5 en Qwen3.}
     \label{fig:vergelijking_metrics}
 \end{figure}
 
-Gemiddeld over de vier categorieën scoren de modellen als volgt:
+Uit tabel \ref{tab:modelvergelijking} blijkt dat het model Qwen3 de hoogste scores behaalde voor Faithfulness (0.880) en Answer Correctness (0.402), terwijl Llama3.2 het beste presteerde op Response Relevancy (0.445) en Llama3.1 op Context Recall (0.713). 
+\\[1em]
+Opvallend is dat niet één model op alle gemeten criteria het beste scoorde. Zo behaalde het Qwen3 model de hoogste score op zowel Faithfulness als Answer Correctness. Dit suggereert dat dit model zich het meest consistent hield aan de geleverde context, en over de hele set van tien vragen ook de meest accurate antwoorden genereerde.
+\\[1em]
+Voor Response Relevancy was het Llama3.2 model de best presterende. De laagste score op dit meetcriterium werd echter behaald door het Qwen2.5 model, met een opvallend lage waarde van 0.087. Dit wijst erop dat de antwoorden van dit model vaak irrelevante of overbodige informatie bevatten, of dat cruciale elementen uit het antwoord ontbraken.
+\\[1em]
+Op het vlak van Context Recall scoorde het Llama3.2 model het hoogst, op korte afstand gevolgd door Llama3.1. Dit betekent dat Llama3.2 er het best in slaagde om relevante documentatie op te halen. Toch bleek dit niet automatisch te leiden tot een hoge Answer Correctness. Ondanks de hoge Context Recall, presteerde Llama3.2 niet het sterkste op vlak van Answer Correctness. In tegenstelling daarmee behaalde het Qwen3 model wel een hoge Answer correctness met een iets lagere Context Recall, wat impliceert dat het model de opgehaalde informatie beter wist te verwerken en toepassen.
+
+\begin{table}[H]
+    \begin{tabular}{|l|c|c|c|c|c|}
+        \hline
+        \textbf{Model} & \textbf{Faithfulness} & \textbf{Response Relevancy} & \textbf{Answer Correctness} & \textbf{Context Recall} \\
+        \hline
+        \textbf{Llama3.1} & 0.543 & 0.272 & 0.274 & 0.613 \\
+        \textbf{Llama3.2} & 0.620 & \textbf{0.445} & 0.356 & \textbf{0.633} \\
+        \textbf{Qwen2.5}  & 0.385 & 0.087 & 0.251 & 0.200 \\
+        \textbf{Qwen3}    & \textbf{0.880} & 0.358 & \textbf{0.402} & 0.550 \\
+        \hline
+    \end{tabular}
+    \caption{Vergelijking van modelprestaties op vier evaluatiecriteria. Qwen3 behaalt de hoogste gemiddelde scores, terwijl Llama3.2 de op één na hoogste score behaalt en bovendien relatief consistent presteert over de verschillende categorieën. Dit ondanks het kleinere aantal parameters.}
+    \label{tab:modelvergelijking}
+\end{table}
+
+Figuur \ref{fig:gemiddelde_score_per_model_met_sd} geeft een overzicht van de gemiddelde score van elk model over de vier categorieën, waarbij elke categorie even zwaar meeweegt in de eindberekening. Op deze manier kunnen de verschillende modellen snel met elkaar worden vergeleken. Hoewel dit niet het hele verhaal verteld, sluit dit gemiddelde wel aan bij de individuele prestaties van de modellen.
+\\[1em]
+Gemiddeld scoorde Qwen3 het best, met Llama3.2 op de tweede plaats. Dit is opvallend aangezien Llama3.2 slechts drie miljard parameters heeft, tegenover de andere modellen die zeven à acht miljard parameters hebben.
+\\[1em]
+Figuur \ref{fig:gemiddelde_score_per_model_met_sd} illustreert tevens dat Llama3.2 de meest consistente prestaties vertoont over de vier categorieën. De foutbalken representeren de standaarddeviatie van de scores. Waarbij een kleinere waarde wijst op minder grote spreiding en daarmee op consistente prestaties over de verschillende meetcriteria. Het model combineert met andere woorden een relatief hoge gemiddelde score met een hoge mate van consistentie.
 
 \begin{figure}[H]
     \centering
@@ -255,55 +298,16 @@ Gemiddeld over de vier categorieën scoren de modellen als volgt:
             y dir=both,
             y explicit
             ] coordinates {
-                (Llama3.1,0.466) +- (0,0.227)
+                (Llama3.1,0.426) +- (0,0.178)
                 (Llama3.2,0.514) +- (0,0.136)
-                (Qwen2.5,0.391) +- (0,0.294)
+                (Qwen2.5,0.231) +- (0,0.124)
                 (Qwen3,0.548)   +- (0,0.236)
             };
         \end{axis}
     \end{tikzpicture}
-    \caption{Gemiddelde score per model met standaarddeviatie.}
+    \caption{Gemiddelde score per model over de vier categorieën, met foutbalken die de standaarddeviatie weergeven. Llama3.2 vertoont de meest consistente prestaties, terwijl Qwen3 het hoogste gemiddelde behaalt maar met grotere spreiding.}
     \label{fig:gemiddelde_score_per_model_met_sd}
 \end{figure}
-
-
-\begin{table}[H]
-    \begin{tabular}{|l|c|c|c|c|c|}
-        \hline
-        \textbf{Model} & \textbf{Faithfulness} & \textbf{Response relevancy} & \textbf{Answer correctness} & \textbf{Context recall} \\
-        \hline
-        \textbf{llama3.1} & 0.604 & 0.272 & 0.274 & \textbf{0.713} \\
-        \textbf{llama3.2} & 0.620 & \textbf{0.445} & 0.356 & 0.633 \\
-        \textbf{qwen2.5}  & 0.769 & 0.087 & 0.251 & 0.456 \\
-        \textbf{qwen3}    & \textbf{0.880} & 0.358 & \textbf{0.402} & 0.550 \\
-        \hline
-    \end{tabular}
-    \caption{Vergelijking van modelprestaties.}
-    \label{tab:modelvergelijking}
-\end{table}
-
-\subsection{Bespreking van de resultaten}
-
-%ResponseRelevancy  Scores the relevancy of the answer according to the given question. Answers with incomplete, redundant or unnecessary information is penalized. Score can range from 0 to 1 with 1 being the best.
-
-%Faithfulness The Faithfulness metric measures how factually consistent a response is with the retrieved context. It ranges from 0 to 1, with higher scores indicating better consistency.
-
-% AnswerCorrectness  Measures answer correctness compared to ground truth as a combination of factuality and semantic similarity.
-
-%LLMContextRecall checkt in hoeverre de juiste info voor het antwoord ook effectief aanwezig was in de opgehaalde context. Hoe meer overlap tussen juiste antwoord en context, hoe hoger de score.  aka hoe goed het model zijn retrievalproces heeft aangestuurd.
-
-
-Uit tabel \ref{tab:modelvergelijking} blijkt dat het model Qwen3 de hoogste scores behaalde voor faithfulness (0.880) en answer correctness (0.402), terwijl Llama3.2 het beste presteerde op response relevancy (0.445) en Llama3.1 op context recall (0.713). 
-\\[1em]
-Opvallend is dat niet één model op alle gemeten criteria het beste scoorde. Zo behaalde het Qwen3 model de hoogste score op zowel \textit{Faithfulness} als \textit{Answer Correctness}. Dit suggereert dat dit model zich het meest consistent hield aan de geleverde context, en over de hele set van tien vragen ook de meest accurate antwoorden genereerde.
-\\[1em]
-Voor \textit{Response Relevancy} was het Llama3.2 model de best presterende. De laagste score op deze metric werd echter behaald door het Qwen2.5 model, met een opvallend lage waarde van 0.087. Dit wijst erop dat de antwoorden van dit model vaak irrelevante of overbodige informatie bevatten, of dat cruciale elementen uit het antwoord ontbraken.
-\\[1em]
-Op het vlak van \textit{Context Recall} scoorde het Llama3.1 model het hoogst, op korte afstand gevolgd door Llama3.2. Dit betekent dat Llama3.1 er het best in slaagde om relevante documentatie op te halen. Toch bleek dit niet automatisch te leiden tot een hoge \textit{Answer Correctness}. Ondanks de hoge context recall, presteerde Llama3.1 relatief zwak op het vlak van antwoordjuistheid. In tegenstelling daarmee behaalde het Qwen3 model wel een hoge answer correctness met een iets lagere context recall, wat impliceert dat het model de opgehaalde informatie beter wist te verwerken en toepassen.
-\\[1em]
-Gemiddeld scoorde Qwen3 het best, met Llama3.2 op de tweede plaats. Opvallend is dat Llama3.2 slechts drie miljard parameters heeft, tegenover zeven à acht miljard bij de andere modellen, maar toch goed presteerde.
-\\[1em]
-Figuur \ref{fig:gemiddelde_score_per_model_met_sd} toont bovendien dat Llama3.2 de meest consistente prestaties leverde over de verschillende categorieën, wat bevestigd wordt door de lage standaarddeviatie in vergelijking met de andere modellen. Het model combineert dus een degelijke gemiddelde score met hoge consistentie.
 
 \section{Evaluatie 2: Hallucinaties}
 
@@ -331,7 +335,7 @@ De vragenlijst is als volgt:
        Vraag 5 & Nee & Ja & Nee & Nee \\
         \hline
     \end{tabular}
-    \caption{Resultaten hallucinatie test per model bij vragen die niet in de documentatie voorkomen (Ja = hallucinatie, Nee = geen hallucinatie)}
+    \caption{Resultaten hallucinatie test per model bij vragen die niet in de documentatie voorkomen (Ja = hallucinatie, Nee = geen hallucinatie). Uit de resultaten blijkt dat voornamelijk Llama3.2 frequent hallucinaties vertoont, terwijl de andere modellen dit nauwelijks doen.}
 \end{table}
 
 \noindent\textbf{Samenvatting:}  
@@ -346,7 +350,7 @@ De vragenlijst is als volgt:
         Qwen3    & 1/5 (20\%) \\
         \hline
     \end{tabular}
-    \caption{Samenvatting hallucinatie test}
+    \caption{Samenvatting hallucinatie test. Het percentage geeft aan hoe vaak een model hallucinaties vertoonde. Opvallend is dat Llama3.2 met 80\% veruit het vaakst hallucinaties genereerde, terwijl de andere modellen dit slechts in 20\% van de gevallen deden.}
 \end{table}
 
 Uit de resultaten blijkt dat Llama3.2 in 80\% van de gevallen hallucinaties vertoonde, terwijl de overige modellen dit slechts in 20\% van de gevallen deden.
@@ -389,7 +393,8 @@ De vragenlijst is als volgt:
         Hoeveel minuten zitten er in een uur? & Nee & Nee & Ja & Ja \\
         \hline
     \end{tabular}
-    \caption{Resultaten correct gebruik van de graaf per model bij triviale vragen (verwacht gedrag: direct antwoord, geen RAG)}
+    \caption{Resultaten van het correcte gebruik van de graaf per model bij triviale vragen waarbij verwacht wordt dat een direct antwoord wordt gegeven zonder gebruik van RAG. Er is een duidelijk onderscheid tussen de Llama-modellen en Qwen-modellen. De Llama-modellen raadplegen bij iedere vraag de vectordatabase terwijl de Qwen-modellen dit achterwege laten zoals wordt verwacht bij triviale vragen.}
+    
 \end{table}
 
 \noindent\textbf{Samenvatting:}  
@@ -404,28 +409,27 @@ De vragenlijst is als volgt:
         Qwen3    & 5/5 (100\%) \\
         \hline
     \end{tabular}
-    \caption{Samenvatting van correct gebruik van de graaf per model}
+    \caption{Samenvatting van correct gebruik van de graaf per model. Qwen2.5 en Qwen3 volgden in alle gevallen het verwachte gedrag terwijl Llama3.1 en Llama3.2 dit niet deden.}
 \end{table}
 
 Uit de resultaten blijkt dat Qwen2.5 en Qwen3 alle triviale vragen direct beantwoordden, terwijl Llama3.1 en Llama3.2 in alle gevallen onnodige RAG uitvoerden.
 
 \subsection{Bespreking van de resultaten}
 %Verwachtte je een foutloos resultaat?
-De resultaten waren in deze vrij duidelijk de 2 Llama modellen slaagde er niet in om een onderscheid te maken tussen triviale en niet-triviale vragen. Dit leidde ertoe dat ze bij iedere vraag het hele ophaal proces gingen gaan uitvoeren. De twee Qwen modellen daarentegen gingen wel meteen antwoorden op de triviale vragen. Met andere woorden is het contrast tussen de Qwen en Llama modellen tijdens deze test vrij groot.
+De resultaten waren in deze vrij duidelijk de twee Llama modellen slaagde er niet in om een onderscheid te maken tussen triviale en niet-triviale vragen. Dit leidde ertoe dat ze bij iedere vraag het hele ophaalproces gingen uitvoeren. De twee Qwen modellen daarentegen gingen wel meteen antwoorden op de triviale vragen. Met andere woorden is het contrast tussen de Qwen en Llama modellen tijdens deze test vrij groot.
 \\[1em]
 De resultaten waren in dit geval vrij duidelijk. De twee Llama-modellen slaagden er niet in onderscheid te maken tussen triviale en niet-triviale vragen. Dit leidde ertoe dat zij bij elke vraag het volledige ophaalproces uitvoerden. De twee Qwen-modellen daarentegen gaven direct antwoord op de triviale vragen. Met andere woorden: het contrast tussen de Qwen- en Llama-modellen was tijdens deze test aanzienlijk.
-
-%Werden er toch fouten gemaakt?
-
-\subsubsection{Implicaties resultaten}
-%Wat zegt dit over de betrouwbaarheid van het systeem?
-Hoewel dit niet direct invloed heeft op de inhoudelijke correctheid van de antwoorden, heeft het wel gevolgen voor de performantie van de toepassing. Bij niet-triviale vragen duurt het beantwoorden aanzienlijk langer bij de Llama-modellen dan bij de Qwen-modellen, omdat bij de Llama-modellen telkens het ophaalproces wordt opgestart.
-Voor een consistente en snelle werking van de PoC zijn de Qwen-modellen daardoor beter geschikt dan de Llama-modellen.
+\\[1em]
+Hoewel dit niet direct invloed heeft op de inhoudelijke correctheid van de antwoorden, heeft het wel gevolgen voor de performantie van de toepassing. Bij niet-triviale vragen duurt het beantwoorden aanzienlijk langer bij de Llama-modellen dan bij de Qwen-modellen, omdat bij de Llama-modellen telkens het ophaalproces wordt opgestart. Voor een consistente en snelle werking van de PoC zijn de Qwen-modellen daardoor beter geschikt dan de Llama-modellen.
 %Kunnen deze fouten vermeden worden met betere prompting?
 
 
 \section{Samenvatting}
 %Doel: Alles samenbrengen en overkoepelend reflecteren.
-In deze vergelijkende studie werden vier LLM-modellen getest op drie manieren. Namelijk het beantwoorden van vragen op basis van opgehaalde documentatie, het behandelen van vragen die niet in de documentatie voorkwamen en het omgaan met triviale vragen. Elk model werd bij iedere deeltest beoordeeld op zijn prestaties.
+In deze vergelijkende studie werden vier LLM-modellen getest op drie manieren. Met name het beantwoorden van vragen op basis van opgehaalde documentatie, het behandelen van vragen die niet in de documentatie voorkwamen en het omgaan met triviale vragen. Elk model werd bij iedere deeltest beoordeeld op zijn prestaties.
 \\[1em]
 Op basis van deze testen kan worden geconcludeerd dat Qwen3 het beste model is in deze vergelijkende studie. In de eerste test behaalde het model twee keer de hoogste score en één keer de op één na hoogste score. Daarnaast vertoonde het model geen hallucinaties en ging het op een correcte manier om met triviale vragen. Met andere woorden is dit het enige model dat in alle drie de testen aan de verwachtingen voldeed. Op basis van deze resultaten kan worden geconcludeerd dat Qwen3 binnen deze PoC de meest betrouwbare prestaties leverde.
+\\[1em]
+De PoC met het Qwen3-model dekt de meeste behoeften die in de requirement analyse naar boven kwamen. Ten eerste gaat het model goed om met meertaligheid. Er werden hieromtrent geen problemen vastgesteld, ondanks dat de opgehaalde documentatie soms in een andere taal was. Het model slaagde er consistent in om te antwoorden in de taal van de gebruiker. Daarnaast gaf het model aan wanneer het onvoldoende kennis had om een vraag te beantwoorden. Dit is van groot belang, aangezien het anders tot foutieve antwoorden kan leiden. Dit resultaat sluit aan bij de hoge score voor Faithfulness die Qwen3 behaalde. Wanneer het model een antwoord genereerde, vermeldde het bovendien vaak de bron van de informatie, wat positief is omdat de gebruiker de informatie op die manier kan verifiëren.  
+\\[1em]
+Een aantal van de behoeften zijn niet vervuld. Dit is voornamelijk het gevolg van beperkingen in de onderliggende graafstructuur of beschikbare documentatie en niet van het model zelf. Een concreet voorbeeld hiervan is de afwezigheid van een volwaardige chatfunctionaliteit binnen de PoC.
