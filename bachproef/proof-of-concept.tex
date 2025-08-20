@@ -3,7 +3,6 @@
 %%=============================================================================
 \chapter{Proof of concept}
 \label{ch:proof-of-concept}
-%TODO cpations bij figuren nakijken
 
 %Wat wil je bewijzen of aantonen met deze PoC?
 De hoofddoelstelling van deze PoC is te onderzoeken hoe een LLM ondersteuning kan bieden binnen een IT-supportsysteem, met als doel technische IT-vragen sneller af te handelen. De toepassing is bedoeld voor intern gebruik door het MyMinfin IT-team en niet voor externe gebruikers, zoals burgers. In de stand van zaken werden verschillende benaderingen onderzocht. In dit hoofdstuk wordt een keuze gemaakt uit deze benaderingen en toegepast op de PoC.
@@ -49,9 +48,9 @@ Voor de PoC werd een interview afgelegd. Op basis van dit interview werd een MoS
 
 Vooraleer de structuur van de PoC kan worden opgezet, moet een keuze gemaakt worden voor de meest geschikte techniek. Fine-tuning is, gelet op de scope van de PoC, moeilijk uitvoerbaar. Om dit te realiseren zou een model getraind moeten worden op data die kan helpen bij IT-support. Hoewel er data beschikbaar is in de vorm van e-mails, is het onderhoud bij fine-tuning niet te onderschatten. Wanneer een procedure of bepaalde gegevens veranderen, moet het model immers opnieuw getraind worden. Deze keuze brengt met andere woorden een hoge initiële kost met zich mee en potentieel ook een hoge onderhoudskost, die niet aanwezig is bij RAG of CAG.
 \\[1em]
-Met CAG aan de andere kant zouden alle documenten worden toegevoegd aan de context. Hoewel dit technisch mogelijk is, zeker met de modellen van vandaag, heeft deze aanpak enkele nadelen. Ten eerste kan \textit{context rot} een probleem vormen. Zoals aangegeven in de stand van zaken, worden modellen minder performant wanneer te veel informatie in de context wordt geplaatst. Daarnaast wordt bij CAG niet alleen relevante, maar ook irrelevante informatie toegevoegd. Dit verhoogt niet alleen de kans op minder nauwkeurige antwoorden, maar ook de mogelijke API-kosten in vergelijking met RAG.
+Met CAG aan de andere kant zouden alle documenten worden toegevoegd aan de context. Hoewel dit technisch mogelijk is, zeker met de modellen van vandaag, heeft deze aanpak enkele nadelen. Ten eerste kan \textit{context rot} een probleem vormen. Zoals aangegeven in de stand van zaken, worden modellen minder performant wanneer te veel informatie in de context wordt geplaatst. Daarnaast wordt bij CAG niet alleen relevante, maar ook irrelevante informatie toegevoegd. Dit verhoogt niet alleen de kans op minder nauwkeurige antwoorden, maar doordat alle documenten in de context worden opgenomen, zullen de API-kosten per query hoger zijn dan bij RAG.
 \\[1em]
-Met al deze redenen in gedachten is voor deze PoC gekozen om RAG toe te passen. Enerzijds zijn er geen hoge initiële kosten zoals bij fine-tuning, en anderzijds worden enkel relevante documenten toegevoegd aan de context. Dit helpt om mogelijke problemen van context rot te vermijden en houdt bovendien de kost per query laag. Tabel \ref{tab:techniek_vergelijking} geeft een overzicht van de voor- en nadelen van de verschillende benaderingen.
+Met al deze redenen in gedachten is voor deze PoC gekozen om RAG toe te passen. Enerzijds zijn er geen hoge initiële kosten zoals bij fine-tuning en anderzijds worden enkel relevante documenten toegevoegd aan de context. Dit helpt om mogelijke problemen zoals context rot te vermijden en houdt bovendien de kost per query laag. Tabel \ref{tab:techniek_vergelijking} geeft een overzicht van de voor- en nadelen van de verschillende benaderingen.
 
 \begin{table}[H]
     \resizebox{\textwidth}{!}{
@@ -77,9 +76,7 @@ Met al deze redenen in gedachten is voor deze PoC gekozen om RAG toe te passen. 
 
 \subsection{Algemene structuur}
 
-Deze structuur bestaat uit een graaf die is opgebouwd uit verschillende knooppunten (nodes). De graaf stelt de LLM in staat om zelfstandig te bepalen welke keuzes gemaakt moeten worden tijdens het verwerken van een vraag.
-\\[1em]
-De standaard RAG-architectuur gaat een query gaan embedden en haalt vervolgens de meest relevante documenten op uit de vectordatabase, zonder verdere reflectie over de nood van het ophalen van de documenten en de werkelijke relevantie van deze documenten. Hoewel dit op het eerste gezicht een efficiënte aanpak lijkt, betekent het ook dat het systeem bij elke willekeurige gebruikersvraag opnieuw de vectordatabase bevraagt, zelfs wanneer dat niet noodzakelijk is.
+De standaard RAG-architectuur gaat een query gaan embedden en haalt vervolgens de meest relevante documenten op uit de vectordatabase. Dit gebeurt zonder verdere reflectie over de nood van het ophalen van de documenten en de werkelijke relevantie van deze documenten. Hoewel dit op het eerste gezicht een efficiënte aanpak lijkt, betekent het ook dat het systeem bij elke willekeurige gebruikersvraag opnieuw de vectordatabase bevraagt, zelfs wanneer dat niet noodzakelijk is.
 \\[1em]
 Om dit te vermijden, werd gebruikgemaakt van een graafstructuur die het model de mogelijkheid geeft om zelf te beoordelen wanneer het relevant is om documenten op te halen. Daarnaast wordt de LLM ook verantwoordelijk geacht om te oordelen over de opgehaalde documenten. De volledige flow van het proces kan worden bekeken in figuur~\ref{fig:Architectuur}
 \\[1em]
@@ -97,10 +94,10 @@ Eén van de belangrijkste beslissingen in deze PoC was de initiële keuze voor R
 \\[1em]
 Voor deze PoC werd gekozen voor LangGraph, een framework waarmee zogenaamde agents kunnen worden opgebouwd aan de hand van grafen. Dit verschilt van bijvoorbeeld LangChain, waar gewerkt wordt met ketens van opeenvolgende stappen.
 \\[1em]
-LangGraph biedt meer flexibiliteit om een eigen flow te implementeren. Zo kan een LLM bijvoorbeeld zelf kiezen welke paden in de graaf doorlopen worden, of kan er een lus geïntroduceerd worden binnen de graafstructuur. Beide mechanismen werden effectief toegepast in deze PoC.
+LangGraph biedt meer flexibiliteit om een eigen flow te implementeren. Zo kan een LLM bijvoorbeeld zelf kiezen welke paden in de graaf doorlopen worden.Het is bijvoorbeeld ook mogelijk een lus in de graafstructuur te introduceren. Beide mechanismen werden effectief toegepast in deze PoC.
 \\[1em]
 %Qwen3 hypoImage vraag zie je rewrite en 2de poging lukt het wel
-Dit is bijzonder nuttig in deze use case omdat er voldaan moet worden aan een meertalige omgeving. Het is vooraf namelijk niet zeker in welke taal de gebruiker de toepassing zal gebruiken. Dit kan Frans, Nederlands of Engels zijn. Daarnaast is de documentatie ook in verschillende talen beschikbaar. Sommige documenten zijn voorhanden in het Frans, terwijl andere in het Engels of Nederlands beschikbaar zijn. Met andere woorden kan een vraag in het Nederlands gesteld worden terwijl de documentatie enkel in het Engels beschikbaar is, wat soms tot problemen leidt in het ophalen van de correcte documentatie. Door te werken met een graaf kan de LLM complexere paden volgen die bijvoorbeeld met LangChain niet realiseerbaar zouden zijn geweest.
+Dit is bijzonder nuttig in deze use case omdat er voldaan moet worden aan een meertalige omgeving. Het is vooraf namelijk niet zeker in welke taal de gebruiker de toepassing zal gebruiken. Dit kan Frans, Nederlands of Engels zijn. Daarnaast is de documentatie ook in verschillende talen beschikbaar. Sommige documenten zijn voorhanden in het Frans, terwijl andere in het Engels of Nederlands beschikbaar zijn. Met andere woorden kan een vraag in het Nederlands gesteld worden terwijl de documentatie enkel in het Engels beschikbaar is. Dit kan soms tot problemen leiden bij het ophalen van de correcte documentatie. Door te werken met een graaf kan de LLM complexere paden volgen die bijvoorbeeld met LangChain niet realiseerbaar zouden zijn geweest.
 \\[1em]
 Daarnaast maakt deze aanpak het mogelijk om de vaardigheden van de verschillende modellen te testen. Het is immers aan de LLM zelf om op verschillende momenten in het proces keuzes en inschattingen te maken.
 
@@ -124,14 +121,14 @@ Tabel \ref{tab:gebruikte_technologieen} geeft een overzicht van de verschillende
 In deze sectie wordt de concrete opbouw van de PoC toegelicht. Er wordt stap voor stap beschreven hoe de verschillende componenten zijn geïmplementeerd. De focus ligt op de praktische keuzes, zodat een volledig beeld ontstaat van de werking van de PoC.
 
 \subsection{vectorstore}
-In de eerste fase werden de originele documenten opgesplitst in kleinere tekstsegmenten en vervolgens omgezet naar embeddings via een vooraf getraind embedding model. Voor deze PoC werd hiervoor gebruikgemaakt van het \verb|mxbai-embed-large model|. Dit is één van de twee beschikbare embedding modellen binnen Ollama. Dit model werd gekozen omdat het de hoogste semantische nauwkeurigheid biedt.
+In de eerste fase werden de originele documenten opgesplitst in kleinere tekstsegmenten en vervolgens omgezet naar embeddings via een vooraf getraind embedding model. Voor deze PoC werd hiervoor gebruikgemaakt van het \\ \verb|mxbai-embed-large model|. Dit is één van de twee beschikbare embedding modellen binnen Ollama. Dit model werd gekozen omdat het de hoogste semantische nauwkeurigheid biedt.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=Python, caption=Ophalen van embedding model]
 def get_embedding():
     return OllamaEmbeddings(model='mxbai-embed-large')
 \end{lstlisting}
 
-Gekoppeld aan het embedding model is er ook een chatmodel dat doorheen het proces wordt gebruikt. De variabele \verb|response_model_name| bepaalt welk model wordt gebruikt tijdens de flow. De enige configuratie die werd aangepast, is het instellen van de temperatuur op nul. De temperatuur bepaalt hoe creatief het model zal zijn tijdens het beantwoorden van vragen. Aangezien het de bedoeling is dat het model  zich zo strikt mogelijk houdt aan de informatie uit de vectordatabase, werd ervoor gekozen om deze waarde op nul te zetten. Welke modellen zijn gekozen en waarom, wordt in een latere sectie besproken.
+Aan het embedding model is ook een chatmodel gekoppeld dat doorheen het proces wordt gebruikt. De variabele \verb|response_model_name| bepaalt welk model wordt gebruikt tijdens de flow. De enige configuratie die werd aangepast, is het instellen van de temperatuur op nul. De temperatuur bepaalt hoe creatief het model zal zijn tijdens het beantwoorden van vragen. Aangezien het de bedoeling is dat het model  zich zo strikt mogelijk houdt aan de informatie uit de vectordatabase, werd ervoor gekozen om deze waarde op nul te zetten. Welke modellen zijn gekozen en waarom, wordt in een latere sectie besproken.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!},
 numbers=left, language=Python, caption=Initialisatie van het chat model]
@@ -140,7 +137,7 @@ def get_response_model():
 \end{lstlisting}
 
 \subsubsection{Opbouw vectordatabase}
-Om de vectordatabase op te bouwen, wordt één functie gebruikt. De gehele functie is voor de volledigheid toegevoegd als bijlage \ref{functie-vectorstore}.
+Om de vectordatabase op te bouwen, wordt één functie gebruikt. De gehele functie is voor de volledigheid toegevoegd als bijlage en kan teruggevonden worden in bijlage \ref{functie-vectorstore}.
 \\[1em]
 De functie bevat verschillende parameters die nodig zijn voor het opbouwen van de vectorstore. Ten eerste is er de embeddingsfunctie die zojuist besproken is. Vervolgens de locatie waar de documenten beschikbaar zijn en de naam van de database. Tot slot worden de laatste twee parameters gebruikt om in te stellen op welke manier gezocht moet worden in de database. Dit hangt af van de gekozen ophaalmethode.
 
@@ -149,7 +146,7 @@ De functie bevat verschillende parameters die nodig zijn voor het opbouwen van d
 def build_vector_store(embeddings_function, document_path, db_name, search_type, search_kwargs):
 \end{lstlisting}
 
-Gebruik makend van onderstaande dictionary wordt een loader geselecteerd die in een latere fase wordt gebruikt om de documenten te parsen.
+Gebruik makend van onderstaande dictionary wordt een lader geselecteerd die in een latere fase wordt gebruikt om de documenten te parsen.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!},
     numbers=left, language=Python, caption=Mapping van bestandsextensies naar de bijbehorende document loaders]
@@ -162,7 +159,7 @@ loader_mapping = {
 }
 \end{lstlisting}
 
-In het onderstaande codefragment worden de documenten ingelezen en verzameld in een array. De inhoud wordt, afhankelijk van de extensie, met een specifieke loader ingelezen. Elk document krijgt extra metadata mee, namelijk de map en het pad naar het bestand, zodat later duidelijk is om welk document het gaat.
+In het onderstaande codefragment worden de documenten ingelezen en verzameld in een array. De inhoud wordt, afhankelijk van de extensie, met een specifieke lader ingelezen. Elk document krijgt extra metadata mee, namelijk de map en het pad naar het bestand, zodat later duidelijk is om welk document het gaat.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!},
     numbers=left, language=Python, caption=Inladen en parsen van documenten per bestandstype met toevoeging van metadata]
@@ -210,7 +207,7 @@ Eens de vectordatabase met de nodige documenten beschikbaar is kunnen vragen ges
 
 \subsubsection{Antwoorden of documenten ophalen}
 
-Vooraleer het RAG-proces op gang wordt gebracht, moet de LLM eerst een inschatting maken over de vraag die de gebruiker heeft gesteld. Wanneer het gaat om een triviale vraag, dient de LLM onmiddellijk een antwoord te geven, zonder het volledige RAG-proces te doorlopen. Om dit te realiseren, wordt gebruikgemaakt van de volgende prompt, waarin de input van de gebruiker wordt geïnjecteerd: 
+Vooraleer het RAG-proces op gang wordt gebracht, moet de LLM eerst een inschatting maken over de vraag die de gebruiker heeft gesteld. Wanneer het gaat om een triviale vraag, dient de LLM onmiddellijk een antwoord te geven. Op die manier hoeft het volledige RAG-proces niet te worden doorlopen. Om dit te realiseren, wordt gebruikgemaakt van de volgende prompt, waarin de input van de gebruiker wordt geïnjecteerd: 
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=Python, caption=Prompt voor beslissen tussen direct antwoord of documentopvraging]
 RETRIEVE_DOCUMENTS_OR_RESPOND_PROMPT = """
@@ -227,7 +224,7 @@ RETRIEVE_DOCUMENTS_OR_RESPOND_PROMPT = """
 """
 \end{lstlisting}
 
-Het voordeel van deze aanpak is dat geen onnodige resources worden verbruikt bij het uitvoeren van het RAG-proces. Enkel wanneer de vraag van de gebruiker effectief nood heeft aan specifieke contextuele informatie, wordt de retriever geactiveerd.
+Het voordeel van deze aanpak is dat geen onnodige resources worden verbruikt bij triviale vragen. Enkel wanneer de vraag van de gebruiker effectief nood heeft aan specifieke contextuele informatie, wordt de retriever geactiveerd.
 \\[1em]
 De LLM krijgt een retriever tool ter beschikking en kan vervolgens autonoom beslissen of deze tool wordt gebruikt of dat er meteen een antwoord gegenereerd wordt. Dit wordt geïmplementeerd in de volgende functie:
 
@@ -249,21 +246,21 @@ def retrieve_documents_or_respond(state: MessagesState) -> MessagesState:
     return MessagesState(messages=[response])
 \end{lstlisting}
 
-In deze stap ontvangt de LLM twee afzonderlijke berichttypes, een SystemMessage en een HumanMessage. De SystemMessage bevat instructies voor het model hoe het dient te handelen. De oorspronkelijke gebruikersvraag wordt hierbij in de prompt \verb|(RETRIEVE_DOCUMENTS_OR_RESPOND_PROMPT)| geïntegreerd, zodat de LLM beschikt over context en richtlijnen voor de verdere verwerking.
+In deze stap ontvangt de LLM twee afzonderlijke berichttypes, een SystemMessage en een HumanMessage. De SystemMessage bevat instructies voor het model hoe het dient te handelen. De oorspronkelijke gebruikersvraag wordt hierbij in de prompt \verb|(RETRIEVE_DOCUMENTS_OR_RESPOND_PROMPT)| geïntegreerd.
 \\[1em]
-Daarnaast wordt de gebruikersvraag ook afzonderlijk toegevoegd als een HumanMessage. Dit berichttype geeft expliciet aan dat de inhoud afkomstig is van een menselijke gebruiker.
+Daarnaast wordt de gebruikersvraag ook afzonderlijk toegevoegd als HumanMessage. Dit berichttype geeft expliciet aan dat de inhoud afkomstig is van een menselijke gebruiker.
 \\[1em]
-Tijdens de implementatie is gebleken dat het opnemen van beide berichttypes noodzakelijk is om optimale resultaten te behalen. De SystemMessage verschaft duidelijke instructies en context, terwijl de HumanMessage de oorspronkelijke vraag onvervormd aan het model doorgeeft. Op deze manier beschikt het model zowel over specifieke richtlijnen en het exacte bericht van de gebruiker, wat de kans op correcte interpretatie en verwerking vergroot.
+Tijdens de implementatie is gebleken dat het opnemen van beide berichttypes noodzakelijk is om optimale resultaten te behalen. De SystemMessage verschaft duidelijke instructies en context, terwijl de HumanMessage de oorspronkelijke vraag onvervormd aan het model doorgeeft. Op deze manier beschikt het model zowel over specifieke richtlijnen en het exacte bericht van de gebruiker. Dit vergroot de kans op een correcte interpretatie en verwerking.
 
 \subsubsection{Retriever}
 
-Zodra de keuze wordt gemaakt om documenten op te halen, spreekt het model de retriever-tool aan. Deze tool raadpleegt ChromaDB om, op basis van een vooraf bepaalde retrieval methode, de relevante documenten op te halen. Er zijn verschillende methoden beschikbaar om chunks uit de vectordatabank op te vragen. Na het testen van meerdere opties werd gekozen voor de \verb|similarity search| methode.
+Zodra de keuze wordt gemaakt om documenten op te halen, spreekt het model de retriever-tool aan. Deze tool raadpleegt ChromaDB om, op basis van een vooraf bepaalde retrieval methode, de relevante documenten op te halen. Er zijn verschillende methoden beschikbaar om chunks uit de vectordatabank op te vragen. Na het testen van meerdere opties werd gekozen voor de \verb|similarity_search| methode.
 \\[1em]
-De alternatieve ophaalmethoden bleken minder geschikt tijdens het testen. Het eerste alternatief, \verb|similarity_score_threshold|, vertoont overeenkomsten met de gebruikte \verb|similarity search|, in de zin dat eveneens de meest relevante documenten worden opgehaald. Het verschil is dat bij deze aanpak een vooraf ingestelde relevantie drempelwaarde vereist is. Alleen chunks die voldoen aan deze drempel worden uit de vectordatabase opgehaald. In de praktijk leidde dit ertoe dat bij bepaalde vragen geen enkele chunk als relevant werd beschouwd, waardoor de vraag niet kon worden beantwoord. Dit ondanks het feit het antwoord wel aanwezig was in de vectordatabase.  
+De alternatieve ophaalmethoden bleken minder geschikt tijdens het testen. Het eerste alternatief, \verb|similarity_score_threshold|, vertoont overeenkomsten met de gebruikte \verb|similarity_search|, in de zin dat eveneens de meest relevante documenten worden opgehaald. Het verschil is dat bij deze aanpak een vooraf ingestelde relevantie drempelwaarde vereist is. Alleen chunks die voldoen aan deze drempel worden uit de vectordatabase opgehaald. In de praktijk leidde dit ertoe dat bij bepaalde vragen geen enkele chunk als relevant werd beschouwd, waardoor de vraag niet kon worden beantwoord. Dit ondanks het feit dat het antwoord wel aanwezig was in de vectordatabase.  
 \\[1em]
 Het tweede alternatief, \textit{Maximal Marginal Relevance} (MMR), kiest daarentegen bewust voor zo veel mogelijk variatie in de opgehaalde chunks. Dit resulteerde echter vaak in documenten die onvoldoende relevant waren ten opzichte van de gestelde vraag.  
 \\[1em]
-Om die redenen werd uiteindelijk gekozen voor de \verb|similarity search| methode. Deze functie selecteert de documenten die het meest relevant zijn voor de vraag. In deze PoC specifiek worden bij elke bevraging de vier meest relevante documenten uit de vectordatabase opgehaald.
+Om die redenen werd uiteindelijk gekozen voor de \verb|similarity_search| methode. Deze functie selecteert de documenten die het meest relevant zijn voor de vraag. In deze PoC specifiek worden bij elke bevraging de vier meest relevante chunks uit de vectordatabase opgehaald.
 
 \subsubsection{Beoordeling documenten}
 
@@ -296,7 +293,7 @@ state: MessagesState,
         return "rewrite_question"
 \end{lstlisting}
 
-Om te vermijden dat de LLM de initiële vraag eindeloos blijft herformuleren, wordt gecontroleerd hoe lang de array van de MessagesState is. Wanneer het aantal berichten gelijk is aan of groter is dan 5 (wat neerkomt op maximaal twee herformuleringen), wordt het model verplicht om door te gaan naar de node die verantwoordelijk is voor het genereren van een antwoord. Op die manier wordt gegarandeerd dat de gebruiker een antwoord ontvangt en de LLM niet in een oneindige lus terecht komt.
+Om te vermijden dat de LLM de initiële vraag eindeloos blijft herformuleren, wordt gecontroleerd hoe lang de array van de MessagesState is. Wanneer het aantal berichten gelijk is aan of groter is dan 5 (wat neerkomt op maximaal twee herformuleringen), wordt het model verplicht om door te gaan naar de functie die verantwoordelijk is voor het genereren van een antwoord. Op die manier wordt gegarandeerd dat de gebruiker een antwoord ontvangt en de LLM niet in een oneindige lus terecht komt.
 \\[1em]
 Om ervoor te zorgen dat de LLM deze vraag op een correcte manier gaat verwerken worden zowel de opgehaalde documenten als de originele vraag in een prompt toegevoegd. Hierna is het aan de LLM om een oordeel te vellen over de opgehaalde documenten en de mate waarin deze relevant en nuttig zijn om de vraag te beantwoorden.
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=Python, caption=Prompt om opgehaalde documenten te beoordelen op basis van de gestelde vraag]
@@ -311,7 +308,7 @@ GRADE_DOCUMENTS_PROMPT = (
 
 \subsubsection{Genereren antwoord}
 
-Wanneer het hele proces doorlopen is moet de LLM aan de slag met de opgehaalde documenten en de vraag van de gebruiker. Het is hierbij de bedoeling dat het antwoord geformuleerd wordt in de taal waarin ze origineel werd gesteld. Ook wanneer de LLM de vraag heeft herschreven en geherformuleerd heeft in een andere taal. Om hallucinaties te voorkomen, wordt expliciet gevraagd om alleen een antwoord te geven wanneer de informatie beschikbaar is in de context. Indien dit niet het geval is, moet de LLM dit ook aan de gebruiker melden. Daarnaast wordt gevraagd om bronnen te vermelden indien mogelijk. Hiervoor werd de volgende prompt gebruikt: 
+Wanneer het hele proces doorlopen is moet de LLM aan de slag met de opgehaalde documenten en de vraag van de gebruiker. Het is hierbij de bedoeling dat het antwoord geformuleerd wordt in de taal waarin ze origineel werd gesteld. Ook wanneer de LLM de vraag heeft herschreven in een andere taal. Om hallucinaties te voorkomen, wordt expliciet gevraagd om alleen een antwoord te geven wanneer de informatie beschikbaar is in de context. Indien dit niet het geval is, moet de LLM dit ook aan de gebruiker melden. Daarnaast wordt gevraagd om bronnen te vermelden indien mogelijk. Hiervoor werd de volgende prompt gebruikt: 
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=Python, caption=Prompt voor genereren van antwoord op basis van de opgehaalde context]
 GENERATE_ANSWER_PROMPT = (
@@ -328,33 +325,33 @@ GENERATE_ANSWER_PROMPT = (
 
 \subsection{LLM-model}
 
-Nu een duidelijk beeld is geschetst van de structuur van de graaf, kan worden bekeken welke modellen in aanmerking komen voor gebruik. Hierbij gelden enkele beperkingen. Ten eerste wordt gebruikgemaakt van zogenoemde open modellen. Een tweede, hieraan gerelateerde beperking, zijn de hardwarebeperkingen waarmee deze PoC wordt uitgevoerd. Omdat de modellen lokaal draaien, is het niet mogelijk modellen te gebruiken die meer RAM vereisen dan wat op de lokale hardware beschikbaar is. Concreet betekent dit dat alleen modellen met maximaal acht miljard parameters in aanmerking komen. Tot slot moeten de modellen in staat zijn tool calls uit te voeren. Op basis van deze criteria en rekening houdend met de rangschikking op Hugging Face, is de volgende lijst van mogelijke modellen opgesteld:
+Nu een duidelijk beeld is geschetst van de structuur van de graaf, kan worden bekeken welke modellen in aanmerking komen voor gebruik. Hierbij gelden enkele beperkingen. Ten eerste wordt gebruikgemaakt van zogenoemde open modellen. Een tweede beperking is de hardware waarmee deze PoC wordt uitgevoerd. Omdat de modellen lokaal draaien, is het niet mogelijk modellen te gebruiken die meer RAM vereisen dan wat op de lokale hardware beschikbaar is. Concreet betekent dit dat alleen modellen met maximaal acht miljard parameters in aanmerking komen. Tot slot moeten de modellen in staat zijn tool calls uit te voeren. Op basis van deze criteria en rekening houdend met de rangschikkingen op Hugging Face, is de volgende lijst van mogelijke modellen opgesteld:
 
 \begin{itemize}
-    \item llama-3.1-8b-instruct
-    \item llama-3.2
+    \item Llama-3.1-8b-instruct
+    \item Llama-3.2
     \item Mistral-7b-instruct
     \item Qwen2.5-7B instruct
-    \item smollm2-1.7b-instruct
-    \item granite-3.2-8b-instruct
-    \item granite-3.3
+    \item Smollm2-1.7b-instruct
+    \item Granite-3.2-8b-instruct
+    \item Granite-3.3
     \item Qwen3
 \end{itemize}
 
-Tijdens het testen van de PoC werden echter enkele problemen vastgesteld met de tool calls. Dit leidde ertoe dat een aantal modellen niet langer gebruikt kon worden. Dit wordt verder toegelicht in subsectie \ref{tool-calls}.
+Tijdens het testen van de PoC werden echter enkele problemen vastgesteld met de tool calls. Dit leidde ertoe dat de onderstaande modellen niet langer gebruikt kon worden. Dit probleem wordt verder toegelicht in subsectie \ref{tool-calls}.
 
 \begin{itemize}
     \item Mistral-7b-instruct
-    \item smollm2-1.7b-instruct
-    \item granite-3.2-8b-instruct
-    \item granite-3.3
+    \item Smollm2-1.7b-instruct
+    \item Granite-3.2-8b-instruct
+    \item Granite-3.3
 \end{itemize}
 
 Aangezien de bovenstaande modellen niet langer bruikbaar bleken, is ervoor gekozen om voor de PoC en de vergelijkende studie de volgende modellen te gebruiken:
 
 \begin{itemize}
-    \item llama-3.1-8b-instruct
-    \item llama-3.2
+    \item Llama-3.1-8b-instruct
+    \item Llama-3.2
     \item Qwen2.5-7B instruct
     \item Qwen3
 \end{itemize}
@@ -366,53 +363,51 @@ Tijdens de ontwikkeling van de toepassing deden zich verschillende problemen voo
 
 %Waar liep je tegenaan tijdens de implementatie?
 \subsection{Document parsing}
-Het parsen van documenten naar embeddings bleek een uitdagend proces. Initieel werd gewerkt met PDF-bestanden maar deze leverden niet altijd het gewenste resultaat op. Dezelfde problemen traden eveneens op bij Word-documenten. De moeilijkheden deden zich vooral voor bij documenten met ongestructureerde elementen. Bij documenten met tabellen ging de structuur na het parsen vaak verloren.
+Het parsen van documenten naar embeddings bleek een uitdagend proces. Initieel werd gewerkt met PDF-bestanden maar deze leverden niet altijd het gewenste resultaat op. Dezelfde problemen traden eveneens op bij Word-documenten. De moeilijkheden deden zich vooral voor bij documenten met ongestructureerde elementen. De structuur van bijvoorbeeld de tabellen ging na het parsen vaak verloren.
 \\[1em]
-Een goede parsing is echter cruciaal voor een goed functionerende RAG-oplossing. Wanneer documenten niet correct gestructureerd zijn, kan dit problemen veroorzaken. Worden deze documenten vervolgens als embeddings opgeslagen in de vectordatabase, dan kan de gebrekkige structuur opnieuw in de context terechtkomen die de LLM gebruikt. Dit kan leiden tot problemen bij het genereren van kwalitatieve antwoorden.
+Een goede parsing is echter cruciaal voor een goed functionerende RAG-oplossing. Wanneer documenten niet correct gestructureerd zijn, kan dit problemen veroorzaken. Worden deze documenten vervolgens als embeddings opgeslagen in de vectordatabase, dan kan de gebrekkige structuur opnieuw in de context van de LLM terechtkomen. Dit kan leiden tot problemen bij het genereren van kwalitatieve antwoorden.
 \\[1em]
-Om dit probleem te verhelpen, werden de documenten in een eerste fase omgezet naar docx-bestanden. Aangezien dit eveneens niet het gewenste resultaat opleverde, werd uiteindelijk gekozen om de documenten te converteren naar Markdown formaat. Deze aanpak had als voordeel dat de documentstructuur tijdens het parsen beter behouden bleef. Dit resulteerde in beter gestructureerde, relevante chunks die vervolgens als context konden worden gebruikt bij het beantwoorden van vragen door de LLM. De chunks in PDF, docx en Markdown kunnen worden geconsulteerd in bijlage \ref{chunks-verschillende-formaten}
+Om dit probleem te verhelpen, werden de documenten in een eerste fase omgezet naar docx-bestanden. Aangezien dit eveneens niet het gewenste resultaat opleverde, werd uiteindelijk gekozen om de documenten te converteren naar Markdown formaat. Deze aanpak had als voordeel dat de documentstructuur tijdens het parsen beter behouden bleef. Wat resulteerde in beter gestructureerde, relevante chunks die vervolgens als context konden worden gebruikt bij het beantwoorden van vragen. De chunks in PDF, docx en Markdown kunnen worden geconsulteerd in bijlage \ref{chunks-verschillende-formaten}
 
 \subsection{Tool calls}
 \label{tool-calls}
 
-Omdat in de graaf gebruik wordt gemaakt van een tool, is het noodzakelijk om modellen te gebruiken die in staat zijn om tool calls uit te voeren. Hierdoor is het in deze PoC bijvoorbeeld niet mogelijk om met Google's Gemma modellen te werken, aangezien deze modellen geen ondersteuning bieden voor tool calls.
+Omdat in de graaf gebruik wordt gemaakt van een tool, is het noodzakelijk om modellen te gebruiken die in staat zijn om tool calls uit te voeren. Hierdoor is het in deze PoC bijvoorbeeld niet mogelijk om met Google's Gemma modellen te werken. Deze modellen bieden immers geen ondersteuning voor tool calls.
 \\[1em]
-Hoewel sommige Ollama modellen wel tool calls ondersteunen, blijkt uit de praktijk dat deze functionaliteit niet altijd betrouwbaar is. Ondanks dat de modellen technisch gezien tool calls kunnen uitvoeren, levert dit niet altijd het gewenste resultaat op.
+Hoewel sommige Ollama modellen wel tool calls ondersteunen, blijkt uit de praktijk dat deze functionaliteit niet altijd betrouwbaar is. Hoewel de modellen volgens Ollama tool calls kunnen uitvoeren, bleek in de praktijk dat een aantal modellen hier toch problemen mee had.
 \\[1em]
-Bij het bepalen van de modellen voor de vergelijkende studie werd dan ook vastgesteld dat testen met een aantal modellen onmogelijk was, omdat de vereiste tool call naar de retriever simpelweg niet werd gegenereerd. 
-
-\begin{figure}[H]
-    \includegraphics[width=0.8\textwidth]{mistral.png}
-    \caption{Tool call bij het Mistral:7b model}
-    \label{fig:Mistral}
-\end{figure}
-
 De figuur~\ref{fig:Mistral} illustreert waar het fout loopt bij dit model. Ondanks dat het model zich bewust is van de aanwezigheid van de tool en correct inschat dat de gestelde vraag niet triviaal is, wordt de tool call toch niet effectief uitgevoerd.
 \\[1em]
 Opmerkelijk is dat de tool call met de juiste parameters wel aanwezig is in de content van het antwoord, maar deze wordt niet als daadwerkelijke tool call geïnterpreteerd of geactiveerd door het model.
-\\[1em]
-Dit probleem deed zich voor bij de volgende modellen:
+
+\begin{figure}[H]
+    \includegraphics[width=0.8\textwidth]{mistral.png}
+    \caption{Tool call van het Mistral:7b-model. Het model probeert een tool call uit te voeren, maar faalt hierin.}
+    \label{fig:tool_call_Mistral}
+\end{figure}
+
+Gelijkaardige problemen deden zich voor bij de volgende modellen:
 \begin{itemize}
     \item Mistral-7b-instruct
-    \item smollm2-1.7b-instruct
-    \item granite-3.2-8b-instruct
-    \item granite-3.3
+    \item Smollm2-1.7b-instruct
+    \item Granite-3.2-8b-instruct
+    \item Granite-3.3
 \end{itemize}
 
- Daardoor kunnen deze modellen niet worden gebruikt binnen deze PoC en de bijhorende vergelijkende studie, aangezien ze de vectordatabase nooit aanspreken en dus geen relevante antwoorden aan de gebruiker kunnen bieden.
+Om deze reden was het niet mogelijk deze modellen te gebruiken binnen de PoC en de bijbehorende vergelijkende studie. Een correcte uitvoering van de tool call is immers essentieel om de relevante documenten uit de vectordatabase op te halen.
 
 \subsection{Fout door oneindige herformuleringslus}
 
 Hoewel de LLM in staat is om zelf te bepalen wat een non triviale vraag is, betekent dit niet noodzakelijk dat het antwoord daarop terug te vinden is in de beschikbare documentatie. Zelfs wanneer de informatie wel aanwezig is, kan het alsnog voorkomen dat de LLM, zelfs na herformulering van de vraag, geen passend antwoord weet te genereren. Dit leidde aanvankelijk tot een oneindige lus waarbij uiteindelijk een foutmelding werd gegenereerd zodra de array messages in de MessageState een lengte van 25 bereikte. In dat geval werd er geen antwoord aangemaakt, maar kreeg de gebruiker enkel een foutmelding te zien met stacktrace.
 \\[1em]
-Om te voorkomen dat het programma in een dergelijke oneindige lus terechtkomt, werd er een extra controle ingebouwd op het moment dat de LLM moet kiezen tussen het herformuleren van de vraag of het genereren van een antwoord. In de praktijk betekent deze controle dat de LLM de vraag maximaal twee keer mag herformuleren. Hierdoor wordt de vectordatabase in totaal maximaal drie keer bevraagd. Indien er na deze pogingen nog steeds geen relevante documenten worden teruggevonden, is het de bedoeling dat de LLM dit expliciet communiceert aan de gebruiker, zonder dat er sprake is van hallucinaties. 
+Om te voorkomen dat het programma in een dergelijke oneindige lus terechtkomt, werd er een extra controle ingebouwd op het moment dat de LLM moet kiezen tussen het herformuleren van de vraag of het genereren van een antwoord. In de praktijk betekent deze controle dat de LLM de vraag maximaal twee keer mag herformuleren. Hierdoor wordt de vectordatabase in totaal maximaal drie keer bevraagd. Indien na deze pogingen nog steeds geen relevante documenten worden teruggevonden, is het de bedoeling dat de LLM dit expliciet communiceert aan de gebruiker. 
 
 \subsection{Meertaligheid documentatie}
 %het gaat hier over het feit dat hij steeds de eerste vraag vertaalde naar het engels.
 %Hoe heb je dat opgelost? Eventueel kort uitleggen als dat relevant is.
-Bij het testen van de lus ontstond het probleem dat telkens enkel de originele vraag werd herschreven. Hierdoor werd bijvoorbeeld de oorspronkelijke vraag wel correct naar het Engels herschreven, maar bij iedere volgende iteratie werd opnieuw exact dezelfde vertaling gegenereerd. Er werd met vorige pogingen geen rekening gehouden.
+Bij het testen van de lus ontstond het probleem dat de LLM bij het herformuleren van de vraag steeds dezelfde formulering gaf. Dit kwam doordat de LLM alleen werd gevraagd de originele vraag te herschrijven, zonder rekening te houden met eerdere herschrijvingen. Hierdoor werd het doel van de node tenietgedaan, aangezien het juist de bedoeling is de vraag telkens opnieuw te herformuleren om relevantere documenten uit de database op te halen 
 \\[1em]
-Om dit probleem op te lossen, werd de prompt in de \verb|rewrite_question| node aangepast zodat de LLM ook rekening kan houden met de eerder gestelde en herschreven vragen. Dit voorkomt herhaling en zorgt voor meer variatie in de gegenereerde vragen.
+Om dit probleem op te lossen, werd de prompt in de \verb|rewrite_question| node aangepast. De LLM kon aan de hand van deze wijzigingen nu ook rekening houden met de eerder gestelde en herschreven vragen. Dit voorkomt herhaling en zorgt voor meer variatie in de gegenereerde vragen.
 \\[1em]
 Aangezien het grootste deel van de beschikbare documentatie in het Frans of Engels is geschreven, wordt de LLM eveneens aangemoedigd om de vraag eerst naar het Frans te herschrijven en vervolgens, indien nodig, naar het Engels.
 
@@ -442,8 +437,8 @@ REWRITE_QUESTION_PROMPT = (
 %Korte recap: wat is gebouwd en werkt zoals verwacht?
 %Eventueel: wat is nog niet geïmplementeerd en waarom niet (scope, tijdsbeperkingen)?
 
-Het eindresultaat van deze PoC is een chatinterface die kan worden gebruikt om gerichte vragen te stellen aan de IT-support voor MyMinfin. De toepassing werkt zoals verwacht: afhankelijk van de vraag worden relevante documenten opgehaald en wordt de nodige informatie aan de eindgebruiker verstrekt. Hoewel de hoeveelheid documentatie nog verder opgeschaald kan worden, vormt dit een sterke eerste stap in het opzetten van een ondersteunende tool voor de dagelijkse supportwerking.
+Het eindresultaat van deze PoC is een toepassing die kan worden gebruikt om gerichte vragen te stellen over de IT-support voor MyMinfin. De toepassing werkt zoals verwacht. Afhankelijk van de vraag worden relevante documenten opgehaald en wordt de nodige informatie aan de eindgebruiker verstrekt. Hoewel de hoeveelheid documentatie nog verder opgeschaald kan worden, vormt dit een eerste stap in het opzetten van een ondersteunende tool voor de dagelijkse supportwerking.
 \\[1em]
-Toch zijn er ook enkele zaken die momenteel nog ontbreken. Zo zou het nuttig zijn indien de agent zelfstandig documentatie kan aanpassen of aanvullen. Dit zou ervoor zorgen dat de beschikbare informatie steeds up-to-date blijft, zonder dat hiervoor handmatige tussenkomst van gebruikers nodig is. Deze functionaliteit viel echter buiten de scope van deze PoC en kon, omwille van tijdsbeperkingen, niet worden gerealiseerd.
+Toch zijn er ook enkele zaken die momenteel nog ontbreken. Zo beschikt de huidige LLM-toepassing niet over enige vorm van geheugen. Bij elke nieuwe vraag begint de LLM volledig van nul, zonder kennis van eerdere interacties binnen dezelfde sessie. Er is dus geen sprake van contextopbouw of het onthouden van vorige vragen en antwoorden. Dit beperkt de gebruikservaring momenteel tot losstaande interacties.
 \\[1em]
-Daarnaast beschikt de huidige LLM-toepassing niet over enige vorm van geheugen. Bij elke nieuwe vraag begint de LLM volledig van nul, zonder kennis van eerdere interacties binnen dezelfde sessie. Er is dus geen sprake van contextopbouw of het onthouden van vorige vragen en antwoorden, wat de gebruikservaring momenteel beperkt tot losstaande interacties.
+Zo zou het nuttig zijn indien de LLM-toepassing op vraag de documentatie kan aanpassen of aanvullen. Dit zou ervoor zorgen dat de beschikbare informatie steeds up-to-date blijft, zonder dat hiervoor handmatige tussenkomst van gebruikers nodig is. Deze functionaliteit viel echter buiten de scope van deze PoC en kon, omwille van tijdsbeperkingen, niet worden gerealiseerd.
