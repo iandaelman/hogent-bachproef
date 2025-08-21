@@ -396,7 +396,7 @@ Gelijkaardige problemen deden zich voor bij de volgende modellen:
 
 Om deze reden was het niet mogelijk deze modellen te gebruiken binnen de PoC en de bijbehorende vergelijkende studie. Een correcte uitvoering van de tool call is immers essentieel om de relevante documenten uit de vectordatabase op te halen.
 
-\subsection{Fout door oneindige herformuleringslus}
+\subsection{Fout door oneindige lus bij herformulering}
 
 Hoewel de LLM in staat is om zelf te bepalen wat een non triviale vraag is, betekent dit niet noodzakelijk dat het antwoord daarop terug te vinden is in de beschikbare documentatie. Zelfs wanneer de informatie wel aanwezig is, kan het alsnog voorkomen dat de LLM, zelfs na herformulering van de vraag, geen passend antwoord weet te genereren. Dit leidde aanvankelijk tot een oneindige lus waarbij uiteindelijk een foutmelding werd gegenereerd zodra de array messages in de MessageState een lengte van 25 bereikte. In dat geval werd er geen antwoord gegenereerd, maar kreeg de gebruiker enkel een foutmelding te zien met stacktrace.
 \\[1em]
