@@ -6,17 +6,17 @@
 % bijzonder aan wat de link is met het vorige en volgende hoofdstuk.
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
-Dit hoofdstuk biedt inzicht in de huidige stand van zaken en vormt de basis voor een weloverwogen keuze bij de ontwikkeling van de PoC. Dit deel gaat zowel in op de technische als de juridische aspecten.
+Dit hoofdstuk biedt een inzicht in de huidige stand van zaken en vormt de basis voor een weloverwogen keuze bij de ontwikkeling van de PoC. Dit deel gaat zowel in op de technische als de juridische aspecten.
 \\[1em]
 Concreet komen de volgende onderwerpen aan bod:
 \begin{itemize}
-    \item \textbf{IT-support chatbot} - Wat zijn de mogelijkheden om een IT-support chatbot te maken aan de hand van een LLM en welke factoren moeten in overweging worden genomen?
-    \item \textbf{De AI Act en de belangrijkste richtlijnen} - Een overzicht van de relevante wet- en regelgeving en de impact hiervan op RAG-toepassingen.
+    \item \textbf{IT-support chatbot} - Wat zijn de mogelijkheden om een IT-support chatbot te maken aan de hand van een LLM en welke factoren moeten in overweging worden genomen.
+    \item \textbf{De AI Act en de belangrijkste richtlijnen} - Een overzicht van de relevante wet- en regelgeving voor LLM-toepassingen.
 \end{itemize}
 
 \section{IT-support chatbot}
 
-Om een IT-support chatbot te ontwikkelen, moeten verschillende aspecten in overweging worden genomen. Bij het gebruik van een LLM zijn er enkele belangrijke opties: Finetuning, Retrieval-Augmented Generation (RAG) en Cache-Augmented Generation (CAG). Deze methoden maken gebruik van een LLM en verrijken de kennis van dit model met behulp van eigen documenten. Echter, elke benaderingen heeft specifieke voor- en nadelen. Het is daarom essentieel om deze zorgvuldig af te wegen om een weloverwogen keuze te maken voor de ontwikkeling van de PoC.
+Om een IT-support chatbot te ontwikkelen, moeten verschillende aspecten in overweging worden genomen. Bij het gebruik van een LLM zijn er enkele belangrijke opties: Finetuning, RAG en CAG. Deze methoden maken gebruik van een LLM en verrijken de kennis van dit model met behulp van eigen documenten. Echter, elke benaderingen heeft specifieke voor- en nadelen. Het is daarom essentieel om deze zorgvuldig af te wegen om een weloverwogen keuze te maken voor de ontwikkeling van de PoC.
 
 \subsection{Large Language Model}
     
@@ -24,24 +24,25 @@ Een LLM is een geavanceerd neuraal netwerk dat getraind is op grote hoeveelheden
 \\[1em]
 Deze modellen worden "large" genoemd vanwege hun schaal. Ze bevatten vaak miljarden parameters. Getraind door gigantische bronnen aan data, kunnen LLM's tekst genereren die coherente, contextuele en soms zelfs creatieve eigenschappen vertoont \autocite{Gupta2025}.
 \\[1em]
-Hierdoor kunnen LLM’s worden ingezet voor toepassingen zoals chatbots, automatische vertaling, samenvatten van documenten, codegeneratie, en vragen-beantwoording. Hoewel LLM’s indrukwekkende prestaties leveren, roepen ze ook vragen op. Deze hebben betrekking op een eventuele bias, hallucinatie van onjuiste informatie of het gebruik van trainingsdata die niet volledig is gecontroleerd op kwaliteit of betrouwbaarheid \autocite{Gupta2025}.
+Hierdoor kunnen LLM’s worden ingezet voor toepassingen zoals chatbots, automatische vertaling, samenvatten van documenten en codegeneratie. Hoewel LLM’s indrukwekkende prestaties leveren, roepen ze ook vragen op. Deze hebben betrekking op een eventuele biases, hallucinatie van onjuiste informatie of het gebruik van trainingsdata die niet volledig is gecontroleerd op kwaliteit of betrouwbaarheid \autocite{Gupta2025}.
 \\[1em]
 De ontwikkeling van LLM’s markeert een belangrijke stap richting algemene taalintelligentie, maar roept tegelijkertijd vragen op inzake ethiek en transparantie \autocite{Gupta2025}.
 
 \subsection{Prompting} 
 
-Hoe goed een LLM ook presteert, de kwaliteit van de door de gebruiker ingevoerde input heeft een grote invloed. In de context van een LLM wordt deze input aangeduid met de term prompt. Een prompt is een tekstuele instructie die aan het model wordt aangeboden en die het gedrag van het model stuurt met het oog op het genereren van een gewenste output. Het doel van een prompt is om de LLM te voorzien van voldoende context en duidelijke instructies om een specifieke taak uit te voeren \autocite{Marvin2024}.
+Hoe goed een LLM ook presteert, de kwaliteit van de ingevoerde input heeft een grote invloed op de werking. In de context van een LLM wordt deze input aangeduid met de term prompt. Een prompt is een tekstuele template die aan het model wordt aangeboden en die het gedrag van het model stuurt met het oog op het genereren van een gewenste output. Het doel van een prompt is om de LLM te voorzien van voldoende context en duidelijke instructies om een specifieke taak uit te voeren \autocite{Marvin2024}.
 \\[1em]
 Voor het opstellen van een effectieve prompt bestaan verschillende technieken. Zo kan men het model extra achtergrondinformatie of richtlijnen meegeven, zodat het in staat is taken te volbrengen waarvoor het niet expliciet werd getraind. Naast de oorspronkelijke input van de gebruiker is het dus van belang om een prompt zorgvuldig te structureren en aan te vullen met relevante informatie die bijdraagt tot het behalen van het gewenste resultaat \autocite{Marvin2024}.
 
 \subsubsection{Zero-shot vs one/few-shot learning}
 
-Wanneer een prompt enkel instructies en/of context bevat, wordt dit aangeduid zero-shot prompting. Een andere mogelijkheid is om in de prompt één of meerdere voorbeelden op te nemen. Wanneer er één voorbeeld wordt gegeven, spreken men van one-shot learning. Bij meerdere voorbeelden spreekt men van few-shot learning. Volgens \textcite{Marvin2024} helpt dit om de prestaties bij het uitvoeren van de gevraagde taak te verbeteren.
-
+Wanneer een prompt enkel instructies en/of context bevat, wordt dit aangeduid zero-shot prompting. Een andere mogelijkheid is om in de prompt één of meerdere voorbeelden op te nemen. Wanneer er één voorbeeld wordt gegeven, wordt gesproken over one-shot learning. Bij meerdere voorbeelden wordt de term few-shot learning gebruikt. Volgens \textcite{Marvin2024} helpt dit om de prestaties bij het uitvoeren van de gevraagde taak te verbeteren.
+\\[1em]
+\\
 \subsection{Tekortkomingen van een LLM}
 
 \subsubsection{Bias}
-Bij de ontwikkeling van een LLM wordt gebruikgemaakt van grote hoeveelheden trainingsdata.Een mogelijke tekortkoming is dat de data bepaalde biases bevat. Deze kunnen tijdens de trainingsfase door het model worden overgenomen. Wanneer een LLM bijvoorbeeld wordt getraind op data met een bepaalde politieke of socio-economische voorkeuren, kan het model diezelfde biases reproduceren wanneer een gebruiker vragen stelt \autocite{Hadi2023}.
+Bij de ontwikkeling van een LLM wordt gebruikgemaakt van grote hoeveelheden trainingsdata. Een mogelijke tekortkoming hierbij is dat de data bepaalde biases bevat. Deze kunnen tijdens de trainingsfase door het model worden overgenomen. Wanneer een LLM bijvoorbeeld wordt getraind op data met een bepaalde politieke of socio-economische voorkeuren, kan het model diezelfde biases reproduceren wanneer een gebruiker vragen stelt \autocite{Hadi2023}.
 \\[1em]
 Biases ontstaan echter niet uitsluitend tijdens de trainingsfase. Ook de input van gebruikers kan vooringenomenheden bevatten. Wanneer een prompt een bepaalde vooringenomenheid bevat, is het mogelijk dat de LLM deze bias overneemt of zelfs bevestigt in het gegenereerde antwoord. Dit geldt niet noodzakelijk voor elke LLM, maar het behoort zeker tot de mogelijkheden \autocite{Hadi2023}.
 
@@ -53,17 +54,12 @@ Dit kan echter leiden tot misleidende en foutieve antwoorden van de LLM. Het mod
 \subsubsection{Knowledge Cutoff}
 Naast hallucinaties en biases is het belangrijk om te beseffen dat de kennis van het model beperkt is tot de data waarmee het werd getraind. Deze trainingsdata eindigt op een bepaald moment, wat betekent dat het model geen informatie bevat over gebeurtenissen of ontwikkelingen na die datum. Een LLM leert bovendien niet in real-time bij. Afhankelijk van de gestelde vraag kan dit leiden tot onvolledige of verouderde antwoorden. Het is daarom van belang om hiermee rekening te houden en afhankelijk van de behoeften, na te gaan wat de exacte cutoff datum is van het gebruikte model \autocite{Hadi2023}.
  
- 
 \subsection{Technieken voor kennisverrijking in LLM’s}
 
 Er bestaan verschillende methodes om een LLM te voorzien van domeinspecifieke kennis. In dit deel worden drie van deze technieken besproken, met name RAG, Fine-tuning en CAG. 
  
 \subsubsection{Retrieval Augmented Generation}
 
-RAG is een techniek die de kracht van LLM’s combineert met externe databronnen om nauwkeurigere en beter onderbouwde antwoorden te genereren \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}. 
-In deze sectie wordt toegelicht wat RAG is, hoe het werkt en op welke manier het kan bijdragen aan de ontwikkeling van een effectieve support chatbot.
-
-\paragraph{Wat is Retrieval Augmented Generation}
 Retrieval Augmented Generation, ofwel RAG, is een techniek die een oplossing biedt voor de tekortkomingen van klassieke LLM’s. Door externe databronnen te gebruiken, kan een traditionele LLM betere resultaten behalen. Deze methode maakt het mogelijk om domeinspecifieke data te integreren en modellen bij te werken met actuele informatie. Zo kunnen klassieke LLM’s worden verrijkt met nieuwe, up-to-date gegevens die voldoen aan specifieke behoeften van de eindgebruikers \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}.
 \\[1em]
 Om RAG in de praktijk toe te passen, moeten een aantal stappen worden doorlopen. Deze worden in het volgende deel nader toegelicht, maar samengevat bestaat het proces uit de volgende fasen:
@@ -72,11 +68,11 @@ Om RAG in de praktijk toe te passen, moeten een aantal stappen worden doorlopen.
     \item {Ophalen}
     \item {Verrijking}
     \item {Generatie}
-\end{enumerate}
+\end{enumerate} 
 
 \paragraph{Structuur en werking RAG}
 
-Het doel van RAG is om een LLM te verrijken met specifieke kennis, zodat de gebruiker beter ondersteund wordt bij het beantwoorden van gerichte vragen. Dit proces bestaat uit drie hoofdfasen. Eerst wordt relevante informatie opgehaald. Vervolgens wordt het antwoord verrijkt op basis van de beschikbare documentatie. Tot slot genereert de LLM een antwoord op de gestelde vraag. Figuur \ref{fig:Rag process} is te zien hoe dit proces in zijn werk gaat.
+Het doel van RAG is om een LLM te verrijken met specifieke kennis, zodat de gebruiker beter ondersteund wordt bij het beantwoorden van gerichte vragen. Dit proces bestaat uit drie hoofdfasen. Eerst wordt relevante informatie opgehaald. Vervolgens wordt het antwoord verrijkt op basis van de beschikbare documentatie. Tot slot genereert de LLM een antwoord op de gestelde vraag. Figuur \ref{fig:Rag process} toont hoe dit proces in zijn werk gaat.
 
 \begin{figure}[H]
     \centering
@@ -86,7 +82,6 @@ Het doel van RAG is om een LLM te verrijken met specifieke kennis, zodat de gebr
 \end{figure}
 
 \subparagraph{Ophalen}
- 
 Voordat de LLM effectief bevraagd kan worden over domeinspecifieke informatie, moet eerst grondig voorbereidend werk plaatsvinden. 
 \\[1em]
 De documenten worden niet in hun geheel, maar in kleinere segmenten verwerkt, zogenaamde "chunks". Het opdelen in tekstsegmenten is noodzakelijk omdat volledige documenten doorgaans te omvangrijk zijn om efficiënt te verwerken binnen de contextlimieten van een LLM. Bovendien maakt deze fragmentatie het mogelijk om op een meer gerichte manier informatie op te halen uit de vectordatabase \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}.
@@ -95,7 +90,7 @@ Voor het opdelen van documenten bestaan verschillende benaderingen. Een veelgebr
 \\[1em]
 Een alternatieve strategie, die vooral geschikt is voor tekstuele documenten, is het opdelen op basis van zinnen of alinea's. Deze aanpak draagt doorgaans bij aan het behoud van de semantische samenhang binnen een chunk. Dit komt de kwaliteit van de informatieophaling ten goede \autocite{wang2024searchingbestpracticesretrievalaugmented}.
 \\[1em]
-Na het opdelen worden deze tekstsegmenten omgezet in zogeheten embeddings. Dit zijn vectorrepresentaties die de semantische inhoud van de chunks op een numerieke manier vastleggen. Deze embeddings worden vervolgens opgeslagen in een vectordatabase, een specifiek type databank dat geoptimaliseerd is voor het bewaren en efficiënt ophalen van vectorrepresentaties. Dit gehele proces vormt de basis waarop de LLM tijdens het beantwoorden van vragen relevante context uit de vectordatabase kan ophalen \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}. Figuur \ref{fig:RAG opmaken vectordatabase} illustreert dit proces.
+Na het opdelen worden deze tekstsegmenten omgezet in zogeheten embeddings. Dit zijn vectorrepresentaties die de semantische inhoud van de chunks op een numerieke manier vastleggen. Deze embeddings worden vervolgens opgeslagen in een vectordatabase. Dit is een specifiek type databank dat geoptimaliseerd is voor het bewaren en efficiënt ophalen van vectorrepresentaties. Dit gehele proces vormt de basis waarop de LLM tijdens het beantwoorden van vragen relevante context uit de vectordatabase kan ophalen \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}. Figuur \ref{fig:RAG opmaken vectordatabase} illustreert dit proces.
 
  \begin{figure}[H]
     \centering
@@ -104,7 +99,7 @@ Na het opdelen worden deze tekstsegmenten omgezet in zogeheten embeddings. Dit z
     \label{fig:RAG opmaken vectordatabase}
 \end{figure}
 
-Zodra de documenten via embeddings zijn toegevoegd aan de vectordatabase kan een gebruiker in de context van RAG vragen stellen. Een vraag of query wordt net als de documenten vertaald naar embeddings. Op basis van deze representaties worden de top-k dichtstbijzijnde buren opgehaald, oftewel de meest relevante delen van de opgeslagen documenten \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}. Figuur \ref{fig:RAG bevragen vectordatabase} illustreert hoe dit proces precies verloopt.
+Zodra de documenten via embeddings zijn toegevoegd aan de vectordatabase kan een gebruiker de LLM bevragen over deze documenten. Een vraag of query wordt net als de documenten vertaald naar embeddings. Op basis van deze representaties worden de top-k dichtstbijzijnde buren opgehaald, oftewel de meest relevante delen van de opgeslagen documenten \autocite{wu2025retrievalaugmentedgenerationnaturallanguage}. Figuur \ref{fig:RAG bevragen vectordatabase} illustreert hoe dit proces precies verloopt.
         
 \begin{figure}[H]
     \centering
@@ -130,14 +125,14 @@ Hoewel fine-tuning zeker een techniek is die heeft aangetoond te werken, moet er
 
 Met de opkomst van nieuwe LLM's die een grotere context bevatten is het niet altijd nodig om te werken met een RAG-architectuur. Wanneer het aantal documenten en de lengte ervan niet dermate groot zijn kan je ook meteen alle documenten injecteren in de context van een LLM. Dit zorgt voor een heel simpele en efficiënte benadering om een LLM bedrijf- of contextspecifieke kennis te geven \autocite{Chan2025}.
 \\[1em]
-Het voordeel van deze aanpak is dat een deel van het RAG-proces wordt geëlimineerd, met name de documentatie moet niet meer worden opgeslagen in een vectordatabase. 
+Het voordeel van deze aanpak is dat een deel van het RAG-proces wordt geëlimineerd, met name de documentatie moet niet meer worden opgeslagen in een vectordatabase \autocite{Chan2025}. 
 \\[1em]
 Er is ook niet langer nood aan het ophalen van de geselecteerde gegevens wat mogelijks fouten binnen dit proces ook elimineert. Dit is dus zeker een valabele optie wanneer het gaat over een beperkte verzameling van documentatie \autocite{Chan2025}. 
 \\[1em]
-Een potentieel gevaar bij het gebruik van CAG is echter zogenaamde context rot. Volgens \textcite{hong2025context} neemt de performantie van een LLM af wanneer meer informatie aan de context wordt toegevoegd. Hoewel de nieuwste modellen een context window hebben van soms wel een miljoen tokens, is het daarom niet aan te raden dit volledig te benutten, aangezien dit een negatieve impact kan hebben op de prestaties van het model zelfs voor simpele vragen.
+Een potentieel gevaar bij het gebruik van CAG is echter zogenaamde context rot. Volgens \textcite{hong2025context} neemt de performantie van een LLM af wanneer meer informatie aan de context wordt toegevoegd. Hoewel de nieuwste modellen een context window hebben van soms wel een miljoen tokens, is het daarom niet aan te raden dit volledig te benutten. Gelet op de negatieve impact die dit kan hebben op de prestaties van het model zelfs voor simpele vragen.
 
 \subsection{LLM benchmarks}
-Om te bepalen welke modellen het meest geschikt zijn voor de ontwikkeling van IT-support chatbot, is een objectieve meetmethode noodzakelijk. Gelukkig bestaan er verschillende platformen die LLM's vergelijken en rangschikken op basis van prestaties. In deze sectie worden enkele van deze platformen besproken.
+Om te bepalen welke modellen het meest geschikt zijn voor de ontwikkeling van IT-support chatbot, is een objectieve meetmethode noodzakelijk. Gelukkig bestaan er verschillende platformen die LLM's vergelijken en rangschikken op basis van prestaties in verschillende categorieën. In deze sectie worden enkele van deze platformen besproken.
    
 \subsubsection{LiveBench} 
 Een platform dat LLM's evalueert, is LiveBench. Deze site stelt een rangschikking op voor verschillende modellen en biedt een actuele scorebord die elke zes maanden wordt bijgewerkt. Voor deze bachelorproef zal gebruik worden gemaakt van de ranking afkomstig uit de paper gepubliceerd in april 2025 \autocite{livebench}.
@@ -152,7 +147,7 @@ LiveBench beoordeelt LLM's op basis van zes categorieën. Binnen elke categorie 
     \item Begrip van natuurlijke taal (Language Comprehension)
 \end{itemize}
 
-Elke categorie wordt geëvalueerd op basis van specifieke taken. Dit resulteert uiteindelijk in een algemene rangschikking, waarin zowel de beste modellen per categorie als het beste presterende model in het algemeen worden geïdentificeerd. Figuur \ref{fig:livebench} toont deze evaluatie overzichtelijk \autocite{livebench}.
+Elke categorie wordt geëvalueerd op basis van specifieke taken. Dit resulteert uiteindelijk in een algemene rangschikking, waarin zowel de beste modellen per categorie als het beste presterende model in het algemeen worden geïdentificeerd. Figuur \ref{fig:livebench} toont deze evaluatie op een overzichtelijke manier \autocite{livebench}.
 
 \begin{figure}[H]
     \centering
@@ -170,7 +165,7 @@ Uit de ranking van LiveBench kan geconcludeerd worden dat 3 verschillende organi
 
 \subsubsection{Chatbot Arena} 
 
-Een andere benchmark tool Chatbot Arena, net zoals LiveBench is Chatbot Arena een site die een actuele weergave biedt van de beste LLM's op basis van vooraf gedefinieerde categorieën. 
+Een andere benchmark tool is Chatbot Arena, net zoals LiveBench is Chatbot Arena een site die een actuele weergave biedt van de beste LLM's op basis van vooraf gedefinieerde categorieën. 
 Volgens de ranking van \textcite{chiang2024chatbotarenaopenplatform} zijn dit de top 3 LLM's:
 
 \begin{enumerate}
@@ -179,9 +174,9 @@ Volgens de ranking van \textcite{chiang2024chatbotarenaopenplatform} zijn dit de
     \item Mistral-Medium Mistral AI
 \end{enumerate}
 
-Hoewel het doel van beide benchmarks hetzelfde is, hanteert elke benchmark een andere werkwijze. Bij Chatbot Arena krijgen gebruikers twee anonieme LLM-modellen tegenover elkaar geplaatst. De gebruiker kan vervolgens een eigen vraag stellen en bepaalt zelf welk van de twee modellen het beste resultaat levert.
+Hoewel het doel van beide benchmarks hetzelfde is, hanteert elke benchmark een andere werkwijze. Bij Chatbot Arena krijgen gebruikers twee anonieme modellen tegenover elkaar geplaatst. De gebruiker kan vervolgens een eigen vraag stellen en bepaalt zelf welk van de twee modellen het beste resultaat levert.
 \\[1em]
-Het voordeel van deze methode is dat de LLM's realistische cases moeten behandelen, gebaseerd op vragen die daadwerkelijk door gebruikers worden gesteld. Op basis van de resultaten kunnen gebruikers hun voorkeur aangeven. Een nadeel is dat de deelnemers aan deze testen vaak niet representatief zijn voor alle LLM-gebruikers, omdat het meestal mensen zijn met een speciale interesse in LLM's of onderzoekers in het vakgebied. Desondanks maakt deze methode het mogelijk om verschillende modellen met elkaar te vergelijken. In januari 2024 werden ruim 240.000 stemmen uitgebracht door ongeveer 90.000 gebruikers \autocite{chiang2024chatbotarenaopenplatform}. 
+Het voordeel van deze methode is dat de LLM's realistische cases moeten behandelen, gebaseerd op vragen die daadwerkelijk door gebruikers worden gesteld. Op basis van de resultaten kunnen gebruikers hun voorkeur aangeven. Een nadeel is dat de deelnemers van deze testen vaak niet representatief zijn voor alle LLM-gebruikers. Dit zijn meestal mensen met een speciale interesse in LLM's of onderzoekers in het vakgebied. Desondanks maakt deze methode het mogelijk om verschillende modellen met elkaar te vergelijken. In januari 2024 werden ruim 240.000 stemmen uitgebracht door ongeveer 90.000 gebruikers \autocite{chiang2024chatbotarenaopenplatform}. 
 
 \subsubsection{Conclusie}
 
@@ -204,20 +199,18 @@ Net zoals de BLEU-score evalueert de ROUGE-score de mate van overlap tussen een 
 
 \subsubsection{BERTScore}
 
-BERTScore is een automatische evaluatiemethode voor tekstgeneratie. In tegenstelling tot traditionele methoden zoals BLEU, die vertrouwen op exacte overeenkomsten, maakt BERTScore gebruik van contextuele embeddings van het taalmodel BERT. Daarmee worden semantische gelijkenissen tussen tokens vergeleken. Hierdoor is deze metriek beter in staat om betekenisovereenkomsten te herkennen, zelfs wanneer een andere woordkeuze of zinsstructuur wordt gebruikt. Met andere woorden: BERTScore benadert menselijke beoordelingen beter dan bestaande metrieken zoals BLEU \autocite{Zhang2019}.
+BERTScore is een automatische evaluatiemethode voor tekstgeneratie. In tegenstelling tot traditionele methoden zoals BLEU, maakt BERTScore gebruik van contextuele embeddings van het taalmodel BERT. Daarmee worden semantische gelijkenissen tussen tokens vergeleken. Hierdoor is deze metriek beter in staat om betekenisovereenkomsten te herkennen, zelfs wanneer een andere woordkeuze of zinsstructuur wordt gebruikt. Met andere woorden: BERTScore benadert menselijke beoordelingen beter dan bestaande metrieken zoals BLEU \autocite{Zhang2019}.
 
 \subsection{Evaluatieframework voor retrieval-gebaseerde LLM-systemen}
 
-Specifiek voor LLM-systemen die gebruikmaken van externe bronnen, zoals bij RAG, bestaan er frameworks om de kwaliteit van het gegenereerde antwoord te beoordelen. Een voorbeeld hiervan is Retrieval Augmented Generation Assesment of Ragas. Ragas biedt verschillende mogelijkheden om zaken te testen die relevant zijn binnen een RAG-proces \autocite{Es2023}.
-\\[1em]
-Deze zaken zijn:
+Specifiek voor LLM-systemen die gebruikmaken van externe bronnen, zoals bij RAG, bestaan er frameworks om de kwaliteit van het gegenereerde antwoord te beoordelen. Een voorbeeld hiervan is Retrieval Augmented Generation Assesment of \textit{Ragas}. Ragas biedt verschillende mogelijkheden om zaken te testen die relevant zijn binnen een RAG-proces \autocite{Es2023}. Deze zaken zijn:
 \begin{enumerate}
     \item Faithfullness
     \item Answer Relevance
     \item Context Relevance
 \end{enumerate}
 
-Faithfulness (feitelijke correctheid) richt zich op het feit dat het door de LLM gegenereerde antwoord voortvloeit uit de opgehaalde context. Met andere woorden, de LLM moet zijn antwoord baseren op de relevante documenten die tijdens het ophaalproces zijn opgehaald. Dit is belangrijk om na te gaan of de LLM geen hallucinaties produceert, iets wat in een RAG-proces ten allen tijde vermeden moet worden \autocite{Es2023}.
+Faithfulness (feitelijke correctheid) richt zich op het feit dat het door de LLM gegenereerde antwoord voortvloeit uit de opgehaalde context. Met andere woorden, de LLM moet zijn antwoord baseren op de relevante documenten die tijdens het ophaalproces zijn opgehaald. Zo kan worden nagegaan of de LLM geen hallucinaties produceert, iets wat in een RAG-proces ten allen tijde vermeden moet worden \autocite{Es2023}.
 \\[1em]
 Answer Relevance (Antwoord relevantie) is een tweede evaluatiemetriek, hier wordt nagegaan of het gegenereerde antwoord relevant is voor de vraag die werd gesteld. Hiernaast zal ook worden nagegaan of het antwoord geen overbodige informatie bevat. De modellen krijgen met andere woorden minder punten indien te veel onnodige informatie wordt toegevoegd aan het antwoord \autocite{Es2023}.
 \\[1em]
@@ -228,13 +221,13 @@ Elke metriek krijgt een score tussen 0 en 1, waarbij 1 een perfecte prestatie bi
 \section{De AI Act en de belangrijkste richtlijnen}
 De AI Act is een regelgevend kader van de Europese Commissie dat juridische richtlijnen biedt voor het gebruik van artificiële intelligentie. Het doel van deze wetgeving is het beperken van bepaalde risico’s die AI-systemen met zich meebrengen en het voorkomen van ongewenste effecten \autocite{EUAIAct2024}.
 \\[1em]
-Binnen de AI Act worden AI-toepassingen ingedeeld in vier risiconiveaus. Afhankelijk van de toepassing valt een systeem in één van deze categorieën en moet het voldoen aan de bijbehorende regels. De eerste categorie omvat praktijken die als onaanvaardbaar worden beschouwd. Met andere woorden, dit zijn toepassingen die volgens deze wetgeving binnen de EU verboden zijn \autocite{EUAIAct2024}.
+Binnen de AI Act worden AI-toepassingen ingedeeld in vier risiconiveaus. Afhankelijk van de toepassing valt het systeem in één van deze categorieën en moet het voldoen aan de bijbehorende regels. De eerste categorie omvat praktijken die als onaanvaardbaar worden beschouwd. Met andere woorden, dit zijn toepassingen die volgens deze wetgeving binnen de EU verboden zijn \autocite{EUAIAct2024}.
 \\[1em]
 Een tweede categorie betreft hoog risico AI-systemen. Deze systemen zijn toegestaan, maar mogen alleen worden gebruikt onder strikte voorwaarden. Het hoge risico kan voortkomen uit het doel van het systeem, de context waarin het wordt ingezet, of de mogelijke impact op fundamentele rechten. Bijvoorbeeld een AI-systeem dat wordt gebruikt om rechtszaken voor te bereiden wordt als hoog risicovol beschouwd. Dit komt omdat het de fundamentele rechten van burgers kan beïnvloeden \autocite{EUAIAct2024}.
 \\[1em]
-De voorlaatste categorie betreft AI-systemen met beperkte risico’s. Dit kan bijvoorbeeld gaan over chatbots. Binnen deze categorie legt de AI Act vooral de nadruk op transparantie. Wanneer een AI-systeem tot deze categorie behoort, moet de gebruiker hiervan op de hoogte worden gesteld. Op die manier weet de gebruiker altijd of hij met een echt persoon communiceert of met een AI-systeem \autocite{EUAIAct2024}.
+De voorlaatste categorie betreft AI-systemen met beperkte risico’s. Dit kan bijvoorbeeld gaan over chatbots. Binnen deze categorie legt de AI Act vooral de nadruk op transparantie. Wanneer een AI-systeem tot deze categorie behoort, moet de gebruiker hiervan op de hoogte worden gesteld. Op die manier weet de gebruiker altijd of hij of zij met een AI-systeem communiceert \autocite{EUAIAct2024}.
 \\[1em]
-De laatste categorie betreft AI-systemen met geen of minimale risico’s. Voor deze systemen worden geen specifieke regels opgelegd, omdat ze weinig tot geen risico vormen. Voorbeelden hiervan zijn bijvoorbeeld spamfilters \autocite{EUAIAct2024}.
+De laatste categorie betreft AI-systemen met geen of minimale risico’s. Voor deze systemen worden geen specifieke regels opgelegd, omdat ze weinig tot geen risico vormen. Dit gaat bijvoorbeeld over spamfilters \autocite{EUAIAct2024}.
 \\[1em]
 De AI Act bevat naast de risiconiveaus ook specifieke regels voor generatieve AI. Vanwege de aard van generatieve AI kunnen toepassingen onder meerdere van de eerder besproken categorieën vallen. Ongeacht de categorie moeten bedrijven die LLM’s produceren transparantie bieden over de gebruikte trainingsdata. Wanneer deze LLM’s worden ingezet in hoog risico systemen, gelden extra verplichtingen. Zowel de ontwikkelaars van het systeem als de makers van de LLM moeten samenwerken om deze risico’s zoveel mogelijk te beperken. Zodra het product op de markt komt, ligt ook bij de organisaties die deze tools gebruiken een verantwoordelijkheid om de risico’s te minimaliseren \autocite{EUAIAct2024}.
 \\[1em]
