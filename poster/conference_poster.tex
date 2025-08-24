@@ -1,7 +1,7 @@
 %==============================================================================
 % Sjabloon poster bachproef
 %==============================================================================
-% Gebaseerd op document class `a0poster' door Gerlinde Kettl en Matthias Weiser
+% dGebaseerd op document class `a0poster' door Gerlinde Kettl en Matthias Weiser
 % Aangepast voor gebruik aan HOGENT door Jens Buysse en Bert Van Vreckem
 
 \documentclass[a0,portrait]{hogent-poster}
@@ -9,71 +9,75 @@
 % Info over de opleiding
 \course{Bachelorproef}
 \studyprogramme{toegepaste informatica}
-\academicyear{2022-2023}
+\academicyear{2024-2025}
 \institution{Hogeschool Gent, Valentin Vaerwyckweg 1, 9000 Gent}
 
 % Info over de bachelorproef
-\title{Titel van uw bachelorproef}
-\subtitle{Ondertitel (eventueel)}
-\author{Voornaam Naam}
-\email{voornaam.familienaam@student.hogent.be}
-\supervisor{Voornaam Naam}
-\cosupervisor{Voornaam Naam (Bedrijf)}
+\title{Hulp voor de Helpdesk: Virtuele Assistenten als ondersteuningstool.}
+\author{Ian Daelman}
+\email{ian.daelman@student.hogent.be}
+\supervisor{Thomas Aelbrecht}
+\cosupervisor{Koen Mekers (FOD Financiën)}
 
 % Indien ingevuld, wordt deze informatie toegevoegd aan het einde van de
 % abstract. Zet in commentaar als je dit niet wilt.
-\specialisation{Systeem- en Netwerkbeheer}
-\keywords{Lambda-calculus, Scheme}
-\projectrepo{https://github.com/user/repo}
+\specialisation{Mobile \& enterprise development}
+\keywords{AI, LLM, RAG-toepassing}
+\projectrepo{https://github.com/iandaelman/rag-proof-of-concept}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-It's only a model.
-You don't vote for kings. Who's that then? We found them. Ni! Ni! Ni! Ni!
-The nose? On second thoughts, let's not go there. It is a silly place. Bloody Peasant! And the hat. She's a witch! Where'd you get the coconuts?
+Deze bachelorproef onderzoekt in welke mate een LLM kan worden ingezet om IT-support te ondersteunen voor het MyMinfin-team binnen de FOD Financiën. De centrale onderzoeksvraag luidt: “Welke methode, Retrieval Augmented Generation (RAG), Fine-tuning of Cache-Augmented Generation (CAG), is het meest geschikt voor een LLM-gebaseerde IT-support chatbot binnen de context van de FOD Financiën?” Uit de literatuurstudie kwam RAG naar voren als de meest geschikte optie voor deze use case. Op basis daarvan werd een Proof of Concept (PoC) ontwikkeld die RAG in de praktijk toepast op deze use case. Daarnaast werd een vergelijkende studie uitgevoerd waarbij vier verschillende modellen werden getest, namelijk Llama3.2, Llama3.1, Qwen2.5 en Qwen3. Uit de drie testscenario’s waaraan de modellen werden onderworpen, kwam het model Qwen3 als beste naar voren. De resultaten bieden een concrete basis om LLM-gebaseerde IT-support in de praktijk verder te verkennen en te optimaliseren.
 \end{abstract}
 
 \begin{multicols}{2} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
 
-\section{Introductie}
+\section{Inleiding}
+%TODO beschijf hier de inleiding waarom het onderzoek werd opgesteld en wat je hebt opgezocht 
 
-Be quiet! Found them? In Mercia?! The coconut's tropical! But you are dressed as one… Well, what do you want? Knights of Ni, we are but simple travelers who seek the enchanter who lives beyond these woods.
+Dit onderzoek bekijkt hoe de IT-support van het MyMinfin-team bij de FOD Financiën efficiënter kan worden gemaakt. Momenteel is de support gefragmenteerd en is de documentatie niet altijd eenvoudig terug te vinden. Om dit te verbeteren, wordt onderzocht hoe een LLM-gebaseerde toepassing het proces kan ondersteunen.
 
-Well, what do you want? It's only a model. Camelot! We found them. We shall say `Ni' again to you, if you do not appease us.
+Omdat een LLM geen voorkennis heeft van het supportproces, moet worden onderzocht hoe deze beperking kan worden aangepakt. Hiervoor worden de methodes Retrieval Augmented Generation (RAG), Fine-tuning en Cache-Augmented Generation (CAG) vergeleken om te bepalen welke het meest geschikt is voor de praktijk. Op basis van deze bevindingen wordt een Proof of Concept (PoC) ontwikkeld, die laat zien hoe één van de onderzochte methodes in de praktijk kan worden toegepast.
 
-The nose? Shut up! Burn her! I am your king. You don't vote for kings.
+\section{Proof of Concept}
 
-You can't expect to wield supreme power just `cause some watery tart threw a sword at you! Well, we did do the nose. I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
+Op basis van de literatuurstudie en de beperkingen van het onderzoek werd gekozen om RAG toe te passen. Fine-tuning bleek, gezien de scope van de PoC niet haalbaar. CAG was met het oog op de schaalbaarheid eveneens minder geschikt. Daarom werd geopteerd voor een RAG-implementatie. Hierbij werd gebruikgemaakt van LangGraph, een framework dat het mogelijk maakt om een graaf op te bouwen waarmee de LLM aan de slag kan.
 
-Why do you think that she is a witch? We want a shrubbery!! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
+Figuur \ref{fig:PoC_RAG} toont de structuur van de implementatie. De gebruiker stelt een vraag, waarna de LLM beoordeelt of het om een triviale vraag gaat. In het geval van een triviale vraag geeft de LLM direct een antwoord aan de eindgebruiker, zonder de database te raadplegen. Gaat het om een non-triviale vraag, dan zoekt de LLM in de vectordatabase naar relevante documentatie om de vraag te beantwoorden. Nadat de documenten zijn opgehaald, evalueert de LLM de opgehaalde documenten. Zijn de documenten niet relevant genoeg, dan herformuleert de LLM de vraag en bevraagt de database opnieuw. Wanneer relevante documenten zijn gevonden, kan de LLM deze gebruiken om een antwoord aan de eindgebruiker te geven.
 
-\section{Experimenten}
-
-A newt? Camelot! Why? No, no, no! Yes, yes. A bit. But she's got a wart.
-
-Shut up! I dunno. Must be a king. Who's that then? Look, my liege! On second thoughts, let's not go there. It is a silly place.
-
-Shut up! Will you shut up?! No, no, no! Yes, yes. A bit. But she's got a wart. He hasn't got shit all over him. It's only a model. It's only a model.
-
-Bring her forward! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave 
-
-\section{Sectie met figuur}
-
-De {\LaTeX} figure-omgeving bepaalt zelf waar een afbeelding komt en dat is meestal niet op de plek in de tekst waar de figure-omgeving gedefinieerd wordt. Als je wilt forceren dat afbeeldingen toch in de flow van de tekst blijven, dan kan je dat zoals hieronder:
+Op die manier 
 
 \begin{center}
-  \captionsetup{type=figure}
-  \includegraphics[width=1.0\linewidth]{grail}
-  \captionof{figure}{He hasn't got shit all over him. The nose? Where'd you get the coconuts? What do you mean? We shall say `Ni' again to you, if you do not appease us}
+    \captionsetup{type=figure}
+    \includegraphics[width=1.0\linewidth]{flowchart_v2}
+    \captionof{figure}{Overzicht van de structuur van de PoC met RAG-implementatie}
+    \label{fig:PoC_RAG}
 \end{center}
 
-Let er wel op dat dit tot problemen met bladschikking kan leiden.
+\section{Testscenario’s en Evaluatieopzet}
+
+Voor de PoC werd een vergelijkende studie uitgevoerd met als doel de prestaties van verschillende modellen systematisch te evalueren. In dit kader werden de modellen Llama3.2, Llama3.1, Qwen2.5 en Qwen3 geselecteerd en onderworpen aan een reeks testscenario’s. Op basis van deze scenario’s kon worden vastgesteld welk model het meest adequaat presteerde.
+
+\subsection*{Scenario 1 - Documentatiegebonden vragen}
+In het eerste scenario werden tien vragen geformuleerd waarvan de antwoorden expliciet aanwezig waren in de beschikbare documentatie. De verwachting was dat het model op basis van de RAG-architectuur de relevante documenten correct zou ophalen en de gebruiker een accuraat antwoord zou verschaffen. De kwaliteit van de antwoorden werd geëvalueerd met behulp van het testframework \textit{Ragas}.  
+
+\subsection*{Scenario 2 - Buiten-documentatievragen}
+Het tweede scenario bestond uit vragen die niet in de documentatie terug te vinden waren. Dit scenario had als doel te onderzoeken in welke mate de verschillende modellen geneigd waren tot het genereren van hallucinaties en hoe zij met kennishiaten omgingen.  
+
+\subsection*{Scenario 3 - Triviale vragen}
+In het derde en laatste scenario werden triviale vragen gesteld. Gezien de architectuur van de PoC werd van de LLM verwacht dat het de database enkel zou raadplegen wanneer dit noodzakelijk was. Dit scenario bood de mogelijkheid om te beoordelen welk model het meest efficiënt en consistent inspeelde op het onderliggende ontwerpprincipe van de PoC.  
+
+\section{Resultaten}
+
+Voor testscenario 1 was
+
+
 
 \section{Conclusies}
-
+%Beantwoord hier de onderzoeksvraag
 Don't underestimate the Force. Oh God, my uncle. How am I ever gonna explain this? I suggest you try it again, Luke. This time, let go your conscious self and act on instinct. Don't be too proud of this technological terror you've constructed. The ability to destroy a planet is insignificant next to the power of the Force.
 
 \section{Toekomstig onderzoek}
